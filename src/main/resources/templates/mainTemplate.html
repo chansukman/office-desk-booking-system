@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
+
+</head>
+<body>
+<header th:fragment="header" class="myHeader">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">My Bookings</a></li>
+    </ul>
+</header>
+
+
+<footer th:fragment="footer" class="myFooter">
+Footer content
+</footer>
+</body>
+</html>

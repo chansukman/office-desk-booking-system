@@ -1,0 +1,39 @@
+/*All document style*/
+*{
+    margin:0;
+    padding:0;
+    font-family: "Poppins Medium", sans-serif;
+}
+
+/*Fonts*/
+@font-face {
+    font-family: "Poppins Medium", sans-serif;
+    src: url("../../fonts/Poppins-Medium.ttf");
+}
+
+
+/*Template styles*/
+.myHeader{
+    background: blue;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+}
+.myHeader ul{
+    display: flex;
+    list-style: none;
+    padding: 0.5em;
+}
+.myHeader a{
+    text-decoration: none;
+    color: white;
+    padding: 0.5em;
+}
+.myFooter{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: lightgrey;
+    text-align: center;
+    padding: 0.5em 0;
+}
