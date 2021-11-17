@@ -39,6 +39,7 @@ body{
     border-radius: 20px;
     background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
 }
+
 .center-content .inputBox .inputButton2{
     border:  0;
     width: 150px;
