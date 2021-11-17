@@ -14,10 +14,11 @@
 
 /*Template styles*/
 .myHeader{
-    background: blue;
+    background: #0000cd;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     align-items: center;
+    font-size: 1.2em;
 }
 .myHeader ul{
     display: flex;
@@ -36,4 +37,16 @@
     background: lightgrey;
     text-align: center;
     padding: 0.5em 0;
+}
+
+
+/*Buttons*/
+.navButton{
+    font-size: 1.2em;
+    border: 1px solid white;
+    padding: 0.7em;
+    background: #0000cd;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
 }
