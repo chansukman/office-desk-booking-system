@@ -1,17 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Bookings</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/styles.css}">
-</head>
-<body>
-<header th:replace="mainTemplate :: header"></header>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/styles.css}" />
+  </head>
+  <body>
+    <header th:replace="mainTemplate :: header"></header>
 
-<h1>Bookings</h1>
-<br><br><br>
-<a href="/bookings"></a>
+    <div class="content-wrapper">
+      <h1>Make a booking</h1>
+      <div class="calendar">
+        <h1>Calendar</h1>
+        <form action="/searchDate" name="dateForm" method="get">
+          <label for="date"
+            >Please select the day you would like to book your desk</label
+          ><br />
+          <input id="date" name="date" type="date" />
+          <input type="submit">
+        </form>
+      </div>
+      <section class="desks">
+        <div class="desk-list" th:each="deskItem:${testDesk}">
+          <div th:text="${deskItem}"></divth:text>
+        </div>
+      </section>
+    </div>
 
-<footer th:replace="mainTemplate :: footer"></footer>
-</body>
+    <footer th:replace="mainTemplate :: footer"></footer>
+    <script>
+      function searchDate(){
+        let date = document.forms["dateForm"]["date"].value;
+        let p = document.createElement("p");
+        p.append(date);
+        document.querySelector(".desk-list").append(p);
+
+
+        return false;
+      }
+      function create
+    </script>
+  </body>
 </html>
