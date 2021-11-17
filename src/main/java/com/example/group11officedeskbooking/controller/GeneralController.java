@@ -14,4 +14,11 @@ public class GeneralController {
         return mav;
     }
 
+    @RequestMapping(path = "/bookings")
+    public ModelAndView bookings(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("bookings");
+        return mav;
+    }
+
 }
