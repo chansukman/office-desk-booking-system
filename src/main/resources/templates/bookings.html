@@ -8,9 +8,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Bookings</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/styles.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
   </head>
-  <body>
+  <body onload="setCalendarDates()">
     <header th:replace="mainTemplate :: header"></header>
 
     <div class="content-wrapper">
@@ -21,29 +21,51 @@
           <label for="date"
             >Please select the day you would like to book your desk</label
           ><br />
-          <input id="date" name="date" type="date" />
+          <input id="date" name="date" type="date"/>
           <input type="submit">
         </form>
       </div>
       <section class="desks">
-        <div class="desk-list" th:each="deskItem:${testDesk}">
-          <div th:text="${deskItem}"></divth:text>
+        <div class="desk-item" th:each="desk:${deskList}">
+          <div th:text="${desk.getName()}"></div>
+          <div th:text="${desk.getType()}"></div>
+          <div th:text="${desk.getImage()}"></div>
+          <div th:text="${desk.getStatus()}"></div>
         </div>
       </section>
     </div>
 
     <footer th:replace="mainTemplate :: footer"></footer>
+
     <script>
+      //function to
       function searchDate(){
         let date = document.forms["dateForm"]["date"].value;
         let p = document.createElement("p");
         p.append(date);
         document.querySelector(".desk-list").append(p);
-
-
         return false;
       }
-      function create
+      function setCalendarDates(){
+        //create dates in String format
+        let today = new Date();
+        let oneWeeksTime = new Date();
+        oneWeeksTime.setDate(oneWeeksTime.getDate() + 7);
+        today = getFormattedDate(today);
+        oneWeeksTime = getFormattedDate(oneWeeksTime);
+        let dateField = document.getElementById("date");
+        dateField.setAttribute("max", oneWeeksTime);
+        dateField.setAttribute("min", today);
+      }
+      function getFormattedDate(date){
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        if(day < 10){day = '0' + day;}
+        if(month < 10){month = '0' + month;}
+        return year + '-' + month + '-' + day;
+      }
+
     </script>
   </body>
 </html>

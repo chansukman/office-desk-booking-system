@@ -83,9 +83,26 @@
 }
 .desks {
   height: 200px;
-
   background: aqua;
+  display: flex;
+  flex-direction: column;
 }
+.desk-item{
+  width: 80%;
+  margin: auto;
+  height: 30px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  justify-items: center;
+  align-items: center;
+  background: white;
+  border: grey;
+  border-radius: 20px;
+}
+.desk-item div{
+  text-align: center;
+}
+
 
 /* Small tablets */
 @media screen and (min-width: 620px) {
