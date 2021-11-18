@@ -12,16 +12,24 @@
 <form method="post">
 <div class="center-content" >
   <h1>Login</h1>
+
   <div class="inputBox">
-    <div class="inputText">
-      <input type="text" placeholder="username" />
-    </div>
-    <div class="inputText">
-      <input type="password" placeholder="password" />
-    </div>
-    <input type="button" value="User LOGIN" class="inputButton1" />
-    <input type="button" value="Admin LOGIN" class="inputButton2" />
+    <form name="form1"   action="/userlogin" method="post">
+
+      <div class="inputText">
+        <input type="text" placeholder="username" name="username" />
+      </div>
+      <div class="inputText">
+        <input type="password" placeholder="password" name="password" />
+      </div>
+      <input type="submit" value="User LOGIN" class="inputButton1"  name="button"  />
+      <input type="submit" value="Admin LOGIN" class="inputButton2" name="button"/>
+    </form>
   </div>
+
+  <!--  <form action="/login" method="post">-->
+  <!--    <input type="submit" value="github Login"/>-->
+  <!--  </form>-->
 </div>
 </form>
 
@@ -30,4 +38,3 @@
 
 
 </body>
-</html>
