@@ -1,0 +1,121 @@
+/*All document style*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins Medium", sans-serif;
+  /* -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box; */
+  box-sizing: border-box;
+}
+
+/*Fonts*/
+@font-face {
+  font-family: "Poppins Medium", sans-serif;
+  src: url("../../fonts/Poppins-Medium.ttf");
+}
+
+/*Template styles*/
+.myHeader {
+  background: #0000cd;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  font-size: 1.2em;
+}
+.myHeader ul {
+  display: flex;
+  list-style: none;
+  padding: 0.5em;
+}
+.myHeader a {
+  text-decoration: none;
+  color: white;
+  padding: 0.5em;
+}
+.myFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: lightgrey;
+  text-align: center;
+  padding: 0.5em 0;
+}
+
+/*Buttons*/
+.navButton {
+  font-size: 1.2em;
+  border: 1px solid white;
+  padding: 0.7em;
+  background: #0000cd;
+  border-radius: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+/*Page layout*/
+
+/* MEDIA QUERIES */
+
+/* mobile */
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrapper {
+  width: 100%;
+  display: grid;
+  margin: 0;
+}
+.calendar {
+  background: aquamarine;
+  text-align: center;
+}
+
+.calBlock {
+  display: grid;
+  position: relative;
+  width: 200px;
+  height: 140px;
+  border: 1px solid grey;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  margin: auto;
+}
+.desks {
+  height: 200px;
+  background: aqua;
+  display: flex;
+  flex-direction: column;
+}
+.desk-item{
+  width: 80%;
+  margin: auto;
+  height: 30px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  justify-items: center;
+  align-items: center;
+  background: white;
+  border: grey;
+  border-radius: 20px;
+}
+.desk-item div{
+  text-align: center;
+}
+
+
+/* Small tablets */
+@media screen and (min-width: 620px) {
+  .content-wrapper {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+/* Large tablets and laptops styles */
+@media screen and (min-width: 960px) {
+}
+
+/* Desktop */
+@media screen and (min-width: 1200px) {
+}
