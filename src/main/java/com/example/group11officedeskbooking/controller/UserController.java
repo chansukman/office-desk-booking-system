@@ -1,6 +1,7 @@
 package com.example.group11officedeskbooking.controller;
 
 import com.example.group11officedeskbooking.forms.AdminForm;
+import com.example.group11officedeskbooking.forms.DeskForm;
 import com.example.group11officedeskbooking.forms.UserForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

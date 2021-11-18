@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
   <link rel="stylesheet"  type="text/css"th:href="@{/styles/login.css}">
 
@@ -9,7 +9,6 @@
 </head>
 <body>
 <header th:replace="mainTemplate :: header"></header>
-<form method="post">
 <div class="center-content" >
   <h1>Login</h1>
 
@@ -31,7 +30,6 @@
   <!--    <input type="submit" value="github Login"/>-->
   <!--  </form>-->
 </div>
-</form>
 
 
 <footer th:replace="mainTemplate :: footer"></footer>
