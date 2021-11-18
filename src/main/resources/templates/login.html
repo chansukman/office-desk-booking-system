@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/styles.css}">
+  <link rel="stylesheet"  type="text/css"th:href="@{/styles/login.css}">
+
+  <title>Login</title>
+</head>
+<body>
+<header th:replace="mainTemplate :: header"></header>
+<form method="post">
+<div class="center-content" >
+  <h1>Login</h1>
+  <div class="inputBox">
+    <div class="inputText">
+      <input type="text" placeholder="username" />
+    </div>
+    <div class="inputText">
+      <input type="password" placeholder="password" />
+    </div>
+    <input type="button" value="User LOGIN" class="inputButton1" />
+    <input type="button" value="Admin LOGIN" class="inputButton2" />
+  </div>
+</div>
+</form>
+
+
+<footer th:replace="mainTemplate :: footer"></footer>
+
+
+</body>
+</html>
