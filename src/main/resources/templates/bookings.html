@@ -21,6 +21,7 @@
           <label for="date"
             >Please select the day you would like to book your desk</label
           ><br />
+<!--          Date range is from today to 1 week from today -->
           <input id="date" name="date" type="date"/>
           <input type="submit">
         </form>
@@ -38,14 +39,7 @@
     <footer th:replace="mainTemplate :: footer"></footer>
 
     <script>
-      //function to
-      function searchDate(){
-        let date = document.forms["dateForm"]["date"].value;
-        let p = document.createElement("p");
-        p.append(date);
-        document.querySelector(".desk-list").append(p);
-        return false;
-      }
+
       function setCalendarDates(){
         //create dates in String format
         let today = new Date();
