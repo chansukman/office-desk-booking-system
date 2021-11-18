@@ -30,7 +30,17 @@ body{
     background-color: #00000000;
     color: white;
 }
-.center-content .inputBox .inputButton{
+.center-content .inputBox .inputButton1{
+    border:  0;
+    width: 150px;
+    height: 25px;
+    color: black;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+}
+
+.center-content .inputBox .inputButton2{
     border:  0;
     width: 150px;
     height: 25px;

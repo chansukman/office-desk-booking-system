@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" th:href="@{/styles/styles.css}">
+  <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
   <link rel="stylesheet"  type="text/css"th:href="@{/styles/login.css}">
 
   <title>Login</title>
 </head>
 <body>
 <header th:replace="mainTemplate :: header"></header>
-
 <div class="center-content" >
   <h1>Login</h1>
-  <form name="form1"  action="/login" method="post">
+
   <div class="inputBox">
-    <div class="inputText">
-      <input type="text" placeholder="username" />
-    </div>
-    <div class="inputText">
-      <input type="password" placeholder="password" />
-    </div>
-    <input type="button" value="LOGIN" class="inputButton" />
+    <form name="form1"   action="/userlogin" method="post">
+
+      <div class="inputText">
+        <input type="text" placeholder="username" name="username" />
+      </div>
+      <div class="inputText">
+        <input type="password" placeholder="password" name="password" />
+      </div>
+      <input type="submit" value="User LOGIN" class="inputButton1"  name="button"  />
+      <input type="submit" value="Admin LOGIN" class="inputButton2" name="button"/>
+    </form>
   </div>
-  </form>
+
+  <!--  <form action="/login" method="post">-->
+  <!--    <input type="submit" value="github Login"/>-->
+  <!--  </form>-->
 </div>
 
 
@@ -30,4 +36,3 @@
 
 
 </body>
-</html>
