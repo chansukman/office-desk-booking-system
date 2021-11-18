@@ -1,17 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Bookings</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/styles.css}">
-</head>
-<body>
-<header th:replace="mainTemplate :: header"></header>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
+  </head>
+  <body onload="setCalendarDates()">
+    <header th:replace="mainTemplate :: header"></header>
 
-<h1>Bookings</h1>
-<br><br><br>
-<a href="/bookings"></a>
+    <div class="content-wrapper">
+      <h1>Make a booking</h1>
+      <div class="calendar">
+        <h1>Calendar</h1>
+        <form action="/searchDate" name="dateForm" method="get">
+          <label for="date"
+            >Please select the day you would like to book your desk</label
+          ><br />
+<!--          Date range is from today to 1 week from today -->
+          <input id="date" name="date" type="date"/>
+          <input type="submit">
+        </form>
+      </div>
+      <section class="desks">
+        <div class="desk-item" th:each="desk:${deskList}">
+          <div th:text="${desk.getName()}"></div>
+          <div th:text="${desk.getType()}"></div>
+          <div th:text="${desk.getImage()}"></div>
+          <div th:text="${desk.getStatus()}"></div>
+        </div>
+      </section>
+    </div>
 
-<footer th:replace="mainTemplate :: footer"></footer>
-</body>
+    <footer th:replace="mainTemplate :: footer"></footer>
+
+    <script>
+
+      function setCalendarDates(){
+        //create dates in String format
+        let today = new Date();
+        let oneWeeksTime = new Date();
+        oneWeeksTime.setDate(oneWeeksTime.getDate() + 7);
+        today = getFormattedDate(today);
+        oneWeeksTime = getFormattedDate(oneWeeksTime);
+        let dateField = document.getElementById("date");
+        dateField.setAttribute("max", oneWeeksTime);
+        dateField.setAttribute("min", today);
+      }
+      function getFormattedDate(date){
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        if(day < 10){day = '0' + day;}
+        if(month < 10){month = '0' + month;}
+        return year + '-' + month + '-' + day;
+      }
+
+    </script>
+  </body>
 </html>
