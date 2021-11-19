@@ -20,10 +20,10 @@ public class UserController {
     @RequestMapping(path = "/userlogin", method = RequestMethod.POST)
     public String usercheck(UserForm user,AdminForm admin,@RequestParam(value="button") String btn) {
         //commonUser
-        UserForm Shuwen = new UserForm("1","shuwen", "123456");
-        UserForm Dan = new UserForm("2","dan", "123456");
-        UserForm Mahhd=new UserForm("3","mahad","123456");
-        UserForm Abdullah=new UserForm("4","abdullah","123456");
+        UserForm Shuwen = new UserForm("21","shuwen", "123456");
+        UserForm Dan = new UserForm("22","dan", "123456");
+        UserForm Mahhd=new UserForm("23","mahad","123456");
+        UserForm Abdullah=new UserForm("24","abdullah","123456");
         ArrayList<UserForm> listOfcommonuser = new ArrayList<>();
         listOfcommonuser.add(Shuwen);
         listOfcommonuser.add(Dan);
