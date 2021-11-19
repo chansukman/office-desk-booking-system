@@ -53,6 +53,7 @@ public class UserController {
                 }
             }
         }
+        System.out.println("read the file");
         return "redirect:login";
 
     }
