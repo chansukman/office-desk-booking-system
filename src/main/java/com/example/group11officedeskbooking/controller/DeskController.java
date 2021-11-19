@@ -21,7 +21,7 @@ public class DeskController {
     @RequestMapping(path = "/searchDate2", method = RequestMethod.GET)
     public ModelAndView searchDate(@RequestParam(value="date", defaultValue = "null") String searchDate){
         ModelAndView mav = new ModelAndView();
-        mav.addObject(deskRepo.searchAvailableDesksByDate(searchDate));
+        mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate));
         mav.setViewName("bookings");
         return mav;
     }

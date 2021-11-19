@@ -1,9 +1,12 @@
 package com.example.group11officedeskbooking.repository;
 
 import com.example.group11officedeskbooking.DTO.DeskDTO;
+import com.example.group11officedeskbooking.model.DeskMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class DeskRepositoryJDBC implements DeskRepository{
@@ -16,11 +19,9 @@ public class DeskRepositoryJDBC implements DeskRepository{
     }
 
     @Override
-    public DeskDTO searchAvailableDesksByDate(String searchDate){
-        DeskDTO deskDTO = (DeskDTO) jdbcTemplate.queryForObject(
+    public List<DeskDTO> searchAvailableDesksByDate(String searchDate){
+        return jdbcTemplate.query(
                 "select * from desk where desk_id not in (select Desk_desk_id from booking where booking_date=?)",
-                new Object[]{searchDate}, new deskMapper());
-        return deskDTO;
-        )
+                new DeskMapper(), new Object[]{searchDate});
     }
 }

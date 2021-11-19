@@ -82,17 +82,16 @@
   margin: auto;
 }
 .desks {
-  height: 200px;
   background: aqua;
   display: flex;
   flex-direction: column;
 }
 .desk-item{
-  width: 80%;
-  margin: auto;
+  width: 70%;
+  margin: 10px auto;
   height: 30px;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(3,1fr);
   justify-items: center;
   align-items: center;
   background: white;
