@@ -13,15 +13,13 @@ CREATE TABLE `Booking` (
   );
 
 
-INSERT INTO `Booking` VALUES (1,'2021-11-20','13:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (2,'2021-11-20','13:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (3,'2021-11-20','13:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (4,'2021-11-20','13:00:00',24,14,NULL);
-
-INSERT INTO `Booking` VALUES (4,'2021-11-21','13:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (5,'2021-11-22','13:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (6,'2021-11-23','13:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (7,'2021-11-24','13:00:00',24,14,NULL);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-11-20','13:00:00',21,1);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-20','13:00:00',22,2);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-20','13:00:00',23,3);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-20','13:00:00',24,4);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-21','13:00:00',21,1);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-21','13:00:00',22,4);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-21','13:00:00',23,6);
 
 
 DROP TABLE IF EXISTS `Desk`;
@@ -29,11 +27,14 @@ DROP TABLE IF EXISTS `Desk`;
 CREATE TABLE `Desk` (
   `desk_id` int NOT NULL PRIMARY KEY,
   `has_window` boolean NOT NULL,
-  `desk_location` int DEFAULT NULL
+  `desk_type` varchar(50) NOT NULL
 );
 
 
-INSERT INTO `Desk` VALUES (1,true,1),(2,true,1),(3,true,2),(4,true,1),(5,false,2),(6,false,1),(7,false,2);
+INSERT INTO `Desk` VALUES (1,true,'Standing'),(2,true,'Standing'),(3,true,'Standing'),(4,true,'Standing'),(5,false,'Standard'),(6,false,'Standard'),(7,false,'Standard');
+INSERT INTO `Desk` VALUES (8,true,'Standard'),(9,true,'Standard'),(10,true,'Standard'),(11,true,'Standard'),(12,false,'Standard'),(13,false,'Standard'),(14,false,'Standard');
+INSERT INTO `Desk` VALUES (15,true,'Standard'),(16,true,'Standard'),(17,true,'Standard'),(18,true,'Standard'),(19,false,'Standard'),(20,false,'Standard'),(21,false,'Standard');
+INSERT INTO `Desk` VALUES (22,true,'Standard'),(23,true,'Standard'),(24,true,'Standard'),(25,true,'Standard');
 
 
 
