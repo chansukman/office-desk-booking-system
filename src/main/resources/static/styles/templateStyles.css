@@ -105,7 +105,7 @@ body{
   width: 70%;
   margin: 10px auto;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(5,1fr);
   justify-items: center;
   align-items: center;
   background: white;
