@@ -17,7 +17,7 @@
       <h1>Make a booking</h1>
       <div class="calendar">
         <h1>Calendar</h1>
-        <form action="/searchDate" name="dateForm" method="get">
+        <form action="/searchDate2" name="dateForm" method="get">
           <label for="date"
             >Please select the day you would like to book your desk</label
           ><br />
@@ -26,12 +26,28 @@
           <input type="submit">
         </form>
       </div>
-      <section class="desks">
+      <section class="desks" th:if="${deskList != null}">
+<!--        <div class="desk-item" th:each="desk:${deskList}">-->
+<!--          <div th:text="${desk.getName()}"></div>-->
+<!--          <div th:text="${desk.getType()}"></div>-->
+<!--          <div th:text="${desk.getImage()}"></div>-->
+<!--          <div th:text="${desk.getStatus()}"></div>-->
+<!--        </div>-->
+          <h1>Available Desks</h1>
         <div class="desk-item" th:each="desk:${deskList}">
-          <div th:text="${desk.getName()}"></div>
-          <div th:text="${desk.getType()}"></div>
-          <div th:text="${desk.getImage()}"></div>
-          <div th:text="${desk.getStatus()}"></div>
+            <div>
+                Desk ID
+                <div th:text="${desk.getDesk_id()}"></div>
+            </div>
+            <div>
+                Has Window
+                <div th:text="${desk.isHas_window()}"></div>
+            </div>
+            <div>
+                Desk Type
+                <div th:text="${desk.getDesk_type()}"></div>
+            </div>
+            <button class="booking-button" type="submit">Book</button>
         </div>
       </section>
     </div>
