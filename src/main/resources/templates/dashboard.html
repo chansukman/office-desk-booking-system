@@ -6,12 +6,17 @@
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
 </head>
 <body>
-<header th:replace="mainTemplate :: header"></header>
+<div class="page-container">
+    <header th:replace="mainTemplate :: header"></header>
+    <div class="content-wrapper">
+        <h1>Dashboard</h1>
+        <br><br><br>
+        <a href="/bookings" class="navButton">Bookings</a>
+    </div>
 
-<h1>Dashboard</h1>
-<br><br><br>
-<a href="/bookings" class="navButton">Bookings</a>
 
-<footer th:replace="mainTemplate :: footer"></footer>
+    <footer th:replace="mainTemplate :: footer"></footer>
+
+</div>
 </body>
 </html>
