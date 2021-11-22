@@ -33,8 +33,8 @@
   padding: 0.5em;
 }
 .myFooter {
-  position: absolute;
-  bottom: 0;
+  display: table-row;
+  height:0;
   width: 100%;
   background: lightgrey;
   text-align: center;
@@ -51,9 +51,20 @@
   text-decoration: none;
   color: white;
 }
+.booking-button{
+  padding: 4px;
+  color: white;
+  background: #0000cd;
+  border: 1px solid black;
+  border-radius: 4px;
+}
 
 /*Page layout*/
-
+body{
+  display: table;
+  width: 100%;
+  min-height: 100%;
+}
 /* MEDIA QUERIES */
 
 /* mobile */
@@ -86,17 +97,19 @@
   display: flex;
   flex-direction: column;
 }
+.desks h1{
+  align-self: center;
+}
 .desk-item{
   width: 70%;
   margin: 10px auto;
-  height: 30px;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
   justify-items: center;
   align-items: center;
   background: white;
   border: grey;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 .desk-item div{
   text-align: center;

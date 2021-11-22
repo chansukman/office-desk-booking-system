@@ -13,20 +13,27 @@ CREATE TABLE `Booking` (
   );
 
 
-
 INSERT INTO `Booking` VALUES (1,'2021-11-20','13:00:00',24,14,NULL);
+INSERT INTO `Booking` VALUES (2,'2021-11-20','13:00:00',24,14,NULL);
+INSERT INTO `Booking` VALUES (3,'2021-11-20','13:00:00',24,14,NULL);
+INSERT INTO `Booking` VALUES (4,'2021-11-20','13:00:00',24,14,NULL);
+
+INSERT INTO `Booking` VALUES (4,'2021-11-21','13:00:00',24,14,NULL);
+INSERT INTO `Booking` VALUES (5,'2021-11-22','13:00:00',24,14,NULL);
+INSERT INTO `Booking` VALUES (6,'2021-11-23','13:00:00',24,14,NULL);
+INSERT INTO `Booking` VALUES (7,'2021-11-24','13:00:00',24,14,NULL);
 
 
 DROP TABLE IF EXISTS `Desk`;
 
 CREATE TABLE `Desk` (
   `desk_id` int NOT NULL PRIMARY KEY,
-  `has_window` tinyint NOT NULL,
+  `has_window` boolean NOT NULL,
   `desk_location` int DEFAULT NULL
 );
 
 
-INSERT INTO `Desk` VALUES (10,1,1),(11,0,1),(12,0,1),(13,0,2),(14,1,1),(15,0,2),(16,0,1),(17,1,2);
+INSERT INTO `Desk` VALUES (1,true,1),(2,true,1),(3,true,2),(4,true,1),(5,false,2),(6,false,1),(7,false,2);
 
 
 

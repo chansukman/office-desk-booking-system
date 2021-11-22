@@ -26,13 +26,14 @@
           <input type="submit">
         </form>
       </div>
-      <section class="desks">
+      <section class="desks" th:if="${deskList != null}">
 <!--        <div class="desk-item" th:each="desk:${deskList}">-->
 <!--          <div th:text="${desk.getName()}"></div>-->
 <!--          <div th:text="${desk.getType()}"></div>-->
 <!--          <div th:text="${desk.getImage()}"></div>-->
 <!--          <div th:text="${desk.getStatus()}"></div>-->
 <!--        </div>-->
+          <h1>Available Desks</h1>
         <div class="desk-item" th:each="desk:${deskList}">
             <div>
                 Desk ID
@@ -40,12 +41,13 @@
             </div>
             <div>
                 Has Window
-                <div th:text="${desk.getHas_window()}"></div>
+                <div th:text="${desk.isHas_window()}"></div>
             </div>
             <div>
-                Location
-                <div th:text="${desk.getDesk_location()}"></div>
+                Desk Type
+                <div th:text="${desk.getDesk_type()}"></div>
             </div>
+            <button class="booking-button" type="submit">Book</button>
         </div>
       </section>
     </div>
