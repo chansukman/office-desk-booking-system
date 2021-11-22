@@ -28,7 +28,7 @@ public class GeneralController {
         return mav;
     }
 
-    @RequestMapping(path = "/searchDate", method = RequestMethod.GET)
+    @RequestMapping(path = "/searchDate2", method = RequestMethod.GET)
     public ModelAndView search(@RequestParam(value="date", defaultValue = "null") String date){
 
         //Add temporary test array of desks
