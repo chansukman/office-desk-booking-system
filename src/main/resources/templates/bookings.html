@@ -11,48 +11,51 @@
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
   </head>
   <body onload="setCalendarDates()">
-    <header th:replace="mainTemplate :: header"></header>
 
-    <div class="content-wrapper">
-      <h1>Make a booking</h1>
-      <div class="calendar">
-        <h1>Calendar</h1>
-        <form action="/searchDate2" name="dateForm" method="get">
-          <label for="date"
-            >Please select the day you would like to book your desk</label
-          ><br />
-<!--          Date range is from today to 1 week from today -->
-          <input id="date" name="date" type="date"/>
-          <input type="submit">
-        </form>
-      </div>
-      <section class="desks" th:if="${deskList != null}">
-<!--        <div class="desk-item" th:each="desk:${deskList}">-->
-<!--          <div th:text="${desk.getName()}"></div>-->
-<!--          <div th:text="${desk.getType()}"></div>-->
-<!--          <div th:text="${desk.getImage()}"></div>-->
-<!--          <div th:text="${desk.getStatus()}"></div>-->
-<!--        </div>-->
-          <h1>Available Desks</h1>
-        <div class="desk-item" th:each="desk:${deskList}">
-            <div>
-                Desk ID
-                <div th:text="${desk.getDesk_id()}"></div>
+    <div class="page-container">
+        <header th:replace="mainTemplate :: header"></header>
+        <div class="content-wrapper">
+            <h1>Make a booking</h1>
+            <div class="calendar">
+                <h1>Calendar</h1>
+                <form action="/searchDate2" name="dateForm" method="get">
+                    <label for="date"
+                    >Please select the day you would like to book your desk</label
+                    ><br />
+                    <!--          Date range is from today to 1 week from today -->
+                    <input id="date" name="date" type="date"/>
+                    <input type="submit">
+                </form>
             </div>
-            <div>
-                Has Window
-                <div th:text="${desk.isHas_window()}"></div>
-            </div>
-            <div>
-                Desk Type
-                <div th:text="${desk.getDesk_type()}"></div>
-            </div>
-            <button class="booking-button" type="submit">Book</button>
+            <section class="desks" th:if="${deskList != null}">
+                <!--        <div class="desk-item" th:each="desk:${deskList}">-->
+                <!--          <div th:text="${desk.getName()}"></div>-->
+                <!--          <div th:text="${desk.getType()}"></div>-->
+                <!--          <div th:text="${desk.getImage()}"></div>-->
+                <!--          <div th:text="${desk.getStatus()}"></div>-->
+                <!--        </div>-->
+                <h1>Available Desks</h1>
+                <div class="desk-item" th:each="desk:${deskList}">
+                    <div>
+                        Desk ID
+                        <div th:text="${desk.getDesk_id()}"></div>
+                    </div>
+                    <div>
+                        Has Window
+                        <div th:text="${desk.isHas_window()}"></div>
+                    </div>
+                    <div>
+                        Desk Type
+                        <div th:text="${desk.getDesk_type()}"></div>
+                    </div>
+                    <button class="booking-button" type="submit">Book</button>
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
 
-    <footer th:replace="mainTemplate :: footer"></footer>
+        <footer th:replace="mainTemplate :: footer"></footer>
+
+    </div>
 
     <script>
 
