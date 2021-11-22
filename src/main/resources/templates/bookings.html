@@ -17,13 +17,21 @@
         <div class="content-wrapper">
             <h1>Make a booking</h1>
             <div class="calendar">
-                <h1>Calendar</h1>
-                <form action="/searchDate2" name="dateForm" method="get">
+                <h1>Calendar & Location</h1>
+                <form action="/searchDate" name="dateForm" method="get">
                     <label for="date"
                     >Please select the day you would like to book your desk</label
                     ><br />
                     <!--          Date range is from today to 1 week from today -->
-                    <input id="date" name="date" type="date"/>
+                    <input id="date" name="date" type="date"/> <br>
+                    <label for="location">
+                        Please select office location <br>
+                        <select name="location" id="location">
+                            <option value="bristol">Bristol</option>
+                            <option value="cardiff">Cardiff</option>
+                        </select>
+                        <br>
+                    </label>
                     <input type="submit">
                 </form>
             </div>
@@ -37,8 +45,8 @@
                 <h1>Available Desks</h1>
                 <div class="desk-item" th:each="desk:${deskList}">
                     <div>
-                        Desk ID
-                        <div th:text="${desk.getDesk_id()}"></div>
+                        Desk Number
+                        <div th:text="${desk.getDesk_number()}"></div>
                     </div>
                     <div>
                         Has Window
@@ -47,6 +55,10 @@
                     <div>
                         Desk Type
                         <div th:text="${desk.getDesk_type()}"></div>
+                    </div>
+                    <div>
+                        Location
+                        <div th:text="${desk.getDesk_location()}"></div>
                     </div>
                     <button class="booking-button" type="submit">Book</button>
                 </div>
