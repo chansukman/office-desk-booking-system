@@ -1,20 +1,22 @@
 package com.example.group11officedeskbooking.DTO;
 
 public class UserDTO {
-    String firstname;
+    String first_name;
     String password;
 
-    public UserDTO( String firstname, String password) {
-        this.firstname = firstname;
+    public UserDTO(String first_name, String password) {
+
+        this.first_name = first_name;
         this.password = password;
     }
 
-    public String getUsername() {
-        return firstname;
+
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setUsername(String username) {
-        this.firstname = username;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getPassword() {

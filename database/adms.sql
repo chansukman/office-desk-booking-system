@@ -114,17 +114,27 @@ CREATE TABLE `User` (
                         `last_name` varchar(50) NOT NULL,
                         `email` varchar(50) NOT NULL,
                         `department` varchar(50) DEFAULT NULL,
+                        `password` varchar(20) NOT NULL,
                         PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+CREATE TABLE `admin` (
+                        `admin_id` int NOT NULL,
+                        `first_name` varchar(50) NOT NULL,
+                        `last_name` varchar(50) NOT NULL,
+                        `email` varchar(50) NOT NULL,
+                        `department` varchar(50) DEFAULT NULL,
+                        `password` varchar(20) NOT NULL,
+                        PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 --
 -- Dumping data for table `User`
 --
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR'),(22,'Daniel','Harling','adaniel@harling.com','IT'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT'),(25,'Mohd',' ',' ','Sales');
+INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR','123456'),(22,'Daniel','Harling','adaniel@harling.com','IT','123456'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales','123456'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT','123456');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
