@@ -66,4 +66,33 @@ public class GeneralController {
         return mav;
     }
 
+    @RequestMapping(path = "/Admin/Home")
+    public ModelAndView Admin_Home(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_Home");
+        return mav;
+    }
+
+    @RequestMapping(path = "/Admin/AllBookings")
+    public ModelAndView Admin_AllBookings(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_AllBookings");
+        return mav;
+    }
+
+    @RequestMapping(path = "/Admin/Location/Bristol")
+    public ModelAndView Admin_AllLocations_Bristol(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_AllLocations_Bristol");
+        return mav;
+    }
+
+    @RequestMapping(path = "/Admin/Location/Cardiff")
+    public ModelAndView Admin_AllLocations_Cardiff(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_AllLocations_Cardiff");
+        return mav;
+    }
+
+
 }

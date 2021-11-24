@@ -22,12 +22,12 @@ public class UserController {
         //commonUser
         UserForm Shuwen = new UserForm("21","shuwen", "123456");
         UserForm Dan = new UserForm("22","dan", "123456");
-        UserForm Mahhd=new UserForm("23","mahad","123456");
+        UserForm Mahad=new UserForm("23","mahad","123456");
         UserForm Abdullah=new UserForm("24","abdullah","123456");
         ArrayList<UserForm> listOfcommonuser = new ArrayList<>();
         listOfcommonuser.add(Shuwen);
         listOfcommonuser.add(Dan);
-        listOfcommonuser.add(Mahhd);
+        listOfcommonuser.add(Mahad);
         listOfcommonuser.add(Abdullah);
 
         //AdminUser
