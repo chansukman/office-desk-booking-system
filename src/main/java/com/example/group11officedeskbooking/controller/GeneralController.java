@@ -66,4 +66,11 @@ public class GeneralController {
         return mav;
     }
 
+    @RequestMapping(path = "/Admin/Calendar")
+    public ModelAndView Admin_Calendar(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_Calendar");
+        return mav;
+    }
+
 }
