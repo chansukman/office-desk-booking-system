@@ -25,18 +25,21 @@ INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  V
 DROP TABLE IF EXISTS `Desk`;
 
 CREATE TABLE `Desk` (
-  `desk_id` int NOT NULL PRIMARY KEY,
+  `desk_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `desk_number` int NOT NULL,
   `has_window` boolean NOT NULL,
-  `desk_type` varchar(50) NOT NULL
+  `desk_type` varchar(50) NOT NULL,
+  `desk_location` varchar(50) NOT NULL
 );
 
 
-INSERT INTO `Desk` VALUES (1,true,'Standing'),(2,true,'Standing'),(3,true,'Standing'),(4,true,'Standing'),(5,false,'Standard'),(6,false,'Standard'),(7,false,'Standard');
-INSERT INTO `Desk` VALUES (8,true,'Standard'),(9,true,'Standard'),(10,true,'Standard'),(11,true,'Standard'),(12,false,'Standard'),(13,false,'Standard'),(14,false,'Standard');
-INSERT INTO `Desk` VALUES (15,true,'Standard'),(16,true,'Standard'),(17,true,'Standard'),(18,true,'Standard'),(19,false,'Standard'),(20,false,'Standard'),(21,false,'Standard');
-INSERT INTO `Desk` VALUES (22,true,'Standard'),(23,true,'Standard'),(24,true,'Standard'),(25,true,'Standard');
+INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (1,true,'Standing', 'Bristol'),(2,true,'Standing', 'Bristol'),(3,true,'Standing', 'Bristol'),(4,true,'Standing', 'Bristol'),(5,false,'Standard', 'Bristol'),(6,false,'Standard', 'Bristol'),(7,false,'Standard', 'Bristol');
+INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (8,true,'Standard', 'Bristol'),(9,true,'Standard', 'Bristol'),(10,true,'Standard', 'Bristol'),(11,true,'Standard', 'Bristol'),(12,false,'Standard', 'Bristol'),(13,false,'Standard', 'Bristol'),(14,false,'Standard', 'Bristol');
+INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (15,true,'Standard', 'Bristol'),(16,true,'Standard', 'Bristol'),(17,true,'Standard', 'Bristol'),(18,true,'Standard', 'Bristol'),(19,false,'Standard', 'Bristol'),(20,false,'Standard', 'Bristol'),(21,false,'Standard', 'Bristol');
+INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (22,true,'Standard', 'Bristol'),(23,true,'Standard', 'Bristol'),(24,true,'Standard', 'Bristol'),(25,true,'Standard', 'Bristol');
 
-
+INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (1,true,'Standard', 'cardiff'),(2,true,'Standard', 'cardiff'),(3,true,'Standard', 'cardiff'),(4,true,'Standard', 'cardiff'),(5,false,'Standard', 'cardiff'),(6,false,'Standard', 'cardiff'),(7,false,'Standard', 'cardiff');
+INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (8,true,'Standard', 'cardiff'),(9,true,'Standard', 'cardiff'),(10,true,'Standard', 'cardiff');
 
 
 DROP TABLE IF EXISTS `User`;
@@ -52,3 +55,12 @@ CREATE TABLE `User` (
 
 INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR'),(22,'Daniel','Harling','daniel@harling.com','IT'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT'),(25,'Mohd',' ',' ','Sales');
 
+DROP TABLE IF EXISTS `Maps`;
+CREATE TABLE `Maps`(
+	`map_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `location` varchar(50) NOT NULL,
+    `image` varchar(50) NOT NULL
+);
+
+INSERT INTO `maps`(location, image) VALUES ('Bristol', '/Images/bristol_numbered.PNG'), ('Cardiff', '/Images/Cardiff_numbered.jpg');
+    

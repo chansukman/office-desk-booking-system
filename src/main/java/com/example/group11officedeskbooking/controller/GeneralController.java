@@ -66,4 +66,12 @@ public class GeneralController {
         return mav;
     }
 
+    @RequestMapping(path = "/Home")
+    public ModelAndView home(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("dashboard");
+        return mav;
+    }
+
+
 }
