@@ -1,20 +1,14 @@
 package com.example.group11officedeskbooking.controller;
-
 import com.example.group11officedeskbooking.DTO.AdminDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
-
 import com.example.group11officedeskbooking.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-import java.util.*;
 
 @Controller
 public class UserController {
@@ -64,8 +58,6 @@ public class UserController {
     @Resource
     private UserRepository userRepository;
 
-
-
     @Autowired
     public UserController(UserRepository newuser) {
         userRepository = newuser;
@@ -73,7 +65,8 @@ public class UserController {
 
     @RequestMapping(path = "/userlogin", method = RequestMethod.POST)
 
-    public String checkUser(UserDTO userDTO, AdminDTO adminDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
+    public ModelAndView checkUser(UserDTO userDTO, AdminDTO adminDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
+        ModelAndView mav = new ModelAndView();
         if (btn.equals("User LOGIN")) {
             try {
                 userRepository.checkByFirstnameAndPassword(username, password);
@@ -81,35 +74,34 @@ public class UserController {
                     System.out.println(userDTO.getFirst_name());
                   System.out.println(userDTO.getPassword());
 
-                    return "redirect:dashboard";
+                    mav.addObject("User",userRepository.checkByFirstnameAndPassword(username,password));
+                    mav.setViewName("dashboard");
+                    return mav;
 
                 }
             } catch (Exception e) {
-
-                return "redirect:login";
+                mav.setViewName("login");
+                return mav;
             }
         }else if (btn.equals("Admin LOGIN"))
         {
             try {
                 userRepository.checkAdminByFistnameAndPassword(username, password);
                 if (adminDTO.getFirst_name().equals(username) && adminDTO.getPassword().equals(password)) {
-                    System.out.println(adminDTO.getAdmin_id());
-                    System.out.println(adminDTO.getFirst_name());
-                    return "redirect:dashboard";
+
+                    mav.addObject("Admin",userRepository.checkAdminByFistnameAndPassword(username,password));
+                    mav.setViewName("dashboard");
+                    return mav;
                 }
             } catch (Exception e) {
-
-                return "redirect:login";
+                mav.setViewName("login");
+                return  mav;
             }
 
         }
-        return "redirect:login";
+        mav.setViewName("login");
+        return  mav;
     }
 
-    public ModelAndView showUserid(@RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password){
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("User",userRepository.checkByFirstnameAndPassword(username,password));
-        mav.setViewName("dashboard");
-        return mav;
-    }
+
 }
