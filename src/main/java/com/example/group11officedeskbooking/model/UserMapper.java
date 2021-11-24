@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class UserMapper implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs,int num)throws SQLException{
-        UserDTO userDTO = new UserDTO(rs.getString("first_name"),rs.getString("password"));
+        UserDTO userDTO = new UserDTO(rs.getInt("user_id"),rs.getString("first_name"),rs.getString("password"));
 
         return userDTO;
 

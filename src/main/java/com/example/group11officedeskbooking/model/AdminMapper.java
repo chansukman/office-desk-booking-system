@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class AdminMapper implements org.springframework.jdbc.core.RowMapper {
     @Override
     public Object mapRow(ResultSet rs,int num)throws SQLException{
-        AdminDTO adminDTO=new AdminDTO(rs.getString("first_name"),rs.getString("password"));
+        AdminDTO adminDTO=new AdminDTO(rs.getInt("admin_id"),rs.getString("first_name"),rs.getString("password"));
         return adminDTO;
 
     }

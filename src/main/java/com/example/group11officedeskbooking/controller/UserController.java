@@ -78,7 +78,11 @@ public class UserController {
             try {
                 userRepository.checkByFirstnameAndPassword(username, password);
                 if (userDTO.getFirst_name().equals(username) && userDTO.getPassword().equals(password)) {
+                    System.out.println(userDTO.getFirst_name());
+                  System.out.println(userDTO.getPassword());
+
                     return "redirect:dashboard";
+
                 }
             } catch (Exception e) {
 
@@ -89,6 +93,8 @@ public class UserController {
             try {
                 userRepository.checkAdminByFistnameAndPassword(username, password);
                 if (adminDTO.getFirst_name().equals(username) && adminDTO.getPassword().equals(password)) {
+                    System.out.println(adminDTO.getAdmin_id());
+                    System.out.println(adminDTO.getFirst_name());
                     return "redirect:dashboard";
                 }
             } catch (Exception e) {
@@ -98,5 +104,12 @@ public class UserController {
 
         }
         return "redirect:login";
+    }
+
+    public ModelAndView showUserid(@RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("User",userRepository.checkByFirstnameAndPassword(username,password));
+        mav.setViewName("dashboard");
+        return mav;
     }
 }

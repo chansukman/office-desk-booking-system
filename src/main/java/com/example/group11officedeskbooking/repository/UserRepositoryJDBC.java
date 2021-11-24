@@ -21,7 +21,7 @@ public class UserRepositoryJDBC implements UserRepository{
 
     @Override
     public UserDTO checkByFirstnameAndPassword(String first_name,String password){
-        String sql="select * from user where first_name=? and password=?";
+        String sql="select * from user where first_name=? and password=? ";
         return (UserDTO) jdbcTemplate.queryForObject(sql,new Object[]{first_name, password},
                 new UserMapper() );
     }
