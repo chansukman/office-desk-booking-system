@@ -80,6 +80,7 @@ public class UserController {
 
                 }
             } catch (Exception e) {
+                mav.addObject("msg","wrong username or password");
                 mav.setViewName("login");
                 return mav;
             }
@@ -90,10 +91,11 @@ public class UserController {
                 if (adminDTO.getFirst_name().equals(username) && adminDTO.getPassword().equals(password)) {
 
                     mav.addObject("Admin",userRepository.checkAdminByFistnameAndPassword(username,password));
-                    mav.setViewName("dashboard");
+                    mav.setViewName("Admin_Home");
                     return mav;
                 }
             } catch (Exception e) {
+                mav.addObject("msg","wrong username or password");
                 mav.setViewName("login");
                 return  mav;
             }

@@ -8,20 +8,21 @@
 <body>
 <div class="page-container">
     <header th:replace="mainTemplate :: header"></header>
-    <div class="content-wrapper">
-        <h1>Dashboard</h1>
-        <section class="User" th:if="${User != null}">
-            <div class="user-item" th:each="user:${User}">
-                <h4>welcome!</h4>
-                <div th:text="${user.getFirst_name()}"></div>
+    <h1>Dashboard</h1>
+    <section class="User" th:if="${User != null}">
+        <div class="user-item" th:each="user:${User}">
+            <h4>welcome!</h4>
+            <div th:text="${user.getFirst_name()}">
 
             </div>
+
+        </div>
         <br><br><br>
         <a href="/bookings" class="navButton">Bookings</a>
-    </div>
 
+    </section>
 
-    <footer th:replace="mainTemplate :: footer"></footer>
+        <footer th:replace="mainTemplate :: footer"></footer>
 
 </div>
 </body>

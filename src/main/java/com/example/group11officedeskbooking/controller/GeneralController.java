@@ -11,10 +11,21 @@ import java.util.ArrayList;
 @Controller
 public class GeneralController {
 
+    //    When login by user, it will route you to the user dashboard
+
     @RequestMapping(path = "/dashboard")
     public ModelAndView dashboard(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("dashboard");
+        return mav;
+    }
+
+//    When login by admin, it will route you to the admin panel
+
+    @RequestMapping(path = "/Admin/Home")
+    public ModelAndView Admin_Home(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin/Home");
         return mav;
     }
 
@@ -62,5 +73,7 @@ public class GeneralController {
         mav.setViewName("login");
         return mav;
     }
+
+
 
 }
