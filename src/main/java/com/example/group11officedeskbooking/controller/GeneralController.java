@@ -66,12 +66,16 @@ public class GeneralController {
         return mav;
     }
 
+    //Routing for the Admin Home Page
+
     @RequestMapping(path = "/Admin/Home")
     public ModelAndView Admin_Home(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("Admin_Home");
         return mav;
     }
+
+    //Routing for the Admin All Bookings Page
 
     @RequestMapping(path = "/Admin/AllBookings")
     public ModelAndView Admin_AllBookings(){
@@ -80,12 +84,16 @@ public class GeneralController {
         return mav;
     }
 
+    //Routing for the Admin Location Bristol Page
+
     @RequestMapping(path = "/Admin/Location/Bristol")
     public ModelAndView Admin_AllLocations_Bristol(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("Admin_AllLocations_Bristol");
         return mav;
     }
+
+    //Routing for the Admin Location Cardiff Page
 
     @RequestMapping(path = "/Admin/Location/Cardiff")
     public ModelAndView Admin_AllLocations_Cardiff(){
