@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,13 +6,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>ADMS Admin Panel</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
- 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../static/styles/Admin_AllBookings.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="/styles/Admin_Calendar.css">
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -29,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="Admin_Home.html" class="nav-link">Home</a>
+        <a href="/Admin/Home" class="nav-link">Home</a>
       </li>
       <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -162,8 +157,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="Admin_Home.html" class="brand-link">
-      <img src="../static/Images/ADMS_Logo_2017.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="/Admin/Home" class="brand-link">
+      <img src="/Images/ADMS_Logo.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Panel</span>
     </a>
 
@@ -172,7 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../static/Images/mahad.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/Images/mahad.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Mahad Khurshid</a>
@@ -196,81 +191,81 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
-                  <i class="fa fa-tachometer nav-icon"></i>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="fa fa-tachometer nav-icon"></i>
+              <p>
+                Dashboard
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Admin/Home" class="nav-link">
+                      <i class="fa fa-home nav-icon"></i>
+                      <p>Home</p>
+                    </a>
+                </li>
+              <li class="nav-item">
+                <a href="/Admin/AllBookings" class="nav-link">
+                  <i class="fa fa-circle nav-icon"></i>
+                  <p>All Bookings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-tasks nav-icon"></i>
                   <p>
-                    Dashboard
-                    <i class="right fa fa-angle-left"></i>
+                    Manage bookings
+                    <i class="fa fa-angle-left right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="Admin_Home.html" class="nav-link ">
-                          <i class="fa fa-home nav-icon"></i>
-                          <p>Home</p>
-                        </a>
-                    </li>
                   <li class="nav-item">
-                    <a href="Admin_AllBookings.html" class="nav-link">
-                      <i class="fa fa-circle nav-icon"></i>
-                      <p>All Bookings</p>
+                    <a href="/Admin/Home" class="nav-link">
+                      <i class="fa fa-edit nav-icon"></i>
+                      <p>Reschedule a booking</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fa fa-tasks nav-icon"></i>
-                      <p>
-                        Manage bookings
-                        <i class="fa fa-angle-left right"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="Admin_Home.html" class="nav-link">
-                          <i class="fa fa-edit nav-icon"></i>
-                          <p>Reschedule a booking</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="Admin_Home.html" class="nav-link">
-                          <i class="fa fa-ban nav-icon"></i>
-                          <p>Cancel a booking</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fa fa-location-arrow nav-icon"></i>
-                      <p>
-                        Locations
-                        <i class="fa fa-angle-left right"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="Admin_AllLocations_Bristol.html" class="nav-link">
-                          <i class="fa fa-map-pin nav-icon"></i>
-                          <p>Bristol</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="Admin_AllLocations_Cardiff.html" class="nav-link">
-                          <i class="fa fa-map-pin nav-icon"></i>
-                          <p>Cardiff</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a href="Admin_Home.html" class="nav-link">
-                      <i class="fa fa-calendar nav-icon"></i>
-                      <p>Calendar</p>
+                    <a href="/Admin/Home" class="nav-link">
+                      <i class="fa fa-ban nav-icon"></i>
+                      <p>Cancel a booking</p>
                     </a>
                   </li>
                 </ul>
               </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-location-arrow nav-icon"></i>
+                  <p>
+                    Locations
+                    <i class="fa fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/Admin/Location/Bristol" class="nav-link">
+                      <i class="fa fa-map-pin nav-icon"></i>
+                      <p>Bristol</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/Admin/Location/Cardiff" class="nav-link">
+                      <i class="fa fa-map-pin nav-icon"></i>
+                      <p>Cardiff</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="/Admin/Calendar" class="nav-link">
+                  <i class="fa fa-calendar nav-icon"></i>
+                  <p>Calendar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
@@ -339,60 +334,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div> -->
             <!-- </div>/.card -->
           <!-- </div> -->
-          <!-- /.col-md-6 -->
-          <div class="col-md-11" style="margin: 0 auto; float: none;">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">All Bookings</h5>
-              </div>
-              <div class="card-body">
-                <p class="card-text">Click here to see All bookings.</p>
-                <a href="Admin_AllBookings.html" class="btn btn-primary">See Bookings</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                  <h5 class="m-0">Manage Booking</h5>
-                </div>
-                <div class="card-body">
-                  <p class="card-text">Click here to manage a booking</p>
-                  <div class = "manage_booking_dropdown">
-                    <button onclick="manage_booking_dropdown()" class="manage_booking_drop_btn btn-primary">Manage a Booking</button>
-                    <div id="manage-booking-dropdown" class="manage-booking-content">
-                        <a href="#">Reschedule</a>
-                        <a href="#">Cancel</a>
+          <!-- /.col-md-11 -->
+            <div class="col-lg-10 col-md-8 col-sm-8" style="margin: 0 auto; float: none;">
+                <div class="card">
+                    <div class="card-header" style="text-align: center";>
+                        <h1>Calendar</h1>
                     </div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                  <h5 class="m-0">Locations</h5>
-                </div>
-                <div class="card-body">
-                  <p class="card-text">Click here to see the map of a different locations</p>
-                  <div class = "maps_dropdown">
-                    <button onclick="maps_dropdown()" class="maps_drop_btn btn-primary">Maps</button>
-                    <div id="maps-dropdown" class="maps-content">
-                        <a href="Admin_AllLocations_Bristol.html">Bristol</a>
-                        <a href="Admin_AllLocations_Cardiff.html">Cardiff</a>
+                    <div class="card-body table-responsive p-5 d-flex justify-content-center">
+                        <form>
+                            <input type="date">
+                            <input type="submit">
+                        </form>
                     </div>
-                  </div>
+                    <!-- /.card-body -->
                 </div>
+                <!-- card -->
             </div>
-
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                  <h5 class="m-0">Calander</h5>
-                </div>
-                <div class="card-body">
-                  <p class="card-text">Click here to see the Calander</p>
-                  <a href="#" class="btn btn-primary">Calander</a>
-                </div>
-            </div>
-          </div>
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
@@ -403,13 +360,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+  <!-- <aside class="control-sidebar control-sidebar-dark"> -->
     <!-- Control sidebar content goes here -->
-    <div class="p-3">
+    <!-- <div class="p-3">
       <h5>Title</h5>
       <p>Sidebar content</p>
     </div>
-  </aside>
+  </aside> -->
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
@@ -425,12 +382,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
+    
 <!-- jQuery -->
-<script src="../JS/Admin_jquery.js"></script>
+<script src="/JS/Admin_Calendar_jquery.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../JS/Admin_bootstrap.bundle.js"></script>
+<script src="/JS/Admin_Calendar_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
-<script src="../JS/Admin_AllBookings.js"></script>
+<script src="/JS/Admin_Calendar.js"></script>
 </body>
 </html>
