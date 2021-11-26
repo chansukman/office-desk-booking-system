@@ -18,7 +18,7 @@ public class DeskController {
     @Autowired
     public DeskController(DeskRepository newRepo, MapRepository mapRepo){
         deskRepo = newRepo;
-        mapRepo = mapRepo;
+        this.mapRepo = mapRepo;
     }
 
     @RequestMapping(path = "/searchDate", method = RequestMethod.GET)

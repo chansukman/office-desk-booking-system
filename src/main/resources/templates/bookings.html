@@ -35,7 +35,9 @@
                     <input type="submit" class="submit-button">
                 </form>
             </div>
-            <section class="desks" th:if="${deskList != null}"> <!-- only render desks section when desk object returned -->
+
+<!--            Dynamic content - rendering available desks-->
+            <section class="desks" th:if="${deskList != null}">
 
                 <h1 th:text="'Map of desks for the ' + ${map.getLocation} + ' office'"></h1>
                 <div class="map-section">
@@ -51,7 +53,7 @@
                         <div th:text="${desk.getDesk_number()}"></div>
                     </div>
                     <div>
-                        Monitors:
+                        Monitors
                         <div th:text="${desk.isHas_monitors()} ? 'Yes' : 'No'"></div>
                     </div>
                     <div>

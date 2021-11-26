@@ -14,6 +14,7 @@ public class DeskDTO {
         this.has_monitors = has_monitors;
         this.desk_type = desk_type;
         this.desk_location = desk_location;
+
     }
 
     public int getDesk_id() {
@@ -31,4 +32,5 @@ public class DeskDTO {
     }
 
     public String getDesk_location(){ return desk_location;}
+
 }
