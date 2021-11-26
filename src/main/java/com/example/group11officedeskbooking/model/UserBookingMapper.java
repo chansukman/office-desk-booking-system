@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserBookingMapper implements RowMapper {
+/*Mapping a specific columns from adms database tables
+    (Booking.booking_id, Booking.booking_date, Booking.Desk_desk_id and location.city */
 
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
