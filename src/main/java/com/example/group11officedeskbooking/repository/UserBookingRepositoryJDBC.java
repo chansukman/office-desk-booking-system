@@ -4,9 +4,10 @@ import com.example.group11officedeskbooking.DTO.UserBookingDTO;
 import com.example.group11officedeskbooking.model.UserBookingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public class UserBookingRepositoryJDBC implements UserBookingRepository{
     private JdbcTemplate jdbcTemplate;
     @Autowired
