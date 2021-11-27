@@ -17,17 +17,19 @@ public class DeskController {
 
     @Autowired
     public DeskController(DeskRepository newRepo, MapRepository mapRepo){
-        deskRepo = newRepo;
+        this.deskRepo = newRepo;
         this.mapRepo = mapRepo;
     }
 
     @RequestMapping(path = "/searchDate", method = RequestMethod.GET)
     public ModelAndView searchDate(@RequestParam(value="date", defaultValue = "null") String searchDate, @RequestParam(value="location", defaultValue = "null") String deskLocation){
         ModelAndView mav = new ModelAndView();
+        //Check inputs are not null
         if(searchDate.equals("null") || deskLocation.equals("null")){
             mav.setViewName("bookings");
             return mav;
         }
+        //Add map and desk to mav
         mav.addObject("map", mapRepo.searchMap(deskLocation));
         mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate, deskLocation));
         mav.setViewName("bookings");
