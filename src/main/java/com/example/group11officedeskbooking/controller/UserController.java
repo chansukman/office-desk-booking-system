@@ -91,7 +91,7 @@ public class UserController {
                 if (adminDTO.getFirst_name().equals(username) && adminDTO.getPassword().equals(password)) {
 
                     mav.addObject("Admin",userRepository.checkAdminByFistnameAndPassword(username,password));
-                    mav.setViewName("Admin_Home");
+                    mav.setViewName("dashboard");
                     return mav;
                 }
             } catch (Exception e) {
