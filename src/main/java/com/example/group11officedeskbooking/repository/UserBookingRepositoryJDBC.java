@@ -22,13 +22,9 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
         // JdbcTemplate query used to get multiple records from the database
 
         return jdbcTemplate.query(
-                "SELECT booking_id,booking_date,Booking.Desk_desk_id,city FROM Booking\n" +
-                        "INNER JOIN Desk\n" +
-                        "\tON Booking.Desk_desk_id = Desk.desk_id\n" +
-                        "INNER JOIN location\n" +
-                        "\tON DESK.desk_location = location.location_id\n" +
-                        "WHERE Booking.User_user_id=?\n" +
-                        "ORDER BY booking_id ASC\n", new UserBookingMapper(), new Object[]{id});
+            "SELECT booking_id,booking_date,desk_location,Desk_desk_id FROM Booking JOIN Desk ON Booking.Desk_desk_id = Desk.desk_id WHERE Booking.User_user_id=?",
+
+                new UserBookingMapper(), new Object[]{id});
 
     }
 }
