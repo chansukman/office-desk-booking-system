@@ -27,19 +27,19 @@ DROP TABLE IF EXISTS `Desk`;
 CREATE TABLE `Desk` (
   `desk_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `desk_number` int NOT NULL,
-  `has_window` boolean NOT NULL,
+  `has_monitors` boolean NOT NULL,
   `desk_type` varchar(50) NOT NULL,
   `desk_location` varchar(50) NOT NULL
 );
 
 
-INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (1,true,'Standing', 'Bristol'),(2,true,'Standing', 'Bristol'),(3,true,'Standing', 'Bristol'),(4,true,'Standing', 'Bristol'),(5,false,'Standard', 'Bristol'),(6,false,'Standard', 'Bristol'),(7,false,'Standard', 'Bristol');
-INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (8,true,'Standard', 'Bristol'),(9,true,'Standard', 'Bristol'),(10,true,'Standard', 'Bristol'),(11,true,'Standard', 'Bristol'),(12,false,'Standard', 'Bristol'),(13,false,'Standard', 'Bristol'),(14,false,'Standard', 'Bristol');
-INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (15,true,'Standard', 'Bristol'),(16,true,'Standard', 'Bristol'),(17,true,'Standard', 'Bristol'),(18,true,'Standard', 'Bristol'),(19,false,'Standard', 'Bristol'),(20,false,'Standard', 'Bristol'),(21,false,'Standard', 'Bristol');
-INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (22,true,'Standard', 'Bristol'),(23,true,'Standard', 'Bristol'),(24,true,'Standard', 'Bristol'),(25,true,'Standard', 'Bristol');
+INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (1,true,'Standing', 'Bristol'),(2,true,'Standing', 'Bristol'),(3,true,'Standing', 'Bristol'),(4,true,'Standing', 'Bristol'),(5,false,'Standard', 'Bristol'),(6,false,'Standard', 'Bristol'),(7,false,'Standard', 'Bristol');
+INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (8,true,'Standard', 'Bristol'),(9,true,'Standard', 'Bristol'),(10,true,'Standard', 'Bristol'),(11,true,'Standard', 'Bristol'),(12,false,'Standard', 'Bristol'),(13,false,'Standard', 'Bristol'),(14,false,'Standard', 'Bristol');
+INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (15,true,'Standard', 'Bristol'),(16,true,'Standard', 'Bristol'),(17,true,'Standard', 'Bristol'),(18,true,'Standard', 'Bristol'),(19,false,'Standard', 'Bristol'),(20,false,'Standard', 'Bristol'),(21,false,'Standard', 'Bristol');
+INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (22,true,'Standard', 'Bristol'),(23,true,'Standard', 'Bristol'),(24,true,'Standard', 'Bristol'),(25,true,'Standard', 'Bristol');
 
-INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (1,true,'Standard', 'cardiff'),(2,true,'Standard', 'cardiff'),(3,true,'Standard', 'cardiff'),(4,true,'Standard', 'cardiff'),(5,false,'Standard', 'cardiff'),(6,false,'Standard', 'cardiff'),(7,false,'Standard', 'cardiff');
-INSERT INTO `Desk`(desk_number, has_window, desk_type, desk_location) VALUES (8,true,'Standard', 'cardiff'),(9,true,'Standard', 'cardiff'),(10,true,'Standard', 'cardiff');
+INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (1,true,'Standard', 'cardiff'),(2,true,'Standard', 'cardiff'),(3,true,'Standard', 'cardiff'),(4,true,'Standard', 'cardiff'),(5,false,'Standard', 'cardiff'),(6,false,'Standard', 'cardiff'),(7,false,'Standard', 'cardiff');
+INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (8,true,'Standard', 'cardiff'),(9,true,'Standard', 'cardiff'),(10,true,'Standard', 'cardiff');
 
 
 DROP TABLE IF EXISTS `User`;
