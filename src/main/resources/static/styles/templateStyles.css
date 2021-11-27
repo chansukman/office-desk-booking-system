@@ -1,12 +1,14 @@
 /*All document style*/
 * {
-  margin: 0;
+  margin: 0 ;
   padding: 0;
   font-family: "Poppins Medium", sans-serif;
   /* -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box; */
   box-sizing: border-box;
 }
+
+
 
 /*Fonts*/
 @font-face {
@@ -32,6 +34,7 @@
   color: white;
   padding: 0.5em;
 }
+
 .myFooter {
   position: absolute;
   bottom: 0;
