@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -154,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="fa fa-th-large"></i>
         </a>
       </li> -->
-    <!-- </ul> -->
+    </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -358,6 +356,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <th>Time</th>
                                 </tr>
                             </thead>
+                            <tr th:each="Booking:${adminBookingList}">
+                              <td th:text="${Booking.getBooking_id()}"></td>
+                              <!-- th:each="desk:${deskList}"
+                              th:text="${desk.getDesk_id()}" -->
+                              <td th:text="${Booking.getBooking_id()}"></td>
+                              <td th:text="${Booking.getBooking_date()}"></td>
+                              <td th:text="${Booking.getBooking_time()}"></td>
+                            </tr>
+                            <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
+                              <td> No Booking Available </td>
+                            </tr>
+
+                            <!-- <tr th:each="desk:${deskList}">
+                              <td th:text="${desk.getDesk_id()}"></td>
+                              th:each="desk:${deskList}"
+                              th:text="${desk.getDesk_id()}"
+                              <td th:text="${desk.getDesk_id()}"></td>
+                              <td th:text="${desk.getDesk_id()}"></td>
+                              <td th:text="${desk.getDesk_id()}"></td>
+                            </tr>
+                            <tr th:if="${deskList == null || deskList == underfined}">
+                              <td> No Booking Available </td>
+                            </tr> -->
                         </table>
 
 

@@ -75,15 +75,6 @@ public class GeneralController {
         return mav;
     }
 
-    //Routing for the Admin All Bookings Page
-
-    @RequestMapping(path = "/Admin/AllBookings")
-    public ModelAndView Admin_AllBookings(){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("Admin_AllBookings");
-        return mav;
-    }
-
     //Routing for the Admin Location Bristol Page
 
     @RequestMapping(path = "/Admin/Location/Bristol")
