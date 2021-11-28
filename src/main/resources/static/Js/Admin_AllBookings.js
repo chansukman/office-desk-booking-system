@@ -1,40 +1,21 @@
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function maps_dropdown() {
-    document.getElementById("maps-dropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.maps_drop_btn')) {
-      var dropdowns = document.getElementsByClassName("maps-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
+function search_bookings() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("Input");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("Table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+  td = tr[i];
+  if (td) {
+    txtValue = td.textContent || td.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
       }
     }
   }
-  
-  function manage_booking_dropdown() {
-      document.getElementById("manage-booking-dropdown").classList.toggle("show");
-    }
-    
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-      if (!event.target.matches('.manage_booking_drop_btn')) {
-        var dropdowns = document.getElementsByClassName("manage-booking-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    }
+}
   
   !(function (e, t) {
     "object" == typeof exports && "undefined" != typeof module
@@ -2033,4 +2014,6 @@ function maps_dropdown() {
       (e.Treeview = $t),
       Object.defineProperty(e, "__esModule", { value: !0 });
   });
+
+  
   

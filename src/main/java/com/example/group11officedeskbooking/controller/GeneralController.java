@@ -68,7 +68,7 @@ public class GeneralController {
 
     //Routing for the Admin Home Page
 
-    @RequestMapping(path = "/Admin/Home")
+    @RequestMapping(path = "/admin/home")
     public ModelAndView Admin_Home(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("Admin_Home");
@@ -77,7 +77,7 @@ public class GeneralController {
 
     //Routing for the Admin Location Bristol Page
 
-    @RequestMapping(path = "/Admin/Location/Bristol")
+    @RequestMapping(path = "/admin/location/bristol")
     public ModelAndView Admin_AllLocations_Bristol(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("Admin_AllLocations_Bristol");
@@ -86,7 +86,7 @@ public class GeneralController {
 
     //Routing for the Admin Location Cardiff Page
 
-    @RequestMapping(path = "/Admin/Location/Cardiff")
+    @RequestMapping(path = "/admin/location/cardiff")
     public ModelAndView Admin_AllLocations_Cardiff(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("Admin_AllLocations_Cardiff");

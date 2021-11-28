@@ -7,6 +7,8 @@ xmlns:th="http://www.thymeleaf.org">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ADMS Admin Panel</title>
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -26,7 +28,7 @@ xmlns:th="http://www.thymeleaf.org">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/Admin/Home" class="nav-link">Home</a>
+        <a href="/admin/home" class="nav-link">Home</a>
       </li>
       <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -34,9 +36,9 @@ xmlns:th="http://www.thymeleaf.org">
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <!-- <ul class="navbar-nav ml-auto"> -->
       <!-- Navbar Search -->
-      <li class="nav-item">
+      <!-- <li class="nav-item"> -->
         <!-- <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fa fa-search"></i>
         </a> -->
@@ -142,25 +144,25 @@ xmlns:th="http://www.thymeleaf.org">
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div> -->
       <!-- </li> -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fa fa-expand"></i>
         </a>
-      </li>
+      </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fa fa-th-large"></i>
         </a>
       </li> -->
-    </ul>
+    <!-- </ul> -->
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/Admin/Home" class="brand-link">
-      <img src="/Images/ADMS_Logo_2017.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="/admin/home" class="brand-link">
+      <img src="/Images/ADMS_Logo.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Panel</span>
     </a>
 
@@ -203,13 +205,13 @@ xmlns:th="http://www.thymeleaf.org">
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/Admin/Home" class="nav-link">
+                    <a href="/admin/home" class="nav-link">
                       <i class="fa fa-home nav-icon"></i>
                       <p>Home</p>
                     </a>
                 </li>
               <li class="nav-item">
-                <a href="/Admin/AllBookings" class="nav-link">
+                <a href="/admin/bookings" class="nav-link">
                   <i class="fa fa-circle nav-icon"></i>
                   <p>All Bookings</p>
                 </a>
@@ -224,13 +226,13 @@ xmlns:th="http://www.thymeleaf.org">
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/Admin/Home" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="fa fa-edit nav-icon"></i>
                       <p>Reschedule a booking</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/Admin/Home" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="fa fa-ban nav-icon"></i>
                       <p>Cancel a booking</p>
                     </a>
@@ -247,13 +249,13 @@ xmlns:th="http://www.thymeleaf.org">
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/Admin/Location/Bristol" class="nav-link">
+                    <a href="/admin/location/bristol" class="nav-link">
                       <i class="fa fa-map-pin nav-icon"></i>
                       <p>Bristol</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/Admin/Location/Cardiff" class="nav-link">
+                    <a href="/admin/location/cardiff" class="nav-link">
                       <i class="fa fa-map-pin nav-icon"></i>
                       <p>Cardiff</p>
                     </a>
@@ -261,7 +263,7 @@ xmlns:th="http://www.thymeleaf.org">
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="/Admin/Home" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="fa fa-calendar nav-icon"></i>
                   <p>Calendar</p>
                 </a>
@@ -342,12 +344,11 @@ xmlns:th="http://www.thymeleaf.org">
                     <div class="card-header">
                         <h1>List of all Bookings</h1>
                     </div>
-                        <!-- <div class="search-container">
-                          <input class="placeholder" type="text" placeholder="Search.." name="search">
-                          <button type="submit"><i class="fa fa-search"></i></button>
-                        </div> -->
-                    <div class="card-body table-responsive p-5">
-                        <table id="example2" class="table table-hover text-nowrap">
+                    <form class="form-inline">
+                      <input id="Input" onkeyup="search_bookings()" class="search form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                        <div class="card-body table-responsive p-5">
+                        <table id="Table" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
                                     <th>Booking ID</th>
@@ -358,29 +359,14 @@ xmlns:th="http://www.thymeleaf.org">
                             </thead>
                             <tr th:each="Booking:${adminBookingList}">
                               <td th:text="${Booking.getBooking_id()}"></td>
-                              <!-- th:each="desk:${deskList}"
-                              th:text="${desk.getDesk_id()}" -->
-                              <td th:text="${Booking.getBooking_id()}"></td>
+                              <td th:text="${Booking.getBooking_name()}"></td>
                               <td th:text="${Booking.getBooking_date()}"></td>
                               <td th:text="${Booking.getBooking_time()}"></td>
                             </tr>
-                            <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
-                              <td> No Booking Available </td>
-                            </tr>
-
-                            <!-- <tr th:each="desk:${deskList}">
-                              <td th:text="${desk.getDesk_id()}"></td>
-                              th:each="desk:${deskList}"
-                              th:text="${desk.getDesk_id()}"
-                              <td th:text="${desk.getDesk_id()}"></td>
-                              <td th:text="${desk.getDesk_id()}"></td>
-                              <td th:text="${desk.getDesk_id()}"></td>
-                            </tr>
-                            <tr th:if="${deskList == null || deskList == underfined}">
+                            <!-- <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
                               <td> No Booking Available </td>
                             </tr> -->
                         </table>
-
 
                     </div>
                     <!-- /.card-body -->
@@ -426,5 +412,6 @@ xmlns:th="http://www.thymeleaf.org">
 <script src="/JS/Admin_AllBookings_Bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_AllBookings.js"></script>
+
 </body>
 </html>

@@ -15,7 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../static/styles/Admin_AllBookings.css">
+  <link rel="stylesheet" href="/styles/Admin_Home.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 </head>
 <body class="hold-transition sidebar-mini">
@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="Admin_Home.html" class="nav-link">Home</a>
+        <a href="/admin/home" class="nav-link">Home</a>
       </li>
       <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -37,9 +37,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <!-- <ul class="navbar-nav ml-auto"> -->
       <!-- Navbar Search -->
-      <li class="nav-item">
+      <!-- <li class="nav-item"> -->
         <!-- <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fa fa-search"></i>
         </a> -->
@@ -145,11 +145,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div> -->
       <!-- </li> -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fa fa-expand"></i>
         </a>
-      </li>
+      </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fa fa-th-large"></i>
@@ -162,8 +162,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="Admin_Home.html" class="brand-link">
-      <img src="../static/Images/ADMS_Logo_2017.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="/admin/home" class="brand-link">
+      <img src="/Images/ADMS_Logo.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Panel</span>
     </a>
 
@@ -172,7 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../static/Images/mahad.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/Images/mahad.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Mahad Khurshid</a>
@@ -206,13 +206,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="Admin_Home.html" class="nav-link ">
+                        <a href="/admin/home" class="nav-link ">
                           <i class="fa fa-home nav-icon"></i>
                           <p>Home</p>
                         </a>
                     </li>
                   <li class="nav-item">
-                    <a href="Admin_AllBookings.html" class="nav-link">
+                    <a href="/admin/bookings" class="nav-link">
                       <i class="fa fa-circle nav-icon"></i>
                       <p>All Bookings</p>
                     </a>
@@ -227,13 +227,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="Admin_Home.html" class="nav-link">
+                        <a href="#" class="nav-link">
                           <i class="fa fa-edit nav-icon"></i>
                           <p>Reschedule a booking</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="Admin_Home.html" class="nav-link">
+                        <a href="#" class="nav-link">
                           <i class="fa fa-ban nav-icon"></i>
                           <p>Cancel a booking</p>
                         </a>
@@ -250,13 +250,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="Admin_AllLocations_Bristol.html" class="nav-link">
+                        <a href="/admin/location/bristol" class="nav-link">
                           <i class="fa fa-map-pin nav-icon"></i>
                           <p>Bristol</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="Admin_AllLocations_Cardiff.html" class="nav-link">
+                        <a href="/admin/location/cardiff" class="nav-link">
                           <i class="fa fa-map-pin nav-icon"></i>
                           <p>Cardiff</p>
                         </a>
@@ -264,7 +264,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a href="Admin_Home.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="fa fa-calendar nav-icon"></i>
                       <p>Calendar</p>
                     </a>
@@ -347,7 +347,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="card-body">
                 <p class="card-text">Click here to see All bookings.</p>
-                <a href="Admin_AllBookings.html" class="btn btn-primary">See Bookings</a>
+                <a href="/admin/bookings" class="btn btn-primary">See Bookings</a>
               </div>
             </div>
 
@@ -376,8 +376,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <div class = "maps_dropdown">
                     <button onclick="maps_dropdown()" class="maps_drop_btn btn-primary">Maps</button>
                     <div id="maps-dropdown" class="maps-content">
-                        <a href="Admin_AllLocations_Bristol.html">Bristol</a>
-                        <a href="Admin_AllLocations_Cardiff.html">Cardiff</a>
+                        <a href="/admin/location/bristol">Bristol</a>
+                        <a href="/admin/location/cardiff">Cardiff</a>
                     </div>
                   </div>
                 </div>
@@ -427,10 +427,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="../static/JS/Admin_jquery.js"></script>
+<script src="/JS/Admin_jquery.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../static/JS/Admin_bootstrap.bundle.js"></script>
+<script src="/JS/Admin_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
-<script src="../static/JS/Admin_AllBookings.js"></script>
+<script src="/JS/Admin_AllBookings.js"></script>
 </body>
 </html>
