@@ -8,30 +8,28 @@
   <title>Login</title>
 </head>
 <body>
-<header th:replace="mainTemplate :: header"></header>
+<!--<header th:replace="mainTemplate :: header"></header>-->
 <div class="center-content" >
   <h1>Login</h1>
 
-  <div class="inputBox">
+  <div class="inputBox" >
     <form name="form1"   action="/userlogin" method="post">
 
       <div class="inputText">
-        <input type="text" placeholder="username" name="username" />
+        <input type="text" placeholder="first_name" name="first_name" />
       </div>
       <div class="inputText">
         <input type="password" placeholder="password" name="password" />
       </div>
+      <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
       <input type="submit" value="User LOGIN" class="inputButton1"  name="button"  />
       <input type="submit" value="Admin LOGIN" class="inputButton2" name="button"/>
-
-      <a href="https://github.com/login/oauth/authorize?client_id=acd4376fd4158e948c1a&redirect_uri=http://localhost:8080/bookings">github login</a>
+      <a style="color: #9fcdff" href="https://github.com/login/oauth/authorize?client_id=acd4376fd4158e948c1a&redirect_uri=http://localhost:8080/dashboard">github login</a>
     </form>
-
   </div>
-
-
     </form>
 </div>
+
 
 
 <footer th:replace="mainTemplate :: footer"></footer>

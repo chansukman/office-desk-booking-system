@@ -11,7 +11,9 @@ public class DeskMapper implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException{
         return new DeskDTO(rs.getInt("desk_id"),
+                rs.getInt("desk_number"),
                 rs.getBoolean("has_window"),
-                rs.getString("desk_type"));
+                rs.getString("desk_type"),
+                rs.getString("desk_location"));
     }
 }

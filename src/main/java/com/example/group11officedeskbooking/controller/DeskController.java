@@ -18,10 +18,10 @@ public class DeskController {
         deskRepo = newRepo;
     }
 
-    @RequestMapping(path = "/searchDate2", method = RequestMethod.GET)
-    public ModelAndView searchDate(@RequestParam(value="date", defaultValue = "null") String searchDate){
+    @RequestMapping(path = "/searchDate", method = RequestMethod.GET)
+    public ModelAndView searchDate(@RequestParam(value="date", defaultValue = "null") String searchDate, @RequestParam(value="location", defaultValue = "null") String deskLocation){
         ModelAndView mav = new ModelAndView();
-        mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate));
+        mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate, deskLocation));
         mav.setViewName("bookings");
         return mav;
     }
