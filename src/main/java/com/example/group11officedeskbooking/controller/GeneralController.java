@@ -74,6 +74,19 @@ public class GeneralController {
         return mav;
     }
 
+    @RequestMapping(path = "/Home")
+    public ModelAndView home(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("dashboard");
+        return mav;
+    }
 
+
+    @RequestMapping(path = "/Admin/Calendar")
+    public ModelAndView Admin_Calendar(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_Calendar");
+        return mav;
+    }
 
 }

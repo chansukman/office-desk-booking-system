@@ -12,7 +12,7 @@ public class DeskMapper implements RowMapper {
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException{
         return new DeskDTO(rs.getInt("desk_id"),
                 rs.getInt("desk_number"),
-                rs.getBoolean("has_window"),
+                rs.getBoolean("has_monitors"),
                 rs.getString("desk_type"),
                 rs.getString("desk_location"));
     }
