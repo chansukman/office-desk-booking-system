@@ -22,6 +22,7 @@ INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  V
 INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-21','13:00:00',23,6);
 
 
+
 DROP TABLE IF EXISTS `Desk`;
 
 CREATE TABLE `Desk` (
