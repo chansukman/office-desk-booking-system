@@ -3,10 +3,7 @@ package com.example.group11officedeskbooking.controller;
 import com.example.group11officedeskbooking.forms.DeskForm;
 import com.example.group11officedeskbooking.repository.DeskRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -14,10 +11,21 @@ import java.util.ArrayList;
 @Controller
 public class GeneralController {
 
+    //    When login by user, it will route you to the user dashboard
+
     @RequestMapping(path = "/dashboard")
     public ModelAndView dashboard(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("dashboard");
+        return mav;
+    }
+
+//    When login by admin, it will route you to the admin panel
+
+    @RequestMapping(path = "/Admin/Home")
+    public ModelAndView Admin_Home(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin/Home");
         return mav;
     }
 
