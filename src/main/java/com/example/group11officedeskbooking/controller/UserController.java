@@ -72,7 +72,7 @@ public class UserController {
                 userRepository.checkByFirstnameAndPassword(username, password);
                 if (userDTO.getFirst_name().equals(username) && userDTO.getPassword().equals(password)) {
                     System.out.println(userDTO.getFirst_name());
-                  System.out.println(userDTO.getPassword());
+                    System.out.println(userDTO.getPassword());
 
                     mav.addObject("User",userRepository.checkByFirstnameAndPassword(username,password));
                     mav.setViewName("dashboard");
@@ -91,7 +91,7 @@ public class UserController {
                 if (adminDTO.getFirst_name().equals(username) && adminDTO.getPassword().equals(password)) {
 
                     mav.addObject("Admin",userRepository.checkAdminByFistnameAndPassword(username,password));
-                    mav.setViewName("dashboard");
+                    mav.setViewName("Admin_Home");
                     return mav;
                 }
             } catch (Exception e) {
