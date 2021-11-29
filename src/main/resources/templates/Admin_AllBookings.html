@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +14,7 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/styles/Admin_AllLocations_Bristol.css">
-  <link rel="stylesheet" href="/styles/Admin_Calendar.css">
+  <link rel="stylesheet" href="/styles/Admin_AllBookings.css">
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -262,8 +263,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="/
-                admin/calendar" class="nav-link">
+                <a href="/admin/calendar" class="nav-link">
                   <i class="fa fa-calendar nav-icon"></i>
                   <p>Calendar</p>
                 </a>
@@ -339,18 +339,35 @@
             <!-- </div>/.card -->
           <!-- </div> -->
           <!-- /.col-md-11 -->
-            <div class="col-lg-10 col-md-9 col-sm-10 col-xs-10" style="margin: 0 auto; float: none;">
+            <div class="col-md-11" style="margin: 0 auto; float: none;">
                 <div class="card">
-                    <div class="card-header" style="text-align: center";>
-                        <h1>Calendar</h1>
+                    <div class="card-header">
+                        <h1>List of all Bookings</h1>
                     </div>
-                        <!-- <div class="search-container">
-                          <input class="placeholder" type="text" placeholder="Search.." name="search">
-                          <button type="submit"><i class="fa fa-search"></i></button>
-                        </div> -->
-                    <div class="card-body col-lg-10 md-9 sm-10">
-                      <input type="date">
-                      <input type="submit">
+                    <form class="form-inline">
+                      <input id="Input" onkeyup="search_bookings()" class="search_booking form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                        <div class="card-body table-responsive p-5">
+                        <table id="Table" class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Booking Name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tr th:each="Booking:${adminBookingList}">
+                              <td th:text="${Booking.getBooking_id()}"></td>
+                              <td th:text="${Booking.getBooking_name()}"></td>
+                              <td th:text="${Booking.getBooking_date()}"></td>
+                              <td th:text="${Booking.getBooking_time()}"></td>
+                            </tr>
+                            <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
+                              <td> No Booking Available </td>
+                            </tr>
+                        </table>
+
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -388,12 +405,13 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-    
+
 <!-- jQuery -->
-<script src="/JS/Admin_Calendar_jquery.js"></script>
+<script src="/JS/Admin_AllBookings_Jquery.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/JS/Admin_Calendar_bootstrap.bundle.js"></script>
+<script src="/JS/Admin_AllBookings_Bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
-<script src="/JS/Admin_Calendar.js"></script>
+<script src="/JS/Admin_AllBookings.js"></script>
+
 </body>
 </html>
