@@ -53,6 +53,8 @@ CREATE TABLE `User` (
   `password` varchar(20) NOT NULL
 );
 
+DROP TABLE IF EXISTS `Admin`;
+
 CREATE TABLE `Admin` (
   `admin_id` int NOT NULL PRIMARY KEY,
   `first_name` varchar(50) NOT NULL,
