@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Booking record</title>
+    <style>
+        table {
+            border-spacing: 0.5rem;
+        }
+        .main-list {
+            padding: 0.5rem;
+        }
+
+        td:nth-child(1) { background: hsl(150, 50%, 50%); }
+        td:nth-child(2) { background: hsl(160, 60%, 50%); }
+        td:nth-child(3) { background: hsl(170, 70%, 50%); }
+        td:nth-child(4) { background: hsl(180, 80%, 50%); }
+        td:nth-child(5) { background: hsl(190, 90%, 50%); }
+        td:nth-child(6) { background: hsl(200, 99%, 50%); }
+
+    </style>
+</head>
+<body>
+<table>
+    <tr><td>Booking Number</td>
+        <br><td>Desk Number</td>
+        <br><td>City</td>
+        <br><td> Booking Date</td></tr>
+    <tr th:each="booking: ${bookingList}">
+        <td class="main-list" th:text="${booking.getId()}"></td>
+        <td class="main-list" th:text="${booking.getDeskID()}"></td>
+        <td class="main-list" th:text="${booking.getDate()}"></td>
+        <td class="main-list" th:text="${booking.getCity()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 package com.example.group11officedeskbooking.controller;
 
 import com.example.group11officedeskbooking.forms.DeskForm;
-// import com.example.group11officedeskbooking.repository.DeskRepository;
+import com.example.group11officedeskbooking.repository.DeskRepository;
 import org.springframework.stereotype.Controller;
 // import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 @Controller
 public class GeneralController {
+
+    //    When login by user, it will route you to the user dashboard
 
     @RequestMapping(path = "/dashboard")
     public ModelAndView dashboard(){
@@ -28,7 +30,7 @@ public class GeneralController {
         return mav;
     }
 
-    @RequestMapping(path = "/searchDate", method = RequestMethod.GET)
+    @RequestMapping(path = "/searchDate2", method = RequestMethod.GET)
     public ModelAndView search(@RequestParam(value="date", defaultValue = "null") String date){
 
         //Add temporary test array of desks
@@ -92,6 +94,19 @@ public class GeneralController {
         mav.setViewName("Admin_AllLocations_Cardiff");
         return mav;
     }
+    @RequestMapping(path = "/Home")
+    public ModelAndView home(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("dashboard");
+        return mav;
+    }
 
+
+    @RequestMapping(path = "/Admin/Calendar")
+    public ModelAndView Admin_Calendar(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_Calendar");
+        return mav;
+    }
 
 }
