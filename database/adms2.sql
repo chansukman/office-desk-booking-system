@@ -14,13 +14,13 @@ CREATE TABLE `Booking` (
   );
 
 
-INSERT INTO `Booking` VALUES (1,'Mahad','2021-11-20','13:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (2,'Abdullah','2021-11-21','14:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (3,'Shuwen','2021-11-22','15:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (4,'Dan','2021-11-23','16:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (5,'Louis','2021-11-24','17:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (6,'Wendy','2021-11-25','18:00:00',24,14,NULL);
-INSERT INTO `Booking` VALUES (7,'Hiro','2021-11-26','19:00:00',24,14,NULL);
+INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Mahad','2021-11-20','13:00:00',24,14);
+INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Abdullah','2021-12-09','14:00:00',24,14,NULL);
+INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Shuwen','2021-12-10','15:00:00',24,14,NULL);
+INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Dan','2021-12-11','16:00:00',24,14,NULL);
+INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Louis','2021-12-12','17:00:00',24,14,NULL);
+INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Wendy','2021-12-13','18:00:00',24,14,NULL);
+INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Hiro','2021-12-14','19:00:00',24,14,NULL);
 
 
 DROP TABLE IF EXISTS `Desk`;
