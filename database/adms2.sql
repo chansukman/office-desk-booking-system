@@ -4,22 +4,35 @@ USE `adms2`;
 DROP TABLE IF EXISTS `Booking`;
 
 CREATE TABLE `Booking` (
-  `booking_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `booking_date` date NOT NULL,
-  `booking_time` time NOT NULL,
-  `User_user_id` int NOT NULL,
-  `Desk_desk_id` int NOT NULL,
-  `transaction_timestamp` timestamp NULL DEFAULT NULL
-  );
+                           `booking_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                           `booking_date` date NOT NULL,
+                           `booking_time` time NOT NULL,
+                           `User_user_id` int NOT NULL,
+                           `Desk_desk_id` int NOT NULL,
+                           `transaction_timestamp` timestamp NULL DEFAULT NULL
+);
 
 
 INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-11-20','13:00:00',21,1);
-INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-20','13:00:00',22,2);
-INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-20','13:00:00',23,3);
-INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-20','13:00:00',24,4);
-INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-21','13:00:00',21,1);
-INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-21','13:00:00',22,4);
-INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id)  VALUES ('2021-11-21','13:00:00',23,6);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-11-20','13:00:00',22,2);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-11-20','13:00:00',23,3);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-11-20','13:00:00',24,4);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-11-21','13:00:00',21,1);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-11-21','13:00:00',22,4);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-11-21','13:00:00',23,6);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-1','13:00:00',21,1);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-2','13:00:00',22,2);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-3','13:00:00',23,3);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-4','13:00:00',24,4);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-5','13:00:00',21,1);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-7','13:00:00',22,4);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-8','13:00:00',23,6);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-10','13:00:00',22,2);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-11','13:00:00',22,2);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-12','13:00:00',22,2);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-13','13:00:00',22,2);
+INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('2021-12-14','13:00:00',22,2);
+
 
 
 DROP TABLE IF EXISTS `Desk`;
@@ -68,10 +81,10 @@ INSERT INTO `Admin` VALUES(1,'admin','admin','admin@cardiff.ac.uk','management',
 
 DROP TABLE IF EXISTS `Maps`;
 CREATE TABLE `Maps`(
-	`map_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `location` varchar(50) NOT NULL,
-    `image` varchar(50) NOT NULL
+                       `map_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                       `location` varchar(50) NOT NULL,
+                       `image` varchar(50) NOT NULL
 );
 
 INSERT INTO `maps`(location, image) VALUES ('Bristol', '/Images/bristol_numbered.PNG'), ('Cardiff', '/Images/Cardiff_numbered.jpg');
-    
+
