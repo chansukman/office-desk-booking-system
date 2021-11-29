@@ -1,9 +1,9 @@
 package com.example.group11officedeskbooking.controller;
 
 import com.example.group11officedeskbooking.forms.DeskForm;
-import com.example.group11officedeskbooking.repository.DeskRepository;
+// import com.example.group11officedeskbooking.repository.DeskRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;

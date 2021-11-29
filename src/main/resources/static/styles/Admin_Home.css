@@ -20687,23 +20687,23 @@ a.text-muted:hover {
  /* maps dropdown */
 
 .maps_drop_btn {
-    background-color: #3498DB;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 400;
-    color: #212529;
-    text-align: center;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
+  background-color: #007bff;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
   }
   
   .maps_drop_btn:hover, .maps_drop_btn:focus {
-    background-color: #2980B9;
+    background-color: #007bff;
   }
   
   .maps_dropdown {
@@ -20734,14 +20734,14 @@ a.text-muted:hover {
 
   /* manage booking dropdown */
   .manage_booking_drop_btn {
-    background-color: #3498DB;
+    background-color: #007bff;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     display: inline-block;
     font-weight: 400;
-    color: #212529;
+    color: white;
     text-align: center;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
@@ -20750,7 +20750,7 @@ a.text-muted:hover {
   }
   
   .manage_booking_drop_btn:hover, .maps_drop_btn:focus {
-    background-color: #2980B9;
+    background-color: #007bff;
   }
   
   .manage_booking_dropdown {

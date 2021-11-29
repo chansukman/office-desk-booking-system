@@ -12,7 +12,7 @@
     : t(e);
 })("undefined" != typeof window ? window : this, function (C, e) {
   "use strict";
-  var t = [],
+  var t = [],gi
     r = Object.getPrototypeOf,
     s = t.slice,
     g = t.flat
