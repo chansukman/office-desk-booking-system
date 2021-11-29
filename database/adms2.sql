@@ -38,11 +38,11 @@ INSERT INTO `Booking`(booking_date, booking_time, User_user_id, Desk_desk_id) VA
 DROP TABLE IF EXISTS `Desk`;
 
 CREATE TABLE `Desk` (
-                        `desk_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                        `desk_number` int NOT NULL,
-                        `has_monitors` boolean NOT NULL,
-                        `desk_type` varchar(50) NOT NULL,
-                        `desk_location` varchar(50) NOT NULL
+  `desk_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `desk_number` int NOT NULL,
+  `has_monitors` boolean NOT NULL,
+  `desk_type` varchar(50) NOT NULL,
+  `desk_location` varchar(50) NOT NULL
 );
 
 
@@ -57,21 +57,21 @@ INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (
 
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
-                        `user_id` int NOT NULL PRIMARY KEY,
-                        `first_name` varchar(50) NOT NULL,
-                        `last_name` varchar(50) NOT NULL,
-                        `email` varchar(50) NOT NULL,
-                        `department` varchar(50) DEFAULT NULL,
-                        `password` varchar(20) NOT NULL
+  `user_id` int NOT NULL PRIMARY KEY,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `department` varchar(50) DEFAULT NULL,
+  `password` varchar(20) NOT NULL
 );
 
 CREATE TABLE `Admin` (
-                         `admin_id` int NOT NULL PRIMARY KEY,
-                         `first_name` varchar(50) NOT NULL,
-                         `last_name` varchar(50) NOT NULL,
-                         `email` varchar(50) NOT NULL,
-                         `department` varchar(50) DEFAULT NULL,
-                         `password` varchar(20) NOT NULL
+  `admin_id` int NOT NULL PRIMARY KEY,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `department` varchar(50) DEFAULT NULL,
+  `password` varchar(20) NOT NULL
 );
 
 
