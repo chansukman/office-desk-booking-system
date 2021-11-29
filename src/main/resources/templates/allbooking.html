@@ -2,13 +2,18 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Test Booking record</title>
+    <title>My booking</title>
+
     <style>
         table {
             border-spacing: 0.5rem;
+
         }
         .main-list {
-            padding: 0.5rem;
+            padding: 1.5rem;
+        }
+        .table_header{
+            padding: 1.5rem;
         }
 
         td:nth-child(1) { background: hsl(150, 50%, 50%); }
@@ -21,18 +26,24 @@
     </style>
 </head>
 <body>
+<header th:fragment="header" class="myHeader">
 <table>
     <tr><td>Booking Number</td>
-        <br><td>Desk Number</td>
-        <br><td>City</td>
-        <br><td> Booking Date</td></tr>
+        <br><td class="table_header">Desk Number</td>
+        <br><td class="table_header">City</td>
+        <br><td class="table_header"> Booking Date</td></tr>
     <tr th:each="booking: ${bookingList}">
         <td class="main-list" th:text="${booking.getId()}"></td>
         <td class="main-list" th:text="${booking.getDeskID()}"></td>
         <td class="main-list" th:text="${booking.getDate()}"></td>
         <td class="main-list" th:text="${booking.getCity()}"></td>
+
     </tr>
 </table>
+</header>
+<footer th:fragment="footer" class="myFooter">
+    
+</footer>
 
 </body>
 </html>
