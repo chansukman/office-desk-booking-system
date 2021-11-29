@@ -23,34 +23,38 @@
                     >Please select the day you would like to book your desk</label
                     ><br />
                     <!--          Date range is from today to 1 week from today -->
-                    <input id="date" name="date" type="date"/> <br>
+                    <input id="date" name="date" type="date"/><br>
                     <label for="location">
                         Please select office location <br>
                         <select name="location" id="location">
-                            <option value="bristol">Bristol</option>
-                            <option value="cardiff">Cardiff</option>
+                            <option value="Bristol">Bristol</option>
+                            <option value="Cardiff">Cardiff</option>
                         </select>
                         <br>
                     </label>
-                    <input type="submit">
+                    <input type="submit" class="submit-button">
                 </form>
             </div>
+
+<!--            Dynamic content - rendering available desks-->
             <section class="desks" th:if="${deskList != null}">
-                <!--        <div class="desk-item" th:each="desk:${deskList}">-->
-                <!--          <div th:text="${desk.getName()}"></div>-->
-                <!--          <div th:text="${desk.getType()}"></div>-->
-                <!--          <div th:text="${desk.getImage()}"></div>-->
-                <!--          <div th:text="${desk.getStatus()}"></div>-->
-                <!--        </div>-->
+
+                <h1 th:text="'Map of desks for the ' + ${map.getLocation} + ' office'"></h1>
+                <div class="map-section">
+                    <div class="img-wrapper">
+                        <img th:src="${map.getImage()}" alt="">
+                    </div>
+                </div>
                 <h1>Available Desks</h1>
                 <div class="desk-item" th:each="desk:${deskList}">
+
                     <div>
                         Desk Number
                         <div th:text="${desk.getDesk_number()}"></div>
                     </div>
                     <div>
-                        Has Window
-                        <div th:text="${desk.isHas_window()}"></div>
+                        Monitors
+                        <div th:text="${desk.isHas_monitors()} ? 'Yes' : 'No'"></div>
                     </div>
                     <div>
                         Desk Type
@@ -77,8 +81,11 @@
         let oneWeeksTime = new Date();
         oneWeeksTime.setDate(oneWeeksTime.getDate() + 7);
         today = getFormattedDate(today);
+        //set default value to today
+          document.getElementById("date").value = today;
         oneWeeksTime = getFormattedDate(oneWeeksTime);
         let dateField = document.getElementById("date");
+
         dateField.setAttribute("max", oneWeeksTime);
         dateField.setAttribute("min", today);
       }
@@ -90,6 +97,7 @@
         if(month < 10){month = '0' + month;}
         return year + '-' + month + '-' + day;
       }
+
 
     </script>
   </body>
