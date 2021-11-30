@@ -24,13 +24,12 @@ public class DeskController {
 
     private DeskRepository deskRepo;
     private MapRepository mapRepo;
-    private UserBookingRepository userRepo;
+
 
     @Autowired
-    public DeskController(DeskRepository newRepo, MapRepository mapRepo, UserBookingRepository userRepo){
+    public DeskController(DeskRepository newRepo, MapRepository mapRepo){
         this.deskRepo = newRepo;
         this.mapRepo = mapRepo;
-        this.userRepo = userRepo;
     }
 
     @RequestMapping(path = "/searchDate", method = RequestMethod.GET)
@@ -75,20 +74,6 @@ public class DeskController {
         return mav;
     }
 
-    @RequestMapping(path = "/booking/{userID}/{deskID}/{date}")
-    public ModelAndView processBooking(@PathVariable Optional<String> userID, @PathVariable Optional<String> deskID, @PathVariable Optional<String> date){
-        //Need to make call to the datbase to insert booking
-        //data needed for booking is:
-        if(userRepo.addBooking(Integer.parseInt(userID.get()), date.get(), Integer.parseInt(deskID.get()))){
 
-        }
-
-        System.out.println(userID.get());
-        System.out.println(deskID.get());
-        System.out.println(date.get());
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("dashboard");
-        return mav;
-    }
 
 }
