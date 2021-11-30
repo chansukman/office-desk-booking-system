@@ -27,4 +27,12 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 new UserBookingMapper(), new Object[]{id});
 
     }
+
+    @Override
+    public boolean addBooking(int user_id, String date, int desk_id){
+        int rows = jdbcTemplate.update(
+                "insert into booking(booking_date, User_user_id, Desk_desk_id) values(?,?,?)",
+                new Object[]{date, user_id, desk_id});
+        return rows>0;
+    }
 }

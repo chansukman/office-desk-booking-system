@@ -5,22 +5,20 @@ DROP TABLE IF EXISTS `Booking`;
 
 CREATE TABLE `Booking` (
   `booking_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `booking_name` varchar(25) NOT NULL,
   `booking_date` date NOT NULL,
-  `booking_time` time NOT NULL,
   `User_user_id` int NOT NULL,
   `Desk_desk_id` int NOT NULL,
   `transaction_timestamp` timestamp NULL DEFAULT NULL
   );
 
 
-INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Mahad','2021-11-20','13:00:00',24,14);
-INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Abdullah','2021-12-09','14:00:00',24,14,NULL);
-INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Shuwen','2021-12-10','15:00:00',24,14,NULL);
-INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Dan','2021-12-11','16:00:00',24,14,NULL);
-INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Louis','2021-12-12','17:00:00',24,14,NULL);
-INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Wendy','2021-12-13','18:00:00',24,14,NULL);
-INSERT INTO `Booking`(booking_name, booking_date, booking_time, User_user_id, Desk_desk_id) VALUES ('Hiro','2021-12-14','19:00:00',24,14,NULL);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-11-20',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-09',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-10',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-11',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-12',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-13',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-14',24,14);
 
 
 DROP TABLE IF EXISTS `Desk`;
