@@ -358,7 +358,7 @@ xmlns:th="http://www.thymeleaf.org">
                                 </tr>
                             </thead>
                             <tr th:each="Booking:${adminBookingList}">
-                              <td th:text="${Booking.getBooking_id()}"></td>
+                              <td th:text="${Booking.getBooking_id()}"></td><span class="iconify" data-icon="akar-icons:edit"></span>
                               <td th:text="${Booking.getBooking_name()}"></td>
                               <td th:text="${Booking.getBooking_date()}"></td>
                               <td th:text="${Booking.getBooking_time()}"></td>
@@ -412,6 +412,47 @@ xmlns:th="http://www.thymeleaf.org">
 <script src="/JS/Admin_AllBookings_Bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_AllBookings.js"></script>
+
+<script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+
+<!-- <script>
+  function edit() {
+      console.log();
+      $('#editModal').modal('show');
+      $("#edit_modal_id").val($id);
+
+  }
+</script> -->
+
+<!-- <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          
+          
+          <form method="post" action="edit_banner" enctype="multipart/form-data">
+              <div class="modal-body">
+                  <input type="hidden" id="edit_modal_id" name="edit_banner_id">
+                  <div class="col-md-12">
+                      <label>Banner</label>
+                  </div>
+                  <input type="file" name="image" />                    
+                  <br>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+                  <button type="submit" class="btn btn-danger" id="update">submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div> -->
 
 </body>
 </html>
