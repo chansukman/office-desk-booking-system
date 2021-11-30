@@ -16,6 +16,19 @@ function search_bookings() {
     }
   }
 }
+
+// Session killing at every logout
+
+window.onload = function() {
+  if(!localStorage.getItem("token")){
+    window.location.replace("/login")
+  }
+};
+
+function signOut(){
+  localStorage.removeItem("token");
+  window.location.replace("/login")
+}
   
   !(function (e, t) {
     "object" == typeof exports && "undefined" != typeof module
