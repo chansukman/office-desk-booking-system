@@ -45,7 +45,7 @@
                         <img th:src="${map.getImage()}" alt="">
                     </div>
                 </div>
-                <h1>Available Desks</h1>
+                <h1 th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
                 <div class="desk-item" th:each="desk:${deskList}">
 
                     <div>
