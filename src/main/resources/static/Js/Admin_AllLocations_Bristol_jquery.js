@@ -1,4 +1,3 @@
-/*! jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license */
 !(function (e, t) {
   "use strict";
   "object" == typeof module && "object" == typeof module.exports
@@ -12,7 +11,7 @@
     : t(e);
 })("undefined" != typeof window ? window : this, function (C, e) {
   "use strict";
-  var t = [],gi
+  var t = [],
     r = Object.getPrototypeOf,
     s = t.slice,
     g = t.flat

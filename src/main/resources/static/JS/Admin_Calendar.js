@@ -1,3 +1,16 @@
+// Session killing at every logout
+
+window.onload = function() {
+  if(!localStorage.getItem("token")){
+    window.location.replace("/login")
+  }
+};
+
+function signOut(){
+  localStorage.removeItem("token");
+  window.location.replace("/login")
+}
+
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function maps_dropdown() {
