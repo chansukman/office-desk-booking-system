@@ -10,7 +10,7 @@
     <title>Bookings</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
   </head>
-  <body onload="setCalendarDates()">
+  <body  onload="setCalendarDates()">
 
     <div class="page-container">
         <header th:replace="mainTemplate :: header"></header>
@@ -18,12 +18,15 @@
             <h1>Make a booking</h1>
             <div class="calendar">
                 <h1>Calendar & Location</h1>
+
                 <form action="/searchDate" name="dateForm" method="get">
+
                     <label for="date"
                     >Please select the day you would like to book your desk</label
                     ><br />
+
                     <!--          Date range is from today to 1 week from today -->
-                    <input id="date" name="date" type="date"/><br>
+                    <input th:attr="value =${inputDate}" id="date" name="date" type="date"/><br>
                     <label for="location">
                         Please select office location <br>
                         <select name="location" id="location">
@@ -36,7 +39,7 @@
                 </form>
             </div>
 
-<!--            Dynamic content - rendering available desks-->
+<!--            Dynamic content - only render desks after searching for desks-->
             <section class="desks" th:if="${deskList != null}">
 
                 <h1 th:text="'Map of desks for the ' + ${map.getLocation} + ' office'"></h1>
@@ -45,7 +48,7 @@
                         <img th:src="${map.getImage()}" alt="">
                     </div>
                 </div>
-                <h1>Available Desks</h1>
+                <h1 th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
                 <div class="desk-item" th:each="desk:${deskList}">
 
                     <div>
@@ -84,11 +87,10 @@
         let oneWeeksTime = new Date();
         oneWeeksTime.setDate(oneWeeksTime.getDate() + 7);
         today = getFormattedDate(today);
-        //set default value to today
-          document.getElementById("date").value = today;
         oneWeeksTime = getFormattedDate(oneWeeksTime);
         let dateField = document.getElementById("date");
 
+        //Set max and min to only allow booking 1 week in advance
         dateField.setAttribute("max", oneWeeksTime);
         dateField.setAttribute("min", today);
       }
