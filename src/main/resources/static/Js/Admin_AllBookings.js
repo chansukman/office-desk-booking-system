@@ -1,3 +1,5 @@
+// Searching of a single booking
+
 function search_bookings() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("Input");
@@ -17,17 +19,16 @@ function search_bookings() {
   }
 }
 
-// Session killing at every logout
+// modal function for edit booking
 
-window.onload = function() {
-  if(!localStorage.getItem("token")){
-    window.location.replace("/login")
-  }
-};
+function edit_booking() {
+  $('#editModal').modal('show');
+  // $("#edit_modal_id");
 
-function signOut(){
-  localStorage.removeItem("token");
-  window.location.replace("/login")
+}
+
+function edited_booking(){
+  window.location.replace("/admin/bookings")
 }
   
   !(function (e, t) {
