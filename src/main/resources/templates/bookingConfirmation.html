@@ -9,20 +9,10 @@
 <div class="page-container">
     <header th:replace="mainTemplate :: header"></header>
     <h1>Booking Confirmation</h1>
-    <section class="User" th:if="${User != null}">
-        <div class="user-item" th:each="user:${User}">
-            <h4>welcome!</h4>
-            <div th:text="${user.getUser_id()}"></div>
-            <div th:text="${user.getFirst_name()}">
-
-            </div>
-
-        </div>
-        <br><br><br>
-        <a href="/bookings" class="navButton">Bookings</a>
-
-    </section>
-
+    <div>
+    Success! You have made a booking for <span th:text="${booking.getBooking_date}">date</span> on desk
+        <span th:text="${booking.Desk_desk_id}"></span>
+    </div>
         <footer th:replace="mainTemplate :: footer"></footer>
 
 </div>

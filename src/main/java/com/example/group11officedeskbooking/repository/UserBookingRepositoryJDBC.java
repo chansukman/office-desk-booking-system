@@ -1,6 +1,8 @@
 package com.example.group11officedeskbooking.repository;
 
+import com.example.group11officedeskbooking.DTO.BookingDTO;
 import com.example.group11officedeskbooking.DTO.UserBookingDTO;
+import com.example.group11officedeskbooking.model.BookingMapper;
 import com.example.group11officedeskbooking.model.UserBookingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -37,5 +39,11 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     }
 
     @Override
-    public
+    public BookingDTO getUniqueBooking(String date, int desk_id){
+        return (BookingDTO) jdbcTemplate.queryForObject(
+                "select * from booking where booking_date=? and Desk_desk_id=?",
+                new BookingMapper(),
+                new Object[]{date, desk_id});
+    }
+
 }

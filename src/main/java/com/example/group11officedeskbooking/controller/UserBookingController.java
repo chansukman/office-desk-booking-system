@@ -32,14 +32,15 @@ public class UserBookingController {
     public ModelAndView processBooking(@PathVariable Optional<String> userID, @PathVariable Optional<String> deskID, @PathVariable Optional<String> date){
         //Need to make call to the database to insert booking
         //data needed for booking is:
-        if(bookingRepo.addBooking(Integer.parseInt(userID.get()), date.get(), Integer.parseInt(deskID.get()))){
-
-        }
-
-        System.out.println(userID.get());
-        System.out.println(deskID.get());
-        System.out.println(date.get());
+        int inputUserID = Integer.parseInt(userID.get());
+        String inputDate = date.get();
+        int inputDeskID = Integer.parseInt(deskID.get());
         ModelAndView mav = new ModelAndView();
+        if(bookingRepo.addBooking(inputUserID, inputDate, inputDeskID)){
+            mav.addObject("booking", bookingRepo.getUniqueBooking(inputDate, inputDeskID));
+            mav.setViewName("bookingConfirmation");
+            return mav;
+        }
         mav.setViewName("dashboard");
         return mav;
     }
