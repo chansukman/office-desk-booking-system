@@ -1,3 +1,5 @@
+// Searching of a single booking
+
 function search_bookings() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("Input");
@@ -15,6 +17,18 @@ function search_bookings() {
       }
     }
   }
+}
+
+// modal function for edit booking
+
+function edit_booking() {
+  $('#editModal').modal('show');
+  // $("#edit_modal_id");
+
+}
+
+function edited_booking(){
+  window.location.replace("/admin/bookings")
 }
   
   !(function (e, t) {

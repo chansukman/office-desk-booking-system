@@ -14,7 +14,6 @@ public class Admin_BookingMapper implements RowMapper {
         return new Admin_BookingDTO(rs.getInt("booking_id"),
                 rs.getString("booking_name"),
                 rs.getString("booking_date"),
-                rs.getString("booking_time"),
                 rs.getInt("User_user_id"),
                 rs.getInt("Desk_desk_id"),
                 rs.getTimestamp("transaction_timestamp"));
