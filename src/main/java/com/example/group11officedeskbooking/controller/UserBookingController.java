@@ -1,5 +1,6 @@
 package com.example.group11officedeskbooking.controller;
 
+import com.example.group11officedeskbooking.DateFormatter;
 import com.example.group11officedeskbooking.repository.UserBookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,8 @@ public class UserBookingController {
         //Perform add booking to repo if not return mav without booking object
         if(bookingRepo.addBooking(inputUserID, inputDate, inputDeskID)){
             mav.addObject("booking", bookingRepo.getUniqueBooking(inputDate, inputDeskID));
+            DateFormatter prettyDate = new DateFormatter();
+            mav.addObject("date", prettyDate.formatDate(inputDate));
         }
         mav.setViewName("bookingConfirmation");
         return mav;
