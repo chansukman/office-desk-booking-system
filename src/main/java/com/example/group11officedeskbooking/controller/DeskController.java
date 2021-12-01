@@ -32,35 +32,43 @@ public class DeskController {
         this.mapRepo = mapRepo;
     }
 
+    public String formatDate(String date){
+
+        //Separate date components
+        String[] dateComponents = date.split("-");
+        int year = Integer.parseInt(dateComponents[0]);
+        int month = Integer.parseInt(dateComponents[1]) - 1;
+        int day = Integer.parseInt(dateComponents[2]);
+
+        //Convert to date format
+        Calendar tempCal = new GregorianCalendar(year, month, day);
+        Date newSearchDate = tempCal.getTime();
+        SimpleDateFormat DateFor = new SimpleDateFormat("EEEE d'th' MMM yyyy");
+
+        //add
+        if(day == 1 || day == 21 || day == 31){
+            DateFor = new SimpleDateFormat("EEEE d'st' MMM yyyy");
+        }
+        else if(day == 2 || day == 22){
+            DateFor = new SimpleDateFormat("EEEE d'nd' MMM yyyy");
+        }
+        else if(day == 3 || day == 23){
+            DateFor = new SimpleDateFormat("EEEE d'rd' MMM yyyy");
+        }
+        return DateFor.format(newSearchDate);
+    }
+
     @RequestMapping(path = "/searchDate", method = RequestMethod.GET)
-    public ModelAndView searchDate(@RequestParam(value="date", defaultValue = "null") String searchDate, @RequestParam(value="location", defaultValue = "null") String deskLocation){
+    public ModelAndView searchDate(@RequestParam(value="date", defaultValue = "null") String searchDate,
+                                   @RequestParam(value="location", defaultValue = "null") String deskLocation){
         ModelAndView mav = new ModelAndView();
-        //Check inputs are not null
+        //Validation
         if(searchDate.equals("null") || deskLocation.equals("null")){
             mav.setViewName("bookings");
             return mav;
         }
 
-        //Create string of search date in aesthetic format
-        String[] dateComponents = searchDate.split("-");
-        int year = Integer.parseInt(dateComponents[0]);
-        int month = Integer.parseInt(dateComponents[1]) - 1;
-        int day = Integer.parseInt(dateComponents[2]);
-        Calendar tempCal = new GregorianCalendar(year, month, day);
-        System.out.println(tempCal.toString());
-        Date newSearchDate = tempCal.getTime();
-        System.out.println(newSearchDate.toString());
-        SimpleDateFormat DateFor = new SimpleDateFormat("EEEE d'th' MMM yyyy");
-        if(day == 1){
-            DateFor = new SimpleDateFormat("EEEE d'st' MMM yyyy");
-        }
-        else if(day == 2){
-            DateFor = new SimpleDateFormat("EEEE d'nd' MMM yyyy");
-        }
-        else if(day == 3){
-            DateFor = new SimpleDateFormat("EEEE d'rd' MMM yyyy");
-        }
-        String stringDate = DateFor.format(newSearchDate);
+        String stringDate = formatDate(searchDate);
 
         //Add map and desk to mav
         mav.addObject("map", mapRepo.searchMap(deskLocation));
