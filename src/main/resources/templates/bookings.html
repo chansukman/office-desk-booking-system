@@ -58,9 +58,26 @@
             <h1 th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
             <div class="desk-item" th:each="desk:${deskList}">
 
-                <div>
-                    Desk Number
-                    <div th:text="${desk.getDesk_number()}"></div>
+                    <div>
+                        Desk Number
+                        <div th:text="${desk.getDesk_number()}"></div>
+                    </div>
+                    <div>
+                        Monitors
+                        <div th:text="${desk.isHas_monitors()} ? 'Yes' : 'No'"></div>
+                    </div>
+                    <div>
+                        Desk Type
+                        <div th:text="${desk.getDesk_type()}"></div>
+                    </div>
+                    <div>
+                        Location
+                        <div th:text="${desk.getDesk_location()}"></div>
+                    </div>
+                    <form action="/Home" th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}">
+                        <button class="booking-button" type="submit">Book</button>
+                    </form>
+
                 </div>
                 <div>
                     Monitors

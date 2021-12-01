@@ -120,7 +120,7 @@ body{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 95%;
 }
 .desks {
   background: aqua;
@@ -131,7 +131,7 @@ body{
   align-self: center;
 }
 .desk-item{
-  width: 100%;
+  width: 95%;
   margin: 10px auto;
   display: grid;
   grid-template-columns: repeat(5,1fr);
@@ -153,7 +153,9 @@ body{
     width: 80%;
     margin: auto;
   }
-
+  .map-section img{
+    width: 80%;
+  }
   .desk-item {
     width: 70%;
   }
@@ -161,6 +163,7 @@ body{
 
 /* Large tablets and laptops styles */
 @media screen and (min-width: 960px) {
+
 }
 
 /* Desktop */
