@@ -30,18 +30,16 @@ public class UserBookingController {
 
     @RequestMapping(path = "/booking/{userID}/{deskID}/{date}")
     public ModelAndView processBooking(@PathVariable Optional<String> userID, @PathVariable Optional<String> deskID, @PathVariable Optional<String> date){
-        //Need to make call to the database to insert booking
-        //data needed for booking is:
+        //Convert inputs to required types
         int inputUserID = Integer.parseInt(userID.get());
         String inputDate = date.get();
         int inputDeskID = Integer.parseInt(deskID.get());
         ModelAndView mav = new ModelAndView();
+        //Perform add booking to repo if not return mav without booking object
         if(bookingRepo.addBooking(inputUserID, inputDate, inputDeskID)){
             mav.addObject("booking", bookingRepo.getUniqueBooking(inputDate, inputDeskID));
-            mav.setViewName("bookingConfirmation");
-            return mav;
         }
-        mav.setViewName("dashboard");
+        mav.setViewName("bookingConfirmation");
         return mav;
     }
 }

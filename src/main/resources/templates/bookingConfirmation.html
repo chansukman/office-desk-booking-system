@@ -10,10 +10,11 @@
     <header th:replace="mainTemplate :: header"></header>
     <h1>Booking Confirmation</h1>
     <div>
-    Success! You have made a booking for <span th:text="${booking.getBooking_date}">date</span> on desk
-        <span th:text="${booking.Desk_desk_id}"></span>
+        <!-- Render success or failure with booking info -->
+        <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${booking.getBooking_date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
+        <span th:if="${booking == null}">Whoops! There was a problem with the booking, please return to the bookings page to try again.</span>
     </div>
-        <footer th:replace="mainTemplate :: footer"></footer>
+    <footer th:replace="mainTemplate :: footer"></footer>
 
 </div>
 </body>

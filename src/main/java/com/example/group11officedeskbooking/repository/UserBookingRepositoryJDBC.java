@@ -41,7 +41,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     @Override
     public BookingDTO getUniqueBooking(String date, int desk_id){
         return (BookingDTO) jdbcTemplate.queryForObject(
-                "select * from booking where booking_date=? and Desk_desk_id=?",
+                "SELECT Booking.booking_date, Desk.desk_number, Desk.desk_location from Booking Inner Join Desk ON Booking.Desk_desk_id = Desk.desk_id where booking_date=? and Desk_desk_id=?",
                 new BookingMapper(),
                 new Object[]{date, desk_id});
     }

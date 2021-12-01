@@ -2,31 +2,25 @@ package com.example.group11officedeskbooking.DTO;
 
 public class BookingDTO {
 
-    private int booking_id;
     private String booking_date;
-    private int User_user_id;
-    private int Desk_desk_id;
+    private int desk_number;
+    private String desk_location;
 
-    public BookingDTO(int booking_id, String booking_date, int user_user_id, int desk_desk_id) {
-        this.booking_id = booking_id;
+    public BookingDTO(String booking_date, int desk_number, String desk_location) {
         this.booking_date = booking_date;
-        User_user_id = user_user_id;
-        Desk_desk_id = desk_desk_id;
-    }
-
-    public int getBooking_id() {
-        return booking_id;
+        this.desk_number = desk_number;
+        this.desk_location = desk_location;
     }
 
     public String getBooking_date() {
         return booking_date;
     }
 
-    public int getUser_user_id() {
-        return User_user_id;
+    public int getDesk_number() {
+        return desk_number;
     }
 
-    public int getDesk_desk_id() {
-        return Desk_desk_id;
+    public String getDesk_location() {
+        return desk_location;
     }
 }
