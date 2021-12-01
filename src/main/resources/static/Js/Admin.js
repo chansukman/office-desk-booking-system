@@ -36,6 +36,19 @@ function manage_booking_dropdown() {
     }
   }
 
+  // Session killing at every logout
+
+window.onload = function() {
+  if(!localStorage.getItem("token")){
+    window.location.replace("/login")
+  }
+};
+
+function signOut(){
+  localStorage.removeItem("token");
+  window.location.replace("/login")
+}
+
 !(function (e, t) {
   "object" == typeof exports && "undefined" != typeof module
     ? t(exports, require("jquery"))
@@ -2033,4 +2046,3 @@ function manage_booking_dropdown() {
     (e.Treeview = $t),
     Object.defineProperty(e, "__esModule", { value: !0 });
 });
-
