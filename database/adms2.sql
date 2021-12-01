@@ -7,8 +7,7 @@ CREATE TABLE `Booking` (
   `booking_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `booking_date` date NOT NULL,
   `User_user_id` int NOT NULL,
-  `Desk_desk_id` int NOT NULL,
-  `transaction_timestamp` timestamp NULL DEFAULT NULL
+  `Desk_desk_id` int NOT NULL
   );
 
 
