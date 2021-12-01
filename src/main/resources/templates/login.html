@@ -23,7 +23,7 @@
       </div>
       <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
       <input type="submit" value="User LOGIN" class="inputButton1"  name="button"  />
-      <input type="submit" value="Admin LOGIN" class="inputButton2" name="button"/>
+      <input type="submit" value="Admin LOGIN" class="inputButton2" name="button" onclick="setToken()"/>
       <a style="color: #9fcdff" href="https://github.com/login/oauth/authorize?client_id=acd4376fd4158e948c1a&redirect_uri=http://localhost:8080/dashboard">github login</a>
     </form>
   </div>
@@ -34,5 +34,14 @@
 
 <footer th:replace="mainTemplate :: footer"></footer>
 
+
+<script>
+  
+  function setToken(){
+    console.log("method call")
+    localStorage.setItem("token",Date.now())
+  }
+
+</script>
 
 </body>

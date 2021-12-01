@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
+</head>
+<body>
+<div class="page-container">
+    <header th:replace="mainTemplate :: header"></header>
+    <h1>Booking Confirmation</h1>
+    <div>
+        <!-- Render success or failure with booking info -->
+        <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
+        <span th:if="${booking == null}">Whoops! There was a problem with the booking, please return to the bookings page to try again.</span>
+    </div>
+    <footer th:replace="mainTemplate :: footer"></footer>
+
+</div>
+</body>
+</html>
