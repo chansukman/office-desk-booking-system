@@ -27,23 +27,29 @@
 </head>
 <body>
 <header th:fragment="header" class="myHeader">
-<table>
-    <tr><td>Booking Number</td>
-        <br><td class="table_header">Desk Number</td>
-        <br><td class="table_header">City</td>
-        <br><td class="table_header"> Booking Date</td></tr>
-    <tr th:each="booking: ${bookingList}">
-        <td class="main-list" th:text="${booking.getId()}"></td>
-        <td class="main-list" th:text="${booking.getDeskID()}"></td>
-        <td class="main-list" th:text="${booking.getDate()}"></td>
-        <td class="main-list" th:text="${booking.getCity()}"></td>
+    <table>
+        <tr><td>Booking Number</td>
+            <br><td class="table_header">Desk Number</td>
+            <br><td class="table_header">City</td>
+            <br><td class="table_header"> Booking Date</td></tr>
+        <tr th:each="booking: ${bookingList}">
+            <td class="main-list" th:text="${booking.getId()}"></td>
+            <td class="main-list" th:text="${booking.getDeskID()}"></td>
+            <td class="main-list" th:text="${booking.getDate()}"></td>
+            <td class="main-list" th:text="${booking.getCity()}"></td>
 
-    </tr>
-</table>
+        </tr>
+    </table>
 </header>
 <footer th:fragment="footer" class="myFooter">
 
 </footer>
-
+<script>
+    window.onload = function() {
+        if(!localStorage.getItem("userId")){
+            window.location.replace("/login")
+        }
+    };
+</script>
 </body>
 </html>

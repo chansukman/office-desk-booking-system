@@ -18,11 +18,21 @@
 
 /*Template styles*/
 .myHeader {
-  background: #0000cd;
+  background-image: linear-gradient(to right, #2a292a 33%, #1f1b1d 66%, #070000 100%);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   font-size: 1.2em;
+  height: 90px;
+}
+.myHeader img{
+  height: 90px;
+  width: 150px;
+}
+.myHeader section{
+  color: white;
+  padding: 0.5em;
+
 }
 .myHeader ul {
   display: flex;
@@ -33,6 +43,13 @@
   text-decoration: none;
   color: white;
   padding: 0.5em;
+}
+.myHeader button{
+  width: 75px;
+  height: 30px;
+}
+.myHeader button a{
+  color: black;
 }
 
 .myFooter {
