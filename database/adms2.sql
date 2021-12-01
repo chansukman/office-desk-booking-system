@@ -37,8 +37,8 @@ INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (
 INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (15,true,'Standard', 'Bristol'),(16,true,'Standard', 'Bristol'),(17,true,'Standard', 'Bristol'),(18,true,'Standard', 'Bristol'),(19,false,'Standard', 'Bristol'),(20,false,'Standard', 'Bristol'),(21,false,'Standard', 'Bristol');
 INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (22,true,'Standard', 'Bristol'),(23,true,'Standard', 'Bristol'),(24,true,'Standard', 'Bristol'),(25,true,'Standard', 'Bristol');
 
-INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (1,true,'Standard', 'cardiff'),(2,true,'Standard', 'cardiff'),(3,true,'Standard', 'cardiff'),(4,true,'Standard', 'cardiff'),(5,false,'Standard', 'cardiff'),(6,false,'Standard', 'cardiff'),(7,false,'Standard', 'cardiff');
-INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (8,true,'Standard', 'cardiff'),(9,true,'Standard', 'cardiff'),(10,true,'Standard', 'cardiff');
+INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (1,true,'Standard', 'Cardiff'),(2,true,'Standard', 'Cardiff'),(3,true,'Standard', 'Cardiff'),(4,true,'Standard', 'Cardiff'),(5,false,'Standard', 'Cardiff'),(6,false,'Standard', 'Cardiff'),(7,false,'Standard', 'Cardiff');
+INSERT INTO `Desk`(desk_number, has_monitors, desk_type, desk_location) VALUES (8,true,'Standard', 'Cardiff'),(9,true,'Standard', 'Cardiff'),(10,true,'Standard', 'Cardiff');
 
 
 DROP TABLE IF EXISTS `User`;
