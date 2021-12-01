@@ -1,84 +1,96 @@
 <!DOCTYPE html>
 <html
-  lang="en"
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org"
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
 >
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Bookings</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
-  </head>
-  <body  onload="setCalendarDates()">
+</head>
+<body  onload="setCalendarDates()">
 
-    <div class="page-container">
-        <header th:replace="mainTemplate :: header"></header>
-        <div class="content-wrapper">
-            <h1>Make a booking</h1>
-            <div class="calendar">
-                <h1>Calendar & Location</h1>
+<div class="page-container">
+    <header th:replace="mainTemplate :: header"></header>
+    <section class="User" th:if="${User != null}">
+        <div class="user-item" th:each="user:${User}">
+            <h4>welcome!</h4>
+            <div id="userId" th:text="${user.getUser_id()}"></div>
+            <div th:text="${user.getFirst_name()}"></div>
+        </div>
+    </section>
+    <div class="content-wrapper">
+        <h1>Make a booking</h1>
+        <div class="calendar">
+            <h1>Calendar & Location</h1>
 
-                <form action="/searchDate" name="dateForm" method="get">
+            <form action="/searchDate" name="dateForm" method="get">
 
-                    <label for="date"
-                    >Please select the day you would like to book your desk</label
-                    ><br />
+                <label for="date"
+                >Please select the day you would like to book your desk</label
+                ><br />
 
-                    <!--          Date range is from today to 1 week from today -->
-                    <input th:attr="value =${inputDate}" id="date" name="date" type="date"/><br>
-                    <label for="location">
-                        Please select office location <br>
-                        <select name="location" id="location">
-                            <option value="Bristol">Bristol</option>
-                            <option value="Cardiff">Cardiff</option>
-                        </select>
-                        <br>
-                    </label>
-                    <input type="submit" class="submit-button">
-                </form>
-            </div>
-
-<!--            Dynamic content - only render desks after searching for desks-->
-            <section class="desks" th:if="${deskList != null}">
-
-                <h1 th:text="'Map of desks for the ' + ${map.getLocation} + ' office'"></h1>
-                <div class="map-section">
-                    <div class="img-wrapper">
-                        <img th:src="${map.getImage()}" alt="">
-                    </div>
-                </div>
-                <h1 th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
-                <div class="desk-item" th:each="desk:${deskList}">
-
-                    <div>
-                        Desk Number
-                        <div th:text="${desk.getDesk_number()}"></div>
-                    </div>
-                    <div>
-                        Monitors
-                        <div th:text="${desk.isHas_monitors()} ? 'Yes' : 'No'"></div>
-                    </div>
-                    <div>
-                        Desk Type
-                        <div th:text="${desk.getDesk_type()}"></div>
-                    </div>
-                    <div>
-                        Location
-                        <div th:text="${desk.getDesk_location()}"></div>
-                    </div>
-                    <button class="booking-button" type="submit">Book</button>
-                </div>
-            </section>
+                <!--          Date range is from today to 1 week from today -->
+                <input th:attr="value =${inputDate}" id="date" name="date" type="date"/><br>
+                <label for="location">
+                    Please select office location <br>
+                    <select name="location" id="location">
+                        <option value="Bristol">Bristol</option>
+                        <option value="Cardiff">Cardiff</option>
+                    </select>
+                    <br>
+                </label>
+                <input type="submit" class="submit-button">
+            </form>
         </div>
 
-        <footer th:replace="mainTemplate :: footer"></footer>
+        <!--            Dynamic content - only render desks after searching for desks-->
+        <section class="desks" th:if="${deskList != null}">
 
+            <h1 th:text="'Map of desks for the ' + ${map.getLocation} + ' office'"></h1>
+            <div class="map-section">
+                <div class="img-wrapper">
+                    <img th:src="${map.getImage()}" alt="">
+                </div>
+            </div>
+            <h1 th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
+            <div class="desk-item" th:each="desk:${deskList}">
+
+                <div>
+                    Desk Number
+                    <div th:text="${desk.getDesk_number()}"></div>
+                </div>
+                <div>
+                    Monitors
+                    <div th:text="${desk.isHas_monitors()} ? 'Yes' : 'No'"></div>
+                </div>
+                <div>
+                    Desk Type
+                    <div th:text="${desk.getDesk_type()}"></div>
+                </div>
+                <div>
+                    Location
+                    <div th:text="${desk.getDesk_location()}"></div>
+                </div>
+                <button class="booking-button" type="submit">Book</button>
+            </div>
+        </section>
     </div>
 
-    <script>
+    <footer th:replace="mainTemplate :: footer"></footer>
 
-      function setCalendarDates(){
+</div>
+
+<script>
+    window.onload = function() {
+        if(!localStorage.getItem("userId")){
+            window.location.replace("/login")
+        }
+    };
+
+    function setCalendarDates(){
         //create dates in String format
         let today = new Date();
         let oneWeeksTime = new Date();
@@ -90,17 +102,17 @@
         //Set max and min to only allow booking 1 week in advance
         dateField.setAttribute("max", oneWeeksTime);
         dateField.setAttribute("min", today);
-      }
-      function getFormattedDate(date){
+    }
+    function getFormattedDate(date){
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
         if(day < 10){day = '0' + day;}
         if(month < 10){month = '0' + month;}
         return year + '-' + month + '-' + day;
-      }
+    }
 
 
-    </script>
-  </body>
+</script>
+</body>
 </html>

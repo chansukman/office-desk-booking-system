@@ -27,7 +27,7 @@
       <a style="color: #9fcdff" href="https://github.com/login/oauth/authorize?client_id=acd4376fd4158e948c1a&redirect_uri=http://localhost:8080/dashboard">github login</a>
     </form>
   </div>
-    </form>
+  </form>
 </div>
 
 
@@ -36,12 +36,15 @@
 
 
 <script>
-  
+
   function setToken(){
     console.log("method call")
     localStorage.setItem("token",Date.now())
   }
 
+  window.onload=function (){
+    localStorage.removeItem("userId");
+  }
 </script>
 
 </body>
