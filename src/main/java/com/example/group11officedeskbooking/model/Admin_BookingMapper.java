@@ -12,10 +12,8 @@ public class Admin_BookingMapper implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Admin_BookingDTO(rs.getInt("booking_id"),
-                rs.getString("booking_name"),
                 rs.getString("booking_date"),
                 rs.getInt("User_user_id"),
-                rs.getInt("Desk_desk_id"),
-                rs.getTimestamp("transaction_timestamp"));
+                rs.getInt("Desk_desk_id"));
     }
 }

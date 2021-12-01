@@ -350,14 +350,16 @@ xmlns:th="http://www.thymeleaf.org">
                             <thead>
                                 <tr>
                                     <th>Booking ID</th>
-                                    <th>Booking Name</th>
                                     <th>Date</th>
+                                    <th>User ID</th>
+                                    <th>Desk ID</th>
                                 </tr>
                             </thead>
                             <tr th:each="Booking:${adminBookingList}">
                               <td th:text="${Booking.getBooking_id()}"></td>
-                              <td th:text="${Booking.getBooking_name()}"></td>
                               <td th:text="${Booking.getBooking_date()}"></td>
+                              <td th:text="${Booking.getUser_user_id()}"></td>
+                              <td th:text="${Booking.getDesk_desk_id()}"></td>
                               <td><a href="#" data-toggle="modal" data-target="#myModal" i class="fa fa-edit" title="Edit booking" onclick="edit_booking()"></i></a></td>
                             </tr>
                             <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
