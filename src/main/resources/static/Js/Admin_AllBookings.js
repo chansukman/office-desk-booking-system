@@ -19,6 +19,17 @@ function search_bookings() {
   }
 }
 
+window.onload = function() {
+  if(!localStorage.getItem("token")){
+    window.location.replace("/login")
+  }
+};
+
+function signOut(){
+  localStorage.removeItem("token");
+  window.location.replace("/login")
+}
+
 // modal function for edit booking
 
 function edit_booking() {

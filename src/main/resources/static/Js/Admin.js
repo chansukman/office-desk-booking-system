@@ -36,7 +36,7 @@ function manage_booking_dropdown() {
     }
   }
 
-  // Session killing at every logout
+// Session killing at every logout
 
 window.onload = function() {
   if(!localStorage.getItem("token")){
