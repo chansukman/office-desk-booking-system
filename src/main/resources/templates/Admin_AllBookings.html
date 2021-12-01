@@ -350,16 +350,17 @@ xmlns:th="http://www.thymeleaf.org">
                             <thead>
                                 <tr>
                                     <th>Booking ID</th>
-                                    <th>Booking Name</th>
                                     <th>Date</th>
-                                    <th>Time</th>
+                                    <th>User ID</th>
+                                    <th>Desk ID</th>
                                 </tr>
                             </thead>
                             <tr th:each="Booking:${adminBookingList}">
                               <td th:text="${Booking.getBooking_id()}"></td>
-                              <td th:text="${Booking.getBooking_name()}"></td>
                               <td th:text="${Booking.getBooking_date()}"></td>
-                              <td th:text="${Booking.getBooking_time()}"></td>
+                              <td th:text="${Booking.getUser_user_id()}"></td>
+                              <td th:text="${Booking.getDesk_desk_id()}"></td>
+                              <td><a href="#" data-toggle="modal" data-target="#myModal" i class="fa fa-edit" title="Edit booking" onclick="edit_booking()"></i></a></td>
                             </tr>
                             <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
                               <td> No Booking Available </td>
@@ -378,6 +379,32 @@ xmlns:th="http://www.thymeleaf.org">
     </div>
     <!-- /.content -->
   </div>
+
+  <!-- Edit Modal -->
+
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Edit Bookings</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+                <div class="modal-body">
+                    <input type="hidden" id="edit_modal_id">
+                    <input type='date'/>                    
+                    <br>
+  
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="update" onclick="edited_booking()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div> 
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
