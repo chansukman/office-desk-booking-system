@@ -67,7 +67,10 @@
                         Location
                         <div th:text="${desk.getDesk_location()}"></div>
                     </div>
-                    <button class="booking-button" type="submit">Book</button>
+                    <form action="/Home" th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}">
+                        <button class="booking-button" type="submit">Book</button>
+                    </form>
+
                 </div>
             </section>
         </div>
