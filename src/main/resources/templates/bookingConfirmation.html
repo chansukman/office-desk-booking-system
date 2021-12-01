@@ -11,7 +11,7 @@
     <h1>Booking Confirmation</h1>
     <div>
         <!-- Render success or failure with booking info -->
-        <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${booking.getBooking_date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
+        <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
         <span th:if="${booking == null}">Whoops! There was a problem with the booking, please return to the bookings page to try again.</span>
     </div>
     <footer th:replace="mainTemplate :: footer"></footer>
