@@ -1,0 +1,28 @@
+
+table {
+    border-spacing: 0.5rem;
+
+}
+.main-list {
+    padding: 0.5rem;
+}
+.table_header{
+    padding: 0.5rem
+}
+
+img{
+    display: none;
+}
+tr:hover img{
+    display: inline-block;
+    transition-delay:30s;
+}
+
+
+td:nth-child(1) { background: hsl(249, 5%, 60%); }
+td:nth-child(2) { background: hsl(269, 7%, 70%); }
+td:nth-child(3) { background: hsl(289, 9%, 80%); }
+td:nth-child(4) { background: hsl(309, 10%, 90%); }
+
+
+
