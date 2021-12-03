@@ -25,4 +25,11 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
                 "SELECT * FROM Booking",
                 new Admin_BookingMapper());
     }
+
+    // Delete Bookings
+    
+    @Override
+    public int deleteById(int id) {
+        return jdbcTemplate.update("DELETE FROM Booking WHERE booking_id=?", id);
+    }
 }

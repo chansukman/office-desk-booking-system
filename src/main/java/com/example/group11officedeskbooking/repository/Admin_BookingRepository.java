@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface Admin_BookingRepository{
     List<Admin_BookingDTO> findAll();
+    int deleteById(int id);
 }
