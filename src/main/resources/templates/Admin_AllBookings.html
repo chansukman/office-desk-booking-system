@@ -7,7 +7,12 @@ xmlns:th="http://www.thymeleaf.org">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ADMS Admin Panel</title>
 
+  <!-- bootstrap cdn -->
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <!-- sweet aleart cdn -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -361,6 +366,7 @@ xmlns:th="http://www.thymeleaf.org">
                               <td th:text="${Booking.getUser_user_id()}"></td>
                               <td th:text="${Booking.getDesk_desk_id()}"></td>
                               <td><a href="#" data-toggle="modal" data-target="#myModal" i class="fa fa-edit" title="Edit booking" onclick="edit_booking()"></i></a></td>
+                              <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td>
                             </tr>
                             <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
                               <td> No Booking Available </td>
