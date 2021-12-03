@@ -2,14 +2,10 @@ package com.example.group11officedeskbooking.repository;
 import com.example.group11officedeskbooking.DTO.AdminDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.model.AdminMapper;
-import com.example.group11officedeskbooking.model.DeskMapper;
 import com.example.group11officedeskbooking.model.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class UserRepositoryJDBC implements UserRepository{
@@ -31,6 +27,7 @@ public class UserRepositoryJDBC implements UserRepository{
                 new AdminMapper() );
 
     }
+
 
 
 }

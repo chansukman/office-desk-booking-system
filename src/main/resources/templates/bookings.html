@@ -14,13 +14,6 @@
 
 <div class="page-container">
     <header th:replace="mainTemplate :: header"></header>
-    <section class="User" th:if="${User != null}">
-        <div class="user-item" th:each="user:${User}">
-            <h4>welcome!</h4>
-            <div id="userId" th:text="${user.getUser_id()}"></div>
-            <div th:text="${user.getFirst_name()}"></div>
-        </div>
-    </section>
     <div class="content-wrapper">
         <h1>Make a booking</h1>
         <div class="calendar">
@@ -93,6 +86,9 @@
     //     if(!localStorage.getItem("userId")){
     //         window.location.replace("/login")
     //     }
+    //     var userId=localStorage.getItem("userId");
+    //     console.log(userId);
+    //
     // };
 
     function setCalendarDates(){
