@@ -18,7 +18,7 @@
 
 /*Template styles*/
 .myHeader {
-  background-image: linear-gradient(to right, #2a292a 33%, #1f1b1d 66%, #070000 100%);
+  background-image: linear-gradient(to right, #070000 33%, #1f1b1d 66%,  #2a292a 100%);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
@@ -27,7 +27,7 @@
 }
 .myHeader img{
   height: 90px;
-  width: 150px;
+  width: 170px;
 }
 .myHeader section{
   color: white;
