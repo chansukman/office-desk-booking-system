@@ -120,7 +120,8 @@ body{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 95%;
+  width: auto;
+  max-height: 80vh;
 }
 .desks {
   background: aqua;
@@ -154,7 +155,8 @@ body{
     margin: auto;
   }
   .map-section img{
-    width: 80%;
+    width: auto;
+    max-height: 80vh;
   }
   .desk-item {
     width: 70%;
