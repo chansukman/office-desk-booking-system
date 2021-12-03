@@ -79,19 +79,7 @@
                     </form>
 
                 </div>
-                <div>
-                    Monitors
-                    <div th:text="${desk.isHas_monitors()} ? 'Yes' : 'No'"></div>
-                </div>
-                <div>
-                    Desk Type
-                    <div th:text="${desk.getDesk_type()}"></div>
-                </div>
-                <div>
-                    Location
-                    <div th:text="${desk.getDesk_location()}"></div>
-                </div>
-                <button class="booking-button" type="submit">Book</button>
+
             </div>
         </section>
     </div>
@@ -101,13 +89,18 @@
 </div>
 
 <script>
-    window.onload = function() {
+    // window.onload = function() {
+    //     if(!localStorage.getItem("userId")){
+    //         window.location.replace("/login")
+    //     }
+    // };
+
+    function setCalendarDates(){
+
         if(!localStorage.getItem("userId")){
             window.location.replace("/login")
         }
-    };
 
-    function setCalendarDates(){
         //create dates in String format
         let today = new Date();
         let oneWeeksTime = new Date();
