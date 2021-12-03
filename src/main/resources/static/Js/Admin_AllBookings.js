@@ -42,6 +42,8 @@ function edited_booking(){
   window.location.replace("/admin/bookings")
 }
   
+// Sweet Alert
+
 function delete_Booking(){
   swal({
     title: "Are you sure you want to cancel the booking?",
