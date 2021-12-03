@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -19,10 +20,21 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
         jdbcTemplate = aTemplate;
     }
 
+    // All bookings
+
     @Override
     public List<Admin_BookingDTO> findAll() {
         return jdbcTemplate.query(
                 "SELECT * FROM Booking",
                 new Admin_BookingMapper());
+    }
+
+    // Updating Bookings
+
+    @Override
+    public void update_records(Admin_BookingDTO admin_bookingDTO) {
+        jdbcTemplate.update(
+                "UPDATE Booking SET booking_date = ? WHERE booking_id = ?",
+                admin_bookingDTO.getBooking_date(), admin_bookingDTO.getBooking_id());
     }
 }
