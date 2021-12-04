@@ -44,10 +44,47 @@ window.onload = function() {
   }
 };
 
+// taking the iteam from local storage out
+
 function signOut(){
   localStorage.removeItem("token");
   window.location.replace("/login")
 }
+
+// Inactivity of the page
+
+let warningTimeout = 3000;
+  let warningTimerID;
+  let counterDisplay = document.getElementById('timeout');
+  logoutUrl = "http://localhost:8080/login";
+
+  function startTimer() {
+    // window.setTimeout returns an Id that can be used to start and stop a timer
+    warningTimerID = window.setTimeout(idleLogout, warningTimeout);
+  }
+
+// if activity happens, the time will start again
+
+  function resetTimer() {
+    window.clearTimeout(warningTimerID);
+    startTimer();
+  }
+
+  // Logout the user.
+  function idleLogout() {
+    window.location = logoutUrl;
+  }
+
+  function startCountdown() {
+    
+    document.addEventListener("mousemove", resetTimer);
+    document.addEventListener("mousedown", resetTimer);
+    document.addEventListener("keypress", resetTimer);
+    document.addEventListener("touchmove", resetTimer);
+    document.addEventListener("onscroll", resetTimer);
+    document.addEventListener("wheel", resetTimer);
+    startTimer();
+  }
 
 !(function (e, t) {
   "object" == typeof exports && "undefined" != typeof module
