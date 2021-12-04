@@ -14,7 +14,7 @@
         <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
         <span th:if="${booking == null}">Whoops! There was a problem with the booking, please return to the bookings page to try again.</span>
     </div>
-    <footer th:replace="mainTemplate :: footer"></footer>
+
 
 </div>
 </body>
