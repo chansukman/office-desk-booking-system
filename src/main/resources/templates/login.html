@@ -8,7 +8,6 @@
   <title>Login</title>
 </head>
 <body>
-<!--<header th:replace="mainTemplate :: header"></header>-->
 <div class="center-content" >
   <h1>Login</h1>
 
@@ -24,16 +23,12 @@
       <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
       <input type="submit" value="User LOGIN" formaction="/userlogin" class="inputButton1"  name="button"  />
       <input type="submit" value="Admin LOGIN" formaction="/admin/home" class="inputButton2" name="button" onclick="setToken()"/>
-      <a style="color: #9fcdff" href="https://github.com/login/oauth/authorize?client_id=acd4376fd4158e948c1a&redirect_uri=http://localhost:8080/dashboard">github login</a>
+
     </form>
+    <a style="color: #9fcdff" href="https://github.com/login/oauth/authorize?client_id=acd4376fd4158e948c1a&redirect_uri=http://localhost:8080/dashboard">github login</a>
   </div>
   </form>
 </div>
-
-
-
-<footer th:replace="mainTemplate :: footer"></footer>
-
 
 <script>
 
@@ -45,5 +40,9 @@
     localStorage.removeItem("userId");
   }
 </script>
-
 </body>
+
+<footer th:replace="mainTemplate :: footer"></footer>
+
+
+</html>

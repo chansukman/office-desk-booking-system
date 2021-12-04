@@ -23,9 +23,8 @@ public class UserController {
 
     @RequestMapping(path = "/userlogin", method = RequestMethod.POST)
 
-    public ModelAndView checkUser(UserDTO userDTO, AdminDTO adminDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
+    public ModelAndView checkUser(UserDTO userDTO,@RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
         ModelAndView mav = new ModelAndView();
-        if (btn.equals("User LOGIN")) {
             try {
                 userRepository.checkByFirstnameAndPassword(username, password);
                 if (userDTO.getFirst_name().equals(username) && userDTO.getPassword().equals(password)) {
@@ -39,8 +38,14 @@ public class UserController {
                 mav.setViewName("login");
                 return mav;
             }
-        }else if (btn.equals("Admin LOGIN"))
-        {
+        mav.setViewName("login");
+        return  mav;
+    }
+
+    @RequestMapping(path = "/admin/home", method = RequestMethod.POST)
+
+    public ModelAndView checkAdmin( AdminDTO adminDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
+        ModelAndView mav = new ModelAndView();
             try {
                 userRepository.checkAdminByFistnameAndPassword(username, password);
                 if (adminDTO.getFirst_name().equals(username) && adminDTO.getPassword().equals(password)) {
@@ -55,7 +60,6 @@ public class UserController {
                 return  mav;
             }
 
-        }
         mav.setViewName("login");
         return  mav;
     }
