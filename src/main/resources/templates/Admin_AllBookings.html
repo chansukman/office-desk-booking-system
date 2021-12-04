@@ -365,7 +365,7 @@ xmlns:th="http://www.thymeleaf.org">
                               <td th:text="${Booking.getBooking_date()}"></td>
                               <td th:text="${Booking.getUser_user_id()}"></td>
                               <td th:text="${Booking.getDesk_desk_id()}"></td>
-                              <td><a href="#" data-toggle="modal" data-target="#myModal" i class="fa fa-edit" title="Edit booking" onclick="edit_booking()"></i></a></td>
+                              <td><a href="#" style="color: darkgray" data-toggle="modal" data-target="#myModal" i class="fa fa-edit" title="Edit booking" onclick="edit_booking()"></i></a></td>
                               <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td>
                             </tr>
                             <tr th:if="${adminBookingList == null || adminBookingList == underfined}">

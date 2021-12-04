@@ -58,9 +58,6 @@ function delete_Booking(){
         icon: "success",
       });
     }
-    // } else {
-    //   swal("");
-    // }
   });
 }
   !(function (e, t) {
