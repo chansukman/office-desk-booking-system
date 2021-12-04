@@ -105,6 +105,8 @@ body{
   padding-bottom: 2.5rem;
 }
 .calendar {
+  border-start-start-radius: 15px;
+  border-start-end-radius: 15px;
   background: #7a94bb;
   text-align: center;
 }
