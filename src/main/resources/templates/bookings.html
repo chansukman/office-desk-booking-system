@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Bookings</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body  onload="setCalendarDates()">
 
@@ -55,7 +56,7 @@
                     <img th:src="${map.getImage()}" alt="">
                 </div>
             </div>
-            <h1 th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
+            <h1 id="desk-confirm-string" th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
             <div class="desk-item" th:each="desk:${deskList}">
 
                     <div>
@@ -74,7 +75,7 @@
                         Location
                         <div th:text="${desk.getDesk_location()}"></div>
                     </div>
-                    <form action="/Home" th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}">
+                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}" onclick="return validate(this.name)">
                         <button class="booking-button" type="submit">Book</button>
                     </form>
 
@@ -120,6 +121,18 @@
         if(day < 10){day = '0' + day;}
         if(month < 10){month = '0' + month;}
         return year + '-' + month + '-' + day;
+    }
+
+    function validate(deskNo){
+        let office = document.getElementById("location").value;
+        let dateString = document.getElementById("desk-confirm-string").innerHTML;
+        let endIndex = dateString.indexOf(" in the ");
+        dateString = dateString.substring(19, endIndex);
+        if(confirm("You are about to book Desk " + deskNo + " in " + office + " on " + dateString + ".\n\nWould you like to continue?")){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
