@@ -55,7 +55,8 @@
                 </div>
             </div>
             <h1 th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
-            <div class="desk-item" th:each="desk:${deskList}">
+            <div th:if="${unavailable != null}" th:text="${unavailable}"></div>
+            <div class="desk-item" th:if="${unavailable == null}" th:each="desk:${deskList}">
 
                     <div>
                         Desk Number

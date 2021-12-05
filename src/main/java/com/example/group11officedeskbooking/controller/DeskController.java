@@ -30,15 +30,20 @@ public class DeskController {
     public ModelAndView searchDate(@RequestParam(value="date", defaultValue = "null") String searchDate,
                                    @RequestParam(value="location", defaultValue = "null") String deskLocation){
         ModelAndView mav = new ModelAndView();
+        mav.setViewName("bookings");
         //Validation
         if(searchDate.equals("null") || deskLocation.equals("null")){
-            mav.setViewName("bookings");
             return mav;
         }
 
         //Convert date string format
         DateFormatter prettyDate = new DateFormatter();
         String stringDate = prettyDate.formatDate(searchDate);
+
+        if(stringDate.charAt(0) == 'S'){
+            mav.addObject("unavailable", "Sorry, desks are not bookable at the weekend");
+            return mav;
+        }
 
         //Add map and desk to mav
         mav.addObject("map", mapRepo.searchMap(deskLocation));
@@ -48,7 +53,6 @@ public class DeskController {
         mav.addObject("searchDate", stringDate);
         //Add original search date format
         mav.addObject("inputDate", searchDate);
-        mav.setViewName("bookings");
         return mav;
     }
 
