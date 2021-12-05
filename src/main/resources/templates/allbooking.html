@@ -46,9 +46,19 @@
         <td class="main-list" th:text="${booking.getCity()}"></td>
         <td> <img class="icons"  src="../Images/delete.png" alt="delete"> </td>
         <td><img class="icons"  src="../Images/schedule.png" alt="update"></td>
-
     </tr>
 </table>
+<footer th:fragment="footer" class="myFooter">
+    Footer content
+</footer>
+<script>
+    window.onload=function () {
+        let userId = document.getElementById("userId").innerText;
+        localStorage.setItem("userId", userId);
+        console.log(userId);
+    }
+
+</script>
 
 </body>
 </html>

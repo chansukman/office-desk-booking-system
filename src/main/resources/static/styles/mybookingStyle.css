@@ -1,28 +1,39 @@
 
 table {
-    border-spacing: 0.5rem;
-
+    border-spacing: 0.0rem;
 }
 .main-list {
-    padding: 0.5rem;
+    border-spacing: 0.0rem;
+    padding: 0.15rem;
+    border: .1rem solid;
+    border-radius: .25rem;
+
 }
 .table_header{
-    padding: 0.5rem
-}
-
-img{
-    display: none;
-}
-tr:hover img{
-    display: inline-block;
-    transition-delay:30s;
-}
+    padding: .25rem;
+    border: .1rem solid;
+    border-radius: .25rem;
 
 
-td:nth-child(1) { background: hsl(249, 5%, 60%); }
-td:nth-child(2) { background: hsl(269, 7%, 70%); }
-td:nth-child(3) { background: hsl(289, 9%, 80%); }
-td:nth-child(4) { background: hsl(309, 10%, 90%); }
+}
+/*hiding the icons */
+.icons{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+    cursor: pointer;
+}
+/* Showing the delete and update icons when hovering inside the booking table */
+tr:hover .icons{
+    opacity: 1;
+
+}
+
+/* Table colors  */
+td:nth-child(1) { background: hsl(3330, 8%, 60%); }
+td:nth-child(2) { background: hsl(3330, 10%, 70%); }
+td:nth-child(3) { background: hsl(3330, 15%, 80%); }
+td:nth-child(4) { background: hsl(3330, 20%, 90%); }
+
 
 
 
