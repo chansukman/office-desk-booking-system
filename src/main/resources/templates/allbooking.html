@@ -24,9 +24,11 @@
         td:nth-child(6) { background: hsl(200, 99%, 50%); }
 
     </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
 </head>
 <body>
-<header th:fragment="header" class="myHeader">
+
+<header th:replace="mainTemplate :: header"></header>
     <table>
         <tr><td>Booking Number</td>
             <br><td class="table_header">Desk Number</td>
@@ -40,10 +42,7 @@
 
         </tr>
     </table>
-</header>
-<footer th:fragment="footer" class="myFooter">
 
-</footer>
 <script>
     window.onload = function() {
         if(!localStorage.getItem("userId")){
