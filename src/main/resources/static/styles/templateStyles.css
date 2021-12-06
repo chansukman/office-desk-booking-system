@@ -140,7 +140,8 @@ body{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 95%;
+  max-width: 100%;
+  border: 1px solid black;
 }
 .desks {
   display: flex;
