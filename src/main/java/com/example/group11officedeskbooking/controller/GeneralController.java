@@ -37,10 +37,12 @@ public class GeneralController {
 
     @RequestMapping(path = "/login")
     public ModelAndView login(HttpServletRequest request,HttpServletResponse response){
-        Cookie[] myCookies = request.getCookies();
-        for(int i = 0; i < myCookies.length; i++){
-            myCookies[i].setMaxAge(0);
-            response.addCookie(myCookies[i]);
+        if(request.getCookies()!=null) {
+            Cookie[] myCookies = request.getCookies();
+            for (int i = 0; i < myCookies.length; i++) {
+                myCookies[i].setMaxAge(0);
+                response.addCookie(myCookies[i]);
+            }
         }
         ModelAndView mav = new ModelAndView();
         mav.setViewName("login");
