@@ -45,20 +45,22 @@ function edited_booking(){
 // Sweet Alert
 
 function delete_Booking(){
-  swal({
-    title: "Are you sure you want to cancel the booking?",
-    // text: "Once deleted, you will not be able to recover this imaginary file!",
-    icon: "warning",
-    buttons: ["No", "Yes"],
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      swal("Booking has been canceled", {
-        icon: "success",
-      });
+  Swal.fire({
+    title: 'Are you sure you want to cancel the booking?',
+    showDenyButton: true,
+    confirmButtonText: 'No, Cancel!',
+    denyButtonText: 'Yes, Cancel it!',
+  }).then((result) => {
+    // console.log("delete honay se pehle")
+    // document.getElementById("delete_from_js").innerHTML+="<form th:action='/admin/bookings/delete/'+${Booking.getBooking_id}></form>"
+    // console.log("delete honay ke bd")
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isDenied) {
+      Swal.fire('booking has been canceled', '', 'success')
     }
-  });
+   
+  })
+
 }
   !(function (e, t) {
     "object" == typeof exports && "undefined" != typeof module
