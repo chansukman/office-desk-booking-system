@@ -24,7 +24,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
         // JdbcTemplate query used to get multiple records from the database
 
         return jdbcTemplate.query(
-            "Select Booking_id,Booking_date, DATE_FORMAT(Booking_date, '%D %M %Y') AS formatedDate from Booking WHERE User_user_id =? && Booking_date >= now()",
+            "SELECT booking_id,booking_date,desk_location,Desk_desk_id, DATE_FORMAT(Booking_date, '%D %M %Y') AS formatedDate FROM Booking JOIN Desk ON Booking.Desk_desk_id = Desk.desk_id WHERE Booking.User_user_id=? && Booking_date >= now()",
 
                 new UserBookingMapper(), new Object[]{id});
 

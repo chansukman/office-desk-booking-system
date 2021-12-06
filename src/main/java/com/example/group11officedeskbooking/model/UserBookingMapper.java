@@ -13,7 +13,7 @@ public class UserBookingMapper implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new UserBookingDTO(rs.getInt("booking_id"),
-                rs.getString("desk_location"),
+                rs.getString("Desk.desk_location"),
                 rs.getString("booking_date"),
                 rs.getInt("Desk_desk_id"));
     }
