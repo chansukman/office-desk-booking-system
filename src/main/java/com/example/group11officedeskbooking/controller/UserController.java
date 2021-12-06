@@ -2,6 +2,7 @@ package com.example.group11officedeskbooking.controller;
 import com.example.group11officedeskbooking.DTO.AdminDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.repository.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
@@ -23,12 +26,17 @@ public class UserController {
 
     @RequestMapping(path = "/userlogin", method = RequestMethod.POST)
 
-    public ModelAndView checkUser(UserDTO userDTO,@RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
+    public ModelAndView checkUser(HttpServletResponse response, UserDTO userDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
         ModelAndView mav = new ModelAndView();
             try {
                 userRepository.checkByFirstnameAndPassword(username, password);
                 if (userDTO.getFirst_name().equals(username) && userDTO.getPassword().equals(password)) {
                     mav.addObject("User",userRepository.checkByFirstnameAndPassword(username,password));
+                    UserDTO user = (UserDTO) userRepository.checkByFirstnameAndPassword(username,password);
+                    String userId = user.getUser_id().toString();
+                    Cookie myCookie = new Cookie("userId", userId);
+                    response.addCookie(myCookie);
+                    System.out.println(user.getUser_id());
                     mav.setViewName("dashboard");
                     return mav;
 

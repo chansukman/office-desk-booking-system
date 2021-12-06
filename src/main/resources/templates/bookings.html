@@ -67,7 +67,7 @@
                         Location
                         <div th:text="${desk.getDesk_location()}"></div>
                     </div>
-                    <form action="/Home" th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}">
+                    <form action="/Home" th:action="@{'/booking/'+${userId}+'/' + ${desk.getDesk_id} +'/' +${inputDate}}">
                         <button class="booking-button" type="submit">Book</button>
                     </form>
 
@@ -81,20 +81,8 @@
 <footer th:replace="mainTemplate :: footer"></footer>
 
 <script>
-    // window.onload = function() {
-    //     if(!localStorage.getItem("userId")){
-    //         window.location.replace("/login")
-    //     }
-    //     var userId=localStorage.getItem("userId");
-    //     console.log(userId);
-    //
-    // };
 
     function setCalendarDates(){
-
-        if(!localStorage.getItem("userId")){
-            window.location.replace("/login")
-        }
 
         //create dates in String format
         let today = new Date();

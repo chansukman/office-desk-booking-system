@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
 @Controller
@@ -33,7 +36,12 @@ public class GeneralController {
 
 
     @RequestMapping(path = "/login")
-    public ModelAndView login(){
+    public ModelAndView login(HttpServletRequest request,HttpServletResponse response){
+        Cookie[] myCookies = request.getCookies();
+        for(int i = 0; i < myCookies.length; i++){
+            myCookies[i].setMaxAge(0);
+            response.addCookie(myCookies[i]);
+        }
         ModelAndView mav = new ModelAndView();
         mav.setViewName("login");
         return mav;
