@@ -29,10 +29,10 @@ tr:hover .icons{
 }
 
 /* Table colors  */
-td:nth-child(1) { background: hsl(3330, 8%, 60%); }
-td:nth-child(2) { background: hsl(3330, 10%, 70%); }
-td:nth-child(3) { background: hsl(3330, 15%, 80%); }
-td:nth-child(4) { background: hsl(3330, 20%, 90%); }
+td:nth-child(1) { background: hsl(55, 0%, 85%); }
+td:nth-child(2) { background: hsl(55, 2%, 90%); }
+td:nth-child(3) { background: hsl(55, 4%, 95%); }
+td:nth-child(4) { background: hsl(55, 6%, 98%); }
 
 
 

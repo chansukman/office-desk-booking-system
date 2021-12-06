@@ -12,23 +12,9 @@
 
 </head>
 <body>
-<header th:fragment="header" class="myHeader">
-    <img src="/Images/BJSS_logo.png">
-    <section class="User" th:if="${User != null}">
-        <div class="user-item" th:each="user:${User}">
-            <h4>welcome!</h4>
-            <div  th:text="${user.getUser_id()}"></div>
-            <div th:text="${user.getFirst_name()}"></div>
-        </div>
-    </section>
-    <ul>
-        <li><a href="/dashboard">Home</a></li>
-        <li><a href="/bookings">Book</a></li>
-        <li><a href="/mybooking?id=24">My Bookings</a></li>
-    </ul>
+<header th:replace="mainTemplate :: header"></header>
 
-    <button><a href="/login">sign out</a></button>
-</header>
+
 
 <table>
     <tr>
