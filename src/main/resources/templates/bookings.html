@@ -47,16 +47,17 @@
         </div>
 
         <!--            Dynamic content - only render desks after searching for desks-->
+        <h2 style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate}"></h2>
         <section class="desks" th:if="${deskList != null}">
 
-            <h1 th:text="'Map of desks for the ' + ${map.getLocation} + ' office'"></h1>
             <div class="map-section">
                 <div class="img-wrapper">
                     <img th:src="${map.getImage()}" alt="">
                 </div>
             </div>
-            <h1 id="desk-confirm-string" th:text="'Available desks on ' + ${searchDate} + ' in the ' + ${map.getLocation} + ' office'"></h1>
-            <div class="desk-item" th:each="desk:${deskList}">
+            <div class="list-of-desks">
+
+                <div class="desk-item" th:each="desk:${deskList}">
 
                     <div>
                         Desk Number
@@ -74,12 +75,12 @@
                         Location
                         <div th:text="${desk.getDesk_location()}"></div>
                     </div>
-                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}" onclick="return validate(this.name)">
+                    <form th:attr="name=${desk.getDesk_number()}" action="/Home"
+                          th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}"
+                          onclick="return validate(this.name)">
                         <button class="booking-button" type="submit">Book</button>
                     </form>
-
                 </div>
-
             </div>
         </section>
     </div>

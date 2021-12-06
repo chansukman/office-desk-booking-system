@@ -131,8 +131,8 @@ body{
   margin: auto;
 }
 .map-section{
-  border-bottom: 2px solid black;
   padding: 10px 0;
+  align-self: center;
 }
 
 .map-section img{
@@ -145,9 +145,17 @@ body{
 .desks {
   display: flex;
   flex-direction: column;
+  border-bottom: 2px solid black;
 }
 .desks h1{
   align-self: center;
+}
+.list-of-desks{
+  overflow-y: scroll;
+  max-height:580px;
+  margin: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
 }
 .desk-item{
   width: 95%;
@@ -180,9 +188,7 @@ body{
     width: auto;
     max-height: 80vh;
   }
-  .desk-item {
-    width: 70%;
-  }
+
   .myHeader section > span{
     display: inline;
     color: white;
@@ -197,6 +203,13 @@ body{
     padding: 0.5em;
     justify-self: right;
   }
+  .desks{
+    flex-direction: row;
+  }
+  .map-section{
+    width: 50%;
+  }
+
 
 }
 
