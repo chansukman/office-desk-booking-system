@@ -13,14 +13,9 @@
 <body  onload="setCalendarDates()">
 
 <div class="page-container">
-    <header th:replace="mainTemplate :: header"></header>
-    <section class="User" th:if="${User != null}">
-        <div class="user-item" th:each="user:${User}">
-            <h4>welcome!</h4>
-            <div id="userId" th:text="${user.getUser_id()}"></div>
-            <div th:text="${user.getFirst_name()}"></div>
-        </div>
-    </section>
+    <header th:replace="mainTemplate :: header">
+
+    </header>
     <div class="content-wrapper">
         <h1>Make a booking</h1>
         <div class="calendar">
@@ -76,7 +71,7 @@
                         Location
                         <div th:text="${desk.getDesk_location()}"></div>
                     </div>
-                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}" onsubmit="return validate(this.name)">
+                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/' + ${userId} + '/' + ${desk.getDesk_id} +'/' +${inputDate}}" onsubmit="return validate(this.name)">
                         <button class="booking-button" type="submit">Book</button>
                     </form>
                 </div>
@@ -87,17 +82,8 @@
 </div>
 
 <script>
-    // window.onload = function() {
-    //     if(!localStorage.getItem("userId")){
-    //         window.location.replace("/login")
-    //     }
-    // };
 
     function setCalendarDates(){
-
-        if(!localStorage.getItem("userId")){
-            window.location.replace("/login")
-        }
 
         //create dates in String format
         let today = new Date();
