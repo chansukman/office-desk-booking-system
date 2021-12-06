@@ -98,6 +98,7 @@
 body{
   margin: 0;
   height: 100%;
+  background: rgb(248,248,255);
 }
 
 /* MEDIA QUERIES */
@@ -114,7 +115,8 @@ body{
   padding-bottom: 2.5rem;
 }
 .calendar {
-  background: aquamarine;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
   text-align: center;
 }
 
@@ -128,15 +130,19 @@ body{
   grid-template-rows: repeat(5, 1fr);
   margin: auto;
 }
+.map-section{
+  border-bottom: 2px solid black;
+  padding: 10px 0;
+}
+
 .map-section img{
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
-
+  border: 1px solid black;
 }
 .desks {
-  background: aqua;
   display: flex;
   flex-direction: column;
 }
@@ -151,8 +157,9 @@ body{
   justify-items: center;
   align-items: center;
   background: white;
-  border: grey;
+  border: 1px solid grey;
   border-radius: 5px;
+
 }
 .desk-item div{
   text-align: center;
