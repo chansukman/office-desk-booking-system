@@ -2,53 +2,49 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>My booking</title>
+    <title>My Booking</title>
 
-    <style>
-        table {
-            border-spacing: 0.5rem;
+        <meta charset="UTF-8">
+        <title>Template</title>
+        <link rel="stylesheet" th:href="@{/styles/templateStyles.css}">
+    <link rel="stylesheet" href="/styles/mybookingStyle.css">
 
-        }
-        .main-list {
-            padding: 1.5rem;
-        }
-        .table_header{
-            padding: 1.5rem;
-        }
 
-        td:nth-child(1) { background: hsl(150, 50%, 50%); }
-        td:nth-child(2) { background: hsl(160, 60%, 50%); }
-        td:nth-child(3) { background: hsl(170, 70%, 50%); }
-        td:nth-child(4) { background: hsl(180, 80%, 50%); }
-        td:nth-child(5) { background: hsl(190, 90%, 50%); }
-        td:nth-child(6) { background: hsl(200, 99%, 50%); }
-
-    </style>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
 </head>
 <body>
-
 <header th:replace="mainTemplate :: header"></header>
-    <table>
-        <tr><td>Booking Number</td>
-            <br><td class="table_header">Desk Number</td>
-            <br><td class="table_header">City</td>
-            <br><td class="table_header"> Booking Date</td></tr>
-        <tr th:each="booking: ${bookingList}">
-            <td class="main-list" th:text="${booking.getId()}"></td>
-            <td class="main-list" th:text="${booking.getDeskID()}"></td>
-            <td class="main-list" th:text="${booking.getDate()}"></td>
-            <td class="main-list" th:text="${booking.getCity()}"></td>
 
-        </tr>
-    </table>
 
+
+<table>
+    <tr>
+
+        <td class="table_header f">Booking Number</td>
+        <br><td class="table_header">Desk Number</td>
+        <br><td class="table_header">City</td>
+        <br><td class="table_header"> Booking Date</td>
+
+    </tr>
+    <tr th:each="booking: ${bookingList}">
+        <td class="main-list" th:text="${booking.getId()}" > </td>
+        <td class="main-list" th:text="${booking.getDeskID()}"></td>
+        <td class="main-list" th:text="${booking.getDate()}"></td>
+        <td class="main-list" th:text="${booking.getCity()}"></td>
+        <td> <img class="icons"  src="../Images/delete.png" alt="delete"> </td>
+        <td><img class="icons"  src="../Images/schedule.png" alt="update"></td>
+    </tr>
+</table>
+<footer th:fragment="footer" class="myFooter">
+    Footer content
+</footer>
 <script>
-    window.onload = function() {
-        if(!localStorage.getItem("userId")){
-            window.location.replace("/login")
-        }
-    };
+    window.onload=function () {
+        let userId = document.getElementById("userId").innerText;
+        localStorage.setItem("userId", userId);
+        console.log(userId);
+    }
+
 </script>
+
 </body>
 </html>
