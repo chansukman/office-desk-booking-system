@@ -14,7 +14,7 @@ public class UserBookingMapper implements RowMapper {
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new UserBookingDTO(rs.getInt("booking_id"),
                 rs.getString("Desk.desk_location"),
-                rs.getString("booking_date"),
+                rs.getString("formattedDate"),
                 rs.getInt("Desk_desk_id"));
     }
 }
