@@ -99,6 +99,7 @@
 body{
   margin: 0;
   height: 100%;
+  background: rgb(248,248,255);
 }
 
 /* MEDIA QUERIES */
@@ -115,7 +116,8 @@ body{
   padding-bottom: 2.5rem;
 }
 .calendar {
-  background: aquamarine;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
   text-align: center;
 }
 
@@ -129,20 +131,32 @@ body{
   grid-template-rows: repeat(5, 1fr);
   margin: auto;
 }
+.map-section{
+  padding: 10px 0;
+  align-self: center;
+}
+
 .map-section img{
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
-
+  border: 1px solid black;
 }
 .desks {
-  background: aqua;
   display: flex;
   flex-direction: column;
+  border-bottom: 2px solid black;
 }
 .desks h1{
   align-self: center;
+}
+.list-of-desks{
+  overflow-y: scroll;
+  max-height:580px;
+  margin: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
 }
 .desk-item{
   width: 95%;
@@ -152,8 +166,9 @@ body{
   justify-items: center;
   align-items: center;
   background: white;
-  border: grey;
+  border: 1px solid grey;
   border-radius: 5px;
+
 }
 .desk-item div{
   text-align: center;
@@ -177,9 +192,7 @@ body{
     width: auto;
     max-height: 80vh;
   }
-  .desk-item {
-    width: 70%;
-  }
+
   .myHeader section > span{
     display: inline;
     color: white;
@@ -201,6 +214,13 @@ body{
     padding: 0.5em;
     justify-self: right;
   }
+  .desks{
+    flex-direction: row;
+  }
+  .map-section{
+    width: 50%;
+  }
+
 
 }
 
