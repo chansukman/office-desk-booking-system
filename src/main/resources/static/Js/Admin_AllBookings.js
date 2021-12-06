@@ -99,6 +99,24 @@ function edited_booking(){
   window.location.replace("/admin/bookings")
 }
   
+// Sweet Alert
+
+function delete_Booking(){
+  swal({
+    title: "Are you sure you want to cancel the booking?",
+    // text: "Once deleted, you will not be able to recover this imaginary file!",
+    icon: "warning",
+    buttons: ["No", "Yes"],
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      swal("Booking has been canceled", {
+        icon: "success",
+      });
+    }
+  });
+}
   !(function (e, t) {
     "object" == typeof exports && "undefined" != typeof module
       ? t(exports, require("jquery"))

@@ -1,43 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
     <title>Template</title>
     <link rel="stylesheet" th:href="@{/styles/templateStyles.css}">
 
 </head>
 <body>
 <header th:fragment="header" class="myHeader">
-    <img src="/Images/BJSS_logo.png">
-    <section class="User" th:if="${User != null}">
-        <div class="user-item" th:each="user:${User}">
-            <h4>welcome!</h4>
-            <div  th:text="${user.getUser_id()}"></div>
-            <div th:text="${user.getFirst_name()}"></div>
-        </div>
-    </section>
     <ul>
+        <li><a href="/dashboard"><img src="/Images/BJSS_logo.png"></a></li>
         <li><a href="/dashboard">Home</a></li>
         <li><a href="/bookings">Book</a></li>
         <li><a href="/mybooking?id=24">My Bookings</a></li>
     </ul>
+    <section>
+        <span th:if="${User != null}" th:text="${User.getFirst_name()}"></span>
+        <button><a href="/login">Sign Out</a></button>
+    </section>
 
-    <button><a href="/login">sign out</a></button>
+
+
 </header>
 
 
-<footer th:fragment="footer" class="myFooter">
-    Footer content
-</footer>
-<script>
-    window.onload=function () {
-        let userId = document.getElementById("userId").innerText;
-        localStorage.setItem("userId", userId);
-        console.log(userId);
-    }
 
-</script>
+
 </body>
 
 </html>

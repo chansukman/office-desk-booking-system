@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head>
   <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
   <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
@@ -8,7 +8,6 @@
   <title>Login</title>
 </head>
 <body>
-<!--<header th:replace="mainTemplate :: header"></header>-->
 <div class="center-content" >
   <h1>Login</h1>
 
@@ -24,15 +23,14 @@
       <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
       <input type="submit" value="User LOGIN" formaction="/userlogin" class="inputButton1"  name="button"  />
       <input type="submit" value="Admin LOGIN" formaction="/admin/home" class="inputButton2" name="button" onclick="setToken()"/>
-      <a style="color: #9fcdff" href="https://github.com/login/oauth/authorize?client_id=acd4376fd4158e948c1a&redirect_uri=http://localhost:8080/dashboard">github login</a>
+
     </form>
+    <a style="color: #9fcdff" href="https://github.com/login/oauth/authorize?client_id=acd4376fd4158e948c1a&redirect_uri=http://localhost:8080/dashboard">github login</a>
   </div>
   </form>
 </div>
 
 
-
-<footer th:replace="mainTemplate :: footer"></footer>
 
 
 <script>
@@ -41,9 +39,5 @@
     localStorage.setItem("token",Date.now())
   }
 
-  window.onload=function (){
-    localStorage.removeItem("userId");
-  }
 </script>
-
 </body>
