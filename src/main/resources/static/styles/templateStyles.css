@@ -9,6 +9,7 @@
 }
 
 
+
 /*Fonts*/
 @font-face {
   font-family: "Poppins Medium", sans-serif;
@@ -17,28 +18,33 @@
 
 /*Template styles*/
 .myHeader {
-  width: 100%;
-  top: 0;
   background-image: linear-gradient(to right, #070000 33%, #1f1b1d 66%,  #2a292a 100%);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   font-size: 1.2em;
-  height: 90px;
-}
-.myHeader img{
-  height: 90px;
-  width: 170px;
-}
-.myHeader section{
-  color: white;
-  padding: 0.5em;
 
 }
+.myHeader img{
+  max-height: 50px;
+  padding: 5px;
+}
+.myHeader section{
+  justify-self: end;
+}
+.myHeader section > span{
+  display: none;
+}
+.myHeader li:nth-child(2), .myHeader li:nth-child(3){
+  display: none;
+}
 .myHeader ul {
+  grid-column: 1/3;
   display: flex;
   list-style: none;
-  padding: 0.5em;
+}
+.myHeader li {
+  align-self: center;
 }
 .myHeader a {
   text-decoration: none;
@@ -46,23 +52,26 @@
   padding: 0.5em;
 }
 .myHeader button{
+  width: auto;
+  height: 30px;
+  justify-self: end;
+  grid-column: 4/5;
+  margin-right: 20px;
   border-radius: 10px;
-  width: 90px;
-  height: 36px;
-}
-.myHeader button a{
-  color: black;
+  font-weight: bold;
+  border: 2px solid white;
+  color: white;
+  background: black;
 }
 
 .myFooter {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   background: lightgrey;
   text-align: center;
   padding: 0.5em 0;
   height: 2.5rem;
-
 }
 
 /*Buttons*/
@@ -90,7 +99,9 @@
 body{
   margin: 0;
   height: 100%;
+  background: rgb(248,248,255);
 }
+
 /* MEDIA QUERIES */
 
 /* mobile */
@@ -105,9 +116,8 @@ body{
   padding-bottom: 2.5rem;
 }
 .calendar {
-  border-start-start-radius: 15px;
-  border-start-end-radius: 15px;
-  background: #7a94bb;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
   text-align: center;
 }
 
@@ -121,6 +131,11 @@ body{
   grid-template-rows: repeat(5, 1fr);
   margin: auto;
 }
+.map-section{
+  padding: 10px 0;
+  align-self: center;
+}
+
 .map-section img{
   display: block;
   margin-left: auto;
@@ -128,26 +143,37 @@ body{
   width: 95%;
 }
 .desks {
-  background: #8eabd6;
   display: flex;
   flex-direction: column;
+  border-bottom: 2px solid black;
 }
 .desks h1{
   align-self: center;
+}
+.list-of-desks{
+  overflow-y: scroll;
+  max-height:580px;
+  margin: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
 }
 .desk-item{
   width: 95%;
   margin: 10px auto;
   display: grid;
-  grid-template-columns: repeat(5,1fr);
+  grid-template-columns: repeat(4,1fr);
   justify-items: center;
   align-items: center;
   background: white;
-  border: grey;
+  border: 1px solid grey;
   border-radius: 5px;
+
 }
 .desk-item div{
   text-align: center;
+}
+.desk-item div:nth-child(4){
+  display: none;
 }
 
 
@@ -158,20 +184,48 @@ body{
     width: 80%;
     margin: auto;
   }
+  .myHeader li:nth-child(2), .myHeader li:nth-child(3){
+    display: inline;
+  }
   .map-section img{
-    width: 80%;
+    width: auto;
+    max-height: 80vh;
   }
-  .desk-item {
-    width: 70%;
+
+  .myHeader section > span{
+    display: inline;
+    color: white;
   }
+  .desk-item{
+    grid-template-columns: repeat(5,1fr);
+  }
+  .desk-item div:nth-child(4){
+    display: inline;
+  }
+
 }
 
 /* Large tablets and laptops styles */
 @media screen and (min-width: 960px) {
+  .myHeader section{
+    display: inline;
+    color: white;
+    padding: 0.5em;
+    justify-self: right;
+  }
+  .desks{
+    flex-direction: row;
+  }
+  .map-section{
+    width: 50%;
+  }
+
 
 }
 
 /* Desktop */
 @media screen and (min-width: 1200px) {
-
+  .content-wrapper{
+    max-width: 1250px;
+  }
 }
