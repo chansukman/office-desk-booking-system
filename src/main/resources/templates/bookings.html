@@ -47,7 +47,7 @@
         </div>
 
         <!--            Dynamic content - only render desks after searching for desks-->
-        <h2 style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate}"></h2>
+        <h2 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate}"></h2>
         <h2 th:if="${unavailable != null}">Sorry, desk are not bookable at the weekends</h2>
         <section class="desks" th:if="${deskList != null}">
 
@@ -76,9 +76,7 @@
                         Location
                         <div th:text="${desk.getDesk_location()}"></div>
                     </div>
-                    <form th:attr="name=${desk.getDesk_number()}" action="/Home"
-                          th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}"
-                          onclick="return validate(this.name)">
+                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/21/' + ${desk.getDesk_id} +'/' +${inputDate}}" onsubmit="return validate(this.name)">
                         <button class="booking-button" type="submit">Book</button>
                     </form>
                 </div>
@@ -124,9 +122,9 @@
 
     function validate(deskNo){
         let office = document.getElementById("location").value;
-        let dateString = document.getElementById("desk-confirm-string").innerHTML;
-        let endIndex = dateString.indexOf(" in the ");
-        dateString = dateString.substring(19, endIndex);
+        let dateString = document.getElementById("location-date-confirm").innerHTML;
+        let endIndex = dateString.indexOf(", ");
+        dateString = dateString.substring(endIndex + 2);
         if(confirm("You are about to book Desk " + deskNo + " in " + office + " on " + dateString + ".\n\nWould you like to continue?")){
             return true;
         } else {
