@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>My Booking</title>
@@ -8,10 +8,10 @@
         <title>Template</title>
         <link rel="stylesheet" th:href="@{/styles/templateStyles.css}">
     <link rel="stylesheet" href="/styles/mybookingStyle.css">
-
+    <script type="text/javascript" th:src="@{/JS/cookies.js}"></script>
 
 </head>
-<body>
+<body onload="addUserNameToHeader()">
 <header th:replace="mainTemplate :: header"></header>
 
 
@@ -37,14 +37,7 @@
 <footer th:fragment="footer" class="myFooter">
     Footer content
 </footer>
-<script>
-    window.onload=function () {
-        let userId = document.getElementById("userId").innerText;
-        localStorage.setItem("userId", userId);
-        console.log(userId);
-    }
 
-</script>
 
 </body>
 </html>
