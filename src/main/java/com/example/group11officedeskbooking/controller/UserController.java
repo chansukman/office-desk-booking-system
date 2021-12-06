@@ -36,7 +36,6 @@ public class UserController {
                     String userId = user.getUser_id().toString();
                     Cookie myCookie = new Cookie("userId", userId);
                     response.addCookie(myCookie);
-                    System.out.println(user.getUser_id());
                     mav.setViewName("dashboard");
                     return mav;
 
