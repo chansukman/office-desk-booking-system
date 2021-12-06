@@ -2,6 +2,7 @@ package com.example.group11officedeskbooking.controller;
 import com.example.group11officedeskbooking.DTO.AdminDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.repository.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
@@ -23,13 +26,16 @@ public class UserController {
 
     @RequestMapping(path = "/userlogin", method = RequestMethod.POST)
 
-    public ModelAndView checkUser(UserDTO userDTO, AdminDTO adminDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
+    public ModelAndView checkUser(HttpServletResponse response, UserDTO userDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
         ModelAndView mav = new ModelAndView();
-        if (btn.equals("User LOGIN")) {
             try {
                 userRepository.checkByFirstnameAndPassword(username, password);
                 if (userDTO.getFirst_name().equals(username) && userDTO.getPassword().equals(password)) {
                     mav.addObject("User",userRepository.checkByFirstnameAndPassword(username,password));
+                    UserDTO user = (UserDTO) userRepository.checkByFirstnameAndPassword(username,password);
+                    String userId = user.getUser_id().toString();
+                    Cookie myCookie = new Cookie("userId", userId);
+                    response.addCookie(myCookie);
                     mav.setViewName("dashboard");
                     return mav;
 
@@ -39,12 +45,17 @@ public class UserController {
                 mav.setViewName("login");
                 return mav;
             }
-        }else if (btn.equals("Admin LOGIN"))
-        {
+        mav.setViewName("login");
+        return  mav;
+    }
+
+    @RequestMapping(path = "/admin/home", method = RequestMethod.POST)
+
+    public ModelAndView checkAdmin( AdminDTO adminDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
+        ModelAndView mav = new ModelAndView();
             try {
                 userRepository.checkAdminByFistnameAndPassword(username, password);
                 if (adminDTO.getFirst_name().equals(username) && adminDTO.getPassword().equals(password)) {
-
                     mav.addObject("Admin",userRepository.checkAdminByFistnameAndPassword(username,password));
                     mav.setViewName("Admin_Home");
                     return mav;
@@ -55,7 +66,6 @@ public class UserController {
                 return  mav;
             }
 
-        }
         mav.setViewName("login");
         return  mav;
     }

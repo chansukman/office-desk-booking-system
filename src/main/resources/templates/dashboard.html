@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
 </head>
@@ -9,32 +9,12 @@
 <div class="page-container">
     <header th:replace="mainTemplate :: header"></header>
     <h1>Dashboard</h1>
-    <section class="User" th:if="${User != null}" style="display: none">
-        <div class="user-item" th:each="user:${User}">
-            <h4>welcome!</h4>
-            <div id="userId" th:text="${user.getUser_id()}"></div>
-            <div th:text="${user.getFirst_name()}"></div>
-        </div>
-    </section>
     <a href="/bookings" class="navButton">Bookings</a>
 
-    <footer th:replace="mainTemplate :: footer"></footer>
 
 </div>
-<script>
-    window.onload = function() {
-        let userId = document.getElementById("userId").innerText;
-        localStorage.setItem("userId", userId);
-        if(!localStorage.getItem("userId")){
-            window.location.replace("/login")
-        }
-
-
-    };
-
-
-</script>
 </body>
+
 
 
 </html>

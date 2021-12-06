@@ -5,11 +5,13 @@ import com.example.group11officedeskbooking.repository.DeskRepository;
 import com.example.group11officedeskbooking.repository.MapRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -27,12 +29,13 @@ public class DeskController {
     }
 
     @RequestMapping(path = "/searchDate", method = RequestMethod.GET)
-    public ModelAndView searchDate(@RequestParam(value="date", defaultValue = "null") String searchDate,
+    public ModelAndView searchDate(@CookieValue(value = "userId",defaultValue = "null") String userId, @RequestParam(value="date", defaultValue = "null") String searchDate,
                                    @RequestParam(value="location", defaultValue = "null") String deskLocation){
+
         ModelAndView mav = new ModelAndView();
+        mav.setViewName("bookings");
         //Validation
         if(searchDate.equals("null") || deskLocation.equals("null")){
-            mav.setViewName("bookings");
             return mav;
         }
 
@@ -40,15 +43,20 @@ public class DeskController {
         DateFormatter prettyDate = new DateFormatter();
         String stringDate = prettyDate.formatDate(searchDate);
 
+        if(stringDate.charAt(0) == 'S'){
+            mav.addObject("unavailable", "Sorry, desks are not bookable at the weekend");
+            return mav;
+        }
+
         //Add map and desk to mav
         mav.addObject("map", mapRepo.searchMap(deskLocation));
         mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate, deskLocation));
 
+        mav.addObject("userId",userId);
         //Add aesthetic date
         mav.addObject("searchDate", stringDate);
         //Add original search date format
         mav.addObject("inputDate", searchDate);
-        mav.setViewName("bookings");
         return mav;
     }
 
