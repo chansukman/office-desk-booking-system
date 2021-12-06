@@ -196,6 +196,9 @@ body{
   .myHeader section > span{
     display: inline;
     color: white;
+    align-self: center;
+    padding-right: 5px;
+    vertical-align: middle;
   }
   .desk-item{
     grid-template-columns: repeat(5,1fr);
@@ -218,6 +221,9 @@ body{
     flex-direction: row;
   }
   .map-section{
+    width: 50%;
+  }
+  .list-of-desks{
     width: 50%;
   }
 
