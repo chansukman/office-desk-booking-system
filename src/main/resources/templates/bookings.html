@@ -49,13 +49,13 @@
             </div>
             <form action="/lottery" method="get">
                 <input type="hidden" name="search-date" th:attr="value=${inputDate}">
-                <input type="hidden" name="lotteryLocation" th:attr="value=${location}">
+                <input type="hidden" name="lotteryLocation" id="lotteryLocation" th:attr="value=${location}">
                 <button type="submit" class="submit-button">Enter Lottery</button>
             </form>
         </section>
 
         <section class="desks" th:if="${deskList != null}">
-
+            <input type="hidden" id="normalLocation" th:attr="value=${location}">
             <div class="map-section">
                 <div class="img-wrapper">
                     <img th:src="${map.getImage()}" alt="">
@@ -139,7 +139,15 @@
         return true;
     }
 
-
+    document.addEventListener("DOMContentLoaded", function(){
+        let location;
+        if(document.getElementById("lotteryLocation")){
+            location = document.getElementById("lotteryLocation").value;
+        }else{
+            location = document.getElementById("normalLocation").value;
+        }
+        document.getElementById("location").value = location;
+    });
 
 </script>
 </body>

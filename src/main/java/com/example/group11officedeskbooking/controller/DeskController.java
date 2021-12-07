@@ -63,7 +63,7 @@ public class DeskController {
         //Add map and desk to mav
         mav.addObject("map", mapRepo.searchMap(deskLocation));
         mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate, deskLocation));
-
+        mav.addObject("location", deskLocation);
         mav.addObject("userId",userId);
         //Add aesthetic date
         mav.addObject("searchDate", stringDate);
