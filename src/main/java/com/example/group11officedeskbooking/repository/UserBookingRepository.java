@@ -7,4 +7,6 @@ public interface UserBookingRepository {
     public boolean checkLotteryDay(String date, String location);
     public boolean addUserToLottery(String date, String location, int user_id);
     public boolean checkUserInLottery(String date, String location, int user_id);
+    public int checkNumberInLottery(String date, String location);
+    public int checkNumberInLocation(String location);
 }

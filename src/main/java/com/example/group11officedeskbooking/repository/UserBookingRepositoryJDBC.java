@@ -71,4 +71,21 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
         return rows > 0;
     }
 
+    @Override
+    public int checkNumberInLottery(String date, String location){
+        int rows = jdbcTemplate.queryForObject(
+                "select count(*) from lottery where date=? and location=?",
+                Integer.class, new Object[]{date, location});
+
+        return rows;
+    }
+
+    @Override
+    public int checkNumberInLocation(String location){
+        int rows = jdbcTemplate.queryForObject(
+                "select count(*) from desk where desk_location=?",
+                Integer.class, new Object[]{location});
+        return rows;
+    }
+
 }

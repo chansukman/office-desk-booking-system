@@ -81,6 +81,7 @@ public class DeskController {
         if(!userRepo.checkUserInLottery(searchDate, deskLocation, userID)){
             if(userRepo.addUserToLottery(searchDate, deskLocation, userID)){
                 mav.addObject("lottery", deskLocation);
+                mav.addObject("numberInLottery", userRepo.checkNumberInLottery(searchDate, deskLocation));
             }
         }else{
             mav.addObject("lotteryFail", deskLocation);

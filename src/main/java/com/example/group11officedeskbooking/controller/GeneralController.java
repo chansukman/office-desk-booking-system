@@ -90,4 +90,11 @@ public class GeneralController {
         return mav;
     }
 
+    @RequestMapping(path = "/admin/lottery")
+    public ModelAndView adminLottery(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_Lottery");
+        return mav;
+    }
+
 }
