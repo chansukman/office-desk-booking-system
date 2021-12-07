@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 /* Showing the delete and update icons when hovering inside the booking table */
-div:hover .icons{
+.record-item:hover .icons{
     opacity: 1;
 }
 
