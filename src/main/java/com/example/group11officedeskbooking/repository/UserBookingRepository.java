@@ -9,4 +9,5 @@ public interface UserBookingRepository {
     public boolean checkUserInLottery(String date, String location, int user_id);
     public int checkNumberInLottery(String date, String location);
     public int checkNumberInLocation(String location);
+    public boolean checkIfUserHasBooking(String date, int user_id);
 }

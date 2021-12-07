@@ -55,6 +55,14 @@ public class DeskController {
             return mav;
         }
 
+        //Check if user already has a desk that day
+
+        if(userRepo.checkIfUserHasBooking(searchDate, Integer.parseInt(userId))){
+            mav.addObject("doubleBooking", stringDate);
+            return mav;
+        }
+
+        //Check if weekend
         if(stringDate.charAt(0) == 'S'){
             mav.addObject("unavailable", "Sorry, desks are not bookable at the weekend");
             return mav;

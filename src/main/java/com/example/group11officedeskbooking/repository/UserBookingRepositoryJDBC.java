@@ -77,7 +77,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 "select count(*) from lottery where date=? and location=?",
                 Integer.class, new Object[]{date, location});
 
-        return rows;
+        return rows - 1;
     }
 
     @Override
@@ -86,6 +86,14 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 "select count(*) from desk where desk_location=?",
                 Integer.class, new Object[]{location});
         return rows;
+    }
+
+    @Override
+    public boolean checkIfUserHasBooking(String date, int user_id){
+        int rows = jdbcTemplate.queryForObject(
+                "select count(*) from booking where booking_date=? and User_user_id=?",
+                Integer.class, new Object[]{date, user_id});
+        return rows > 0;
     }
 
 }

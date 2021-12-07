@@ -55,6 +55,11 @@
             </form>
         </section>
 
+        <section th:if="${doubleBooking != null}">
+            <h3 th:text="'It looks like you\'ve already book a desk for ' + ${doubleBooking}"></h3>
+            <div>To keep things fair users are only allowed to book one desk per day. If you think this is a mistake please contact your office administrator.</div>
+        </section>
+
         <section class="desks" th:if="${deskList != null}">
             <input type="hidden" id="normalLocation" th:attr="value=${location}">
             <div class="map-section">
