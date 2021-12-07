@@ -14,30 +14,37 @@
 <body onload="addUserNameToHeader()">
 <header th:replace="mainTemplate :: header"></header>
 
+<div class="record">
+    <h1 class="linestyle">My booking record</h1>
+
+    <div class="list-of-record">
+        <div class="record-item" th:each="booking: ${bookingList}">
+            <div>
+                Booking Number
+                <div th:text="${booking.getId()}" ></div>
+            </div>
+            <div>
+                Desk Number
+                <div th:text="${booking.getDeskID()}"></div>
+            </div>
+            <div>
+                City
+                <div th:text="${booking.getDate()}"></div>
+            </div>
+            <div>
+                Booking Date
+                <div th:text="${booking.getCity()}"></div>
+            </div>
+            <div>
+                <img class="icons"  src="../Images/delete.png" alt="delete">
+            </div>
+            <div>
+                <img class="icons"  src="../Images/schedule.png" alt="update">
+            </div>
 
 
-<table>
-    <tr>
-
-        <td class="table_header f">Booking Number</td>
-        <br><td class="table_header">Desk Number</td>
-        <br><td class="table_header">City</td>
-        <br><td class="table_header"> Booking Date</td>
-
-    </tr>
-    <tr th:each="booking: ${bookingList}">
-        <td class="main-list" th:text="${booking.getId()}" > </td>
-        <td class="main-list" th:text="${booking.getDeskID()}"></td>
-        <td class="main-list" th:text="${booking.getDate()}"></td>
-        <td class="main-list" th:text="${booking.getCity()}"></td>
-        <td> <img class="icons"  src="../Images/delete.png" alt="delete"> </td>
-        <td><img class="icons"  src="../Images/schedule.png" alt="update"></td>
-    </tr>
-</table>
-<footer th:fragment="footer" class="myFooter">
-    Footer content
-</footer>
-
-
+        </div>
+    </div>
+</div>
 </body>
 </html>
