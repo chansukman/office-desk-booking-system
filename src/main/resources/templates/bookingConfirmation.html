@@ -9,11 +9,11 @@
 <body onload="addUserNameToHeader()">
 <div class="page-container">
     <header th:replace="mainTemplate :: header"></header>
-    <h1 th:text="${booking != null} or ${lottery != null} ? 'Booking Confirmation' : 'We couldn't process your booking'"></h1>
+    <h1 th:text="${booking != null} or ${lottery != null} ? 'Booking Confirmation' : 'We couldn\'t process your booking'"></h1>
     <div>
         <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
-        <span th:if="${lottery != null}" th:text="'Success! You have entered the lottery for ' + ${date} + ' in ' + ${lottery}">
-            <div th:text="${numberInLottery}"></div>
+        <span th:if="${lottery != null}" th:text="'Success! You have entered the lottery for ' + ${date} + ' in ' +
+        ${lottery} +', there are currently ' + ${numberInLottery} + ' people in the lottery for ' + ${date}">
         </span>
         <div th:if="${lotteryFail != null}" th:text="'Uh oh! It looks like you are already in the lottery for ' + ${date} + ' in ' + ${lotteryFail} + '. You can only enter the lottery once for each day.'"></div>
         <br><br>

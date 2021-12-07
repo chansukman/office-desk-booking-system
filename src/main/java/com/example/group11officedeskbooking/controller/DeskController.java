@@ -81,10 +81,12 @@ public class DeskController {
         if(!userRepo.checkUserInLottery(searchDate, deskLocation, userID)){
             if(userRepo.addUserToLottery(searchDate, deskLocation, userID)){
                 mav.addObject("lottery", deskLocation);
-                mav.addObject("numberInLottery", userRepo.checkNumberInLottery(searchDate, deskLocation));
+                String numberInLottery = Integer.toString(userRepo.checkNumberInLottery(searchDate, deskLocation));
+                mav.addObject("numberInLottery", numberInLottery);
+                System.out.println(userRepo.checkNumberInLottery(searchDate, deskLocation));
             }
         }else{
-            mav.addObject("lotteryFail", deskLocation);
+            mav.addObject("lotteryFail", (deskLocation));
         }
         mav.addObject("date", prettyDate.formatDate(searchDate));
         mav.setViewName("bookingConfirmation");
