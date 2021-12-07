@@ -20,6 +20,7 @@ public class UserBookingController {
     public UserBookingController(UserBookingRepository uRepo){
         bookingRepo = uRepo;
     }
+
     //Http get request from localhost with the user ID routing
     @RequestMapping(path = "/mybooking", method = RequestMethod.GET)
     public ModelAndView search(@RequestParam(value = "id") int id ){

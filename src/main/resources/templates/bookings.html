@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
     <title>Bookings</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
+    <script type="text/javascript" th:src="@{/JS/cookies.js}"></script>
 </head>
-<body  onload="setCalendarDates()">
+<body  onload="setCalendarDates(); addUserNameToHeader()">
 
 <div class="page-container">
     <header th:replace="mainTemplate :: header">

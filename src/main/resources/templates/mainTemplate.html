@@ -16,7 +16,7 @@
         <li><a href="/mybooking?id=24">My Bookings</a></li>
     </ul>
     <section>
-        <span th:if="${User != null}" th:text="${User.getFirst_name()}"></span>
+        <span id="user-name"></span>
         <button><a href="/login">Sign Out</a></button>
     </section>
 
