@@ -7,6 +7,7 @@ import com.example.group11officedeskbooking.model.UserBookingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.validation.ObjectError;
 
 import java.util.List;
 @Repository
@@ -44,6 +45,14 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 "SELECT Booking.booking_date, Desk.desk_number, Desk.desk_location from Booking Inner Join Desk ON Booking.Desk_desk_id = Desk.desk_id where booking_date=? and Desk_desk_id=?",
                 new BookingMapper(),
                 new Object[]{date, desk_id});
+    }
+
+    @Override
+    public boolean checkLotteryDay(String date, String location){
+        int row = jdbcTemplate.queryForObject(
+                "select count(*) from lottery where date=? and location=?",
+                Integer.class, new Object[]{date, location});
+        return row > 0;
     }
 
 }

@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
     <title>Bookings</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body  onload="setCalendarDates()">
 
@@ -44,6 +43,17 @@
         <!--            Dynamic content - only render desks after searching for desks-->
         <h2 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate}"></h2>
         <h2 th:if="${unavailable != null}">Sorry, desk are not bookable at the weekends</h2>
+        <section th:if="${lotteryDay != null}">
+            <h2>It looks like you've selected a high traffic day</h2>
+            <div th:text="'On high traffic days desks are assigned on a lottery basis. If you\'d like to enter the lottery for ' + ${lotteryDay} + ' please press the button below.'">
+            </div>
+            <form action="/lottery" method="get">
+                <input type="hidden" name="search-date" th:attr="value=${inputDate}">
+                <input type="hidden" name="lotteryLocation" th:attr="value=${location}">
+                <button type="submit" class="submit-button">Enter Lottery</button>
+            </form>
+        </section>
+
         <section class="desks" th:if="${deskList != null}">
 
             <div class="map-section">
@@ -127,8 +137,8 @@
             return false;
         }
         return true;
-
     }
+
 
 
 </script>
