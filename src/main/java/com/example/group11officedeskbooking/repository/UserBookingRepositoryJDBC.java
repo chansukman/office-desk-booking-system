@@ -49,10 +49,26 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
 
     @Override
     public boolean checkLotteryDay(String date, String location){
-        int row = jdbcTemplate.queryForObject(
+        int rows = jdbcTemplate.queryForObject(
                 "select count(*) from lottery where date=? and location=?",
                 Integer.class, new Object[]{date, location});
-        return row > 0;
+        return rows > 0;
+    }
+
+    public boolean addUserToLottery(String date, String location, int user_id){
+        int rows = jdbcTemplate.update(
+                "insert into lottery values(?, ?, ?)",
+                new Object[]{date, user_id, location});
+        return rows > 0;
+    }
+
+    @Override
+    public boolean checkUserInLottery(String date, String location, int user_id){
+        int rows =jdbcTemplate.queryForObject(
+                "select count(*) from lottery where date=? and location=? and user_id=?",
+                Integer.class, new Object[]{date, location, user_id}
+        );
+        return rows > 0;
     }
 
 }

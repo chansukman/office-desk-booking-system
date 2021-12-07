@@ -76,8 +76,19 @@ public class DeskController {
     public ModelAndView enterLottery(@CookieValue(value = "userId",defaultValue = "null") String userId, @RequestParam(value="search-date", defaultValue = "null") String searchDate,
                                      @RequestParam(value="lotteryLocation", defaultValue = "null") String deskLocation){
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("bookings");
+        int userID = Integer.parseInt(userId);
+        DateFormatter prettyDate = new DateFormatter();
+        if(!userRepo.checkUserInLottery(searchDate, deskLocation, userID)){
+            if(userRepo.addUserToLottery(searchDate, deskLocation, userID)){
+                mav.addObject("lottery", deskLocation);
+            }
+        }else{
+            mav.addObject("lotteryFail", deskLocation);
+        }
+        mav.addObject("date", prettyDate.formatDate(searchDate));
+        mav.setViewName("bookingConfirmation");
         return mav;
+
     }
 
 }
