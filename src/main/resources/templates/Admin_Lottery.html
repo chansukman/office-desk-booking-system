@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -339,13 +339,34 @@
             <div class="col-lg-10 col-md-9 col-sm-10 col-xs-10" style="margin: 0 auto; float: none;">
                 <div class="card">
                     <div class="card-header" style="text-align: center";>
-                        <h1>Please select the day and location for the lottery day</h1>
+                        <h1>Lottery</h1>
                     </div>
                         <!-- <div class="search-container">
                           <input class="placeholder" type="text" placeholder="Search.." name="search">
                           <button type="submit"><i class="fa fa-search"></i></button>
                         </div> -->
-                    <div class="card-body col-lg-10 md-9 sm-10">
+
+                      <div class="card-body table-responsive p-5">
+                        <table id="Table" class="table table-hover text-nowrap">
+                          <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Number of Participants</th>
+                          </tr>
+                          </thead>
+                          <tr th:each="lotteryDay:${lotteryDays}">
+                            <td th:text="${lotteryDay.getDate()}"></td>
+                            <td th:text="${lotteryDay.getLocation()}"></td>
+                            <td th:text="${lotteryDay.getNumUsers()}"></td>
+                          </tr>
+                          <tr th:if="${lotteryDays == null}">
+                            <td> No Booking Available </td>
+                          </tr>
+                        </table>
+                      </div>
+                  <div class="card-body col-lg-10 md-9 sm-10">
+                      <h2>Add new lottery day</h2>
                       <form action="/lotteryCreation" name="lotteryForm" method="get">
 
                         <label for="date"
@@ -353,20 +374,19 @@
                         >
                         <input id="date" name="date" type="date"/><br>
                         <label for="location">
-                          Office location:<br>
+                          Office location:
                           <select name="location" id="location">
                             <option value="Bristol">Bristol</option>
                             <option value="Cardiff">Cardiff</option>
                           </select>
-                          <br>
                         </label>
+                        <br>
                         <input type="submit" class="submit-button">
                       </form>
-                    </div>
-                  <div class="card-comments" style="text-align: center";>
                     <div th:if="${success != null}">Successfully added lottery day</div>
                     <div th:if="${preExisting != null}">Lottery day has already been assigned</div>
                   </div>
+
                     <!-- /.card-body -->
                 </div>
                 <!-- card -->

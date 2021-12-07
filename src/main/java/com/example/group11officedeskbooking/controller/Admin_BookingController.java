@@ -1,5 +1,6 @@
 package com.example.group11officedeskbooking.controller;
 
+import com.example.group11officedeskbooking.DTO.LotteryDTO;
 import com.example.group11officedeskbooking.repository.Admin_BookingRepository;
 import com.example.group11officedeskbooking.repository.UserBookingRepository;
 import com.example.group11officedeskbooking.repository.UserRepository;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class Admin_BookingController {
@@ -34,6 +36,17 @@ public class Admin_BookingController {
         return mav;
     }
 
+    @RequestMapping(path = "/admin/lottery")
+    public ModelAndView adminLottery(ModelAndView mav){
+        List<LotteryDTO> lotteryDays = admin_bookingRepository.getAllLotteryDays();
+        for(LotteryDTO lotteryDTO: lotteryDays){
+            lotteryDTO.setNumUsers(userRepo.checkNumberInLottery(lotteryDTO.getDate(), lotteryDTO.getLocation()));
+        }
+        mav.addObject("lotteryDays", lotteryDays);
+        mav.setViewName("Admin_Lottery");
+        return mav;
+    }
+
     @RequestMapping(path = "/lotteryCreation", method = RequestMethod.GET)
     public ModelAndView createLotteryDay(@RequestParam(value="date", defaultValue = "null") String searchDate,
                                          @RequestParam(value="location", defaultValue = "null") String deskLocation){
@@ -49,7 +62,7 @@ public class Admin_BookingController {
         else if(userRepo.checkUserInLottery(searchDate, deskLocation, 1)){
             mav.addObject("preExisting", lotteryInfo);
         }
-        mav.setViewName("Admin_Lottery");
+        mav.setViewName("redirect:/admin/lottery");
         return mav;
     }
 
