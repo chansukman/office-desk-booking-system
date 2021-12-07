@@ -38,7 +38,7 @@ public class UserController {
                     Cookie userName = new Cookie("userName", user.getFirst_name());
                     response.addCookie(userID);
                     response.addCookie(userName);
-                    mav.setViewName("dashboard");
+                    mav.setViewName("allbooking");
                     return mav;
 
                 }

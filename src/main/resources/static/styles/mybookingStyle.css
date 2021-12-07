@@ -1,4 +1,6 @@
-
+.linestyle {
+    border-bottom: 2px solid black;
+}
 table {
     border-spacing: 0.0rem;
 }
