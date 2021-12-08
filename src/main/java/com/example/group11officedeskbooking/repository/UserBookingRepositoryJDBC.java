@@ -1,12 +1,14 @@
 package com.example.group11officedeskbooking.repository;
 
 import com.example.group11officedeskbooking.DTO.BookingDTO;
+import com.example.group11officedeskbooking.DTO.DeskDTO;
+import com.example.group11officedeskbooking.DTO.LotteryDTO;
 import com.example.group11officedeskbooking.DTO.UserBookingDTO;
-import com.example.group11officedeskbooking.model.BookingMapper;
-import com.example.group11officedeskbooking.model.UserBookingMapper;
+import com.example.group11officedeskbooking.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.validation.ObjectError;
 
 import java.util.List;
 @Repository
@@ -45,5 +47,78 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 new BookingMapper(),
                 new Object[]{date, desk_id});
     }
+
+    @Override
+    public boolean checkLotteryDay(String date, String location){
+        int rows = jdbcTemplate.queryForObject(
+                "select count(*) from lottery where date=? and location=?",
+                Integer.class, new Object[]{date, location});
+        return rows > 0;
+    }
+
+    public boolean addUserToLottery(String date, String location, int user_id){
+        int rows = jdbcTemplate.update(
+                "insert into lottery(date, location, user_id) values(?, ?, ?)",
+                new Object[]{date, location, user_id});
+        return rows > 0;
+    }
+
+    @Override
+    public boolean checkUserInLottery(String date, String location, int user_id){
+        int rows =jdbcTemplate.queryForObject(
+                "select count(*) from lottery where date=? and location=? and user_id=?",
+                Integer.class, new Object[]{date, location, user_id}
+        );
+        return rows > 0;
+    }
+
+    @Override
+    public int checkNumberInLottery(String date, String location){
+        int rows = jdbcTemplate.queryForObject(
+                "select count(*) from lottery where date=? and location=?",
+                Integer.class, new Object[]{date, location});
+
+        return rows - 1;
+    }
+
+    @Override
+    public int checkNumberInLocation(String location){
+        int rows = jdbcTemplate.queryForObject(
+                "select count(*) from desk where desk_location=?",
+                Integer.class, new Object[]{location});
+        return rows;
+    }
+
+    @Override
+    public boolean checkIfUserHasBooking(String date, int user_id){
+        int rows = jdbcTemplate.queryForObject(
+                "select count(*) from booking where booking_date=? and User_user_id=?",
+                Integer.class, new Object[]{date, user_id});
+        return rows > 0;
+    }
+
+    @Override
+    public List<LotteryDTO> getAllUsersInLottery(String date, String location){
+        return jdbcTemplate.query(
+                "select * from lottery where date=? and location=? order by user_id",
+                new LotteryMapperUserId(),
+                new Object[]{date, location});
+    }
+
+    @Override
+    public List<DeskDTO> getAllDeskIdInLocation(String location){
+        return jdbcTemplate.query(
+                "select desk_id from Desk where desk_location=?",
+                new DeskIdMapper(),
+                new Object[]{location});
+    }
+
+    @Override
+    public void resolveLottery(String date, String location){
+        jdbcTemplate.update(
+                "update lottery set resolved=true where date=? and location=?",
+                new Object[]{date, location});
+    }
+
 
 }
