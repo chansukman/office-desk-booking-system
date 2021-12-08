@@ -44,8 +44,24 @@
         <!--            Dynamic content - only render desks after searching for desks-->
         <h2 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate}"></h2>
         <h2 th:if="${unavailable != null}">Sorry, desk are not bookable at the weekends</h2>
-        <section class="desks" th:if="${deskList != null}">
+        <section th:if="${lotteryDay != null}">
+            <h2>It looks like you've selected a high traffic day</h2>
+            <div id="lottery-confirm" th:text="'On high traffic days desks are assigned on a lottery basis. If you\'d like to enter the lottery for ' + ${lotteryDay} + ' please press the button below.'">
+            </div>
+            <form action="/lottery" method="get" onsubmit="return validateLottery()">
+                <input type="hidden" name="search-date" th:attr="value=${inputDate}">
+                <input type="hidden" name="lotteryLocation" id="lotteryLocation" th:attr="value=${location}">
+                <button type="submit" class="submit-button">Enter Lottery</button>
+            </form>
+        </section>
 
+        <section th:if="${doubleBooking != null}">
+            <h3 th:text="'It looks like you\'ve already book a desk for ' + ${doubleBooking}"></h3>
+            <div>To keep things fair users are only allowed to book one desk per day. If you think this is a mistake please contact your office administrator.</div>
+        </section>
+
+        <section class="desks" th:if="${deskList != null}">
+            <input type="hidden" id="normalLocation" th:attr="value=${location}">
             <div class="map-section">
                 <div class="img-wrapper">
                     <img th:src="${map.getImage()}" alt="">
@@ -71,7 +87,7 @@
                         Location
                         <div th:text="${desk.getDesk_location()}"></div>
                     </div>
-                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/' + ${userId} + '/' + ${desk.getDesk_id} +'/' +${inputDate}}" onsubmit="return validate(this.name)">
+                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/' + ${userId} + '/' + ${desk.getDesk_id} +'/' +${inputDate}}" onsubmit="return validateBooking(this.name)">
                         <button class="booking-button" type="submit">Book</button>
                     </form>
                 </div>
@@ -80,8 +96,6 @@
     </div>
 
 </div>
-
-
 
 <script>
 
@@ -108,7 +122,7 @@
         return year + '-' + month + '-' + day;
     }
 
-    function validate(deskNo){
+    function validateBooking(deskNo){
         let office = document.getElementById("location").value;
         let dateString = document.getElementById("location-date-confirm").innerHTML;
         let endIndex = dateString.indexOf(", ");
@@ -129,9 +143,29 @@
             return false;
         }
         return true;
-
     }
 
+    document.addEventListener("DOMContentLoaded", function(){
+        let location;
+        if(document.getElementById("lotteryLocation")){
+            location = document.getElementById("lotteryLocation").value;
+        }else{
+            location = document.getElementById("normalLocation").value;
+        }
+        document.getElementById("location").value = location;
+    });
+
+    function validateLottery(){
+        let office = document.getElementById("location").value;
+        let dateString = document.getElementById("lottery-confirm").innerHTML;
+        let endIndex = dateString.indexOf(" please");
+        dateString = dateString.substring(98, endIndex);
+        if(confirm("You are about to enter the lottery for " + dateString + " in " + office + ".\n\nWould you like to continue?")){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 </script>
 </body>

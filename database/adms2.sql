@@ -68,10 +68,22 @@ INSERT INTO `Admin` VALUES(1,'admin','admin','admin@cardiff.ac.uk','management',
 
 DROP TABLE IF EXISTS `Maps`;
 CREATE TABLE `Maps`(
-                       `map_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                       `location` varchar(50) NOT NULL,
-                       `image` varchar(50) NOT NULL
+   `map_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `location` varchar(50) NOT NULL,
+   `image` varchar(50) NOT NULL
 );
 
 INSERT INTO `maps`(location, image) VALUES ('Bristol', '/Images/bristol_numbered.PNG'), ('Cardiff', '/Images/Cardiff_numbered.jpg');
+
+DROP TABLE IF EXISTS `Lottery`;
+CREATE TABLE `Lottery`(
+    `date` date NOT NULL,
+    `user_id` int NOT NULL,
+    `location` varchar(50) NOT NULL,
+    `resolved` boolean default false
+);
+
+
+    
+
 
