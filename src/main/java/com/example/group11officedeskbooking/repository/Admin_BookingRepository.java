@@ -8,4 +8,5 @@ import java.util.List;
 public interface Admin_BookingRepository{
     List<Admin_BookingDTO> findAll();
     public List<LotteryDTO> getAllLotteryDays();
+    int deleteById(int id);
 }

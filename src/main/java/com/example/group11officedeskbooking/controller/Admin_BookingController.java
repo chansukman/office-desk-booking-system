@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Optional;
+
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,5 +100,18 @@ public class Admin_BookingController {
         mav.setViewName("redirect:/admin/lottery");
         return mav;
     }
+
+    // Deleting All Bookings
+
+    @RequestMapping(path = "admin/bookings/delete/{booking_id}")
+    public ModelAndView deleteBooking(@PathVariable Optional<String> booking_id) {
+        int id = Integer.parseInt(booking_id.get());
+        ModelAndView mav = new ModelAndView();
+        admin_bookingRepository.deleteById(id);
+        mav.addObject("adminBookingList", admin_bookingRepository.findAll());
+        mav.setViewName("Admin_AllBookings");
+        return mav;
+    }
+
 
 }
