@@ -72,7 +72,8 @@ public class Admin_BookingController {
             lotteryWinners.add(lotteryContestants.get(randomIndex));
             lotteryContestants.remove(randomIndex);
             userRepo.addBooking(lotteryWinners.get(i).getUser_id(), lotteryWinners.get(i).getDate(), desksInLocation.get(i).getDesk_id());
-            System.out.println("Winner = " + lotteryWinners.get(i));
+            System.out.println("Winner = " + lotteryWinners.get(i).getUser_id());
+            System.out.println("i = " + i);
         }
         mav.addObject(lotteryWinners);
         mav.setViewName("redirect:/admin/lottery");
