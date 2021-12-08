@@ -2,6 +2,7 @@ package com.example.group11officedeskbooking.controller;
 
 import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.LotteryDTO;
+import com.example.group11officedeskbooking.DTO.Admin_BookingDTO;
 import com.example.group11officedeskbooking.repository.Admin_BookingRepository;
 import com.example.group11officedeskbooking.repository.UserBookingRepository;
 import com.example.group11officedeskbooking.repository.UserRepository;
@@ -9,6 +10,9 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.xml.crypto.Data;
+import java.util.Date;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -23,7 +27,6 @@ import static java.lang.Math.min;
 public class Admin_BookingController {
 
     private final Admin_BookingRepository admin_bookingRepository;
-    private UserBookingRepository userRepo;
 
     @Autowired
     public Admin_BookingController(Admin_BookingRepository admin_bookingRepository, UserBookingRepository userRepo) {
@@ -101,4 +104,13 @@ public class Admin_BookingController {
         return mav;
     }
 
+    // Editing All Bookings
+
+    @RequestMapping(path = "admin/bookings/edit", method = RequestMethod.PUT)
+    public ModelAndView editBooking(@RequestBody Admin_BookingDTO admin_bookingDTO) {
+        ModelAndView mav = new ModelAndView("redirect:/");
+        admin_bookingRepository.update_records(admin_bookingDTO);
+        mav.setViewName("editBooking");
+        return mav;
+    }
 }
