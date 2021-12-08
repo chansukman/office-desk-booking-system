@@ -17,4 +17,5 @@ public interface UserBookingRepository {
     public boolean checkIfUserHasBooking(String date, int user_id);
     public List<LotteryDTO> getAllUsersInLottery(String date, String location);
     public List<DeskDTO> getAllDeskIdInLocation(String location);
+    public void resolveLottery(String date, String location);
 }

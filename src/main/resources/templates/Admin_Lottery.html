@@ -355,12 +355,12 @@
                             <th>Number of Participants</th>
                           </tr>
                           </thead>
-                          <tr th:each="lotteryDay:${lotteryDays}">
+                          <tr th:each="lotteryDay:${lotteryDays}" th:unless="${lotteryDay.isResolved()}">
                             <td th:text="${lotteryDay.getDate()}"></td>
-                            <td th:text="${lotteryDay.getDate()}"></td>
+                            <td th:text="${lotteryDay.getLocation()}"></td>
                             <td th:text="${lotteryDay.getNumUsers()}"></td>
                             <td>
-                              <form th:attr="name=${lotteryDay.getDate()} + '&' +${lotteryDay.getDate()}" action="/Home" th:action="@{'/admin/lottery/' + ${lotteryDay.getLocation()} + '/' + ${lotteryDay.getDate()} }">
+                              <form th:attr="name=${lotteryDay.getDate()} + ' ' +${lotteryDay.getLocation()}" action="/Home" th:action="@{'/admin/lottery/' + ${lotteryDay.getLocation()} + '/' + ${lotteryDay.getDate()} }" onsubmit="return validateResolve(this.name)">
                                 <button class="booking-button" type="submit">Resolve</button>
                               </form>
                             </td>
@@ -435,5 +435,17 @@
 <script src="/JS/Admin_Calendar_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_Calendar.js"></script>
+
+<script>
+
+  function validateResolve(dateLocation){
+    let dateLocationArray = dateLocation.split(' ');
+    if(confirm('You are about to resolve the lottery for ' + dateLocationArray[0] + ' in ' + dateLocationArray[1] + '.\n\nWould you like to continue?')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
 </body>
 </html>

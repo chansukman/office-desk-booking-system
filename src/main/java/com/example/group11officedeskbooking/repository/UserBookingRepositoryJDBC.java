@@ -58,8 +58,8 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
 
     public boolean addUserToLottery(String date, String location, int user_id){
         int rows = jdbcTemplate.update(
-                "insert into lottery values(?, ?, ?)",
-                new Object[]{date, user_id, location});
+                "insert into lottery(date, location, user_id) values(?, ?, ?)",
+                new Object[]{date, location, user_id});
         return rows > 0;
     }
 
@@ -101,7 +101,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     public List<LotteryDTO> getAllUsersInLottery(String date, String location){
         return jdbcTemplate.query(
                 "select * from lottery where date=? and location=? order by user_id",
-                new LotteryMapper(),
+                new LotteryMapperUserId(),
                 new Object[]{date, location});
     }
 
@@ -111,6 +111,13 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 "select desk_id from Desk where desk_location=?",
                 new DeskIdMapper(),
                 new Object[]{location});
+    }
+
+    @Override
+    public void resolveLottery(String date, String location){
+        jdbcTemplate.update(
+                "update lottery set resolved=true where date=? and location=?",
+                new Object[]{date, location});
     }
 
 

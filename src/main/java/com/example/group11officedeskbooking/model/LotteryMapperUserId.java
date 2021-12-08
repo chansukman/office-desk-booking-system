@@ -6,13 +6,12 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LotteryMapper implements RowMapper {
-
+public class LotteryMapperUserId implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new LotteryDTO(rs.getString("date"),
-                rs.getString("location"),
-                rs.getBoolean("resolved")
-                );
+                rs.getInt("user_id"),
+                rs.getString("location")
+        );
     }
 }

@@ -17,6 +17,7 @@ import java.util.Optional;
 import java.util.Random;
 
 import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 @RestController
 public class Admin_BookingController {
@@ -56,9 +57,8 @@ public class Admin_BookingController {
         //Initialise required variables
         String inputLocation = location.get();
         String inputDate = date.get();
-        List<LotteryDTO> lotteryContestants = userRepo.getAllUsersInLottery(inputDate, inputLocation);
-        Random rand = new Random();
-        int numWinners = max(userRepo.checkNumberInLocation(inputLocation), lotteryContestants.size() - 1);
+        List<LotteryDTO> lotteryContestants = userRepo.getAllUsersInLottery(inputDate, inputLocation);        Random rand = new Random();
+        int numWinners = min(userRepo.checkNumberInLocation(inputLocation), lotteryContestants.size() - 1);
         List<LotteryDTO> lotteryWinners = new ArrayList<LotteryDTO>();
         List<DeskDTO> desksInLocation = userRepo.getAllDeskIdInLocation(inputLocation);
 
@@ -72,9 +72,8 @@ public class Admin_BookingController {
             lotteryWinners.add(lotteryContestants.get(randomIndex));
             lotteryContestants.remove(randomIndex);
             userRepo.addBooking(lotteryWinners.get(i).getUser_id(), lotteryWinners.get(i).getDate(), desksInLocation.get(i).getDesk_id());
-            System.out.println("Winner = " + lotteryWinners.get(i).getUser_id());
-            System.out.println("i = " + i);
         }
+        userRepo.resolveLottery(inputDate, inputLocation);
         mav.addObject(lotteryWinners);
         mav.setViewName("redirect:/admin/lottery");
         return mav;

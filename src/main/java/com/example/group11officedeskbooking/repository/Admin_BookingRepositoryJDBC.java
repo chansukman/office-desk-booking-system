@@ -31,7 +31,7 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
     @Override
     public List<LotteryDTO> getAllLotteryDays(){
         return jdbcTemplate.query(
-                "select distinct date, location from lottery order by date",
+                "select distinct date, location, resolved from lottery order by date",
                 new LotteryMapper());
     }
 }
