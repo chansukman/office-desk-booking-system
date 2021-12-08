@@ -1,7 +1,21 @@
 package com.example.group11officedeskbooking.repository;
 
+import com.example.group11officedeskbooking.DTO.DeskDTO;
+import com.example.group11officedeskbooking.DTO.LotteryDTO;
+
+import java.util.List;
+
 public interface UserBookingRepository {
     public Object findBookingByUserId(int id);
     public boolean addBooking(int user_id, String date, int desk_id);
     public Object getUniqueBooking(String date, int desk_id);
+    public boolean checkLotteryDay(String date, String location);
+    public boolean addUserToLottery(String date, String location, int user_id);
+    public boolean checkUserInLottery(String date, String location, int user_id);
+    public int checkNumberInLottery(String date, String location);
+    public int checkNumberInLocation(String location);
+    public boolean checkIfUserHasBooking(String date, int user_id);
+    public List<LotteryDTO> getAllUsersInLottery(String date, String location);
+    public List<DeskDTO> getAllDeskIdInLocation(String location);
+    public void resolveLottery(String date, String location);
 }

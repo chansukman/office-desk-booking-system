@@ -12,9 +12,10 @@ body{
     height: 300px;
     border-radius: 10px;
     text-align: center;
+    bottom: 2.5rem;
 }
 .center-content h1{
-    color: white;
+    color: #8eabd6;
 }
 .center-content .inputBox{
     margin-top: 50px;
@@ -32,22 +33,25 @@ body{
 }
 .center-content .inputBox .inputButton1{
     border:  0;
-    width: 130px;
-    height: 20px;
+    width: 120px;
+    height: 22px;
     color: black;
-    margin-top: 30px;
+    margin-top: 20px;
     border-radius: 20px;
-    background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    margin-right: 5px;
+    background-image: linear-gradient(to right,#8eabd6 10%, #7f99c0 20%, #7a91b4 33%, #5f779a 66%, #274065 100%);
 }
 
 .center-content .inputBox .inputButton2{
     border:  0;
-    width: 130px;
-    height: 20px;
+    width: 120px;
+    height: 22px;
     color: black;
-    margin-top: 30px;
+    margin-top: 20px;
     border-radius: 20px;
-    background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    margin-left: 5px;
+    background-image: linear-gradient(to right,#8eabd6 10%, #7f99c0 20%, #7a91b4 33%, #5f779a 66%, #274065 100%);
+
 }
 
 
