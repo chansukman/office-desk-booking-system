@@ -4,10 +4,7 @@ import com.example.group11officedeskbooking.DateFormatter;
 import com.example.group11officedeskbooking.repository.UserBookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -22,10 +19,10 @@ public class UserBookingController {
     }
 
     //Http get request from localhost with the user ID routing
-    @RequestMapping(path = "/mybooking", method = RequestMethod.GET)
-    public ModelAndView search(@RequestParam(value = "id") int id ){
+    @RequestMapping(path = "/mybooking")
+    public ModelAndView search(@CookieValue(value="userId", required = false) String userId){
         ModelAndView mav = new ModelAndView();
-        mav.addObject("bookingList",bookingRepo.findBookingByUserId(id));
+        mav.addObject("bookingList",bookingRepo.findBookingByUserId(Integer.parseInt(userId)));
         mav.setViewName("allbooking");
         return mav;
     }

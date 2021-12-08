@@ -1,20 +1,37 @@
-
-table {
-    border-spacing: 0.0rem;
+.record{
+    border-bottom: 2px solid black;
+    width: 80%;
+    margin: auto;
 }
-.main-list {
-    border-spacing: 0.0rem;
-    padding: 0.15rem;
-    border: .1rem solid;
-    border-radius: .25rem;
+.linestyle {
+    border-bottom: 2px solid black;
+}
+.list-of-record{
+    overflow-y: scroll;
+    max-height:580px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+    max-width: 75%;
+
+
 
 }
-.table_header{
-    padding: .25rem;
-    border: .1rem solid;
-    border-radius: .25rem;
-
-
+.record-item{
+    width: 95%;
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    justify-items: center;
+    align-items: center;
+    background: white;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.record-item div{
+    text-align: center;
 }
 /*hiding the icons */
 .icons{
@@ -23,17 +40,8 @@ table {
     cursor: pointer;
 }
 /* Showing the delete and update icons when hovering inside the booking table */
-tr:hover .icons{
+.record-item:hover .icons{
     opacity: 1;
-
 }
-
-/* Table colors  */
-td:nth-child(1) { background: hsl(55, 0%, 85%); }
-td:nth-child(2) { background: hsl(55, 2%, 90%); }
-td:nth-child(3) { background: hsl(55, 4%, 95%); }
-td:nth-child(4) { background: hsl(55, 6%, 98%); }
-
-
 
 
