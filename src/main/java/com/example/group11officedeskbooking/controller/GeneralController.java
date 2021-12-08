@@ -93,10 +93,10 @@ public class GeneralController {
     }
 
 
-    @RequestMapping(path = "/admin/calendar")
-    public ModelAndView Admin_Calendar(){
+    @RequestMapping(path = "/admin/createBooking")
+    public ModelAndView Admin_CreateBooking(){
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("Admin_Calendar");
+        mav.setViewName("Admin_CreateBooking");
         return mav;
     }
 

@@ -12,8 +12,7 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/styles/Admin_AllLocations_Bristol.css">
-  <link rel="stylesheet" href="/styles/Admin_Calendar.css">
+  <link rel="stylesheet" href="/styles/Admin_CreateBooking.css">
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -214,8 +213,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-tasks nav-icon"></i>
+                <a href="/admin/createBooking" class="nav-link">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>Create Booking</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="#" class="nav-link"> -->
+                  <!-- <i class="fa fa-tasks nav-icon"></i>
                   <p>
                     Manage bookings
                     <i class="fa fa-angle-left right"></i>
@@ -233,8 +238,8 @@
                       <i class="fa fa-ban nav-icon"></i>
                       <p>Cancel a booking</p>
                     </a>
-                  </li>
-                </ul>
+                  </li> -->
+                <!-- </ul> -->
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -258,12 +263,6 @@
                     </a>
                   </li>
                 </ul>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/calendar" class="nav-link">
-                  <i class="fa fa-calendar nav-icon"></i>
-                  <p>Calendar</p>
-                </a>
               </li>
             </ul>
           </li>
@@ -384,7 +383,7 @@
                       <h2>Add new lottery day</h2>
                       <form action="/lotteryCreation" name="lotteryForm" method="get">
 
-                        <label for="date"
+                        <label for="date" 
                         >Lottery day:</label
                         >
                         <input id="date" name="date" type="date"/><br>
@@ -440,11 +439,11 @@
 <!-- REQUIRED SCRIPTS -->
     
 <!-- jQuery -->
-<script src="/JS/Admin_Calendar_jquery.js"></script>
+<script src="/JS/Admin_CreateBooking_jquery.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/JS/Admin_Calendar_bootstrap.bundle.js"></script>
+<script src="/JS/Admin_CreateBooking_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
-<script src="/JS/Admin_Calendar.js"></script>
+<script src="/JS/Admin_CreateBooking.js"></script>
 
 <script>
 
