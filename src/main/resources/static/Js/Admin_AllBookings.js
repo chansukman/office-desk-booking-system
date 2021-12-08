@@ -104,7 +104,6 @@ function edited_booking(){
 function delete_Booking(){
   swal({
     title: "Are you sure you want to cancel the booking?",
-    // text: "Once deleted, you will not be able to recover this imaginary file!",
     icon: "warning",
     buttons: ["No", "Yes"],
     dangerMode: true,

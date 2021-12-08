@@ -12,7 +12,9 @@ xmlns:th="http://www.thymeleaf.org">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   
   <!-- sweet aleart cdn -->
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -273,15 +275,15 @@ xmlns:th="http://www.thymeleaf.org">
               </li>
             </ul>
           </li>
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item">
+            <a href="/admin/lottery" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
               <p>
-                Simple Link
+                Lottery
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li> -->
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -350,7 +352,7 @@ xmlns:th="http://www.thymeleaf.org">
                     <form class="form-inline">
                       <input id="Input" onkeyup="search_bookings()" class="search_booking form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     </form>
-                        <div class="card-body table-responsive p-5">
+                        <div class="card-body table-responsive p-5" id="nodes">
                         <table id="Table" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
@@ -365,10 +367,14 @@ xmlns:th="http://www.thymeleaf.org">
                               <td th:text="${Booking.getBooking_date()}"></td>
                               <td th:text="${Booking.getUser_user_id()}"></td>
                               <td th:text="${Booking.getDesk_desk_id()}"></td>
-                              <td><a href="#" style="color: darkgray" data-toggle="modal" data-target="#myModal" i class="fa fa-edit" title="Edit booking" onclick="edit_booking()"></i></a></td>
-                              <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td>
+                              <!-- <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td> -->
+                              <!-- <td id="delete_from_js"></td> -->
+                               <td> <form th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
+                                    <button class="booking-button" type="submit">Delete</button>
+                                   </form> 
+                              </td> 
                             </tr>
-                            <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
+                            <tr th:if="${adminBookingList == null || adminBookingList == null}">
                               <td> No Booking Available </td>
                             </tr>
                         </table>
