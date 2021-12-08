@@ -44,11 +44,4 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
     public int deleteById(int id) {
         return jdbcTemplate.update("DELETE FROM Booking WHERE booking_id=?", id);
     }
-
-    @Override
-    public List<LotteryDTO> getAllLotteryDays(){
-        return jdbcTemplate.query(
-                "select distinct date, location, resolved from lottery order by date",
-                new LotteryMapper());
-    }
 }
