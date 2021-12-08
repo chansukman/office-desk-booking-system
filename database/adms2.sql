@@ -79,7 +79,8 @@ DROP TABLE IF EXISTS `Lottery`;
 CREATE TABLE `Lottery`(
     `date` date NOT NULL,
     `user_id` int NOT NULL,
-    `location` varchar(50) NOT NULL
+    `location` varchar(50) NOT NULL,
+    `resolved` boolean default false
 );
 
 
