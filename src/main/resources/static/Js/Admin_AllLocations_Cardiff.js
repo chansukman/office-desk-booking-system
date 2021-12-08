@@ -19,7 +19,7 @@ function signOut(){
 
 // Inactivity of the page after 5 minutes. 60000 * 5 =300000
 
-let warningTimeout = 300000;
+let warningTimeout = 3000;
   let warningTimerID;
   let counterDisplay = document.getElementById('timeout');
   logoutUrl = "http://localhost:8080/login";
@@ -54,11 +54,6 @@ let warningTimeout = 300000;
     document.addEventListener("wheel", resetTimer);
     startTimer();
   }
-
-function signOut(){
-  localStorage.removeItem("token");
-  window.location.replace("/login")
-}
 
 !(function (e, t) {
   "object" == typeof exports && "undefined" != typeof module
