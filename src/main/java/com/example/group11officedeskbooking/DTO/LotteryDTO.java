@@ -5,11 +5,12 @@ public class LotteryDTO {
     private String date;
     private String location;
     private int numUsers;
+    private int user_id;
 
-    public LotteryDTO(String date, String location, int numUsers) {
+    public LotteryDTO(String date, String location, int user_id) {
         this.date = date;
         this.location = location;
-        this.numUsers = numUsers;
+        this.user_id = user_id;
     }
 
     public LotteryDTO(String date, String location) {
@@ -31,5 +32,9 @@ public class LotteryDTO {
 
     public void setNumUsers(int numUsers){
         this.numUsers = numUsers;
+    }
+
+    public int getUser_id() {
+        return user_id;
     }
 }

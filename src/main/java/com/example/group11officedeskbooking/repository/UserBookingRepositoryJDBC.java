@@ -1,9 +1,10 @@
 package com.example.group11officedeskbooking.repository;
 
 import com.example.group11officedeskbooking.DTO.BookingDTO;
+import com.example.group11officedeskbooking.DTO.DeskDTO;
+import com.example.group11officedeskbooking.DTO.LotteryDTO;
 import com.example.group11officedeskbooking.DTO.UserBookingDTO;
-import com.example.group11officedeskbooking.model.BookingMapper;
-import com.example.group11officedeskbooking.model.UserBookingMapper;
+import com.example.group11officedeskbooking.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -94,6 +95,22 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 "select count(*) from booking where booking_date=? and User_user_id=?",
                 Integer.class, new Object[]{date, user_id});
         return rows > 0;
+    }
+
+    @Override
+    public List<LotteryDTO> getAllUsersInLottery(String date, String location){
+        return jdbcTemplate.query(
+                "select * from lottery where date=? and location=? order by user_id",
+                new LotteryMapper(),
+                new Object[]{date, location});
+    }
+
+    @Override
+    public List<DeskDTO> getAllDeskIdInLocation(String location){
+        return jdbcTemplate.query(
+                "select desk_id from Desk where desk_location=?",
+                new DeskIdMapper(),
+                new Object[]{location});
     }
 
 

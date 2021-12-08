@@ -357,8 +357,13 @@
                           </thead>
                           <tr th:each="lotteryDay:${lotteryDays}">
                             <td th:text="${lotteryDay.getDate()}"></td>
-                            <td th:text="${lotteryDay.getLocation()}"></td>
+                            <td th:text="${lotteryDay.getDate()}"></td>
                             <td th:text="${lotteryDay.getNumUsers()}"></td>
+                            <td>
+                              <form th:attr="name=${lotteryDay.getDate()} + '&' +${lotteryDay.getDate()}" action="/Home" th:action="@{'/admin/lottery/' + ${lotteryDay.getLocation()} + '/' + ${lotteryDay.getDate()} }">
+                                <button class="booking-button" type="submit">Resolve</button>
+                              </form>
+                            </td>
                           </tr>
                           <tr th:if="${lotteryDays == null}">
                             <td> No Booking Available </td>

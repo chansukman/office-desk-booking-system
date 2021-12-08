@@ -1,20 +1,22 @@
 package com.example.group11officedeskbooking.controller;
 
+import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.LotteryDTO;
 import com.example.group11officedeskbooking.repository.Admin_BookingRepository;
 import com.example.group11officedeskbooking.repository.UserBookingRepository;
 import com.example.group11officedeskbooking.repository.UserRepository;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
+
+import static java.lang.Math.max;
 
 @RestController
 public class Admin_BookingController {
@@ -44,6 +46,36 @@ public class Admin_BookingController {
         }
         mav.addObject("lotteryDays", lotteryDays);
         mav.setViewName("Admin_Lottery");
+        return mav;
+    }
+
+    @RequestMapping(path = "/admin/lottery/{location}/{date}")
+    public ModelAndView resolveLottery(@PathVariable Optional<String> location, @PathVariable Optional<String> date){
+        ModelAndView mav = new ModelAndView();
+
+        //Initialise required variables
+        String inputLocation = location.get();
+        String inputDate = date.get();
+        List<LotteryDTO> lotteryContestants = userRepo.getAllUsersInLottery(inputDate, inputLocation);
+        Random rand = new Random();
+        int numWinners = max(userRepo.checkNumberInLocation(inputLocation), lotteryContestants.size() - 1);
+        List<LotteryDTO> lotteryWinners = new ArrayList<LotteryDTO>();
+        List<DeskDTO> desksInLocation = userRepo.getAllDeskIdInLocation(inputLocation);
+
+        //Find winners
+        for(int i = 0; i < numWinners; i++){
+            int randomIndex = rand.nextInt(lotteryContestants.size());
+            //Do not add admin (user_id = 1)
+            while(lotteryContestants.get(randomIndex).getUser_id() == 1){
+                randomIndex = rand.nextInt(lotteryContestants.size());
+            }
+            lotteryWinners.add(lotteryContestants.get(randomIndex));
+            lotteryContestants.remove(randomIndex);
+            userRepo.addBooking(lotteryWinners.get(i).getUser_id(), lotteryWinners.get(i).getDate(), desksInLocation.get(i).getDesk_id());
+            System.out.println("Winner = " + lotteryWinners.get(i));
+        }
+        mav.addObject(lotteryWinners);
+        mav.setViewName("redirect:/admin/lottery");
         return mav;
     }
 

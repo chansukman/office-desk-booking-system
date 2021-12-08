@@ -16,6 +16,9 @@ public class DeskDTO {
         this.desk_location = desk_location;
 
     }
+    public DeskDTO(int desk_id){
+        this.desk_id = desk_id;
+    }
 
     public int getDesk_id() {
         return desk_id;
