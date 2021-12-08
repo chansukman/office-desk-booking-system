@@ -57,7 +57,8 @@ public class Admin_BookingController {
         //Initialise required variables
         String inputLocation = location.get();
         String inputDate = date.get();
-        List<LotteryDTO> lotteryContestants = userRepo.getAllUsersInLottery(inputDate, inputLocation);        Random rand = new Random();
+        List<LotteryDTO> lotteryContestants = userRepo.getAllUsersInLottery(inputDate, inputLocation);
+        Random rand = new Random();
         int numWinners = min(userRepo.checkNumberInLocation(inputLocation), lotteryContestants.size() - 1);
         List<LotteryDTO> lotteryWinners = new ArrayList<LotteryDTO>();
         List<DeskDTO> desksInLocation = userRepo.getAllDeskIdInLocation(inputLocation);
@@ -74,8 +75,8 @@ public class Admin_BookingController {
             userRepo.addBooking(lotteryWinners.get(i).getUser_id(), lotteryWinners.get(i).getDate(), desksInLocation.get(i).getDesk_id());
         }
         userRepo.resolveLottery(inputDate, inputLocation);
-        mav.addObject(lotteryWinners);
-        mav.setViewName("redirect:/admin/lottery");
+        mav.addObject("lotteryWinners", lotteryWinners);
+        mav.setViewName("forward:/admin/lottery");
         return mav;
     }
 

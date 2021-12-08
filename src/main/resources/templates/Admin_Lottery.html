@@ -369,6 +369,16 @@
                             <td> No Booking Available </td>
                           </tr>
                         </table>
+                        <table th:if="${lotteryWinners != null}" id="lottery-table" class="table table-hover text-nowrap">
+                          <thead>
+                          <tr>
+                            <th th:text="'Here are the winners for ' + ${lotteryWinners.get(0).getLocation} + ' on ' + ${lotteryWinners.get(0).getDate}"></th>
+                          </tr>
+                          </thead>
+                          <tr th:each="winner:${lotteryWinners}">
+                            <td th:text="${winner.getUser_id()}"></td>
+                          </tr>
+                        </table>
                       </div>
                   <div class="card-body col-lg-10 md-9 sm-10">
                       <h2>Add new lottery day</h2>
