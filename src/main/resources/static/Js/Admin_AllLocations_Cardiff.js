@@ -17,7 +17,7 @@ function signOut(){
   window.location.replace("/login")
 }
 
-// Inactivity of the page after 5 minutes. 60000 * 5 =30000
+// Inactivity of the page after 5 minutes. 60000 * 5 =300000
 
 let warningTimeout = 300000;
   let warningTimerID;
