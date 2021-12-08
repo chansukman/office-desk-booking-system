@@ -5,6 +5,7 @@ import com.example.group11officedeskbooking.forms.DeskForm;
 import com.example.group11officedeskbooking.repository.DeskRepository;
 import org.springframework.stereotype.Controller;
 // import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,16 +22,22 @@ public class GeneralController {
     //    When login by user, it will route you to the user dashboard
 
     @RequestMapping(path = "/dashboard")
-    public ModelAndView dashboard(){
+    public ModelAndView dashboard(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("dashboard");
+        if(userId.equals("null")){
+            mav.setViewName("login");
+        }
         return mav;
     }
 
     @RequestMapping(path = "/bookings")
-    public ModelAndView bookings(){
+    public ModelAndView bookings(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("bookings");
+        if(userId.equals("null")){
+            mav.setViewName("login");
+        }
         return mav;
     }
 
@@ -76,9 +83,12 @@ public class GeneralController {
         return mav;
     }
     @RequestMapping(path = "/Home")
-    public ModelAndView home(){
+    public ModelAndView home(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("dashboard");
+        if(userId.equals("null")){
+            mav.setViewName("login");
+        }
         return mav;
     }
 
@@ -89,5 +99,6 @@ public class GeneralController {
         mav.setViewName("Admin_Calendar");
         return mav;
     }
+
 
 }

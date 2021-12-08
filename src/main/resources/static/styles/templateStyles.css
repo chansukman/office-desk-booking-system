@@ -93,6 +93,7 @@
   border: 1px solid black;
   border-radius: 20px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 /*Page layout*/
@@ -196,6 +197,9 @@ body{
   .myHeader section > span{
     display: inline;
     color: white;
+    align-self: center;
+    padding-right: 5px;
+    vertical-align: middle;
   }
   .desk-item{
     grid-template-columns: repeat(5,1fr);
@@ -218,6 +222,9 @@ body{
     flex-direction: row;
   }
   .map-section{
+    width: 50%;
+  }
+  .list-of-desks{
     width: 50%;
   }
 

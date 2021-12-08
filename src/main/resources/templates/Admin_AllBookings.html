@@ -275,15 +275,15 @@ xmlns:th="http://www.thymeleaf.org">
               </li>
             </ul>
           </li>
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item">
+            <a href="/admin/lottery" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
               <p>
-                Simple Link
+                Lottery
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li> -->
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -374,7 +374,7 @@ xmlns:th="http://www.thymeleaf.org">
                                    </form> 
                               </td> 
                             </tr>
-                            <tr th:if="${adminBookingList == null || adminBookingList == underfined}">
+                            <tr th:if="${adminBookingList == null || adminBookingList == null}">
                               <td> No Booking Available </td>
                             </tr>
                         </table>

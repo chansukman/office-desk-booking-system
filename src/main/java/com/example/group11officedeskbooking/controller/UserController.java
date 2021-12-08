@@ -34,8 +34,10 @@ public class UserController {
                     mav.addObject("User",userRepository.checkByFirstnameAndPassword(username,password));
                     UserDTO user = (UserDTO) userRepository.checkByFirstnameAndPassword(username,password);
                     String userId = user.getUser_id().toString();
-                    Cookie myCookie = new Cookie("userId", userId);
-                    response.addCookie(myCookie);
+                    Cookie userID = new Cookie("userId", userId);
+                    Cookie userName = new Cookie("userName", user.getFirst_name());
+                    response.addCookie(userID);
+                    response.addCookie(userName);
                     mav.setViewName("dashboard");
                     return mav;
 
