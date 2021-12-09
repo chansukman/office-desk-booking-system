@@ -2,9 +2,8 @@ package com.example.group11officedeskbooking.controller;
 
 import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.LotteryDTO;
-import com.example.group11officedeskbooking.repository.Admin_BookingRepository;
-import com.example.group11officedeskbooking.repository.UserBookingRepository;
-import com.example.group11officedeskbooking.repository.UserRepository;
+import com.example.group11officedeskbooking.DateFormatter;
+import com.example.group11officedeskbooking.repository.*;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,11 +25,15 @@ public class Admin_BookingController {
 
     private final Admin_BookingRepository admin_bookingRepository;
     private UserBookingRepository userRepo;
+    private MapRepository mapRepo;
+    private DeskRepository deskRepo;
 
     @Autowired
-    public Admin_BookingController(Admin_BookingRepository admin_bookingRepository, UserBookingRepository userRepo) {
+    public Admin_BookingController(Admin_BookingRepository admin_bookingRepository, UserBookingRepository userRepo, MapRepository mapRepo, DeskRepository deskRepo) {
         this.admin_bookingRepository = admin_bookingRepository;
         this.userRepo = userRepo;
+        this.mapRepo = mapRepo;
+        this.deskRepo = deskRepo;
     }
 
     @RequestMapping(path = "admin/bookings", method = RequestMethod.GET)
@@ -113,5 +116,60 @@ public class Admin_BookingController {
         return mav;
     }
 
+    @RequestMapping(path = "/admin/createBooking")
+    public ModelAndView Admin_CreateBooking(){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("users", userRepo.getAllUsers());
+        mav.setViewName("Admin_CreateBooking");
+        return mav;
+    }
 
+    @RequestMapping(path = "/admin/createBooking/search", method = RequestMethod.GET)
+    public ModelAndView adminSearchDesk(@RequestParam(value="date", defaultValue = "null") String searchDate,
+                                        @RequestParam(value="location", defaultValue = "null") String deskLocation,
+                                        @RequestParam(value="user-input", defaultValue = "null") String userID){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_Createbooking");
+        //Validation
+        if(searchDate.equals("null") || deskLocation.equals("null") || userID.equals("null")){
+            return mav;
+        }
+
+        //Convert date string format
+        DateFormatter prettyDate = new DateFormatter();
+        String stringDate = prettyDate.formatDate(searchDate);
+
+        //Check if lottery day
+        if(userRepo.checkLotteryDay(searchDate, deskLocation)){
+            mav.addObject("lotteryDay", stringDate);
+            mav.addObject("inputDate", searchDate);
+            mav.addObject("userId",userID);
+            mav.addObject("location", deskLocation);
+            return mav;
+        }
+
+        //Check if user already has a desk that day
+        if(userRepo.checkIfUserHasBooking(searchDate, Integer.parseInt(userID))){
+            mav.addObject("doubleBooking", stringDate);
+            return mav;
+        }
+
+        //Check if weekend
+        if(stringDate.charAt(0) == 'S'){
+            mav.addObject("unavailable", "Sorry, desks are not bookable at the weekend");
+            return mav;
+        }
+
+        //Add map and desk to mav
+        mav.addObject("map", mapRepo.searchMap(deskLocation));
+        mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate, deskLocation));
+        mav.addObject("location", deskLocation);
+        mav.addObject("userId",userID);
+        //Add aesthetic date
+        mav.addObject("searchDate", stringDate);
+        //Add original search date format
+        mav.addObject("inputDate", searchDate);
+        return mav;
+
+    }
 }

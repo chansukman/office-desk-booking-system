@@ -56,7 +56,6 @@ public class DeskController {
         }
 
         //Check if user already has a desk that day
-
         if(userRepo.checkIfUserHasBooking(searchDate, Integer.parseInt(userId))){
             mav.addObject("doubleBooking", stringDate);
             return mav;

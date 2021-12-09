@@ -93,12 +93,6 @@ public class GeneralController {
     }
 
 
-    @RequestMapping(path = "/admin/createBooking")
-    public ModelAndView Admin_CreateBooking(){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("Admin_CreateBooking");
-        return mav;
-    }
 
 
 }

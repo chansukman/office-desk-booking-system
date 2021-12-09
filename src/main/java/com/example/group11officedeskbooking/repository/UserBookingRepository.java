@@ -2,6 +2,7 @@ package com.example.group11officedeskbooking.repository;
 
 import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.LotteryDTO;
+import com.example.group11officedeskbooking.DTO.UserDTO;
 
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface UserBookingRepository {
     public List<LotteryDTO> getAllUsersInLottery(String date, String location);
     public List<DeskDTO> getAllDeskIdInLocation(String location);
     public void resolveLottery(String date, String location);
+    public List<UserDTO> getAllUsers();
 }

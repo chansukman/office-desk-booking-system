@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/styles/Admin_CreateBooking.css">
-  
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
 </head>
 <body onload="setCalendarDates();" class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -343,7 +343,7 @@
                         <div class="calendar">
                             <h1>Calendar & Location</h1>
                 
-                            <form action="/searchDate" name="dateForm" method="get" onsubmit="return checkWeekend()">
+                            <form action="/admin/createBooking/search" name="dateForm" method="get">
                 
                                 <label for="date"
                                 >Please select the day you would like to book your desk</label
@@ -359,6 +359,14 @@
                                     </select>
                                     <br>
                                 </label>
+                                <label for="user-input">
+                                    Select user: <br>
+                                    <select name="user-input" id="user-input">
+                                        <option th:each="user : ${users}" th:value="${user.getUser_id}"
+                                        th:text="${user.getFirstNameLastNameUserId}"></option>
+                                    </select>
+                                </label>
+
                                 <input type="submit" class="submit-button">
                             </form>
                         </div>
