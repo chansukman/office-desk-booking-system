@@ -374,19 +374,20 @@
 
                     <section id="admin-booking-success">
                         <h3 th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${bookedUser.getFirst_name()} + ' ' + ${bookedUser.getLast_name()} + ' (' + ${bookedUser.getUser_id()} + ') , on ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></h3>
-                        <h3 th:if="${lottery != null}" th:text="'Success! You have entered this user in the lottery for ' + ${date} + ' in ' + ${lottery} +', there are currently ' + ${numberInLottery} + ' people in the lottery for ' + ${date}"></h3>
-                        <h3 th:if="${lotteryFail != null}" th:text="'It looks like this user is already in the lottery for ' + ${date} + ' in ' + ${lotteryFail} + '.'"></h3>
+                        <h3 th:if="${lottery != null}" th:text="'Success! You have entered ' + ${user.getFirst_name()} + ' ' + ${user.getLast_name()} + ' (' + ${user.getUser_id()} + ') in the lottery for ' + ${date} + ' in ' + ${lottery} +'. Number of people in lottery:  ' + ${numberInLottery}"></h3>
+                        <h3 th:if="${lotteryFail != null}" th:text="${user.getFirst_name()} + ' ' + ${user.getLast_name()} + ' (' + ${user.getUser_id()} + ') is already in the lottery for ' + ${date} + ' in ' + ${lotteryFail} + '.'"></h3>
 
 
                         <h3 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate} + ', ' + ${userNameID}"></h3>
                         <h3 th:if="${unavailable != null}">Sorry, desk are not bookable at the weekends</h3>
                         <section th:if="${lotteryDay != null}">
-                            <h3>It looks like you've selected a high traffic day</h3>
-                            <div id="lottery-confirm" th:text="'On high traffic days desks are assigned on a lottery basis. If you\'d like to enter the lottery for ' + ${lotteryDay} + ' please press the button below.'">
+                            <h3>You've selected a high traffic day</h3>
+                            <div id="lottery-confirm" th:text="'If you\'d like to enter ' + ${userNameID} + ' into the lottery for ' + ${lotteryDay} + ' please press the button below.'">
                             </div>
-                            <form action="/lottery" method="get" onsubmit="return validateLottery()">
+                            <form action="/lottery/admin" method="get" onsubmit="return validateLottery()">
                                 <input type="hidden" name="search-date" th:attr="value=${inputDate}">
                                 <input type="hidden" name="lotteryLocation" id="lotteryLocation" th:attr="value=${location}">
+                                <input type="hidden" name="usrID" id="usrID" th:attr="value=${userId}">
                                 <button type="submit" class="submit-button">Enter Lottery</button>
                             </form>
                         </section>

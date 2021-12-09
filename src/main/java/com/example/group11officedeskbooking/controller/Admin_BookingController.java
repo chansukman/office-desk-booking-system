@@ -135,6 +135,14 @@ public class Admin_BookingController {
         List<UserDTO> userList = userRepo.getAllUsers();
         mav.addObject("users", userList);
         mav.addObject("locations", userRepo.getAllLocations());
+        String userNameAndId  = new String();
+        //Get username
+        for(UserDTO user: userList){
+            if(user.getUser_id() == Integer.parseInt(userID)){
+                userNameAndId = user.getFirstNameLastNameUserId();
+                break;
+            }
+        }
         //Validation
         if(searchDate.equals("null") || deskLocation.equals("null") || userID.equals("null")){
             return mav;
@@ -150,6 +158,7 @@ public class Admin_BookingController {
             mav.addObject("inputDate", searchDate);
             mav.addObject("userId",userID);
             mav.addObject("location", deskLocation);
+            mav.addObject("userNameID", userNameAndId);
             return mav;
         }
 
@@ -165,14 +174,7 @@ public class Admin_BookingController {
             return mav;
         }
 
-        String userNameAndId  = new String();
-        //Get username
-        for(UserDTO user: userList){
-            if(user.getUser_id() == Integer.parseInt(userID)){
-                userNameAndId = user.getFirstNameLastNameUserId();
-                break;
-            }
-        }
+
 
         //Add map and desk to mav
         mav.addObject("map", mapRepo.searchMap(deskLocation));

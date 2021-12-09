@@ -49,8 +49,7 @@ public class UserBookingController {
             mav.addObject("locations", bookingRepo.getAllLocations());
             for(UserDTO user: userList){
                 if(user.getUser_id() == inputUserID){
-                    UserDTO bookedUser = user;
-                    mav.addObject("bookedUser", bookedUser);
+                    mav.addObject("bookedUser", user);
                     break;
                 }
             }
