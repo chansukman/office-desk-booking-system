@@ -3,18 +3,18 @@ package com.example.group11officedeskbooking.DTO;
 public class UserDTO {
     Integer user_id;
      String first_name;
-     String password;
-     String last_name;
-     String email;
+    String last_name;
+    String email;
      String department;
+    String password;
 
-    public UserDTO(Integer user_id, String first_name, String password, String last_name, String email, String department) {
+    public UserDTO(Integer user_id, String first_name, String last_name, String email, String department, String password) {
         this.user_id = user_id;
         this.first_name = first_name;
-        this.password = password;
         this.last_name = last_name;
         this.email = email;
         this.department = department;
+        this.password = password;
     }
 
     public UserDTO(Integer user_id, String first_name, String password) {

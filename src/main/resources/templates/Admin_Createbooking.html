@@ -341,26 +341,24 @@
                       <h1>Make a booking</h1>
                     </div>
                         <div class="calendar">
-                            <h1>Calendar & Location</h1>
                 
-                            <form action="/admin/createBooking/search" name="dateForm" method="get">
+                            <form id="admin-booking-search" action="/admin/createBooking/search" name="dateForm" method="get">
                 
-                                <label for="date"
-                                >Please select the day you would like to book your desk</label
-                                ><br />
-                
+                                <label for="date">
+                                    Date:
                                 <!--          Date range is from today to 1 week from today -->
-                                <input th:attr="value =${inputDate}" id="date" name="date" type="date"/><br>
+                                <input th:attr="value =${inputDate}" id="date" name="date" type="date"/>
+                                </label>
                                 <label for="location">
-                                    Please select office location <br>
+                                    Office:
                                     <select name="location" id="location">
                                         <option th:each="location : ${locations}" th:value="${location}"
                                                 th:text="${location}"></option>
                                     </select>
-                                    <br>
+
                                 </label>
                                 <label for="user-input">
-                                    Select user: <br>
+                                    User:
                                     <select name="user-input" id="user-input">
                                         <option th:each="user : ${users}" th:value="${user.getUser_id}"
                                                 th:text="${user.getFirstNameLastNameUserId}"></option>
@@ -372,7 +370,7 @@
                         </div>
                 
                         <!--            Dynamic content - only render desks after searching for desks-->
-                        <h2 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate}"></h2>
+                        <h2 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate} + ', ' + ${userNameID}"></h2>
                         <h2 th:if="${unavailable != null}">Sorry, desk are not bookable at the weekends</h2>
                         <section th:if="${lotteryDay != null}">
                             <h2>It looks like you've selected a high traffic day</h2>
@@ -388,6 +386,15 @@
                         <section th:if="${doubleBooking != null}">
                             <h3 th:text="'It looks like you\'ve already book a desk for ' + ${doubleBooking}"></h3>
                             <div>To keep things fair users are only allowed to book one desk per day. If you think this is a mistake please contact your office administrator.</div>
+                        </section>
+
+                        <section>
+                            <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${bookedUser.getFirstNameLastNameUserId()} + ', on ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
+                            <span th:if="${lottery != null}" th:text="'Success! You have entered the lottery for ' + ${date} + ' in ' +
+        ${lottery} +', there are currently ' + ${numberInLottery} + ' people in the lottery for ' + ${date}">
+        </span>
+                            <div th:if="${lotteryFail != null}" th:text="'Uh oh! It looks like you are already in the lottery for ' + ${date} + ' in ' + ${lotteryFail} + '. You can only enter the lottery once for each day.'"></div>
+
                         </section>
                 
                         <section class="desks" th:if="${deskList != null}">
@@ -417,7 +424,7 @@
                                         Location
                                         <div th:text="${desk.getDesk_location()}"></div>
                                     </div>
-                                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/' + ${userId} + '/' + ${desk.getDesk_id} +'/' +${inputDate}}" onsubmit="return validateBooking(this.name)">
+                                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/' + ${userId} + '/' + ${desk.getDesk_id} +'/' +${inputDate} + '/admin'}" onsubmit="return validateBooking(this.name)">
                                         <button class="booking-button" type="submit">Book</button>
                                     </form>
                                 </div>

@@ -2,6 +2,7 @@ package com.example.group11officedeskbooking.controller;
 
 import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.LotteryDTO;
+import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.DateFormatter;
 import com.example.group11officedeskbooking.repository.*;
 import org.apache.catalina.User;
@@ -131,7 +132,8 @@ public class Admin_BookingController {
                                         @RequestParam(value="user-input", defaultValue = "null") String userID){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("Admin_Createbooking");
-        mav.addObject("users", userRepo.getAllUsers());
+        List<UserDTO> userList = userRepo.getAllUsers();
+        mav.addObject("users", userList);
         mav.addObject("locations", userRepo.getAllLocations());
         //Validation
         if(searchDate.equals("null") || deskLocation.equals("null") || userID.equals("null")){
@@ -163,11 +165,21 @@ public class Admin_BookingController {
             return mav;
         }
 
+        String userNameAndId  = new String();
+        //Get username
+        for(UserDTO user: userList){
+            if(user.getUser_id() == Integer.parseInt(userID)){
+                userNameAndId = user.getFirstNameLastNameUserId();
+                break;
+            }
+        }
+
         //Add map and desk to mav
         mav.addObject("map", mapRepo.searchMap(deskLocation));
         mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate, deskLocation));
         mav.addObject("location", deskLocation);
         mav.addObject("userId",userID);
+        mav.addObject("userNameID", userNameAndId);
         //Add aesthetic date
         mav.addObject("searchDate", stringDate);
         //Add original search date format
