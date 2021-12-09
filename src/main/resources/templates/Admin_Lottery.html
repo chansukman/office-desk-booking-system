@@ -13,6 +13,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/styles/Admin_CreateBooking.css">
+  <style>
+    #admin-lottery-form{
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+    }
+
+  </style>
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -381,21 +389,18 @@
                       </div>
                   <div class="card-body col-lg-10 md-9 sm-10">
                       <h2>Add new lottery day</h2>
-                      <form action="/lotteryCreation" name="lotteryForm" method="get">
+                      <form id="admin-lottery-form" action="/lotteryCreation" name="lotteryForm" method="get">
 
-                        <label for="date" 
-                        >Lottery day:</label
-                        >
-                        <input id="date" name="date" type="date"/><br>
+                        <label for="date">Date:
+                        <input id="date" name="date" type="date"/></label>
                         <label for="location">
-                          Office location:
+                          Office:
                           <select name="location" id="location">
                             <option value="Bristol">Bristol</option>
                             <option value="Cardiff">Cardiff</option>
                           </select>
                         </label>
-                        <br>
-                        <input type="submit" class="submit-button">
+                        <input type="submit" class="submit-button" style="max-width: 90px; text-align: center;">
                       </form>
                     <div th:if="${success != null}">Successfully added lottery day</div>
                     <div th:if="${preExisting != null}">Lottery day has already been assigned</div>
