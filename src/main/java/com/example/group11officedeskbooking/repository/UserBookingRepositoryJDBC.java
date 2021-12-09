@@ -124,5 +124,12 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 new UserInfoMapper());
     }
 
+    @Override
+    public List<String> getAllLocations(){
+        return jdbcTemplate.query(
+                "select distinct desk_location from Desk",
+                new LocationMapper());
+    }
+
 
 }

@@ -354,8 +354,8 @@
                                 <label for="location">
                                     Please select office location <br>
                                     <select name="location" id="location">
-                                        <option value="Bristol">Bristol</option>
-                                        <option value="Cardiff">Cardiff</option>
+                                        <option th:each="location : ${locations}" th:value="${location}"
+                                                th:text="${location}"></option>
                                     </select>
                                     <br>
                                 </label>
@@ -363,7 +363,7 @@
                                     Select user: <br>
                                     <select name="user-input" id="user-input">
                                         <option th:each="user : ${users}" th:value="${user.getUser_id}"
-                                        th:text="${user.getFirstNameLastNameUserId}"></option>
+                                                th:text="${user.getFirstNameLastNameUserId}"></option>
                                     </select>
                                 </label>
 

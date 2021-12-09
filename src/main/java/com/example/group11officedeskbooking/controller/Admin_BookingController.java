@@ -120,6 +120,7 @@ public class Admin_BookingController {
     public ModelAndView Admin_CreateBooking(){
         ModelAndView mav = new ModelAndView();
         mav.addObject("users", userRepo.getAllUsers());
+        mav.addObject("locations", userRepo.getAllLocations());
         mav.setViewName("Admin_CreateBooking");
         return mav;
     }
@@ -130,6 +131,8 @@ public class Admin_BookingController {
                                         @RequestParam(value="user-input", defaultValue = "null") String userID){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("Admin_Createbooking");
+        mav.addObject("users", userRepo.getAllUsers());
+        mav.addObject("locations", userRepo.getAllLocations());
         //Validation
         if(searchDate.equals("null") || deskLocation.equals("null") || userID.equals("null")){
             return mav;
