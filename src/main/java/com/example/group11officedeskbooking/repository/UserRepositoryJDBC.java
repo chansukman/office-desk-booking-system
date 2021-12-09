@@ -1,5 +1,6 @@
 package com.example.group11officedeskbooking.repository;
 import com.example.group11officedeskbooking.DTO.AdminDTO;
+import com.example.group11officedeskbooking.DTO.GithubUser;
 import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.model.AdminMapper;
 import com.example.group11officedeskbooking.model.UserMapper;
@@ -27,7 +28,15 @@ public class UserRepositoryJDBC implements UserRepository{
                 new AdminMapper() );
 
     }
+    public boolean addSSOUser(Integer user_id, String first_name){
+        int rows = jdbcTemplate.update("insert into user(user_id, first_name) values(?,?)",
+        new Object[]{user_id, first_name});
+        return rows>0;
+    }
 
-
-
+    public UserDTO checkUserExist(Integer user_id) {
+        String sql="select * from user where user_id=?";
+        return (UserDTO) jdbcTemplate.queryForObject(sql,new Object[]{user_id},
+                new UserMapper() );
+    }
 }
