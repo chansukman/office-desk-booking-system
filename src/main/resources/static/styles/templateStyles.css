@@ -183,6 +183,16 @@ body{
   align-items: center;
   justify-items: center;
 }
+#admin-booking-success{
+  padding: 10px;
+  text-align: center;
+}
+#admin-lottery-form{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+}
 
 /* Small tablets */
 @media screen and (min-width: 620px) {

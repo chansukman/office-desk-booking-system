@@ -370,10 +370,18 @@
                         </div>
                 
                         <!--            Dynamic content - only render desks after searching for desks-->
-                        <h2 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate} + ', ' + ${userNameID}"></h2>
-                        <h2 th:if="${unavailable != null}">Sorry, desk are not bookable at the weekends</h2>
+
+
+                    <section id="admin-booking-success">
+                        <h3 th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${bookedUser.getFirst_name()} + ' ' + ${bookedUser.getLast_name()} + ' (' + ${bookedUser.getUser_id()} + ') , on ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></h3>
+                        <h3 th:if="${lottery != null}" th:text="'Success! You have entered this user in the lottery for ' + ${date} + ' in ' + ${lottery} +', there are currently ' + ${numberInLottery} + ' people in the lottery for ' + ${date}"></h3>
+                        <h3 th:if="${lotteryFail != null}" th:text="'It looks like this user is already in the lottery for ' + ${date} + ' in ' + ${lotteryFail} + '.'"></h3>
+
+
+                        <h3 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate} + ', ' + ${userNameID}"></h3>
+                        <h3 th:if="${unavailable != null}">Sorry, desk are not bookable at the weekends</h3>
                         <section th:if="${lotteryDay != null}">
-                            <h2>It looks like you've selected a high traffic day</h2>
+                            <h3>It looks like you've selected a high traffic day</h3>
                             <div id="lottery-confirm" th:text="'On high traffic days desks are assigned on a lottery basis. If you\'d like to enter the lottery for ' + ${lotteryDay} + ' please press the button below.'">
                             </div>
                             <form action="/lottery" method="get" onsubmit="return validateLottery()">
@@ -382,21 +390,11 @@
                                 <button type="submit" class="submit-button">Enter Lottery</button>
                             </form>
                         </section>
-                
                         <section th:if="${doubleBooking != null}">
-                            <h3 th:text="'It looks like you\'ve already book a desk for ' + ${doubleBooking}"></h3>
-                            <div>To keep things fair users are only allowed to book one desk per day. If you think this is a mistake please contact your office administrator.</div>
+                            <h3 th:text="'It looks like this user already has a booking for ' + ${doubleBooking}"></h3>
+                            <div>To keep things fair users can only be allocated one desk per day.</div>
                         </section>
-
-                        <section>
-                            <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${bookedUser.getFirstNameLastNameUserId()} + ', on ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
-                            <span th:if="${lottery != null}" th:text="'Success! You have entered the lottery for ' + ${date} + ' in ' +
-        ${lottery} +', there are currently ' + ${numberInLottery} + ' people in the lottery for ' + ${date}">
-        </span>
-                            <div th:if="${lotteryFail != null}" th:text="'Uh oh! It looks like you are already in the lottery for ' + ${date} + ' in ' + ${lotteryFail} + '. You can only enter the lottery once for each day.'"></div>
-
-                        </section>
-                
+                    </section>
                         <section class="desks" th:if="${deskList != null}">
                             <input type="hidden" id="normalLocation" th:attr="value=${location}">
                             <div class="map-section">
