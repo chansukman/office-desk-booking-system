@@ -116,6 +116,15 @@ body{
   margin: 0;
   padding-bottom: 2.5rem;
 }
+.dash-links{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+}
+.dash-links li{
+  margin: 5px;
+}
 .calendar {
   border-top: 2px solid black;
   border-bottom: 2px solid black;

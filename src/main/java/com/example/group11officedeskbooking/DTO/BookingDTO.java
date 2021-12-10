@@ -23,4 +23,16 @@ public class BookingDTO {
     public String getDesk_location() {
         return desk_location;
     }
+
+    public void setBooking_date(String booking_date) {
+        this.booking_date = booking_date;
+    }
+
+    public void setDesk_number(int desk_number) {
+        this.desk_number = desk_number;
+    }
+
+    public void setDesk_location(String desk_location) {
+        this.desk_location = desk_location;
+    }
 }

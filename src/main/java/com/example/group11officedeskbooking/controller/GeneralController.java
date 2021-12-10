@@ -1,8 +1,12 @@
 package com.example.group11officedeskbooking.controller;
 
+import com.example.group11officedeskbooking.DTO.BookingDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
+import com.example.group11officedeskbooking.DateFormatter;
 import com.example.group11officedeskbooking.forms.DeskForm;
 import com.example.group11officedeskbooking.repository.DeskRepository;
+import com.example.group11officedeskbooking.repository.UserBookingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 // import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -18,6 +22,26 @@ import java.util.ArrayList;
 
 @Controller
 public class GeneralController {
+
+    private UserBookingRepository userRepo;
+
+    @Autowired
+    public GeneralController(UserBookingRepository userRepo){
+        this.userRepo = userRepo;
+    }
+
+    @RequestMapping(path = "/dashboard")
+    public ModelAndView dashboard(@CookieValue(value = "userName",defaultValue = "null") String userName,
+                                  @CookieValue(value = "userId",defaultValue = "null") String userId,
+                                  ModelAndView mav){
+        DateFormatter bookingDate = new DateFormatter();
+        BookingDTO upcoming = (BookingDTO) userRepo.getNextUserBooking(Integer.parseInt(userId));
+        upcoming.setBooking_date(bookingDate.formatDate(upcoming.getBooking_date()));
+        mav.setViewName("dashboard");
+        mav.addObject("userName", userName);
+        mav.addObject("nextBooking", upcoming);
+        return mav;
+    }
 
     @RequestMapping(path = "/bookings")
     public ModelAndView bookings(@CookieValue(value = "userId",defaultValue = "null") String userId){
@@ -70,7 +94,7 @@ public class GeneralController {
         mav.setViewName("Admin_AllLocations_Cardiff");
         return mav;
     }
-    @RequestMapping(path = "/home")
+    @RequestMapping(path = "/Home")
     public ModelAndView home(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("bookings");
@@ -79,7 +103,6 @@ public class GeneralController {
         }
         return mav;
     }
-
 
 
 
