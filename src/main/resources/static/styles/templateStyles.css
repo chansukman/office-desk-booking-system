@@ -35,7 +35,7 @@
 .myHeader section > span{
   display: none;
 }
-.myHeader li:nth-child(2), .myHeader li:nth-child(3){
+.myHeader li:nth-child(2){
   display: none;
 }
 .myHeader ul {
@@ -241,6 +241,12 @@ body{
   .calendar input,
   .calendar select{
     font-size: 1.2rem;
+  }
+  .record-item{
+    grid-template-columns: repeat(5,1fr);
+  }
+  .record-item > div:first-child{
+    display: inline;
   }
 
 }
