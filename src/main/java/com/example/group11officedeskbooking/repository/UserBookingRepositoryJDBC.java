@@ -30,6 +30,14 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     }
 
     @Override
+    public UserDTO findUserByUserID(int id){
+        return (UserDTO) jdbcTemplate.queryForObject(
+                "select * from user where user_id=?",
+                new UserInfoMapper(),
+                new Object[]{id});
+    }
+
+    @Override
     public boolean addBooking(int user_id, String date, int desk_id){
         int rows = jdbcTemplate.update(
                 "insert into booking(booking_date, User_user_id, Desk_desk_id) values(?,?,?)",
