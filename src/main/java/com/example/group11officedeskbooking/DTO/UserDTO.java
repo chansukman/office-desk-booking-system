@@ -24,6 +24,15 @@ public class UserDTO {
 
     }
 
+    public UserDTO(){
+        user_id = null;
+        first_name = null;
+        last_name = null;
+        email = null;
+        department = null;
+        password = null;
+    }
+
     public Integer getUser_id() {
         return user_id;
     }

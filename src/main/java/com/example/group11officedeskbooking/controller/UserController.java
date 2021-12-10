@@ -24,7 +24,6 @@ public class UserController {
     }
 
     @RequestMapping(path = "/userlogin", method = RequestMethod.POST)
-
     public ModelAndView checkUser(HttpServletResponse response, UserDTO userDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
         ModelAndView mav = new ModelAndView();
             try {
