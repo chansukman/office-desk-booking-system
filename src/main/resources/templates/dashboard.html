@@ -9,10 +9,12 @@
 <body onload="addUserNameToHeader()">
 <div class="page-container">
     <header th:replace="mainTemplate :: header"></header>
-    <div class="content-wrapper">
+    <div class="content-wrapper ">
         <h1 th:text="'Welcome ' + ${userName}"></h1>
+        <br>
         <div>
-            <div class="record-item">
+            <h3>Your Next Booking</h3>
+            <div class="upcoming-booking">
                 <div th:text="'Desk ' + ${nextBooking.getDesk_number()}"></div>
                 <div th:text="${nextBooking.getBooking_date()}"></div>
                 <div th:text="${nextBooking.getDesk_location()}"></div>
