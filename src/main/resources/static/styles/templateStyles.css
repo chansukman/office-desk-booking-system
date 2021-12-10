@@ -122,7 +122,13 @@ body{
   border-bottom: 2px solid black;
   text-align: center;
 }
-
+.calendar form{
+  display: flex;
+  flex-direction: column;
+}
+.calendar input{
+  margin: 5px;
+}
 .calBlock {
   display: grid;
   position: relative;
@@ -216,6 +222,14 @@ body{
   }
   .list-of-record{
     max-width: 75%;
+  }
+  .calendar form{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
   }
 
 }
