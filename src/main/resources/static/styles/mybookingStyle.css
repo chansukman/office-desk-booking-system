@@ -1,6 +1,6 @@
 .record{
     border-bottom: 2px solid black;
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 .linestyle {
@@ -12,10 +12,7 @@
     margin: 30px auto;
     border: 1px solid grey;
     border-radius: 5px;
-    max-width: 75%;
-
-
-
+    max-width: 95%;
 }
 .record-item{
     width: 95%;
@@ -56,11 +53,15 @@
 .booking-type-select{
     margin: 20px 0;
     text-align: center;
+
 }
 .booking-type-select ul{
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: column;
+}
+.booking-type-select li{
+    padding: 10px;
 }
 
 

@@ -96,6 +96,7 @@
   text-decoration: none;
 }
 
+
 /*Page layout*/
 body{
   margin: 0;
@@ -193,7 +194,10 @@ body{
     width: auto;
     max-height: 80vh;
   }
-
+  .booking-type-select ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
   .myHeader section > span{
     display: inline;
     color: white;
@@ -206,6 +210,12 @@ body{
   }
   .desk-item div:nth-child(4){
     display: inline;
+  }
+  .record{
+    width: 80%;
+  }
+  .list-of-record{
+    max-width: 75%;
   }
 
 }
