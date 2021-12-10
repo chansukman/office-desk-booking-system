@@ -56,11 +56,6 @@ let warningTimeout = 300000;
     startTimer();
   }
 
-function signOut(){
-  localStorage.removeItem("token");
-  window.location.replace("/login")
-}
-
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function maps_dropdown() {
@@ -98,6 +93,76 @@ function manage_booking_dropdown() {
       }
     }
   }
+
+  // create bookings
+
+  function setCalendarDates(){
+
+    //create dates in String format
+    let today = new Date();
+    let oneWeeksTime = new Date();
+    oneWeeksTime.setDate(oneWeeksTime.getDate() + 7);
+    today = getFormattedDate(today);
+    oneWeeksTime = getFormattedDate(oneWeeksTime);
+    let dateField = document.getElementById("date");
+
+    //Set max and min to only allow booking 1 week in advance
+    dateField.setAttribute("max", oneWeeksTime);
+    dateField.setAttribute("min", today);
+}
+function getFormattedDate(date){
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    if(day < 10){day = '0' + day;}
+    if(month < 10){month = '0' + month;}
+    return year + '-' + month + '-' + day;
+}
+
+function validateBooking(deskNo){
+    let office = document.getElementById("location").value;
+    let dateString = document.getElementById("location-date-confirm").innerHTML;
+    let endIndex = dateString.indexOf(", ");
+    dateString = dateString.substring(endIndex + 2);
+    if(confirm("You are about to book Desk " + deskNo + " in " + office + " on " + dateString + ".\n\nWould you like to continue?")){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkWeekend(){
+    let input = document.getElementById("date").value;
+    let date = new Date(input).getUTCDay();
+    let weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    if(weekday[date] === 'Sunday' || weekday[date] === 'Saturday' ){
+        alert("Sorry desks are not available at the weekends");
+        return false;
+    }
+    return true;
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    let location;
+    if(document.getElementById("lotteryLocation")){
+        location = document.getElementById("lotteryLocation").value;
+    }else{
+        location = document.getElementById("normalLocation").value;
+    }
+    document.getElementById("location").value = location;
+});
+
+function validateLottery(){
+    let office = document.getElementById("location").value;
+    let dateString = document.getElementById("lottery-confirm").innerHTML;
+    let endIndex = dateString.indexOf(" please");
+    dateString = dateString.substring(98, endIndex);
+    if(confirm("You are about to enter the lottery for " + dateString + " in " + office + ".\n\nWould you like to continue?")){
+        return true;
+    } else {
+        return false;
+    }
+}
 
 !(function (e, t) {
   "object" == typeof exports && "undefined" != typeof module

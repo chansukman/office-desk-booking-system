@@ -18,6 +18,7 @@ INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-12',24,14);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-13',24,14);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-14',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-08',24,14);
 
 
 DROP TABLE IF EXISTS `Desk`;
