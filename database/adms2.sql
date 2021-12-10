@@ -46,10 +46,10 @@ DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `user_id` int NOT NULL PRIMARY KEY,
   `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `department` varchar(50) DEFAULT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(20) DEFAULT NULL
 );
 
 DROP TABLE IF EXISTS `Admin`;
