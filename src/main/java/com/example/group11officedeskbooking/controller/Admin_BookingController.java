@@ -6,6 +6,7 @@ import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.DateFormatter;
 import com.example.group11officedeskbooking.repository.*;
 import org.apache.catalina.User;
+import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -68,6 +69,7 @@ public class Admin_BookingController {
         int numWinners = min(userRepo.checkNumberInLocation(inputLocation), lotteryContestants.size() - 1);
         List<LotteryDTO> lotteryWinners = new ArrayList<LotteryDTO>();
         List<DeskDTO> desksInLocation = userRepo.getAllDeskIdInLocation(inputLocation);
+        List<String> winnerList = new ArrayList<String>();
 
         //Find winners
         for(int i = 0; i < numWinners; i++){
@@ -77,11 +79,13 @@ public class Admin_BookingController {
                 randomIndex = rand.nextInt(lotteryContestants.size());
             }
             lotteryWinners.add(lotteryContestants.get(randomIndex));
+            winnerList.add(userRepo.findUserByUserID(lotteryWinners.get(i).getUser_id()).getFirstNameLastNameUserId());
             lotteryContestants.remove(randomIndex);
             userRepo.addBooking(lotteryWinners.get(i).getUser_id(), lotteryWinners.get(i).getDate(), desksInLocation.get(i).getDesk_id());
         }
         userRepo.resolveLottery(inputDate, inputLocation);
-        mav.addObject("lotteryWinners", lotteryWinners);
+        mav.addObject("lotteryWinners", winnerList);
+        mav.addObject("resolvedLottery", lotteryWinners);
         mav.setViewName("forward:/admin/lottery");
         return mav;
     }
