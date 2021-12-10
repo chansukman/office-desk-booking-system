@@ -21,15 +21,15 @@ public class GeneralController {
 
     //    When login by user, it will route you to the user dashboard
 
-    @RequestMapping(path = "/dashboard")
-    public ModelAndView dashboard(@CookieValue(value = "userId",defaultValue = "null") String userId){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("dashboard");
-//        if(userId.equals("null")){
-//            mav.setViewName("login");
-//        }
-        return mav;
-    }
+//    @RequestMapping(path = "/dashboard")
+//    public ModelAndView dashboard(@CookieValue(value = "userId",defaultValue = "null") String userId){
+//        ModelAndView mav = new ModelAndView();
+//        mav.setViewName("dashboard");
+////        if(userId.equals("null")){
+////            mav.setViewName("login");
+////        }
+//        return mav;
+//    }
 
     @RequestMapping(path = "/bookings")
     public ModelAndView bookings(@CookieValue(value = "userId",defaultValue = "null") String userId){
@@ -85,7 +85,7 @@ public class GeneralController {
     @RequestMapping(path = "/Home")
     public ModelAndView home(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("dashboard");
+        mav.setViewName("allbooking");
         if(userId.equals("null")){
             mav.setViewName("login");
         }
