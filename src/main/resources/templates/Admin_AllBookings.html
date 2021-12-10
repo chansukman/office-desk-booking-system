@@ -373,7 +373,7 @@ xmlns:th="http://www.thymeleaf.org">
                               <td th:text="${Booking.getDesk_desk_id()}"></td>
                               <!-- <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td> -->
                                <td> <form onsubmit="delete_booking()" th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
-                                    <button class="booking-button btn btn-danger" type="submit">Delete</button>
+                                    <button class="booking-button btn btn-danger" type="submit">Cancel</button>
                                    </form> 
                               </td> 
                             </tr>

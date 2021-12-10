@@ -2,8 +2,10 @@ package com.example.group11officedeskbooking.repository;
 
 import com.example.group11officedeskbooking.DTO.Admin_BookingDTO;
 import com.example.group11officedeskbooking.DTO.LotteryDTO;
+import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.model.Admin_BookingMapper;
 import com.example.group11officedeskbooking.model.LotteryMapper;
+import com.example.group11officedeskbooking.model.UserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -24,7 +26,7 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
     @Override
     public List<Admin_BookingDTO> findAll() {
         return jdbcTemplate.query(
-                "Select booking_id, booking_date, User_user_id, Desk_desk_id, User.first_name, User.last_name, desk.desk_location FROM booking join user ON booking.User_user_id = User.user_id join desk on booking.Desk_desk_id=Desk.desk_id",
+                "SELECT booking_id, booking_date, User_user_id, Desk_desk_id, User.first_name, User.last_name, desk.desk_location FROM booking join user ON booking.User_user_id = User.user_id join desk on booking.Desk_desk_id=Desk.desk_id",
                 new Admin_BookingMapper());
     }
 
@@ -40,6 +42,14 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
     @Override
     public int deleteById(int id) {
         return jdbcTemplate.update("DELETE FROM Booking WHERE booking_id=?", id);
+    }
+
+    @Override
+    public Admin_BookingDTO findById(int id) {
+        return (Admin_BookingDTO) jdbcTemplate.queryForObject(
+                    "SELECT booking_id, booking_date, User_user_id, Desk_desk_id, User.first_name, User.last_name, desk.desk_location FROM booking join user ON booking.User_user_id = User.user_id join desk on booking.Desk_desk_id=Desk.desk_id WHERE booking_id = ?",
+                new Admin_BookingMapper(),
+                new Object[]{id});
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.group11officedeskbooking.controller;
 
+import com.example.group11officedeskbooking.DTO.Admin_BookingDTO;
 import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.LotteryDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
@@ -8,16 +9,16 @@ import com.example.group11officedeskbooking.repository.*;
 import org.apache.catalina.User;
 import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
+import javax.mail.internet.MimeMessage;
+import java.util.*;
 
 import java.security.PublicKey;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -115,6 +116,45 @@ public class Admin_BookingController {
     public ModelAndView deleteBooking(@PathVariable Optional<String> booking_id) {
         int id = Integer.parseInt(booking_id.get());
         ModelAndView mav = new ModelAndView();
+
+        Admin_BookingDTO adminDto = admin_bookingRepository.findById(id);
+        UserDTO userDTO  = userRepo.findUserByUserID(adminDto.getUser_user_id());
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        mailSender.setUsername("testercardiff123@gmail.com");
+        mailSender.setPassword("Tester@cardiff123");
+
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            DateFormatter prettyDate = new DateFormatter();
+
+            if (userDTO.getEmail() != null){
+                helper.setTo(userDTO.getEmail());
+                helper.setSubject("Booking Canceled!");
+                helper.setText("Hello " + userDTO.getFirst_name() + ",\nWe just wanted to let you know that your booking for "
+                        + prettyDate.formatDate(adminDto.getBooking_date())
+                        + " on desk " + adminDto.getDesk_desk_id() + " in " + adminDto.getDesk_location() +  " is canceled! \n" +
+                        "please go to your bookings to book new one." +
+                        "\nRegards," +
+                        "\nADMS Team");
+
+                mailSender.setJavaMailProperties(props);
+                mailSender.send(message);
+            }
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
         admin_bookingRepository.deleteById(id);
         mav.addObject("adminBookingList", admin_bookingRepository.findAll());
         mav.setViewName("Admin_AllBookings");
