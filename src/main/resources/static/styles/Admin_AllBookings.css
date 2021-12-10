@@ -20635,10 +20635,7 @@ a.text-muted:hover {
 
 .booking-button{
 	opacity: 0;
-	/* background: #f90; */
     width: 100px;
-    /* height: 100px; */
-    /* margin: 0 auto; */
 }
 tr:hover .booking-button{ 
   opacity: 1;
