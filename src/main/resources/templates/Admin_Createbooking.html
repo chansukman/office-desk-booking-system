@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +12,10 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/styles/Admin_AllLocations_Bristol.css">
-  <link rel="stylesheet" href="/styles/Admin_Calendar.css">
-  
+  <link rel="stylesheet" href="/styles/Admin_CreateBooking.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
 </head>
-<body class="hold-transition sidebar-mini">
+<body onload="setCalendarDates();" class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -214,8 +213,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-tasks nav-icon"></i>
+                <a href="/admin/createBooking" class="nav-link">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>Create Booking</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="#" class="nav-link"> -->
+                  <!-- <i class="fa fa-tasks nav-icon"></i>
                   <p>
                     Manage bookings
                     <i class="fa fa-angle-left right"></i>
@@ -233,8 +238,8 @@
                       <i class="fa fa-ban nav-icon"></i>
                       <p>Cancel a booking</p>
                     </a>
-                  </li>
-                </ul>
+                  </li> -->
+                <!-- </ul> -->
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -259,12 +264,6 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a href="/admin/calendar" class="nav-link">
-                  <i class="fa fa-calendar nav-icon"></i>
-                  <p>Calendar</p>
-                </a>
-              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -284,7 +283,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="display: block">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <!-- <div class="container-fluid"> -->
@@ -339,16 +338,97 @@
             <div class="col-lg-10 col-md-9 col-sm-10 col-xs-10" style="margin: 0 auto; float: none;">
                 <div class="card">
                     <div class="card-header" style="text-align: center";>
-                        <h1>Calendar</h1>
+                      <h1>Make a booking</h1>
                     </div>
-                        <!-- <div class="search-container">
-                          <input class="placeholder" type="text" placeholder="Search.." name="search">
-                          <button type="submit"><i class="fa fa-search"></i></button>
-                        </div> -->
-                    <div class="card-body col-lg-10 md-9 sm-10">
-                      <input type="date">
-                      <input type="submit">
-                    </div>
+                        <div class="calendar">
+                
+                            <form id="admin-booking-search" action="/admin/createBooking/search" name="dateForm" method="get">
+                
+                                <label for="date">
+                                    Date:
+                                <!--          Date range is from today to 1 week from today -->
+                                <input th:attr="value =${inputDate}" id="date" name="date" type="date"/>
+                                </label>
+                                <label for="location">
+                                    Office:
+                                    <select name="location" id="location">
+                                        <option th:each="location : ${locations}" th:value="${location}"
+                                                th:text="${location}"></option>
+                                    </select>
+
+                                </label>
+                                <label for="user-input">
+                                    User:
+                                    <select name="user-input" id="user-input">
+                                        <option th:each="user : ${users}" th:value="${user.getUser_id}"
+                                                th:text="${user.getFirstNameLastNameUserId}"></option>
+                                    </select>
+                                </label>
+
+                                <input type="submit" class="submit-button">
+                            </form>
+                        </div>
+                
+                        <!--            Dynamic content - only render desks after searching for desks-->
+
+
+                    <section id="admin-booking-success">
+                        <h3 th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${bookedUser.getFirst_name()} + ' ' + ${bookedUser.getLast_name()} + ' (' + ${bookedUser.getUser_id()} + ') , on ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></h3>
+                        <h3 th:if="${lottery != null}" th:text="'Success! You have entered ' + ${user.getFirst_name()} + ' ' + ${user.getLast_name()} + ' (' + ${user.getUser_id()} + ') in the lottery for ' + ${date} + ' in ' + ${lottery} +'. Number of people in lottery:  ' + ${numberInLottery}"></h3>
+                        <h3 th:if="${lotteryFail != null}" th:text="${user.getFirst_name()} + ' ' + ${user.getLast_name()} + ' (' + ${user.getUser_id()} + ') is already in the lottery for ' + ${date} + ' in ' + ${lotteryFail} + '.'"></h3>
+
+
+                        <h3 id="location-date-confirm" style="text-align: center" th:if="${deskList != null}" th:text="${map.getLocation} + ', ' + ${searchDate} + ', ' + ${userNameID}"></h3>
+                        <h3 th:if="${unavailable != null}">Sorry, desk are not bookable at the weekends</h3>
+                        <section th:if="${lotteryDay != null}">
+                            <h3>You've selected a high traffic day</h3>
+                            <div id="lottery-confirm" th:text="'If you\'d like to enter ' + ${userNameID} + ' into the lottery for ' + ${lotteryDay} + ' please press the button below.'">
+                            </div>
+                            <form action="/lottery/admin" method="get" onsubmit="return validateLottery()">
+                                <input type="hidden" name="search-date" th:attr="value=${inputDate}">
+                                <input type="hidden" name="lotteryLocation" id="lotteryLocation" th:attr="value=${location}">
+                                <input type="hidden" name="usrID" id="usrID" th:attr="value=${userId}">
+                                <button type="submit" class="submit-button">Enter Lottery</button>
+                            </form>
+                        </section>
+                        <section th:if="${doubleBooking != null}">
+                            <h3 th:text="'It looks like this user already has a booking for ' + ${doubleBooking}"></h3>
+                            <div>To keep things fair users can only be allocated one desk per day.</div>
+                        </section>
+                    </section>
+                        <section class="desks" th:if="${deskList != null}">
+                            <input type="hidden" id="normalLocation" th:attr="value=${location}">
+                            <div class="map-section">
+                                <div class="img-wrapper">
+                                    <img th:src="${map.getImage()}" alt="">
+                                </div>
+                            </div>
+                            <div class="list-of-desks">
+                
+                                <div class="desk-item" th:if="${unavailable == null}" th:each="desk:${deskList}">
+                
+                                    <div>
+                                        Desk
+                                        <div th:text="${desk.getDesk_number()}"></div>
+                                    </div>
+                                    <div>
+                                        Monitors
+                                        <div th:text="${desk.isHas_monitors()} ? 'Yes' : 'No'"></div>
+                                    </div>
+                                    <div>
+                                        Desk Type
+                                        <div th:text="${desk.getDesk_type()}"></div>
+                                    </div>
+                                    <div>
+                                        Location
+                                        <div th:text="${desk.getDesk_location()}"></div>
+                                    </div>
+                                    <form th:attr="name=${desk.getDesk_number()}" action="/Home" th:action="@{'/booking/' + ${userId} + '/' + ${desk.getDesk_id} +'/' +${inputDate} + '/admin'}" onsubmit="return validateBooking(this.name)">
+                                        <button class="booking-button" type="submit">Book</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
                     <!-- /.card-body -->
                 </div>
                 <!-- card -->
@@ -387,10 +467,11 @@
 <!-- REQUIRED SCRIPTS -->
     
 <!-- jQuery -->
-<script src="/JS/Admin_Calendar_jquery.js"></script>
+<script src="/JS/Admin_CreateBooking_jquery.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/JS/Admin_Calendar_bootstrap.bundle.js"></script>
+<script src="/JS/Admin_CreateBooking_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
-<script src="/JS/Admin_Calendar.js"></script>
+<script src="/JS/Admin_CreateBooking.js"></script>
+
 </body>
 </html>

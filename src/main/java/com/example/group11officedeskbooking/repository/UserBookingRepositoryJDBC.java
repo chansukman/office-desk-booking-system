@@ -1,9 +1,6 @@
 package com.example.group11officedeskbooking.repository;
 
-import com.example.group11officedeskbooking.DTO.BookingDTO;
-import com.example.group11officedeskbooking.DTO.DeskDTO;
-import com.example.group11officedeskbooking.DTO.LotteryDTO;
-import com.example.group11officedeskbooking.DTO.UserBookingDTO;
+import com.example.group11officedeskbooking.DTO.*;
 import com.example.group11officedeskbooking.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -118,6 +115,20 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
         jdbcTemplate.update(
                 "update lottery set resolved=true where date=? and location=?",
                 new Object[]{date, location});
+    }
+
+    @Override
+    public List<UserDTO> getAllUsers(){
+        return jdbcTemplate.query(
+                "select * from User",
+                new UserInfoMapper());
+    }
+
+    @Override
+    public List<String> getAllLocations(){
+        return jdbcTemplate.query(
+                "select distinct desk_location from Desk",
+                new LocationMapper());
     }
 
 

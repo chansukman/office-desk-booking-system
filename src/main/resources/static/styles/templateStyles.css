@@ -177,8 +177,16 @@ body{
 .desk-item div:nth-child(4){
   display: none;
 }
-
-
+#admin-booking-search{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+#admin-booking-success{
+  padding: 10px;
+  text-align: center;
+}
 
 /* Small tablets */
 @media screen and (min-width: 620px) {
