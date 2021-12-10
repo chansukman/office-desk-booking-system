@@ -356,9 +356,9 @@ xmlns:th="http://www.thymeleaf.org">
                         <table id="Table" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th>User Name</th>
+                                    <!-- <th>User Name</th> -->
                                     <th>Booking ID</th>
-                                    <th>City</th>
+                                    <!-- <th>City</th> -->
                                     <th>Date</th>
                                     <th>User ID</th>
                                     <th>Desk ID</th>
@@ -369,11 +369,10 @@ xmlns:th="http://www.thymeleaf.org">
                               <td th:text="${Booking.getBooking_date()}"></td>
                               <td th:text="${Booking.getUser_user_id()}"></td>
                               <td th:text="${Booking.getDesk_desk_id()}"></td>
-                                <td th:text="${Booking.getUser_user_id().}"></td>
                               <!-- <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td> -->
                               <!-- <td id="delete_from_js"></td> -->
-                               <td> <form th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
-                                    <button class="booking-button btn-danger" type="submit" onclick="snackbar()">Delete</button>
+                               <td> <form onsubmit="return delete_booking()" th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
+                                    <button class="booking-button btn-danger" type="submit">Delete</button>
                                    </form> 
                               </td> 
                             </tr>
@@ -394,7 +393,7 @@ xmlns:th="http://www.thymeleaf.org">
     </div>
     <!-- /.content -->
   </div>
-  <div id="snackbar">Some text some message..</div>
+  <div id="snackbar">Your booking has been deleted</div>
   <!-- Edit Modal -->
 
   <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
