@@ -9,9 +9,7 @@
 .list-of-record{
     overflow-y: scroll;
     max-height:580px;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
     border: 1px solid grey;
     border-radius: 5px;
     max-width: 75%;
@@ -42,6 +40,27 @@
 /* Showing the delete and update icons when hovering inside the booking table */
 .record-item:hover .icons{
     opacity: 1;
+}
+
+.select-button{
+    margin: 5px;
+    font-size: 1.1em;
+    padding: 4px 10px;
+    color: black;
+    background: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.booking-type-select{
+    margin: 20px 0;
+    text-align: center;
+}
+.booking-type-select ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 

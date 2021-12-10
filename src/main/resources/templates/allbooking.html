@@ -9,15 +9,22 @@
         <link rel="stylesheet" th:href="@{/styles/templateStyles.css}">
     <link rel="stylesheet" href="/styles/mybookingStyle.css">
     <script type="text/javascript" th:src="@{/JS/cookies.js}"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body onload="addUserNameToHeader()">
 <header th:replace="mainTemplate :: header"></header>
 
 <div class="record">
-    <h1 class="linestyle">My booking record</h1>
+    <h1 class="linestyle">My Bookings</h1>
+    <div class="booking-type-select">
+        <ul>
+            <li><a class="select-button upcoming" href="#">Upcoming Bookings</a></li>
+            <li><a class="select-button lottery" href="#">Lottery Entries</a></li>
+            <li><a class="select-button previous" href="#">Previous Bookings</a></li>
+        </ul>
+    </div>
 
-    <div class="list-of-record">
+    <div th:if="${bookingList.size() > 0}" class="list-of-record" >
         <div class="record-item" th:each="booking: ${bookingList}">
             <div>
                 Booking Number
@@ -46,5 +53,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        let cssProperties = {'background-color': 'black', 'color':'white'};
+        if (window.location.href.indexOf("upcoming") > -1) {
+            $('.select-button.upcoming').css(cssProperties);
+        } else if (window.location.href.indexOf("Sales") > -1) {
+            $('.select-button.lottery').css(cssProperties);
+        } else if (window.location.href.indexOf("My%20desktop") > -1) {
+            $('.select-button.previous').css(cssProperties);
+        }
+    });
+</script>
 </body>
 </html>
