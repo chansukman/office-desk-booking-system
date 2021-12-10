@@ -1,7 +1,11 @@
 package com.example.group11officedeskbooking.DTO;
 
-import java.util.Date;
-
+import com.example.group11officedeskbooking.repository.UserRepository;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+@RequiredArgsConstructor
 public class Admin_BookingDTO {
 
     private int booking_id;

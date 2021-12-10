@@ -112,6 +112,21 @@ function delete_Booking(){
     }
   });
 }
+
+function delete_booking(){
+  if(confirm("You are about to delete the booking.\n\nWould you like to continue?")){
+    return true;
+} else {
+    return false;
+}
+}
+
+function snackbar() {
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+  return true;
+}
   !(function (e, t) {
     "object" == typeof exports && "undefined" != typeof module
       ? t(exports, require("jquery"))
