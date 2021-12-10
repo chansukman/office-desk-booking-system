@@ -356,16 +356,18 @@ xmlns:th="http://www.thymeleaf.org">
                         <table id="Table" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <!-- <th>User Name</th> -->
+                                    <th>User Name</th>
                                     <th>Booking ID</th>
-                                    <!-- <th>City</th> -->
+                                    <th>City</th>
                                     <th>Date</th>
                                     <th>User ID</th>
                                     <th>Desk ID</th>
                                 </tr>
                             </thead>
                             <tr th:each="Booking:${adminBookingList}">
+                              <td th:text="${Booking.getUser_name()}"></td>
                               <td th:text="${Booking.getBooking_id()}"></td>
+                              <td th:text="${Booking.getDesk_location()}"></td>
                               <td th:text="${Booking.getBooking_date()}"></td>
                               <td th:text="${Booking.getUser_user_id()}"></td>
                               <td th:text="${Booking.getDesk_desk_id()}"></td>

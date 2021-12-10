@@ -24,12 +24,7 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
     @Override
     public List<Admin_BookingDTO> findAll() {
         return jdbcTemplate.query(
-                "Select *\n" +
-                        "FROM Booking\n" +
-                        "join User\n" +
-                        "on Booking.User_user_id=User.user_id\n" +
-                        "join Desk\n" +
-                        "on Booking.Desk_desk_id=Desk.desk_id;",
+                "Select booking_id, booking_date, User_user_id, Desk_desk_id, User.first_name, User.last_name, desk.desk_location FROM booking join user ON booking.User_user_id = User.user_id join desk on booking.Desk_desk_id=Desk.desk_id",
                 new Admin_BookingMapper());
     }
 
