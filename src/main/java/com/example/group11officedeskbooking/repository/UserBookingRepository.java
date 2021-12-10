@@ -2,11 +2,13 @@ package com.example.group11officedeskbooking.repository;
 
 import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.LotteryDTO;
+import com.example.group11officedeskbooking.DTO.UserDTO;
 
 import java.util.List;
 
 public interface UserBookingRepository {
     public Object findBookingByUserId(int id);
+    public UserDTO findUserByUserID(int id);
     public boolean addBooking(int user_id, String date, int desk_id);
     public Object getUniqueBooking(String date, int desk_id);
     public boolean checkLotteryDay(String date, String location);
@@ -18,4 +20,6 @@ public interface UserBookingRepository {
     public List<LotteryDTO> getAllUsersInLottery(String date, String location);
     public List<DeskDTO> getAllDeskIdInLocation(String location);
     public void resolveLottery(String date, String location);
+    public List<UserDTO> getAllUsers();
+    public List<String> getAllLocations();
 }

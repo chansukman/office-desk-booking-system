@@ -20,6 +20,7 @@ INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-12',24,14);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-13',24,14);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-14',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-08',24,14);
 
 
 DROP TABLE IF EXISTS `Desk`;
@@ -52,6 +53,29 @@ CREATE TABLE `User` (
   `password` varchar(20) DEFAULT NULL
 );
 
+INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR','123456'),(22,'Daniel','Harling','daniel@harling.com','IT','123456'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales','123456'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT','123456');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (31,'James','Jackson');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (32,'Kenneth','Platt');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (33,'Shane','Martinson');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (34,'Alma','Duke');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (35,'Kylie','Woodham');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (36,'Daniela','Westcott');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (37,'Evan','Goddard');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (38,'Haze','Steffen');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (39,'Juliana','Midgely');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (40,'Cecil','Hubert');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (41,'Kolton','Irwin');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (42,'James','Philips');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (43,'Philipa','Jackson');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (44,'Anthony','Joshua');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (45,'John','Smith');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (46,'Alan','Watts');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (47,'Jane','Goodman');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (48,'Theresa','Hedgerly');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (49,'Anthony','Smith');
+INSERT INTO `User`(user_id, first_name, last_name) VALUES (50,'Jason','Allen');
+
+
 DROP TABLE IF EXISTS `Admin`;
 
 CREATE TABLE `Admin` (
@@ -64,8 +88,6 @@ CREATE TABLE `Admin` (
 );
 
 
-
-INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR','123456'),(22,'Daniel','Harling','daniel@harling.com','IT','123456'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales','123456'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT','123456');
 INSERT INTO `Admin` VALUES(1,'admin','admin','admin@cardiff.ac.uk','management','admin');
 
 DROP TABLE IF EXISTS `Maps`;

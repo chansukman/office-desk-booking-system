@@ -222,6 +222,12 @@ xmlns:th="http://www.thymeleaf.org">
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/admin/createBooking" class="nav-link">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>Create Booking</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fa fa-tasks nav-icon"></i>
                   <p>
@@ -241,8 +247,8 @@ xmlns:th="http://www.thymeleaf.org">
                       <i class="fa fa-ban nav-icon"></i>
                       <p>Cancel a booking</p>
                     </a>
-                  </li>
-                </ul>
+                  </li> -->
+                <!-- </ul> -->
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -266,12 +272,6 @@ xmlns:th="http://www.thymeleaf.org">
                     </a>
                   </li>
                 </ul>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/calendar" class="nav-link">
-                  <i class="fa fa-calendar nav-icon"></i>
-                  <p>Calendar</p>
-                </a>
               </li>
             </ul>
           </li>
@@ -370,9 +370,8 @@ xmlns:th="http://www.thymeleaf.org">
                               <td th:text="${Booking.getUser_user_id()}"></td>
                               <td th:text="${Booking.getDesk_desk_id()}"></td>
                               <!-- <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td> -->
-                              <!-- <td id="delete_from_js"></td> -->
-                               <td> <form onsubmit="return delete_booking()" th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
-                                    <button class="booking-button btn-danger" type="submit">Delete</button>
+                               <td> <form th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
+                                    <button class="booking-button" type="submit">Delete</button>
                                    </form> 
                               </td> 
                             </tr>
@@ -380,7 +379,7 @@ xmlns:th="http://www.thymeleaf.org">
                               <td> No Booking Available </td>
                             </tr>
                         </table>
-                        
+
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -393,7 +392,7 @@ xmlns:th="http://www.thymeleaf.org">
     </div>
     <!-- /.content -->
   </div>
-  <div id="snackbar">Your booking has been deleted</div>
+
   <!-- Edit Modal -->
 
   <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

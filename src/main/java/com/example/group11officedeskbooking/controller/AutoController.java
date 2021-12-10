@@ -75,7 +75,7 @@ public class AutoController {
                 ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
                 assert sra != null;
                 HttpServletResponse response = sra.getResponse();
-                response.sendRedirect("/dashboard");
+                response.sendRedirect("/bookings");
             }
         } catch (Exception e) {
             userRepository.addSSOUser(gitUserId, gitUserName);
@@ -86,7 +86,7 @@ public class AutoController {
             ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             assert sra != null;
             HttpServletResponse response = sra.getResponse();
-            response.sendRedirect("/dashboard");
+            response.sendRedirect("/bookings");
         }
         return userInfo;
     }
