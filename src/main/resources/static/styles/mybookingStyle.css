@@ -28,16 +28,16 @@
 .record-item div{
     text-align: center;
 }
-/*hiding the icons */
+/*hiding the icons
 .icons{
     opacity: 0;
     transition: opacity .2s ease-out;
     cursor: pointer;
-}
-/* Showing the delete and update icons when hovering inside the booking table */
+}*/
+/* Showing the delete and update icons when hovering inside the booking table
 .record-item:hover .icons{
     opacity: 1;
-}
+}*/
 
 .select-button{
     margin: 5px;
