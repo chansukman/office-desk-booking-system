@@ -25,9 +25,9 @@ public class GeneralController {
     public ModelAndView dashboard(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("dashboard");
-        if(userId.equals("null")){
-            mav.setViewName("login");
-        }
+//        if(userId.equals("null")){
+//            mav.setViewName("login");
+//        }
         return mav;
     }
 

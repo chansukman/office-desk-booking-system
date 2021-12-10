@@ -2,7 +2,6 @@ package com.example.group11officedeskbooking.controller;
 import com.example.group11officedeskbooking.DTO.AdminDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.repository.UserRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

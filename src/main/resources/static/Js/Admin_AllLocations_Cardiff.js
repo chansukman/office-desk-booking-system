@@ -27,6 +27,7 @@ let warningTimeout = 300000;
   function startTimer() {
     // window.setTimeout returns an Id that can be used to start and stop a timer
     warningTimerID = window.setTimeout(function(){ 
+      alert("For your security, you have been logged out due to 5 minutes of inactivity")
       localStorage.removeItem("token"), idleLogout() }, warningTimeout);
     
   }

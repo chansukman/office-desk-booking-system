@@ -2,10 +2,10 @@ package com.example.group11officedeskbooking.DTO;
 
 public class UserDTO {
     Integer user_id;
-     String first_name;
+    String first_name;
     String last_name;
     String email;
-     String department;
+    String department;
     String password;
 
     public UserDTO(Integer user_id, String first_name, String last_name, String email, String department, String password) {
@@ -62,5 +62,14 @@ public class UserDTO {
 
     public String getFirstNameLastNameUserId(){
         return first_name + " " + last_name + ", " + user_id;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "user_id=" + user_id +
+                ", first_name='" + first_name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
