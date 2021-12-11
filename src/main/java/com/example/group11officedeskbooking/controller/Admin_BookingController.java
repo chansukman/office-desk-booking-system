@@ -142,7 +142,7 @@ public class Admin_BookingController {
                 helper.setSubject("Booking Cancelled!");
                 helper.setText("Hello " + userDTO.getFirst_name() + ",\nWe just wanted to let you know that your booking for "
                         + prettyDate.formatDate(adminDto.getBooking_date())
-                        + " on desk " + adminDto.getDesk_desk_id() + " in " + adminDto.getDesk_location() +  " has been cancelled for some reason. \n" +
+                        + " on desk " + adminDto.getDesk_number() + " in " + adminDto.getDesk_location() +  " has been cancelled for some reason. \n" +
                         "Please login to " + " http://localhost:8080/userlogin " + " to book a new one." +
                         "\n\nRegards," +
                         "\nADMS Team");

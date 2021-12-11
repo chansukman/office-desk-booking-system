@@ -32,6 +32,6 @@ public class AdminBookingTest {
 
     @Test
     public void GetDeskIdTest(){
-        assertEquals(14, admin_bookingDTO.getDesk_desk_id());
+        assertEquals(14, admin_bookingDTO.getDesk_number());
     }
 }

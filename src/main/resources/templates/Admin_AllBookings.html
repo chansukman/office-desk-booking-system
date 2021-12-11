@@ -366,7 +366,7 @@ xmlns:th="http://www.thymeleaf.org">
                                     <th>City</th>
                                     <th>Date</th>
                                     <th>User ID</th>
-                                    <th>Desk ID</th>
+                                    <th>Desk Number</th>
                                 </tr>
                             </thead>
                             <tr th:each="Booking:${adminBookingList}">
@@ -375,7 +375,7 @@ xmlns:th="http://www.thymeleaf.org">
                               <td th:text="${Booking.getDesk_location()}"></td>
                               <td th:text="${Booking.getBooking_date()}"></td>
                               <td th:text="${Booking.getUser_user_id()}"></td>
-                              <td th:text="${Booking.getDesk_desk_id()}"></td>
+                              <td th:text="${Booking.getDesk_number()}"></td>
                               <!-- <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td> -->
                                <td> <form onsubmit="delete_booking()" th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
                                     <button class="booking-button btn btn-danger" type="submit">Cancel</button>
@@ -400,9 +400,15 @@ xmlns:th="http://www.thymeleaf.org">
     <!-- /.content -->
   </div>
 
+<!-- Pagination -->
+
+  <div class="col-md-12" style="margin-top:10px;">
+    <div id="pagination-container"></div>
+  </div>
+
   <!-- Edit Modal -->
 
-  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -424,7 +430,7 @@ xmlns:th="http://www.thymeleaf.org">
             </form>
         </div>
     </div>
-  </div> 
+  </div>  -->
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
@@ -457,6 +463,31 @@ xmlns:th="http://www.thymeleaf.org">
 <script src="/JS/Admin_AllBookings_Bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_AllBookings.js"></script>
+
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
+    <script>
+        // jQuery Plugin: http://flaviusmatis.github.io/simplePagination.js/
+
+        var items = $(".content-wrapper #nodes");
+        var numItems = items.length;
+        var perPage = 2;
+
+        items.slice(perPage).hide();
+
+        $('#pagination-container').pagination({
+            items: numItems,
+            itemsOnPage: perPage,
+            prevText: "&laquo;",
+            nextText: "&raquo;",
+            onPageClick: function(pageNumber) {
+                var showFrom = perPage * (pageNumber - 1);
+                var showTo = showFrom + perPage;
+                items.hide().slice(showFrom, showTo).show();
+            }
+        });
+      </script>
 
 </body>
 </html>
