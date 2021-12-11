@@ -69,11 +69,12 @@ public class UserBookingController {
 
                 if (user.getEmail() != null){
                     helper.setTo(user.getEmail());
-                    helper.setSubject("Booking Created!");
+                    helper.setSubject("Booking Confirmed!");
                     helper.setText("Hello " + user.getFirst_name() + ",\nWe just wanted to let you know that your booking for "
                             + prettyDate.formatDate(inputDate)
-                                    + " on desk " + inputDeskID + " is confirmed!   " +
-                            "\nRegards," +
+                            + " on desk " + inputDeskID + " has been confirmed! \n" +
+                            "Please login to " + " http://localhost:8080/mybooking " + " to see your bookings. " +
+                            "\n\nRegards," +
                             "\nADMS Team");
 
                     mailSender.setJavaMailProperties(props);

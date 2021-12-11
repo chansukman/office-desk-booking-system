@@ -139,12 +139,12 @@ public class Admin_BookingController {
 
             if (userDTO.getEmail() != null){
                 helper.setTo(userDTO.getEmail());
-                helper.setSubject("Booking Canceled!");
+                helper.setSubject("Booking Cancelled!");
                 helper.setText("Hello " + userDTO.getFirst_name() + ",\nWe just wanted to let you know that your booking for "
                         + prettyDate.formatDate(adminDto.getBooking_date())
-                        + " on desk " + adminDto.getDesk_desk_id() + " in " + adminDto.getDesk_location() +  " is canceled! \n" +
-                        "please go to your bookings to book new one." +
-                        "\nRegards," +
+                        + " on desk " + adminDto.getDesk_desk_id() + " in " + adminDto.getDesk_location() +  " has been cancelled for some reason. \n" +
+                        "Please login to " + " http://localhost:8080/userlogin " + " to book a new one." +
+                        "\n\nRegards," +
                         "\nADMS Team");
 
                 mailSender.setJavaMailProperties(props);
