@@ -402,10 +402,6 @@ xmlns:th="http://www.thymeleaf.org">
 
 <!-- Pagination -->
 
-  <div class="col-md-12" style="margin-top:10px;">
-    <div id="pagination-container"></div>
-  </div>
-
   <!-- Edit Modal -->
 
   <!-- <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -463,31 +459,6 @@ xmlns:th="http://www.thymeleaf.org">
 <script src="/JS/Admin_AllBookings_Bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_AllBookings.js"></script>
-
-<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
-    <script>
-        // jQuery Plugin: http://flaviusmatis.github.io/simplePagination.js/
-
-        var items = $(".content-wrapper #nodes");
-        var numItems = items.length;
-        var perPage = 2;
-
-        items.slice(perPage).hide();
-
-        $('#pagination-container').pagination({
-            items: numItems,
-            itemsOnPage: perPage,
-            prevText: "&laquo;",
-            nextText: "&raquo;",
-            onPageClick: function(pageNumber) {
-                var showFrom = perPage * (pageNumber - 1);
-                var showTo = showFrom + perPage;
-                items.hide().slice(showFrom, showTo).show();
-            }
-        });
-      </script>
 
 </body>
 </html>
