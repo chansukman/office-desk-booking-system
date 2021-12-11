@@ -36,7 +36,9 @@
                 Booking Date
             </div>
         </div>
-
+        <div th:if="${bookingList.isEmpty}" class="no-record">
+            <p style="text-align: center;">There is no upcoming booking</p>
+        </div>
         <div class="record-item" th:each="booking: ${bookingList}">
 
             <div>
