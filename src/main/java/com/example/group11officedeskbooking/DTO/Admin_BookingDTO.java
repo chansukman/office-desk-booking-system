@@ -11,17 +11,17 @@ public class Admin_BookingDTO {
     private int booking_id;
     private String booking_date;
     private int User_user_id;
-    private int Desk_desk_id;
+    private int desk_number;
     private String first_name;
     private String last_name;
     private String desk_location;
     private String user_name;
 
-    public Admin_BookingDTO(int booking_id, String booking_date, int User_user_id, int Desk_desk_id, String first_name, String last_name, String desk_location){
+    public Admin_BookingDTO(int booking_id, String booking_date, int User_user_id, int desk_number, String first_name, String last_name, String desk_location){
         this.booking_id = booking_id;
         this.booking_date = booking_date;
         this.User_user_id = User_user_id;
-        this.Desk_desk_id = Desk_desk_id;
+        this.desk_number = desk_number;
         this.first_name = first_name;
         this.last_name = last_name;
         this.desk_location = desk_location;
@@ -52,12 +52,12 @@ public class Admin_BookingDTO {
         this.booking_date = booking_date;
     }
 
-    public int getDesk_desk_id() {
-        return Desk_desk_id;
+    public int getDesk_number() {
+        return desk_number;
     }
 
-    public void setDesk_desk_id(int desk_desk_id) {
-        this.Desk_desk_id = desk_desk_id;
+    public void setDesk_number(int desk_number) {
+        this.desk_number = desk_number;
     }
 
     public String getFirst_name() {return first_name;}
