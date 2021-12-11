@@ -18,15 +18,26 @@
     width: 95%;
     margin: 10px auto;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(4,1fr);
     justify-items: center;
     align-items: center;
     background: white;
     border: 1px solid grey;
     border-radius: 5px;
+    padding: 5px;
+}
+.record-item.lottery{
+    margin: 20px auto;
+    grid-template-columns: repeat(3,1fr);
 }
 .record-item div{
     text-align: center;
+}
+.record-item > div:first-child{
+    display: none;
+}
+.record-item.lottery > div:first-child{
+    display: inline;
 }
 /*hiding the icons
 .icons{
