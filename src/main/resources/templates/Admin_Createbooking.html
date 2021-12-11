@@ -172,8 +172,8 @@
                                 <label for="user-input">
                                     User:
                                     <select name="user-input" id="user-input">
-                                        <option th:each="user : ${users}" th:value="${user.getUser_id}"
-                                                th:text="${user.getFirstNameLastNameUserId}"></option>
+                                        <option th:each="users : ${users}" th:value="${users.getUser_id}"
+                                                th:text="${users.getFirstNameLastNameUserId}"></option>
                                     </select>
                                 </label>
 
@@ -273,6 +273,13 @@
 <script src="/JS/Admin_CreateBooking_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_CreateBooking.js"></script>
-
+<script>
+    window.onload = function setCalendarDates(){
+        let today = new Date();
+        today = getFormattedDate(today);
+        let dateField = document.getElementById("date");
+        dateField.setAttribute("min", today);
+    }
+</script>
 </body>
 </html>
