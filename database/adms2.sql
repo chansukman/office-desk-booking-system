@@ -53,7 +53,7 @@ CREATE TABLE `User` (
   `password` varchar(20) DEFAULT NULL
 );
 
-INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR','123456'),(22,'Daniel','Harling','daniel@harling.com','IT','123456'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales','123456'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT','123456');
+INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','alotaibia5@cardiff.ac.uk','HR','123456'),(22,'Daniel','Harling','harlingd@cardiff.ac.uk','IT','123456'),(23,'Mahad','Khurshid','khurshidm1@cardiff.ac.uk','Sales','123456'),(24,'Shuwen','Chen','chens100@cardiff.ac.uk','IT','123456');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (31,'James','Jackson');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (32,'Kenneth','Platt');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (33,'Shane','Martinson');
