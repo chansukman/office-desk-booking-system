@@ -37,7 +37,7 @@ public class UserController {
                     response.addCookie(userID);
                     response.addCookie(userName);
                     mav.addObject("userName", user.getFirst_name());
-                    mav.setViewName("forward:/dashboard");
+                    mav.setViewName("redirect:/dashboard");
                     return mav;
 
                 }
