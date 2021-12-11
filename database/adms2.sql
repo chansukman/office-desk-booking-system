@@ -55,7 +55,7 @@ CREATE TABLE `User` (
   `default_location` varchar(50) default null
 );
 
-INSERT INTO `User`(user_id, first_name, last_name, email, deparment, passowrd) VALUES (21,'Abdullah','Alotaibi','alotaibia5@cardiff.ac.uk','HR','123456'),(22,'Daniel','Harling','harlingd@cardiff.ac.uk','IT','123456'),(23,'Mahad','Khurshid','khurshidm1@cardiff.ac.uk','Sales','123456'),(24,'Shuwen','Chen','chens100@cardiff.ac.uk','IT','123456');
+INSERT INTO `User`(user_id, first_name, last_name, email, department, password) VALUES (21,'Abdullah','Alotaibi','alotaibia5@cardiff.ac.uk','HR','123456'),(22,'Daniel','Harling','harlingd@cardiff.ac.uk','IT','123456'),(23,'Mahad','Khurshid','khurshidm1@cardiff.ac.uk','Sales','123456'),(24,'Shuwen','Chen','chens100@cardiff.ac.uk','IT','123456');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (31,'James','Jackson');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (32,'Kenneth','Platt');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (33,'Shane','Martinson');
