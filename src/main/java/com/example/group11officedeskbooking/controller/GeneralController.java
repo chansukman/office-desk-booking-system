@@ -105,6 +105,18 @@ public class GeneralController {
         mav.setViewName("Admin_AllLocations_Cardiff");
         return mav;
     }
+
+    //Routing for the Admin Location Bristol Page
+
+    @RequestMapping(path = "/admin/addLocation")
+    public ModelAndView Admin_AddLocation(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_AddLocation");
+        return mav;
+    }
+
+    //Routing for the Home Page
+
     @RequestMapping(path = "/Home")
     public ModelAndView home(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
