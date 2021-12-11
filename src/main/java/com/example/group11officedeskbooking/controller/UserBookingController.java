@@ -29,7 +29,7 @@ public class UserBookingController {
         return mav;
     }
 
-    @RequestMapping(path = "/booking/{userID}/{deskID}/{date}/{admin}")
+    @RequestMapping(path = {"/booking/{userID}/{deskID}/{date}", "/booking/{userID}/{deskID}/{date}/{admin}"})
     public ModelAndView processBooking(@PathVariable Optional<String> userID, @PathVariable Optional<String> deskID, @PathVariable Optional<String> date, @PathVariable Optional<String> admin){
         //Convert inputs to required types
         int inputUserID = Integer.parseInt(userID.get());
