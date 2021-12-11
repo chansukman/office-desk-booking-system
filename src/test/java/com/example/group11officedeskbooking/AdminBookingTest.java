@@ -31,7 +31,14 @@ public class AdminBookingTest {
     }
 
     @Test
-    public void GetDeskIdTest(){
-        assertEquals(14, admin_bookingDTO.getDesk_number());
-    }
+    public void GetDeskNumberTest(){assertEquals(14, admin_bookingDTO.getDesk_number());}
+
+    @Test
+    public void GetFirstNameTest(){assertEquals("Mahad",admin_bookingDTO.getFirst_name());}
+
+    @Test
+    public void GetLastNameTest(){assertEquals("Khurshid",admin_bookingDTO.getLast_name());}
+
+    @Test
+    public void GetDeskLocationTest(){assertEquals("Bristol",admin_bookingDTO.getDesk_location());}
 }
