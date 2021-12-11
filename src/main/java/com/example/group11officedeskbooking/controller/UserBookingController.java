@@ -1,15 +1,22 @@
 package com.example.group11officedeskbooking.controller;
 
+import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.DateFormatter;
 import com.example.group11officedeskbooking.repository.UserBookingRepository;
+import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.internet.MimeMessage;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 @Controller
 public class UserBookingController {
@@ -41,6 +48,43 @@ public class UserBookingController {
             mav.addObject("booking", bookingRepo.getUniqueBooking(inputDate, inputDeskID));
             DateFormatter prettyDate = new DateFormatter();
             mav.addObject("date", prettyDate.formatDate(inputDate));
+
+            Properties props = new Properties();
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
+
+            JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+            mailSender.setHost("smtp.gmail.com");
+            mailSender.setPort(587);
+            mailSender.setUsername("testercardiff123@gmail.com");
+            mailSender.setPassword("Tester@cardiff123");
+
+            try {
+                MimeMessage message = mailSender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+                UserDTO user = bookingRepo.findUserByUserID(inputUserID);
+
+                if (user.getEmail() != null){
+                    helper.setTo(user.getEmail());
+                    helper.setSubject("Booking Confirmed!");
+                    helper.setText("Hello " + user.getFirst_name() + ",\nWe just wanted to let you know that your booking for "
+                            + prettyDate.formatDate(inputDate)
+                            + " on desk " + inputDeskID + " has been confirmed! \n" +
+                            "Please login to " + " http://localhost:8080/mybooking " + " to see your bookings. " +
+                            "\n\nRegards," +
+                            "\nADMS Team");
+
+                    mailSender.setJavaMailProperties(props);
+                    mailSender.send(message);
+                }
+
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
         }
         mav.setViewName("bookingConfirmation");
         if(admin.isPresent()){
