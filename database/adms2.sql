@@ -15,6 +15,7 @@ INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-11
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-09',24,14);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-10',24,14);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-11',24,14);
+INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-11',23,15);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-12',24,14);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-13',24,14);
 INSERT INTO `Booking`(booking_date, User_user_id, Desk_desk_id) VALUES ('2021-12-14',24,14);
@@ -48,10 +49,11 @@ CREATE TABLE `User` (
   `last_name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `department` varchar(50) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL
+  `password` varchar(20) DEFAULT NULL,
+  `default_location` varchar(50) default null
 );
 
-INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR','123456'),(22,'Daniel','Harling','daniel@harling.com','IT','123456'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales','123456'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT','123456');
+INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR','123456','Cardiff'),(22,'Daniel','Harling','daniel@harling.com','IT','123456','Cardiff'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales','123456','Cardiff'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT','123456','Bristol');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (31,'James','Jackson');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (32,'Kenneth','Platt');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (33,'Shane','Martinson');
