@@ -36,17 +36,22 @@ public class GeneralController {
     @RequestMapping(path = "/dashboard")
     public ModelAndView dashboard(@CookieValue(value = "userName",defaultValue = "null") String userName,
                                   @CookieValue(value = "userId",defaultValue = "null") String userId,
-                                  ModelAndView mav){
-        DateFormatter bookingDate = new DateFormatter();
-        BookingDTO upcoming = (BookingDTO) userRepo.getNextUserBooking(Integer.parseInt(userId));
-        mav.addObject("otherUsers", userRepo.getAllBookingFromDateAndLocation(upcoming.getBooking_date(), upcoming.getDesk_location()));
-        upcoming.setBooking_date(bookingDate.formatDate(upcoming.getBooking_date()));
-        mav.setViewName("dashboard");
-        mav.addObject("userName", userName);
-        mav.addObject("nextBooking", upcoming);
-        mav.addObject("map", mapRepo.searchMap(upcoming.getDesk_location()));
+                                  ModelAndView mav) {
+        try {
+            DateFormatter bookingDate = new DateFormatter();
+            BookingDTO upcoming = (BookingDTO) userRepo.getNextUserBooking(Integer.parseInt(userId));
+            mav.addObject("otherUsers", userRepo.getAllBookingFromDateAndLocation(upcoming.getBooking_date(), upcoming.getDesk_location()));
+            upcoming.setBooking_date(bookingDate.formatDate(upcoming.getBooking_date()));
+            mav.setViewName("dashboard");
+            mav.addObject("userName", userName);
+            mav.addObject("nextBooking", upcoming);
+            mav.addObject("map", mapRepo.searchMap(upcoming.getDesk_location()));
 
-        return mav;
+            return mav;
+        } catch (Exception e) {
+            mav.addObject("userName", userName);
+            return mav;
+        }
     }
 
     @RequestMapping(path = "/bookings")
