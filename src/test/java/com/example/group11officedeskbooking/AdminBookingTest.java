@@ -12,7 +12,7 @@ public class AdminBookingTest {
     @BeforeAll
 
     public static void before(){
-        admin_bookingDTO = new Admin_BookingDTO(1, "2021-11-20",24,14);
+        admin_bookingDTO = new Admin_BookingDTO(1, "2021-11-20",24,14,"Mahad","Khurshid","Bristol");
     }
 
     @Test

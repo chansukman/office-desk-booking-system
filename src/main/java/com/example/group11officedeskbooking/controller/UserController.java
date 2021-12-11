@@ -24,7 +24,6 @@ public class UserController {
     }
 
     @RequestMapping(path = "/userlogin", method = RequestMethod.POST)
-
     public ModelAndView checkUser(HttpServletResponse response, UserDTO userDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
         ModelAndView mav = new ModelAndView();
             try {
@@ -37,7 +36,7 @@ public class UserController {
                     Cookie userName = new Cookie("userName", user.getFirst_name());
                     response.addCookie(userID);
                     response.addCookie(userName);
-                    mav.setViewName("dashboard");
+                    mav.setViewName("bookings");
                     return mav;
 
                 }

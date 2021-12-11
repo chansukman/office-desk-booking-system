@@ -96,7 +96,6 @@
   text-decoration: none;
 }
 
-
 /*Page layout*/
 body{
   margin: 0;
@@ -187,8 +186,16 @@ body{
 .desk-item div:nth-child(4){
   display: none;
 }
-
-
+#admin-booking-search{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+#admin-booking-success{
+  padding: 10px;
+  text-align: center;
+}
 
 /* Small tablets */
 @media screen and (min-width: 620px) {
@@ -223,6 +230,13 @@ body{
   .desk-item div:nth-child(4){
     display: inline;
   }
+  #admin-booking-search{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+  }
+
   .record{
     width: 80%;
   }

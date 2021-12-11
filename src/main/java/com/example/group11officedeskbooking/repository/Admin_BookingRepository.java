@@ -9,4 +9,5 @@ public interface Admin_BookingRepository{
     List<Admin_BookingDTO> findAll();
     public List<LotteryDTO> getAllLotteryDays();
     int deleteById(int id);
+    Admin_BookingDTO findById(int id);
 }

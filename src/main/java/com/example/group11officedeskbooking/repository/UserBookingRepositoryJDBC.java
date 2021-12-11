@@ -1,9 +1,6 @@
 package com.example.group11officedeskbooking.repository;
 
-import com.example.group11officedeskbooking.DTO.BookingDTO;
-import com.example.group11officedeskbooking.DTO.DeskDTO;
-import com.example.group11officedeskbooking.DTO.LotteryDTO;
-import com.example.group11officedeskbooking.DTO.UserBookingDTO;
+import com.example.group11officedeskbooking.DTO.*;
 import com.example.group11officedeskbooking.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,6 +27,14 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
 
                 new UserBookingMapper(), new Object[]{id});
 
+    }
+
+    @Override
+    public UserDTO findUserByUserID(int id){
+        return (UserDTO) jdbcTemplate.queryForObject(
+                "select * from user where user_id=?",
+                new UserInfoMapper(),
+                new Object[]{id});
     }
 
     @Override
@@ -134,6 +139,20 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 "select * from lottery where user_id=?",
                 new LotteryMapper(),
                 new Object[]{user_id});
+    }
+
+    @Override
+    public List<UserDTO> getAllUsers(){
+        return jdbcTemplate.query(
+                "select * from User",
+                new UserInfoMapper());
+    }
+
+    @Override
+    public List<String> getAllLocations(){
+        return jdbcTemplate.query(
+                "select distinct desk_location from Desk",
+                new LocationMapper());
     }
 
 
