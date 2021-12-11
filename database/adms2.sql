@@ -7,7 +7,9 @@ CREATE TABLE `Booking` (
   `booking_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `booking_date` date NOT NULL,
   `User_user_id` int NOT NULL,
-  `Desk_desk_id` int NOT NULL
+  `Desk_desk_id` int NOT NULL,
+  `User_UserName` varchar(25),
+  `Location` varchar(25)
   );
 
 
@@ -53,7 +55,7 @@ CREATE TABLE `User` (
   `default_location` varchar(50) default null
 );
 
-INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','abdullah.alotaibi@me.com','HR','123456','Cardiff'),(22,'Daniel','Harling','daniel@harling.com','IT','123456','Cardiff'),(23,'Mahad','Khurshid','MahadKhurshid@Khurshid.com','Sales','123456','Cardiff'),(24,'Shuwen','Chen','Chen@Shuwen.com','IT','123456','Bristol');
+INSERT INTO `User` VALUES (21,'Abdullah','Alotaibi','alotaibia5@cardiff.ac.uk','HR','123456'),(22,'Daniel','Harling','harlingd@cardiff.ac.uk','IT','123456'),(23,'Mahad','Khurshid','khurshidm1@cardiff.ac.uk','Sales','123456'),(24,'Shuwen','Chen','chens100@cardiff.ac.uk','IT','123456');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (31,'James','Jackson');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (32,'Kenneth','Platt');
 INSERT INTO `User`(user_id, first_name, last_name) VALUES (33,'Shane','Martinson');

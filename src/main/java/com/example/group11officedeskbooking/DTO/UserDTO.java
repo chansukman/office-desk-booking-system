@@ -2,10 +2,10 @@ package com.example.group11officedeskbooking.DTO;
 
 public class UserDTO {
     Integer user_id;
-     String first_name;
+    String first_name;
     String last_name;
     String email;
-     String department;
+    String department;
     String password;
 
     public UserDTO(Integer user_id, String first_name, String last_name, String email, String department, String password) {
