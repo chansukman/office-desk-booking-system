@@ -7,7 +7,6 @@ import com.example.group11officedeskbooking.DTO.UserDTO;
 import java.util.List;
 
 public interface UserBookingRepository {
-    public Object findBookingByUserId(int id);
     public UserDTO findUserByUserID(int id);
     public Object findUpcomingBookingByUserID(int id);
     public Object findPreviousBookingByUserID(int id);
