@@ -21,7 +21,7 @@ public class BookingDeleteController {
         ModelAndView mav = new ModelAndView();
         mav.addObject(userTaskRepository.updateCancelTable(id));
         mav.addObject(userTaskRepository.deleteBooking(id));
-        mav.setViewName("redirect:/mybooking/upcoming/");
+        mav.setViewName("redirect:/mybooking/upcoming");
         return mav;
     }
 }
