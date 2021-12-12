@@ -37,7 +37,7 @@
             </div>
         </div>
         <div th:if="${bookingList.isEmpty}" class="no-record">
-            <p style="text-align: center;">There is no upcoming booking</p>
+            <p style="text-align: center">No bookings to display</p><br>
         </div>
         <div class="record-item" th:each="booking: ${bookingList}">
 
@@ -101,7 +101,6 @@
         } else if (window.location.href.indexOf("previous") > -1) {
             $('.select-button.previous').css(cssProperties);
             $('.bin').hide();
-            $('.no-record').hide();
             $('.record-item').css('grid-template-columns', 'repeat(4, 1fr)');
             $('.record-item > div:first-child').css('display' , 'inline');
         }
