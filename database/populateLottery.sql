@@ -1,4 +1,18 @@
 SELECT * FROM adms2.booking;
+INSERT into Lottery(date, user_id, location) value ('2022-01-06', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-02-03', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-03-03', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-04-07', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-05-05', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-06-02', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-07-07', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-08-04', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-09-01', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-10-06', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-11-03', 1, 'Bristol') ;
+INSERT into Lottery(date, user_id, location) value ('2022-11-01', 1, 'Bristol') ;
+
+
 INSERT into Lottery(date, user_id, location) value ('2021-12-13', 1, 'Bristol') ;
 INSERT into Lottery(date, user_id, location) value ('2021-12-13', 1, 'Cardiff') ;
 INSERT into Lottery(date, user_id, location) value ('2021-12-13', 31, 'Cardiff') ;
