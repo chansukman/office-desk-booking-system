@@ -114,7 +114,7 @@ body{
   width: 100%;
   display: grid;
   margin: 0;
-  padding: 2px;
+  padding: 5px;
 }
 .content-wrapper > h1 {
   text-align: center;
@@ -242,6 +242,12 @@ body{
   align-items: center;
   text-align: center;
   max-width: 500px;
+}
+.content-wrapper.confirmation{
+  padding: 5px;
+}
+.content-wrapper.confirmation a{
+  justify-items: right;
 }
 /* Small tablets */
 @media screen and (min-width: 620px) {
