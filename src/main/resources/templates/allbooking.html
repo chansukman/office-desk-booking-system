@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
     <title>My Booking</title>
-    <link rel="stylesheet" th:href="@{/styles/mybookingStyle.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/mybookingStyle.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}" />
     <script type="text/javascript" th:src="@{/JS/cookies.js}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,46 +22,68 @@
     </div>
 
     <div th:if="${bookingList != null}" class="list-of-record" >
-        <div class="record-item" th:each="booking: ${bookingList}">
+        <div class="record-item" style="background: black; color: white;font-size: 1.1rem">
             <div>
                 Booking Number
-                <div th:text="${booking.getId()}" ></div>
             </div>
             <div>
                 Desk Number
-                <div th:text="${booking.getDeskID()}"></div>
             </div>
             <div>
                 City
-                <div th:text="${booking.getDate()}"></div>
             </div>
             <div>
                 Booking Date
+            </div>
+        </div>
+        <div th:if="${bookingList.isEmpty}" class="no-record">
+            <p style="text-align: center">No bookings to display</p><br>
+        </div>
+        <div class="record-item" th:each="booking: ${bookingList}">
+
+            <div>
+                <div th:text="${booking.getId()}" ></div>
+            </div>
+            <div>
+                <div th:text="${booking.getDeskID()}"></div>
+            </div>
+            <div>
+                <div th:text="${booking.getDate()}"></div>
+            </div>
+            <div>
                 <div th:text="${booking.getCity()}"></div>
             </div>
-            <div>
-                <img class="icons"  src="../Images/delete.png" alt="delete">
+            <div class="bin">
+                <a
+                 th:href="@{cancel(id= *{booking.getId()})}"> <img class="icons" src="../Images/delete.png" alt="delete"
+                 onclick="return confirm('Are sure you want to delete?')">
+                </a>
             </div>
-            <div>
-                <img class="icons"  src="../Images/schedule.png" alt="update">
-            </div>
-
-
         </div>
     </div>
 
+
+
     <div th:if="${lotteryList != null}" class="list-of-record" >
-        <div class="record-item" th:each="entry: ${lotteryList}">
+        <div class="record-item lottery" style="background: black; color: white;font-size: 1.1rem">
             <div>
                 Office
-                <div th:text="${entry.getLocation()}"></div>
             </div>
             <div>
                 Date
-                <div th:text="${entry.getDate()}"></div>
             </div>
             <div>
                 Resolved
+            </div>
+        </div>
+        <div class="record-item lottery" th:each="entry: ${lotteryList}">
+            <div>
+                <div th:text="${entry.getLocation()}"></div>
+            </div>
+            <div>
+                <div th:text="${entry.getDate()}"></div>
+            </div>
+            <div>
                 <div th:text="${entry.isResolved()} ? 'Yes' : 'No'"></div>
             </div>
         </div>
@@ -78,8 +100,12 @@
             $('.select-button.lottery').css(cssProperties);
         } else if (window.location.href.indexOf("previous") > -1) {
             $('.select-button.previous').css(cssProperties);
+            $('.bin').hide();
+            $('.record-item').css('grid-template-columns', 'repeat(4, 1fr)');
+            $('.record-item > div:first-child').css('display' , 'inline');
         }
     });
+
 </script>
 </body>
 </html>

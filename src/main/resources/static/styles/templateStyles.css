@@ -10,9 +10,6 @@
 
 
 
-
-
-
 /*Fonts*/
 @font-face {
   font-family: "Poppins Medium", sans-serif;
@@ -38,7 +35,7 @@
 .myHeader section > span{
   display: none;
 }
-.myHeader li:nth-child(3){
+.myHeader li:nth-child(2){
   display: none;
 }
 .myHeader ul {
@@ -117,7 +114,7 @@ body{
   width: 100%;
   display: grid;
   margin: 0;
-  padding: 2px;
+  padding: 5px;
 }
 .content-wrapper > h1 {
   text-align: center;
@@ -246,6 +243,12 @@ body{
   text-align: center;
   max-width: 500px;
 }
+.content-wrapper.confirmation{
+  padding: 5px;
+}
+.content-wrapper.confirmation a{
+  justify-items: right;
+}
 /* Small tablets */
 @media screen and (min-width: 620px) {
   .content-wrapper {
@@ -279,13 +282,6 @@ body{
   .desk-item div:nth-child(4){
     display: inline;
   }
-  #admin-booking-search{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    align-items: center;
-    justify-items: center;
-  }
-
   .record{
     width: 80%;
   }
@@ -305,6 +301,19 @@ body{
   .calendar select{
     font-size: 1.2rem;
   }
+  .record-item{
+    grid-template-columns: repeat(5,1fr);
+  }
+  .record-item > div:first-child{
+    display: inline;
+  }
+  #admin-booking-search{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+  }
+
 
 }
 
