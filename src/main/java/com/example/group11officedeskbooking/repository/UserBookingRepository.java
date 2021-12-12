@@ -24,4 +24,5 @@ public interface UserBookingRepository {
     public List<String> getAllLocations();
     public Object getNextUserBooking(int user_id);
     public Object getAllBookingFromDateAndLocation(String date, String location);
+    public boolean addDesks(int numDesks, String deskLocation);
 }

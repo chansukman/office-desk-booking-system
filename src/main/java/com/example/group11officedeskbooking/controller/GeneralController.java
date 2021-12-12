@@ -109,8 +109,26 @@ public class GeneralController {
     //Routing for the Admin Location Bristol Page
 
     @RequestMapping(path = "/admin/addLocation")
-    public ModelAndView Admin_AddLocation(){
+    public ModelAndView adminAddLocation(){
         ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_AddLocation");
+        return mav;
+    }
+
+
+    @RequestMapping(path = "/admin/add/location")
+    public ModelAndView Admin_AddLocation(@RequestParam(value="location", defaultValue = "null") String deskLocation,
+                                          @RequestParam(value="numDesks", defaultValue = "null") String numDesks,
+                                          @RequestParam(value="map", defaultValue = "null") String officeMap){
+        ModelAndView mav = new ModelAndView();
+        int numberOfDesks = Integer.parseInt(numDesks);
+        try{
+            userRepo.addDesks(numberOfDesks, deskLocation);
+            mapRepo.addMap(deskLocation, officeMap);
+            mav.addObject("addSuccess", "Successfully added " + deskLocation + " to the database!");
+        }catch(Exception e){
+            mav.addObject("addFail", "Failed to add location to database");
+        }
         mav.setViewName("Admin_AddLocation");
         return mav;
     }

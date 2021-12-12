@@ -156,6 +156,18 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 new Object[]{date, location});
     }
 
-
+    @Override
+    public boolean addDesks(int numDesks, String deskLocation){
+        try{
+            for(int i = 0 ; i < numDesks ; i++){
+                jdbcTemplate.update(
+                        "insert into Desk(desk_number, desk_location) values(?,?)",
+                        new Object[]{i + 1, deskLocation});
+            }
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
 
 }

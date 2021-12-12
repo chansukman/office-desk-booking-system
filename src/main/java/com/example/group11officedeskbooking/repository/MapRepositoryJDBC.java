@@ -24,5 +24,13 @@ public class MapRepositoryJDBC implements MapRepository{
         return mapDTO;
     }
 
+    @Override
+    public boolean addMap(String mapLocation, String image){
+        int rows = jdbcTemplate.update(
+                "insert into Maps(location, image) values(?,?)",
+                new Object[]{mapLocation, image});
+        return rows > 0;
+    }
+
 
 }
