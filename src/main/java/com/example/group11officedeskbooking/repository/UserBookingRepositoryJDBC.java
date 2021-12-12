@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.validation.ObjectError;
 
+import java.awt.print.Book;
 import java.util.List;
 @Repository
 public class UserBookingRepositoryJDBC implements UserBookingRepository{
@@ -138,6 +139,23 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 "select distinct desk_location from Desk",
                 new LocationMapper());
     }
+
+    @Override
+    public BookingDTO getNextUserBooking(int user_id){
+        return (BookingDTO) jdbcTemplate.queryForObject(
+                "select booking_date, desk_number, desk_location FROM Booking JOIN Desk ON Booking.Desk_desk_id = Desk.desk_id where User_user_id=? and booking_date >= CURDATE() ORDER BY Booking_date LIMIT 1",
+                new BookingMapper(),
+                new Object[]{user_id});
+    }
+
+    @Override
+    public List<BookingDTO> getAllBookingFromDateAndLocation(String date, String location){
+        return jdbcTemplate.query(
+                "SELECT booking_date, desk_number, desk_location, first_name, last_name FROM booking JOIN desk ON booking.Desk_desk_id = Desk.desk_id JOIN User ON booking.User_user_id=User.user_id where Booking.booking_date=? and Desk.desk_location=?",
+                new AllBookingsMapper(),
+                new Object[]{date, location});
+    }
+
 
 
 }
