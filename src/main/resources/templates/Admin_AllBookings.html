@@ -200,90 +200,95 @@ xmlns:th="http://www.thymeleaf.org">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="fa fa-tachometer nav-icon"></i>
-              <p>
-                Dashboard
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="/admin/home" class="nav-link">
-                      <i class="fa fa-home nav-icon"></i>
-                      <p>Home</p>
-                    </a>
-                </li>
-              <li class="nav-item">
-                <a href="/admin/bookings" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>All Bookings</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-tasks nav-icon"></i>
+               <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="fa fa-tachometer nav-icon"></i>
                   <p>
-                    Manage bookings
-                    <i class="fa fa-angle-left right"></i>
+                    Dashboard
+                    <i class="right fa fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/admin/home" class="nav-link ">
+                          <i class="fa fa-home nav-icon"></i>
+                          <p>Home</p>
+                        </a>
+                    </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/bookings" class="nav-link">
+                      <i class="fa fa-circle nav-icon"></i>
+                      <p>All Bookings</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/admin/createBooking" class="nav-link">
                       <i class="fa fa-edit nav-icon"></i>
-                      <p>Reschedule a booking</p>
+                      <p>Create Booking</p>
                     </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/admin/addLocation" class="nav-link">
+                      <i class="fa fa-plus nav-icon"></i>
+                      <p>Add Location</p>
+                    </a>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fa fa-tasks nav-icon"></i>
+                      <p>
+                        Manage bookings
+                        <i class="fa fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="fa fa-edit nav-icon"></i>
+                          <p>Reschedule a booking</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="fa fa-ban nav-icon"></i>
+                          <p>Cancel a booking</p>
+                        </a>
+                      </li> -->
+                    <!-- </ul> -->
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <i class="fa fa-ban nav-icon"></i>
-                      <p>Cancel a booking</p>
+                      <i class="fa fa-location-arrow nav-icon"></i>
+                      <p>
+                        Locations
+                        <i class="fa fa-angle-left right"></i>
+                      </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="/admin/location/bristol" class="nav-link">
+                          <i class="fa fa-map-pin nav-icon"></i>
+                          <p>Bristol</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/admin/location/cardiff" class="nav-link">
+                          <i class="fa fa-map-pin nav-icon"></i>
+                          <p>Cardiff</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <li class="nav-item">
+                      <a href="/admin/lottery" class="nav-link">
+                        <i class="nav-icon fa fa-th"></i>
+                        <p>
+                          Lottery
+                          <span class="right badge badge-danger">New</span>
+                        </p>
+                      </a>
+                    </li>
                   </li>
-                </ul>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-location-arrow nav-icon"></i>
-                  <p>
-                    Locations
-                    <i class="fa fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="/admin/location/bristol" class="nav-link">
-                      <i class="fa fa-map-pin nav-icon"></i>
-                      <p>Bristol</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/admin/location/cardiff" class="nav-link">
-                      <i class="fa fa-map-pin nav-icon"></i>
-                      <p>Cardiff</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/calendar" class="nav-link">
-                  <i class="fa fa-calendar nav-icon"></i>
-                  <p>Calendar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/lottery" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
-              <p>
-                Lottery
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -346,7 +351,7 @@ xmlns:th="http://www.thymeleaf.org">
           <!-- /.col-md-11 -->
             <div class="col-md-11" style="margin: 0 auto; float: none;">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" style="text-align: center";>
                         <h1>List of all Bookings</h1>
                     </div>
                     <form class="form-inline">
@@ -356,21 +361,24 @@ xmlns:th="http://www.thymeleaf.org">
                         <table id="Table" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
+                                    <th>User Name</th>
                                     <th>Booking ID</th>
+                                    <th>City</th>
                                     <th>Date</th>
                                     <th>User ID</th>
-                                    <th>Desk ID</th>
+                                    <th>Desk Number</th>
                                 </tr>
                             </thead>
                             <tr th:each="Booking:${adminBookingList}">
+                              <td th:text="${Booking.getUser_name()}"></td>
                               <td th:text="${Booking.getBooking_id()}"></td>
+                              <td th:text="${Booking.getDesk_location()}"></td>
                               <td th:text="${Booking.getBooking_date()}"></td>
                               <td th:text="${Booking.getUser_user_id()}"></td>
-                              <td th:text="${Booking.getDesk_desk_id()}"></td>
+                              <td th:text="${Booking.getDesk_number()}"></td>
                               <!-- <td><a href="#" style="color: red;" data-toggle="modal" data-target="#myModal" i class="fa fa-trash" title="Delete booking" onclick="delete_Booking()"></i></a></td> -->
-                              <!-- <td id="delete_from_js"></td> -->
-                               <td> <form th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
-                                    <button class="booking-button" type="submit">Delete</button>
+                               <td> <form onsubmit="delete_booking()" th:action="'/admin/bookings/delete/'+${Booking.getBooking_id}">
+                                    <button class="booking-button btn btn-danger" type="submit">Cancel</button>
                                    </form> 
                               </td> 
                             </tr>
@@ -392,9 +400,11 @@ xmlns:th="http://www.thymeleaf.org">
     <!-- /.content -->
   </div>
 
+<!-- Pagination -->
+
   <!-- Edit Modal -->
 
-  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -416,7 +426,7 @@ xmlns:th="http://www.thymeleaf.org">
             </form>
         </div>
     </div>
-  </div> 
+  </div>  -->
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->

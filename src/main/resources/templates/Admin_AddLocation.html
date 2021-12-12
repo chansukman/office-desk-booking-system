@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -13,7 +17,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/styles/Admin_AllLocations_Bristol.css">
-  <link rel="stylesheet" href="/styles/Admin_Calendar.css">
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -192,90 +195,95 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="fa fa-tachometer nav-icon"></i>
-              <p>
-                Dashboard
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="/admin/home" class="nav-link">
-                      <i class="fa fa-home nav-icon"></i>
-                      <p>Home</p>
-                    </a>
-                </li>
-              <li class="nav-item">
-                <a href="/admin/bookings" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>All Bookings</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-tasks nav-icon"></i>
+               <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="fa fa-tachometer nav-icon"></i>
                   <p>
-                    Manage bookings
-                    <i class="fa fa-angle-left right"></i>
+                    Dashboard
+                    <i class="right fa fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/admin/home" class="nav-link ">
+                          <i class="fa fa-home nav-icon"></i>
+                          <p>Home</p>
+                        </a>
+                    </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/bookings" class="nav-link">
+                      <i class="fa fa-circle nav-icon"></i>
+                      <p>All Bookings</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/admin/createBooking" class="nav-link">
                       <i class="fa fa-edit nav-icon"></i>
-                      <p>Reschedule a booking</p>
+                      <p>Create Booking</p>
                     </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/admin/addLocation" class="nav-link">
+                      <i class="fa fa-plus nav-icon"></i>
+                      <p>Add Location</p>
+                    </a>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fa fa-tasks nav-icon"></i>
+                      <p>
+                        Manage bookings
+                        <i class="fa fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="fa fa-edit nav-icon"></i>
+                          <p>Reschedule a booking</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="fa fa-ban nav-icon"></i>
+                          <p>Cancel a booking</p>
+                        </a>
+                      </li> -->
+                    <!-- </ul> -->
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <i class="fa fa-ban nav-icon"></i>
-                      <p>Cancel a booking</p>
+                      <i class="fa fa-location-arrow nav-icon"></i>
+                      <p>
+                        Locations
+                        <i class="fa fa-angle-left right"></i>
+                      </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="/admin/location/bristol" class="nav-link">
+                          <i class="fa fa-map-pin nav-icon"></i>
+                          <p>Bristol</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/admin/location/cardiff" class="nav-link">
+                          <i class="fa fa-map-pin nav-icon"></i>
+                          <p>Cardiff</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <li class="nav-item">
+                      <a href="/admin/lottery" class="nav-link">
+                        <i class="nav-icon fa fa-th"></i>
+                        <p>
+                          Lottery
+                          <span class="right badge badge-danger">New</span>
+                        </p>
+                      </a>
+                    </li>
                   </li>
-                </ul>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-location-arrow nav-icon"></i>
-                  <p>
-                    Locations
-                    <i class="fa fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="/admin/location/bristol" class="nav-link">
-                      <i class="fa fa-map-pin nav-icon"></i>
-                      <p>Bristol</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/admin/location/cardiff" class="nav-link">
-                      <i class="fa fa-map-pin nav-icon"></i>
-                      <p>Cardiff</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/calendar" class="nav-link">
-                  <i class="fa fa-calendar nav-icon"></i>
-                  <p>Calendar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/lottery" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
-              <p>
-                Lottery
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -336,18 +344,21 @@
             <!-- </div>/.card -->
           <!-- </div> -->
           <!-- /.col-md-11 -->
-            <div class="col-lg-10 col-md-9 col-sm-10 col-xs-10" style="margin: 0 auto; float: none;">
+            <div class="col-md-11" style="margin: 0 auto; float: none;">
                 <div class="card">
                     <div class="card-header" style="text-align: center";>
-                        <h1>Calendar</h1>
+                        <h1>Add Location</h1>
                     </div>
                         <!-- <div class="search-container">
                           <input class="placeholder" type="text" placeholder="Search.." name="search">
                           <button type="submit"><i class="fa fa-search"></i></button>
                         </div> -->
-                    <div class="card-body col-lg-10 md-9 sm-10">
-                      <input type="date">
-                      <input type="submit">
+                    <div class="card-body table-responsive p-5">
+                        <h3>Select a locaiton image you want to add</h3>
+                        <form action="#">
+                            <input type="file" name="image" required><br><br>
+                            <button class="booking-button btn btn-primary" type="submit">Upload</button>
+                        </form>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -380,17 +391,17 @@
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2021 <a href="#">ADMS</a>.</strong> All rights reserved. 
-  </footer>
+  </footer> 
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
     
 <!-- jQuery -->
-<script src="/JS/Admin_Calendar_jquery.js"></script>
+<script src="/JS/Admin_AllLocations_Bristol_jquery.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/JS/Admin_Calendar_bootstrap.bundle.js"></script>
+<script src="/JS/Admin_AllLocations_Bristol_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
-<script src="/JS/Admin_Calendar.js"></script>
+<script src="/JS/Admin_AllLocations_Bristol.js"></script>
 </body>
 </html>

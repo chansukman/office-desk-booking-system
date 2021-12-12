@@ -1,19 +1,15 @@
 package com.example.group11officedeskbooking.controller;
 
+import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.DateFormatter;
 import com.example.group11officedeskbooking.repository.DeskRepository;
 import com.example.group11officedeskbooking.repository.MapRepository;
 import com.example.group11officedeskbooking.repository.UserBookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -56,7 +52,6 @@ public class DeskController {
         }
 
         //Check if user already has a desk that day
-
         if(userRepo.checkIfUserHasBooking(searchDate, Integer.parseInt(userId))){
             mav.addObject("doubleBooking", stringDate);
             return mav;
@@ -101,5 +96,39 @@ public class DeskController {
         return mav;
 
     }
+
+    @RequestMapping(path = "/lottery/admin", method = RequestMethod.GET)
+    public ModelAndView adminEnterLottery(@RequestParam(value="search-date", defaultValue = "null") String searchDate,
+                                     @RequestParam(value="lotteryLocation", defaultValue = "null") String deskLocation,
+                                     @RequestParam(value="usrID", defaultValue = "null") String usrID){
+        ModelAndView mav = new ModelAndView();
+        int userID = Integer.parseInt(usrID);
+        DateFormatter prettyDate = new DateFormatter();
+        List<UserDTO> userList = userRepo.getAllUsers();
+        if(!userRepo.checkUserInLottery(searchDate, deskLocation, userID)){
+            if(userRepo.addUserToLottery(searchDate, deskLocation, userID)){
+                mav.addObject("lottery", deskLocation);
+                String numberInLottery = Integer.toString(userRepo.checkNumberInLottery(searchDate, deskLocation));
+                mav.addObject("numberInLottery", numberInLottery);
+
+            }
+        }else{
+            mav.addObject("lotteryFail", (deskLocation));
+        }
+        for(UserDTO user: userList){
+            if(user.getUser_id() == userID){
+                mav.addObject("user", user);
+                break;
+            }
+        }
+        mav.addObject("users", userRepo.getAllUsers());
+        mav.addObject("locations", userRepo.getAllLocations());
+        mav.addObject("date", prettyDate.formatDate(searchDate));
+        mav.setViewName("Admin_Createbooking");
+        return mav;
+
+    }
+
+
 
 }

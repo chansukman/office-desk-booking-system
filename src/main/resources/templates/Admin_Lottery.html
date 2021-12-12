@@ -12,8 +12,15 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/styles/Admin_AllLocations_Bristol.css">
-  <link rel="stylesheet" href="/styles/Admin_Calendar.css">
+  <link rel="stylesheet" href="/styles/Admin_CreateBooking.css">
+  <style>
+    #admin-lottery-form{
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+    }
+
+  </style>
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -192,90 +199,95 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="fa fa-tachometer nav-icon"></i>
-              <p>
-                Dashboard
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="/admin/home" class="nav-link">
-                      <i class="fa fa-home nav-icon"></i>
-                      <p>Home</p>
-                    </a>
-                </li>
-              <li class="nav-item">
-                <a href="/admin/bookings" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>All Bookings</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-tasks nav-icon"></i>
+               <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="fa fa-tachometer nav-icon"></i>
                   <p>
-                    Manage bookings
-                    <i class="fa fa-angle-left right"></i>
+                    Dashboard
+                    <i class="right fa fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/admin/home" class="nav-link ">
+                          <i class="fa fa-home nav-icon"></i>
+                          <p>Home</p>
+                        </a>
+                    </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/bookings" class="nav-link">
+                      <i class="fa fa-circle nav-icon"></i>
+                      <p>All Bookings</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/admin/createBooking" class="nav-link">
                       <i class="fa fa-edit nav-icon"></i>
-                      <p>Reschedule a booking</p>
+                      <p>Create Booking</p>
                     </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/admin/addLocation" class="nav-link">
+                      <i class="fa fa-plus nav-icon"></i>
+                      <p>Add Location</p>
+                    </a>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fa fa-tasks nav-icon"></i>
+                      <p>
+                        Manage bookings
+                        <i class="fa fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="fa fa-edit nav-icon"></i>
+                          <p>Reschedule a booking</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="fa fa-ban nav-icon"></i>
+                          <p>Cancel a booking</p>
+                        </a>
+                      </li> -->
+                    <!-- </ul> -->
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <i class="fa fa-ban nav-icon"></i>
-                      <p>Cancel a booking</p>
+                      <i class="fa fa-location-arrow nav-icon"></i>
+                      <p>
+                        Locations
+                        <i class="fa fa-angle-left right"></i>
+                      </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="/admin/location/bristol" class="nav-link">
+                          <i class="fa fa-map-pin nav-icon"></i>
+                          <p>Bristol</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/admin/location/cardiff" class="nav-link">
+                          <i class="fa fa-map-pin nav-icon"></i>
+                          <p>Cardiff</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <li class="nav-item">
+                      <a href="/admin/lottery" class="nav-link">
+                        <i class="nav-icon fa fa-th"></i>
+                        <p>
+                          Lottery
+                          <span class="right badge badge-danger">New</span>
+                        </p>
+                      </a>
+                    </li>
                   </li>
-                </ul>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-location-arrow nav-icon"></i>
-                  <p>
-                    Locations
-                    <i class="fa fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="/admin/location/bristol" class="nav-link">
-                      <i class="fa fa-map-pin nav-icon"></i>
-                      <p>Bristol</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/admin/location/cardiff" class="nav-link">
-                      <i class="fa fa-map-pin nav-icon"></i>
-                      <p>Cardiff</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/calendar" class="nav-link">
-                  <i class="fa fa-calendar nav-icon"></i>
-                  <p>Calendar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/lottery" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
-              <p>
-                Lottery
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -372,31 +384,28 @@
                         <table th:if="${lotteryWinners != null} and ${lotteryWinners.size() > 0}" id="lottery-table" >
                           <thead>
                           <tr>
-                            <th th:text="'Here are the winners for ' + ${lotteryWinners.get(0).getLocation} + ' on ' + ${lotteryWinners.get(0).getDate}"></th>
+                            <th th:text="'Winners (' + ${resolvedLottery.get(0).getLocation} + ', ' + ${resolvedLottery.get(0).getDate} +')'"></th>
                           </tr>
                           </thead>
                           <tr th:each="winner:${lotteryWinners}">
-                            <td th:text="${winner.getUser_id()}"></td>
+                            <td th:text="${winner}"></td>
                           </tr>
                         </table>
                       </div>
                   <div class="card-body col-lg-10 md-9 sm-10">
                       <h2>Add new lottery day</h2>
-                      <form action="/lotteryCreation" name="lotteryForm" method="get">
+                      <form id="admin-lottery-form" action="/lotteryCreation" name="lotteryForm" method="get">
 
-                        <label for="date"
-                        >Lottery day:</label
-                        >
-                        <input id="date" name="date" type="date"/><br>
+                        <label for="date">Date:
+                        <input id="date" name="date" type="date"/></label>
                         <label for="location">
-                          Office location:
+                          Office:
                           <select name="location" id="location">
                             <option value="Bristol">Bristol</option>
                             <option value="Cardiff">Cardiff</option>
                           </select>
                         </label>
-                        <br>
-                        <input type="submit" class="submit-button">
+                        <input type="submit" class="submit-button" style="max-width: 90px; text-align: center;">
                       </form>
                     <div th:if="${success != null}">Successfully added lottery day</div>
                     <div th:if="${preExisting != null}">Lottery day has already been assigned</div>
@@ -440,11 +449,11 @@
 <!-- REQUIRED SCRIPTS -->
     
 <!-- jQuery -->
-<script src="/JS/Admin_Calendar_jquery.js"></script>
+<script src="/JS/Admin_CreateBooking_jquery.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/JS/Admin_Calendar_bootstrap.bundle.js"></script>
+<script src="/JS/Admin_CreateBooking_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
-<script src="/JS/Admin_Calendar.js"></script>
+<script src="/JS/Admin_CreateBooking.js"></script>
 
 <script>
 

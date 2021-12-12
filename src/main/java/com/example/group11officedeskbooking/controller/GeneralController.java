@@ -1,8 +1,13 @@
 package com.example.group11officedeskbooking.controller;
 
+import com.example.group11officedeskbooking.DTO.BookingDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
+import com.example.group11officedeskbooking.DateFormatter;
 import com.example.group11officedeskbooking.forms.DeskForm;
 import com.example.group11officedeskbooking.repository.DeskRepository;
+import com.example.group11officedeskbooking.repository.MapRepository;
+import com.example.group11officedeskbooking.repository.UserBookingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 // import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -19,17 +24,35 @@ import java.util.ArrayList;
 @Controller
 public class GeneralController {
 
-    //    When login by user, it will route you to the user dashboard
+    private UserBookingRepository userRepo;
+    private MapRepository mapRepo;
 
-//    @RequestMapping(path = "/dashboard")
-//    public ModelAndView dashboard(@CookieValue(value = "userId",defaultValue = "null") String userId){
-//        ModelAndView mav = new ModelAndView();
-//        mav.setViewName("dashboard");
-////        if(userId.equals("null")){
-////            mav.setViewName("login");
-////        }
-//        return mav;
-//    }
+    @Autowired
+    public GeneralController(UserBookingRepository userRepo, MapRepository mapRepo){
+        this.userRepo = userRepo;
+        this.mapRepo = mapRepo;
+    }
+
+    @RequestMapping(path = "/dashboard")
+    public ModelAndView dashboard(@CookieValue(value = "userName",defaultValue = "null") String userName,
+                                  @CookieValue(value = "userId",defaultValue = "null") String userId,
+                                  ModelAndView mav) {
+        try {
+            DateFormatter bookingDate = new DateFormatter();
+            BookingDTO upcoming = (BookingDTO) userRepo.getNextUserBooking(Integer.parseInt(userId));
+            mav.addObject("otherUsers", userRepo.getAllBookingFromDateAndLocation(upcoming.getBooking_date(), upcoming.getDesk_location()));
+            upcoming.setBooking_date(bookingDate.formatDate(upcoming.getBooking_date()));
+            mav.setViewName("dashboard");
+            mav.addObject("userName", userName);
+            mav.addObject("nextBooking", upcoming);
+            mav.addObject("map", mapRepo.searchMap(upcoming.getDesk_location()));
+
+            return mav;
+        } catch (Exception e) {
+            mav.addObject("userName", userName);
+            return mav;
+        }
+    }
 
     @RequestMapping(path = "/bookings")
     public ModelAndView bookings(@CookieValue(value = "userId",defaultValue = "null") String userId){
@@ -82,23 +105,28 @@ public class GeneralController {
         mav.setViewName("Admin_AllLocations_Cardiff");
         return mav;
     }
+
+    //Routing for the Admin Location Bristol Page
+
+    @RequestMapping(path = "/admin/addLocation")
+    public ModelAndView Admin_AddLocation(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_AddLocation");
+        return mav;
+    }
+
+    //Routing for the Home Page
+
     @RequestMapping(path = "/Home")
     public ModelAndView home(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("allbooking");
+        mav.setViewName("dashboard");
         if(userId.equals("null")){
             mav.setViewName("login");
         }
         return mav;
     }
 
-
-    @RequestMapping(path = "/admin/calendar")
-    public ModelAndView Admin_Calendar(){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("Admin_Calendar");
-        return mav;
-    }
 
 
 }
