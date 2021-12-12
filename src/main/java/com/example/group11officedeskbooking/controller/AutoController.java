@@ -45,28 +45,19 @@ public class AutoController {
         map.put("code", code);
         map.put("redirect_url", "http://localhost:8080/callback");
         map.put("state", "test");
-        //获取access token
         String url = "https://github.com/login/oauth/access_token";
         String json = JSON.toJSONString(map);
-        //2.根据传入的参数（包含code），post请求https://github.com/login/oauth/access_token，获取返回值
         String result = httpHelper.Post(url, json);//access_token=your_client_id&scope=user&token_type=bearer
-        System.out.println("callback result:" + result);
 
         String[] strs = result.split("&");
-        String access_token = strs[0].split("=")[1];//解析access_token
-
-        //3.根据access token,请求https://api.github.com/user获取用户信息
-//            String url_user = "https://api.github.com/user?access_token=" + access_token;
+        String access_token = strs[0].split("=")[1];
         String userInfo = httpHelper.Get(access_token);
-//            System.out.println("userInfo:" + userInfo);//返回的是一个json字符串
         GithubUser githubUser = JSON.parseObject(userInfo, GithubUser.class);
         Integer gitUserId = githubUser.getId();
         String gitUserName = githubUser.getLogin();
-        System.out.println(gitUserId + gitUserName);
         try {
             UserDTO userDTO = (UserDTO) userRepository.checkUserExist(gitUserId);
             Integer checkUserId = userDTO.getUser_id();
-            System.out.println(checkUserId);
             if (checkUserId != null) {
                 Cookie userID = new Cookie("userId", gitUserId.toString());
                 Cookie userName = new Cookie("userName", gitUserName);
