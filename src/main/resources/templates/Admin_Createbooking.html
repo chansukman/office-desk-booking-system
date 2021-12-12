@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ADMS Admin Panel</title>
 
+  <!-- bootstrap cdn -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -48,33 +48,11 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="/admin/home" class="brand-link">
-    <img src="/Images/ADMS_Logo.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">Admin Panel</span>
   </a>
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="/Images/mahad.jpg" class="img-circle elevation-2" alt="User Image">
-      </div>
-      <div class="info">
-        <a href="#" class="d-block">Mahad Khurshid</a>
-      </div>
-    </div>
-
-    <!-- SidebarSearch Form -->
-    <!-- <div class="form-inline">
-      <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-sidebar">
-            <i class="fa fa-search fa-fw"></i>
-          </button>
-        </div>
-      </div>
-    </div> -->
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -114,29 +92,8 @@
                     <p>Add Location</p>
                   </a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-tasks nav-icon"></i>
-                    <p>
-                      Manage bookings
-                      <i class="fa fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="fa fa-edit nav-icon"></i>
-                        <p>Reschedule a booking</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="fa fa-ban nav-icon"></i>
-                        <p>Cancel a booking</p>
-                      </a>
-                    </li> -->
-                  <!-- </ul> -->
-                </li>
+                
+              </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="fa fa-location-arrow nav-icon"></i>
@@ -171,6 +128,8 @@
                 </li>
             </li>
       </ul>
+             </li>
+      </ul>
     </nav>
     <!-- /.sidebar-menu -->
   </div>
@@ -189,7 +148,7 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-10 col-md-9 col-sm-10 col-xs-10" style="margin: 0 auto; float: none;">
+            <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10" style="margin: 0 auto; float: none;">
                 <div class="card">
                     <div class="card-header" style="text-align: center";>
                       <h1>Make a booking</h1>
