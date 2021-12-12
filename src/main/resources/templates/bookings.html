@@ -32,9 +32,13 @@
                 <label for="location">
                     Please select office location <br>
                     <select name="location" id="location">
-                        <option value="Bristol">Bristol</option>
-                        <option value="Cardiff">Cardiff</option>
+                        <option th:each="location : ${locations}" th:value="${location}"
+                                th:text="${location}"></option>
                     </select>
+<!--                    <select name="location" id="location">-->
+<!--                        <option value="Bristol">Bristol</option>-->
+<!--                        <option value="Cardiff">Cardiff</option>-->
+<!--                    </select>-->
                     <br>
                 </label>
                 <input type="submit" class="submit-button">

@@ -57,6 +57,7 @@ public class GeneralController {
     @RequestMapping(path = "/bookings")
     public ModelAndView bookings(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
+        mav.addObject("locations", userRepo.getAllLocations());
         mav.setViewName("bookings");
         if(userId.equals("null")){
             mav.setViewName("login");
