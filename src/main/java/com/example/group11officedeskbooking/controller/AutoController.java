@@ -44,28 +44,19 @@ public class AutoController {
         map.put("code", code);
         map.put("redirect_url", "http://localhost:8080/callback");
         map.put("state", "test");
-        //access token
         String url = "https://github.com/login/oauth/access_token";
         String json = JSON.toJSONString(map);
-        //2.accoding to code,post https://github.com/login/oauth/access_token，
         String result = httpHelper.Post(url, json);//access_token=your_client_id&scope=user&token_type=bearer
-        System.out.println("callback result:" + result);
 
         String[] strs = result.split("&");
-        String access_token = strs[0].split("=")[1];//access_token
-
-        //3.according to access token,https://api.github.com/user get user information
-//            String url_user = "https://api.github.com/user?access_token=" + access_token;
+        String access_token = strs[0].split("=")[1];
         String userInfo = httpHelper.Get(access_token);
-//            System.out.println("userInfo:" + userInfo);
         GithubUser githubUser = JSON.parseObject(userInfo, GithubUser.class);
         Integer gitUserId = githubUser.getId();
         String gitUserName = githubUser.getLogin();
-        System.out.println(gitUserId + gitUserName);
         try {
             UserDTO userDTO = (UserDTO) userRepository.checkUserExist(gitUserId);
             Integer checkUserId = userDTO.getUser_id();
-            System.out.println(checkUserId);
             if (checkUserId != null) {
                 Cookie userID = new Cookie("userId", gitUserId.toString());
                 Cookie userName = new Cookie("userName", gitUserName);
