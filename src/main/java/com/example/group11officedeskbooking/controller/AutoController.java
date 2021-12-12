@@ -37,8 +37,7 @@ public class AutoController {
     @RequestMapping("/callback")
     @ResponseBody
     public String callback(HttpServletResponse response2, @RequestParam("code") String code) throws IOException {
-        //1.code参数为github回调callback_uri时，github传递过来的
-        System.out.println("请求callback...,code:" + code);
+        //1.code form callback_uri
         Map<String, Object> map = new HashMap<>();
         map.put("client_id", client_id);
         map.put("client_secret", client_secret);
