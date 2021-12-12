@@ -215,12 +215,7 @@ body{
   .desk-item div:nth-child(4){
     display: inline;
   }
-  #admin-booking-search{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    align-items: center;
-    justify-items: center;
-  }
+
 
 
 }
@@ -241,6 +236,12 @@ body{
   }
   .list-of-desks{
     width: 50%;
+  }
+  #admin-booking-search{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
   }
 
 
