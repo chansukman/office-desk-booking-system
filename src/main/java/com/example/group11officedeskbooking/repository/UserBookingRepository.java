@@ -23,5 +23,7 @@ public interface UserBookingRepository {
     public void resolveLottery(String date, String location);
     public List<UserDTO> getAllUsers();
     public List<String> getAllLocations();
+    public Object getNextUserBooking(int user_id);
+    public Object getAllBookingFromDateAndLocation(String date, String location);
     public Object getAllUserLotteryEntries(int id);
 }

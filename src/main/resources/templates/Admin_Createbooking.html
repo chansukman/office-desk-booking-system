@@ -44,96 +44,138 @@
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="/admin/home" class="brand-link">
-      <img src="/Images/ADMS_Logo.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin Panel</span>
-    </a>
+ <!-- Main Sidebar Container -->
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="/admin/home" class="brand-link">
+    <img src="/Images/ADMS_Logo.png" alt="ADMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">Admin Panel</span>
+  </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="/Images/mahad.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Mahad Khurshid</a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="/Images/mahad.jpg" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">Mahad Khurshid</a>
+      </div>
+    </div>
+
+    <!-- SidebarSearch Form -->
+    <!-- <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fa fa-search fa-fw"></i>
+          </button>
         </div>
       </div>
+    </div> -->
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="fa fa-tachometer nav-icon"></i>
-              <p>
-                Dashboard
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+             <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="fa fa-tachometer nav-icon"></i>
+                <p>
+                  Dashboard
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                      <a href="/admin/home" class="nav-link ">
+                        <i class="fa fa-home nav-icon"></i>
+                        <p>Home</p>
+                      </a>
+                  </li>
                 <li class="nav-item">
-                    <a href="/admin/home" class="nav-link">
-                      <i class="fa fa-home nav-icon"></i>
-                      <p>Home</p>
-                    </a>
+                  <a href="/admin/bookings" class="nav-link">
+                    <i class="fa fa-circle nav-icon"></i>
+                    <p>All Bookings</p>
+                  </a>
                 </li>
-              <li class="nav-item">
-                <a href="/admin/bookings" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>All Bookings</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/createBooking" class="nav-link">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>Create Booking</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-location-arrow nav-icon"></i>
-                  <p>
-                    Locations
-                    <i class="fa fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/admin/createBooking" class="nav-link">
+                    <i class="fa fa-edit nav-icon"></i>
+                    <p>Create Booking</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/admin/addLocation" class="nav-link">
+                    <i class="fa fa-plus nav-icon"></i>
+                    <p>Add Location</p>
+                  </a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-tasks nav-icon"></i>
+                    <p>
+                      Manage bookings
+                      <i class="fa fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="fa fa-edit nav-icon"></i>
+                        <p>Reschedule a booking</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="fa fa-ban nav-icon"></i>
+                        <p>Cancel a booking</p>
+                      </a>
+                    </li> -->
+                  <!-- </ul> -->
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-location-arrow nav-icon"></i>
+                    <p>
+                      Locations
+                      <i class="fa fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/admin/location/bristol" class="nav-link">
+                        <i class="fa fa-map-pin nav-icon"></i>
+                        <p>Bristol</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/admin/location/cardiff" class="nav-link">
+                        <i class="fa fa-map-pin nav-icon"></i>
+                        <p>Cardiff</p>
+                      </a>
+                    </li>
+                  </ul>
                   <li class="nav-item">
-                    <a href="/admin/location/bristol" class="nav-link">
-                      <i class="fa fa-map-pin nav-icon"></i>
-                      <p>Bristol</p>
+                    <a href="/admin/lottery" class="nav-link">
+                      <i class="nav-icon fa fa-th"></i>
+                      <p>
+                        Lottery
+                        <span class="right badge badge-danger">New</span>
+                      </p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="/admin/location/cardiff" class="nav-link">
-                      <i class="fa fa-map-pin nav-icon"></i>
-                      <p>Cardiff</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/lottery" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
-              <p>
-                Lottery
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+                </li>
+            </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="display: block">
@@ -172,8 +214,8 @@
                                 <label for="user-input">
                                     User:
                                     <select name="user-input" id="user-input">
-                                        <option th:each="user : ${users}" th:value="${user.getUser_id}"
-                                                th:text="${user.getFirstNameLastNameUserId}"></option>
+                                        <option th:each="users : ${users}" th:value="${users.getUser_id}"
+                                                th:text="${users.getFirstNameLastNameUserId}"></option>
                                     </select>
                                 </label>
 
@@ -273,6 +315,13 @@
 <script src="/JS/Admin_CreateBooking_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_CreateBooking.js"></script>
-
+<script>
+    window.onload = function setCalendarDates(){
+        let today = new Date();
+        today = getFormattedDate(today);
+        let dateField = document.getElementById("date");
+        dateField.setAttribute("min", today);
+    }
+</script>
 </body>
 </html>
