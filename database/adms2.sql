@@ -109,6 +109,17 @@ CREATE TABLE `Lottery`(
     `resolved` boolean default false
 );
 
+DROP TABLE IF EXISTS `Cancel`;
+CREATE TABLE IF NOT EXISTS `Cancel` (
+    `transaction_id` INT NOT NULL AUTO_INCREMENT,
+    `booking_id` INT NULL DEFAULT NULL,
+    `booking_date` DATE NOT NULL,
+    `User_user_id` INT NOT NULL,
+    `Desk_desk_id` INT NOT NULL,
+    `User_UserName` VARCHAR(25) NULL DEFAULT NULL,
+    `Location` varchar(25),
+    `time_stamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`transaction_id`));
 
     
 

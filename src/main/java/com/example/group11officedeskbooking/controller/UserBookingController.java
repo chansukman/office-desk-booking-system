@@ -3,6 +3,7 @@ package com.example.group11officedeskbooking.controller;
 import com.example.group11officedeskbooking.DTO.DeskDTO;
 import com.example.group11officedeskbooking.DTO.UserDTO;
 import com.example.group11officedeskbooking.DateFormatter;
+import com.example.group11officedeskbooking.repository.DeskRepository;
 import com.example.group11officedeskbooking.repository.UserBookingRepository;
 import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,42 @@ import java.util.Properties;
 @Controller
 public class UserBookingController {
     private UserBookingRepository bookingRepo;
+    private DeskRepository deskRepo;
 
     @Autowired
-    public UserBookingController(UserBookingRepository uRepo){
+    public UserBookingController(UserBookingRepository uRepo, DeskRepository dRepo){
         bookingRepo = uRepo;
+        deskRepo = dRepo;
     }
 
     //Http get request from localhost with the user ID routing
     @RequestMapping(path = "/mybooking")
-    public ModelAndView search(@CookieValue(value="userId", required = false) String userId){
+    public ModelAndView mybooking(@CookieValue(value="userId", required = false) String userId){
         ModelAndView mav = new ModelAndView();
-        mav.addObject("bookingList",bookingRepo.findBookingByUserId(Integer.parseInt(userId)));
+        mav.setViewName("allbooking");
+        return mav;
+    }
+
+    @RequestMapping(path = "/mybooking/upcoming")
+    public ModelAndView searchUpcoming(@CookieValue(value="userId", required = false) String userId){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("bookingList",bookingRepo.findUpcomingBookingByUserID(Integer.parseInt(userId)));
+        mav.setViewName("allbooking");
+        return mav;
+    }
+
+    @RequestMapping(path = "/mybooking/lottery")
+    public ModelAndView searchLottery(@CookieValue(value="userId", required = false) String userId){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("lotteryList",bookingRepo.getAllUserLotteryEntries(Integer.parseInt(userId)));
+        mav.setViewName("allbooking");
+        return mav;
+    }
+
+    @RequestMapping(path = "/mybooking/previous")
+    public ModelAndView searchPrevious(@CookieValue(value="userId", required = false) String userId){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("bookingList",bookingRepo.findPreviousBookingByUserID(Integer.parseInt(userId)));
         mav.setViewName("allbooking");
         return mav;
     }
@@ -66,13 +92,14 @@ public class UserBookingController {
                 MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
                 UserDTO user = bookingRepo.findUserByUserID(inputUserID);
+                DeskDTO deskDTO = deskRepo.findById(inputDeskID);
 
                 if (user.getEmail() != null){
                     helper.setTo(user.getEmail());
                     helper.setSubject("Booking Confirmed!");
                     helper.setText("Hello " + user.getFirst_name() + ",\nWe just wanted to let you know that your booking for "
                             + prettyDate.formatDate(inputDate)
-                            + " on desk " + inputDeskID + " has been confirmed! \n" +
+                            + " on desk " + inputDeskID + " in " + deskDTO.getDesk_location() + " has been confirmed! \n" +
                             "Please login to " + " http://localhost:8080/mybooking " + " to see your bookings. " +
                             "\n\nRegards," +
                             "\nADMS Team");

@@ -139,13 +139,20 @@ public class GeneralController {
     @RequestMapping(path = "/Home")
     public ModelAndView home(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("bookings");
+        mav.setViewName("dashboard");
         if(userId.equals("null")){
             mav.setViewName("login");
         }
         return mav;
     }
 
+
+    @RequestMapping(path = "/admin/calendar")
+    public ModelAndView Admin_Calendar(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_Calendar");
+        return mav;
+    }
 
 
 }
