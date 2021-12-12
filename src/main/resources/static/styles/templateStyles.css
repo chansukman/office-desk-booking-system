@@ -38,7 +38,7 @@
 .myHeader section > span{
   display: none;
 }
-.myHeader li:nth-child(2), .myHeader li:nth-child(3){
+.myHeader li:nth-child(3){
   display: none;
 }
 .myHeader ul {
