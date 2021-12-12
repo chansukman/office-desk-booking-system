@@ -33,6 +33,7 @@ public class DeskController {
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("bookings");
+        mav.addObject("locations", userRepo.getAllLocations());
         //Validation
         if(searchDate.equals("null") || deskLocation.equals("null")){
             return mav;
