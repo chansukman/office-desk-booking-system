@@ -117,14 +117,14 @@ public class GeneralController {
 
 
     @RequestMapping(path = "/admin/add/location")
-    public ModelAndView Admin_AddLocation(@RequestParam(value="location", defaultValue = "null") String deskLocation,
-                                          @RequestParam(value="numDesks", defaultValue = "null") String numDesks,
-                                          @RequestParam(value="map", defaultValue = "null") String officeMap){
+    public ModelAndView Admin_AddLocation(@RequestParam(value="Name", defaultValue = "null") String deskLocation,
+                                          @RequestParam(value="Desks", defaultValue = "null") String numDesks,
+                                          @RequestParam(value="Map", defaultValue = "null") String officeMap){
         ModelAndView mav = new ModelAndView();
         int numberOfDesks = Integer.parseInt(numDesks);
         try{
             userRepo.addDesks(numberOfDesks, deskLocation);
-            mapRepo.addMap(deskLocation, officeMap);
+            mapRepo.addMap(deskLocation, "/Images/" + officeMap);
             mav.addObject("addSuccess", "Successfully added " + deskLocation + " to the database!");
         }catch(Exception e){
             mav.addObject("addFail", "Failed to add location to database");

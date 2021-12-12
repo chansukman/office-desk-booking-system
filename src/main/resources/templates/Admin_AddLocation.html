@@ -354,8 +354,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <button type="submit"><i class="fa fa-search"></i></button>
                         </div> -->
                     <div class="card-body table-responsive p-5">
+                      <p th:if="${addSuccess != null}" th:text="${addSuccess}"></p>
+                      <p th:if="${addFail != null}" th:text="${addFail}"></p>
                         <h3>Please input the required field to add new Location</h3>
-                        <form action="/admin/addLocation">
+                        <form action="/admin/add/location" method="get">
                             <input type="number" name="Desks" placeholder="Number of desks" required><br><br>
                             <input type="text" name="Name" placeholder="Name of the Location" required><br><br>
                             <input type="file" name="Map" id="upload" placeholder="Map of the Location" required><br><br>

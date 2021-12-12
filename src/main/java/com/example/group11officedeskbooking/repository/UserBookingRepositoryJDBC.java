@@ -159,10 +159,10 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     @Override
     public boolean addDesks(int numDesks, String deskLocation){
         try{
-            for(int i = 0 ; i < numDesks ; i++){
+            for(int i = 1 ; i <= numDesks ; i++){
                 jdbcTemplate.update(
                         "insert into Desk(desk_number, desk_location) values(?,?)",
-                        new Object[]{i + 1, deskLocation});
+                        new Object[]{i, deskLocation});
             }
         }catch(Exception e){
             return false;
