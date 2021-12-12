@@ -19,13 +19,21 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
 
     @Override
     //list DTO for all User booking records
-    public List<UserBookingDTO> findBookingByUserId(int id) {
+    public List<UserBookingDTO> findUpcomingBookingByUserID(int id) {
 
         // JdbcTemplate query used to get multiple records from the database
 
         return jdbcTemplate.query(
-            "SELECT booking_id,booking_date,desk_location,Desk_desk_id, DATE_FORMAT(booking_date,'%D %M %Y') AS formattedDate FROM Booking JOIN Desk ON Booking.Desk_desk_id = Desk.desk_id WHERE Booking.User_user_id=? && Booking_date >= CURDATE() ORDER BY Booking_date",
+            "SELECT booking_id,booking_date,desk_location,Desk.desk_number, DATE_FORMAT(booking_date,'%D %M %Y') AS formattedDate FROM Booking JOIN Desk ON Booking.Desk_desk_id = Desk.desk_id WHERE Booking.User_user_id=? && Booking_date >= CURDATE() ORDER BY Booking_date",
 
+                new UserBookingMapper(), new Object[]{id});
+
+    }
+
+    @Override
+    public List<UserBookingDTO> findPreviousBookingByUserID(int id) {
+        return jdbcTemplate.query(
+                "SELECT booking_id,booking_date,desk_location,Desk.desk_number, DATE_FORMAT(booking_date,'%D %M %Y') AS formattedDate FROM Booking JOIN Desk ON Booking.Desk_desk_id = Desk.desk_id WHERE Booking.User_user_id=? && Booking_date < CURDATE() ORDER BY Booking_date DESC",
                 new UserBookingMapper(), new Object[]{id});
 
     }
@@ -156,6 +164,14 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
                 new Object[]{date, location});
     }
 
+
+    @Override
+    public List<LotteryDTO> getAllUserLotteryEntries(int user_id){
+        return jdbcTemplate.query(
+                "select * from lottery where user_id=?",
+                new LotteryMapper(),
+                new Object[]{user_id});
+    }
 
 
 }

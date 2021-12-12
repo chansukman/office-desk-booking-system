@@ -120,7 +120,7 @@ public class GeneralController {
     @RequestMapping(path = "/Home")
     public ModelAndView home(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("bookings");
+        mav.setViewName("dashboard");
         if(userId.equals("null")){
             mav.setViewName("login");
         }

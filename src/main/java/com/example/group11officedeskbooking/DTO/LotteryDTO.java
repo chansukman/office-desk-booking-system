@@ -8,6 +8,13 @@ public class LotteryDTO {
     private int user_id;
     private boolean resolved;
 
+    public LotteryDTO(String date, int user_id, String location, boolean resolved) {
+        this.date = date;
+        this.location = location;
+        this.user_id = user_id;
+        this.resolved = resolved;
+    }
+
     public LotteryDTO(String date, int user_id, String location) {
         this.date = date;
         this.location = location;

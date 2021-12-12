@@ -29,9 +29,32 @@ public class UserBookingController {
 
     //Http get request from localhost with the user ID routing
     @RequestMapping(path = "/mybooking")
-    public ModelAndView search(@CookieValue(value="userId", required = false) String userId){
+    public ModelAndView mybooking(@CookieValue(value="userId", required = false) String userId){
         ModelAndView mav = new ModelAndView();
-        mav.addObject("bookingList",bookingRepo.findBookingByUserId(Integer.parseInt(userId)));
+        mav.setViewName("allbooking");
+        return mav;
+    }
+
+    @RequestMapping(path = "/mybooking/upcoming")
+    public ModelAndView searchUpcoming(@CookieValue(value="userId", required = false) String userId){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("bookingList",bookingRepo.findUpcomingBookingByUserID(Integer.parseInt(userId)));
+        mav.setViewName("allbooking");
+        return mav;
+    }
+
+    @RequestMapping(path = "/mybooking/lottery")
+    public ModelAndView searchLottery(@CookieValue(value="userId", required = false) String userId){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("lotteryList",bookingRepo.getAllUserLotteryEntries(Integer.parseInt(userId)));
+        mav.setViewName("allbooking");
+        return mav;
+    }
+
+    @RequestMapping(path = "/mybooking/previous")
+    public ModelAndView searchPrevious(@CookieValue(value="userId", required = false) String userId){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("bookingList",bookingRepo.findPreviousBookingByUserID(Integer.parseInt(userId)));
         mav.setViewName("allbooking");
         return mav;
     }
