@@ -81,6 +81,46 @@ public class Admin_BookingController {
             }
             lotteryWinners.add(lotteryContestants.get(randomIndex));
             winnerList.add(userRepo.findUserByUserID(lotteryWinners.get(i).getUser_id()).getFirstNameLastNameUserId());
+
+            //email to winners
+            Properties props = new Properties();
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
+
+            JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+            mailSender.setHost("smtp.gmail.com");
+            mailSender.setPort(587);
+            mailSender.setUsername("testercardiff123@gmail.com");
+            mailSender.setPassword("Tester@cardiff123");
+
+            UserDTO userDTO = new UserDTO();
+            userDTO  = userRepo.findUserByUserID(lotteryWinners.get(i).getUser_id());
+
+            try {
+                MimeMessage message = mailSender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(message, true);
+                DateFormatter prettyDate = new DateFormatter();
+
+                if (userDTO.getEmail() != null){
+                    helper.setTo(userDTO.getEmail());
+                    helper.setSubject("You won the lottery!!");
+                    helper.setText("Congratulations " + userDTO.getFirst_name() + ",\nYou won the Lottery for "
+                            + prettyDate.formatDate(inputDate)
+                            + " in " + inputLocation + "\n" +
+                            "Please login to " + " http://localhost:8080/mybooking " + " to see your bookings" +
+                            "\n\nRegards," +
+                            "\nADMS Team");
+
+                    mailSender.setJavaMailProperties(props);
+                    mailSender.send(message);
+                }
+
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
             lotteryContestants.remove(randomIndex);
             userRepo.addBooking(lotteryWinners.get(i).getUser_id(), lotteryWinners.get(i).getDate(), desksInLocation.get(i).getDesk_id());
         }
