@@ -17,25 +17,19 @@
 
     </header>
     <div class="content-wrapper">
-        <h1>Make a booking</h1>
+        <h1>Book a Desk</h1>
         <div class="calendar">
-            <h1>Calendar & Location</h1>
-
             <form action="/searchDate" name="dateForm" method="get" onsubmit="return checkWeekend()">
 
                 <label for="date"
-                >Please select the day you would like to book your desk</label
-                ><br />
-
-                <!--          Date range is from today to 1 week from today -->
-                <input th:attr="value =${inputDate}" id="date" name="date" type="date"/><br>
+                >Date:
+                <input th:attr="value =${inputDate}" id="date" name="date" type="date"/></label>
                 <label for="location">
-                    Please select office location <br>
+                    Office:
                     <select name="location" id="location">
                         <option value="Bristol">Bristol</option>
                         <option value="Cardiff">Cardiff</option>
                     </select>
-                    <br>
                 </label>
                 <input type="submit" class="submit-button">
             </form>

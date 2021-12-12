@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ADMS Admin Panel</title>
 
-  <!-- bootstrap cdn -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/styles/Admin_AllLocations_Cardiff.css">
+  <link rel="stylesheet" href="/styles/Admin_AllLocations_Bristol.css">
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -55,38 +55,38 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
-                  <i class="fa fa-tachometer nav-icon"></i>
-                  <p>
-                    Dashboard
-                    <i class="right fa fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
+                  <a href="#" class="nav-link active">
+                    <i class="fa fa-tachometer nav-icon"></i>
+                    <p>
+                      Dashboard
+                      <i class="right fa fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="/admin/home" class="nav-link ">
+                            <i class="fa fa-home nav-icon"></i>
+                            <p>Home</p>
+                          </a>
+                      </li>
                     <li class="nav-item">
-                        <a href="/admin/home" class="nav-link ">
-                          <i class="fa fa-home nav-icon"></i>
-                          <p>Home</p>
-                        </a>
+                      <a href="/admin/bookings" class="nav-link">
+                        <i class="fa fa-circle nav-icon"></i>
+                        <p>All Bookings</p>
+                      </a>
                     </li>
-                  <li class="nav-item">
-                    <a href="/admin/bookings" class="nav-link">
-                      <i class="fa fa-circle nav-icon"></i>
-                      <p>All Bookings</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/admin/createBooking" class="nav-link">
-                      <i class="fa fa-edit nav-icon"></i>
-                      <p>Create Booking</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/admin/addLocation" class="nav-link">
-                      <i class="fa fa-plus nav-icon"></i>
-                      <p>Add Location</p>
-                    </a>
-                  </li>
+                    <li class="nav-item">
+                      <a href="/admin/createBooking" class="nav-link">
+                        <i class="fa fa-edit nav-icon"></i>
+                        <p>Create Booking</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/admin/addLocation" class="nav-link">
+                        <i class="fa fa-plus nav-icon"></i>
+                        <p>Add Location</p>
+                      </a>
+                    </li>
                   
                 </li>
                   <li class="nav-item">
@@ -147,10 +147,18 @@
             <div class="col-md-11" style="margin: 0 auto; float: none;">
                 <div class="card">
                     <div class="card-header" style="text-align: center";>
-                        <h1>Cardiff</h1>
+                        <h1>Add Location</h1>
                     </div>
+                        <!-- <div class="search-container">
+                          <input class="placeholder" type="text" placeholder="Search.." name="search">
+                          <button type="submit"><i class="fa fa-search"></i></button>
+                        </div> -->
                     <div class="card-body table-responsive p-5">
-                        <img class="cardiff_img" src="/Images/Cardiff_numbered.jpg" alt="Cardiff">
+                        <h3>Select a locaiton image you want to add</h3><br>
+                        <form action="#">
+                            <input type="file" name="image" required><br><br>
+                            <button class="booking-button btn btn-primary" type="submit">Upload</button>
+                        </form>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -173,17 +181,17 @@
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2021 <a href="#">ADMS</a>.</strong> All rights reserved. 
-  </footer>
+  </footer> 
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
     
 <!-- jQuery -->
-<script src="/JS/Admin_AllLocations_Cardiff_jquery.js"></script>
+<script src="/JS/Admin_AllLocations_Bristol_jquery.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/JS/Admin_AllLocations_Cardiff_bootstrap.bundle.js"></script>
+<script src="/JS/Admin_AllLocations_Bristol_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
-<script src="/JS/Admin_AllLocations_Cardiff.js"></script>
+<script src="/JS/Admin_AllLocations_Bristol.js"></script>
 </body>
 </html>

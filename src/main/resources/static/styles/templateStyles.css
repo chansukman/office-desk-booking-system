@@ -10,9 +10,6 @@
 
 
 
-
-
-
 /*Fonts*/
 @font-face {
   font-family: "Poppins Medium", sans-serif;
@@ -38,7 +35,7 @@
 .myHeader section > span{
   display: none;
 }
-.myHeader li:nth-child(2), .myHeader li:nth-child(3){
+.myHeader li:nth-child(2){
   display: none;
 }
 .myHeader ul {
@@ -117,7 +114,10 @@ body{
   width: 100%;
   display: grid;
   margin: 0;
-  padding-bottom: 2.5rem;
+  padding: 2px;
+}
+.content-wrapper > h1 {
+  text-align: center;
 }
 .dash-links{
   list-style: none;
@@ -133,7 +133,13 @@ body{
   border-bottom: 2px solid black;
   text-align: center;
 }
-
+.calendar form{
+  display: flex;
+  flex-direction: column;
+}
+.calendar input{
+  margin: 5px;
+}
 .calBlock {
   display: grid;
   position: relative;
@@ -243,6 +249,9 @@ body{
     width: 80%;
     margin: auto;
   }
+  .content-wrapper > h1 {
+    text-align: left;
+  }
   .myHeader li:nth-child(2), .myHeader li:nth-child(3){
     display: inline;
   }
@@ -250,7 +259,10 @@ body{
     width: auto;
     max-height: 80vh;
   }
-
+  .booking-type-select ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
   .myHeader section > span{
     display: inline;
     color: white;
@@ -262,6 +274,31 @@ body{
     grid-template-columns: repeat(5,1fr);
   }
   .desk-item div:nth-child(4){
+    display: inline;
+  }
+  .record{
+    width: 80%;
+  }
+  .list-of-record{
+    max-width: 75%;
+  }
+  .calendar form{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin: auto;
+    font-size: 1.2rem;
+  }
+  .calendar input,
+  .calendar select{
+    font-size: 1.2rem;
+  }
+  .record-item{
+    grid-template-columns: repeat(5,1fr);
+  }
+  .record-item > div:first-child{
     display: inline;
   }
   #admin-booking-search{

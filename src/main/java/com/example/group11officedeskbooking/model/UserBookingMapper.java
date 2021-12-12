@@ -15,6 +15,6 @@ public class UserBookingMapper implements RowMapper {
         return new UserBookingDTO(rs.getInt("booking_id"),
                 rs.getString("Desk.desk_location"),
                 rs.getString("formattedDate"),
-                rs.getInt("Desk_desk_id"));
+                rs.getInt("Desk.desk_number"));
     }
 }
