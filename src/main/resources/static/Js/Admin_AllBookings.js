@@ -83,36 +83,6 @@ let warningTimeout = 300000;
     startTimer();
   }
 
-// modal function for edit booking
-
-function edit_booking() {
-  $('#editModal').modal('show');
-  // $("#edit_modal_id");
-
-}
-
-function edited_booking(){
-  window.location.replace("/admin/bookings")
-}
-  
-// Sweet Alert
-
-function delete_Booking(){
-  swal({
-    title: "Are you sure you want to cancel the booking?",
-    icon: "warning",
-    buttons: ["No", "Yes"],
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      swal("Booking has been canceled", {
-        icon: "success",
-      });
-    }
-  });
-}
-
 function delete_booking(){
   if(confirm("You are about to delete the booking.\n\nWould you like to continue?")){
     return true;

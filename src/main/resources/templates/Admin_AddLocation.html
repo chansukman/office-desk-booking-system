@@ -354,9 +354,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <button type="submit"><i class="fa fa-search"></i></button>
                         </div> -->
                     <div class="card-body table-responsive p-5">
-                        <h3>Select a locaiton image you want to add</h3>
-                        <form action="#">
-                            <input type="file" name="image" required><br><br>
+                        <h3>Please input the required field to add new Location</h3>
+                        <form action="/admin/addLocation">
+                            <input type="number" name="Desks" placeholder="Number of desks" required><br><br>
+                            <input type="text" name="Name" placeholder="Name of the Location" required><br><br>
+                            <input type="file" name="Map" id="upload" placeholder="Map of the Location" required><br><br>
                             <button class="booking-button btn btn-primary" type="submit">Upload</button>
                         </form>
                     </div>
@@ -403,5 +405,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/JS/Admin_AllLocations_Bristol_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_AllLocations_Bristol.js"></script>
+
 </body>
 </html>
