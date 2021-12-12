@@ -29,8 +29,8 @@ DROP TABLE IF EXISTS `Desk`;
 CREATE TABLE `Desk` (
   `desk_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `desk_number` int NOT NULL,
-  `has_monitors` boolean NOT NULL,
-  `desk_type` varchar(50) NOT NULL,
+  `has_monitors` boolean NOT NULL default true,
+  `desk_type` varchar(50) NOT NULL default 'Standard',
   `desk_location` varchar(50) NOT NULL
 );
 

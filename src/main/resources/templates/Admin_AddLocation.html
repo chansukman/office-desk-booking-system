@@ -87,7 +87,7 @@
                         <p>Add Location</p>
                       </a>
                     </li>
-                  
+
                 </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -154,9 +154,13 @@
                           <button type="submit"><i class="fa fa-search"></i></button>
                         </div> -->
                     <div class="card-body table-responsive p-5">
-                        <h3>Select a locaiton image you want to add</h3><br>
-                        <form action="#">
-                            <input type="file" name="image" required><br><br>
+                      <p th:if="${addSuccess != null}" th:text="${addSuccess}"></p>
+                      <p th:if="${addFail != null}" th:text="${addFail}"></p>
+                        <h3>Please input the required field to add new Location</h3>
+                        <form action="/admin/add/location" method="get">
+                            <input type="number" name="Desks" placeholder="Number of desks" required><br><br>
+                            <input type="text" name="Name" placeholder="Name of the Location" required><br><br>
+                            <input type="file" name="Map" id="upload" placeholder="Map of the Location" required><br><br>
                             <button class="booking-button btn btn-primary" type="submit">Upload</button>
                         </form>
                     </div>
@@ -193,5 +197,6 @@
 <script src="/JS/Admin_AllLocations_Bristol_bootstrap.bundle.js"></script>
 <!-- AdminLTE App -->
 <script src="/JS/Admin_AllLocations_Bristol.js"></script>
+
 </body>
 </html>

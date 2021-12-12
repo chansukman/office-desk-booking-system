@@ -33,6 +33,7 @@ public class DeskController {
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("bookings");
+        mav.addObject("locations", userRepo.getAllLocations());
         //Validation
         if(searchDate.equals("null") || deskLocation.equals("null")){
             return mav;
@@ -67,6 +68,7 @@ public class DeskController {
         mav.addObject("map", mapRepo.searchMap(deskLocation));
         mav.addObject("deskList", deskRepo.searchAvailableDesksByDate(searchDate, deskLocation));
         mav.addObject("location", deskLocation);
+        mav.addObject("locations", userRepo.getAllLocations());
         mav.addObject("userId",userId);
         //Add aesthetic date
         mav.addObject("searchDate", stringDate);

@@ -27,8 +27,8 @@
                 <label for="location">
                     Office:
                     <select name="location" id="location">
-                        <option value="Bristol">Bristol</option>
-                        <option value="Cardiff">Cardiff</option>
+                        <option th:each="location1 : ${locations}" th:value="${location1}"
+                                th:text="${location1}"></option>
                     </select>
                 </label>
                 <input type="submit" class="submit-button">

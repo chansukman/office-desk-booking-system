@@ -57,6 +57,7 @@ public class GeneralController {
     @RequestMapping(path = "/bookings")
     public ModelAndView bookings(@CookieValue(value = "userId",defaultValue = "null") String userId){
         ModelAndView mav = new ModelAndView();
+        mav.addObject("locations", userRepo.getAllLocations());
         mav.setViewName("bookings");
         if(userId.equals("null")){
             mav.setViewName("login");
@@ -109,8 +110,26 @@ public class GeneralController {
     //Routing for the Admin Location Bristol Page
 
     @RequestMapping(path = "/admin/addLocation")
-    public ModelAndView Admin_AddLocation(){
+    public ModelAndView adminAddLocation(){
         ModelAndView mav = new ModelAndView();
+        mav.setViewName("Admin_AddLocation");
+        return mav;
+    }
+
+
+    @RequestMapping(path = "/admin/add/location")
+    public ModelAndView Admin_AddLocation(@RequestParam(value="Name", defaultValue = "null") String deskLocation,
+                                          @RequestParam(value="Desks", defaultValue = "null") String numDesks,
+                                          @RequestParam(value="Map", defaultValue = "null") String officeMap){
+        ModelAndView mav = new ModelAndView();
+        int numberOfDesks = Integer.parseInt(numDesks);
+        try{
+            userRepo.addDesks(numberOfDesks, deskLocation);
+            mapRepo.addMap(deskLocation, "/Images/" + officeMap);
+            mav.addObject("addSuccess", "Successfully added " + deskLocation + " to the database!");
+        }catch(Exception e){
+            mav.addObject("addFail", "Failed to add location to database");
+        }
         mav.setViewName("Admin_AddLocation");
         return mav;
     }
