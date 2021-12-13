@@ -18,7 +18,7 @@
 
             <div class="dash-cards" th:if="${nextBooking != null}">
                 <div>
-                    <h3 style="padding: 5px">Your Next Booking</h3>
+                    <h3 style="padding: 5px; margin-bottom: 8px">Your Next Booking</h3>
                     <div class="upcoming-booking">
                         <div th:text="'Desk ' + ${nextBooking.getDesk_number()}"></div>
                         <div th:text="${nextBooking.getBooking_date()}"></div>
