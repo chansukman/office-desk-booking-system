@@ -39,7 +39,8 @@ public class ReceptionistRepository implements UserTaskDAO {
     }
 
     @Override
-    public boolean setAttendance(boolean isAttended) {
-        return false;
+    public int setAttendance(int id) {
+        return jdbcTemplate.update("UPDATE Booking SET isattend = 1 WHERE booking_id =?",
+        new ReceptionistMapper(), new Object[] {id});
     }
 }

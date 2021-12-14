@@ -11,5 +11,5 @@ public interface UserTaskDAO {
     public Object getDailyBooking(String deskLocation);
 
     //to mark booking as true when booking holder come to office
-    public boolean setAttendance(boolean isAttended);
+    public int setAttendance(int id);
 }

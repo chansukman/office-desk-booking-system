@@ -33,7 +33,10 @@ public class UserTaskRepository implements UserTaskDAO {
     }
 
     @Override
-    public boolean setAttendance(boolean isAttended) {
-        return false;
+    public int setAttendance(int id) {
+        return 0;
     }
+
+
 }
+

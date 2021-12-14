@@ -8,6 +8,7 @@ public class ReceptionistTask {
     private String deskLocation;
     private int deskNumber;
     private String date;
+    private boolean isAttend;
 
     public ReceptionistTask() {
     }
@@ -20,6 +21,19 @@ public class ReceptionistTask {
         this.deskLocation = deskLocation;
         this.deskNumber = deskNumber;
         this.date = date;
+
+    }
+
+    public ReceptionistTask(boolean isAttend) {
+        this.isAttend = isAttend;
+    }
+
+    public boolean isAttend() {
+        return isAttend;
+    }
+
+    public void setAttend(boolean attend) {
+        isAttend = attend;
     }
 
     public int getBookingID() {
