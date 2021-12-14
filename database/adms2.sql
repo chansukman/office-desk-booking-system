@@ -9,7 +9,8 @@ CREATE TABLE `Booking` (
   `User_user_id` int NOT NULL,
   `Desk_desk_id` int NOT NULL,
   `User_UserName` varchar(25),
-  `Location` varchar(25)
+  `Location` varchar(25),
+  `isattended` TINYINT NULL DEFAULT 0
   );
 
 
