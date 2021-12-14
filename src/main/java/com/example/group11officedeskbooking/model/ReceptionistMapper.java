@@ -16,7 +16,7 @@ public class ReceptionistMapper implements RowMapper {
         String deskLocation =rs.getString("desk_location");
         int deskNumber = rs.getInt("Desk.desk_number");
         String date =rs.getString("today");
-        boolean isAttend = rs.getBoolean("isattended");
+        boolean isAttend = rs.getBoolean("isAttended");
         ReceptionistTask receptionistTask = new ReceptionistTask(id, userID, firstName,lastName,deskLocation,deskNumber, date);
         return receptionistTask;
     }
