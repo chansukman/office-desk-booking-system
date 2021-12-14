@@ -33,9 +33,9 @@ public class AutoController {
     String client_id = "acd4376fd4158e948c1a";
     String client_secret = "542a5a27d415ac3c022773f3ea788d3c8016d5ec";
 
-
     @RequestMapping("/callback")
     @ResponseBody
+    //get code from url
     public String callback(HttpServletResponse response2, @RequestParam("code") String code) throws IOException {
         //1.code form callback_uri
         Map<String, Object> map = new HashMap<>();
@@ -55,6 +55,7 @@ public class AutoController {
         Integer gitUserId = githubUser.getId();
         String gitUserName = githubUser.getLogin();
         try {
+            //check the GitHub userid in local database
             UserDTO userDTO = (UserDTO) userRepository.checkUserExist(gitUserId);
             Integer checkUserId = userDTO.getUser_id();
             if (checkUserId != null) {
