@@ -12,4 +12,7 @@ public interface UserTaskDAO {
 
     //to mark booking as true when booking holder come to office
     public int setAttendance(int id);
+
+    //to retrieve attendance status
+    public Object attendanceStatus(int id);
 }

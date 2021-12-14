@@ -37,6 +37,11 @@ public class UserTaskRepository implements UserTaskDAO {
         return 0;
     }
 
+    @Override
+    public Object attendanceStatus(int id) {
+        return null;
+    }
+
 
 }
 

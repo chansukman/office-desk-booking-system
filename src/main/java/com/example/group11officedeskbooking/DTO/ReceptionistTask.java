@@ -28,7 +28,7 @@ public class ReceptionistTask {
         this.isAttend = isAttend;
     }
 
-    public boolean isAttend() {
+    public boolean isAttend(int id) {
         return isAttend;
     }
 
