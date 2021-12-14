@@ -13,7 +13,7 @@ public class ReceptionistTask {
     public ReceptionistTask() {
     }
 
-    public ReceptionistTask(int bookingID, int userID, String firstName, String lastName, String deskLocation, int deskNumber, String date) {
+    public ReceptionistTask(int bookingID, int userID, String firstName, String lastName, String deskLocation, int deskNumber, String date, boolean isAttend) {
         this.bookingID = bookingID;
         this.userID = userID;
         this.firstName = firstName;
@@ -21,7 +21,7 @@ public class ReceptionistTask {
         this.deskLocation = deskLocation;
         this.deskNumber = deskNumber;
         this.date = date;
-
+        this.isAttend = isAttend;
     }
 
     public ReceptionistTask(boolean isAttend) {
