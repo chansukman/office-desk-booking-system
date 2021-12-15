@@ -24,6 +24,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/userlogin", method = RequestMethod.POST)
+    //check the username and password in local database
     public ModelAndView checkUser(HttpServletResponse response, UserDTO userDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
         ModelAndView mav = new ModelAndView();
             try {
@@ -51,6 +52,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/admin/home", method = RequestMethod.POST)
+    //check the admin name and password in the local database
 
     public ModelAndView checkAdmin( AdminDTO adminDTO, @RequestParam(value = "first_name") String username, @RequestParam(value = "password") String password, @RequestParam(value="button") String btn) {
         ModelAndView mav = new ModelAndView();
