@@ -22,7 +22,7 @@ import java.util.Optional;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
-
+//Controller class to interact with frontend
 @RestController
 public class Admin_BookingController {
 
@@ -39,6 +39,7 @@ public class Admin_BookingController {
         this.deskRepo = deskRepo;
     }
 
+    //Controller to display all the booking records
     @RequestMapping(path = "admin/bookings", method = RequestMethod.GET)
     public ModelAndView fetchAllRecords(){
         ModelAndView mav = new ModelAndView();
@@ -150,16 +151,18 @@ public class Admin_BookingController {
         return mav;
     }
 
-    // Deleting All Bookings
+    // Controller to Delete bookings
 
     @RequestMapping(path = "admin/bookings/delete/{booking_id}")
     public ModelAndView deleteBooking(@PathVariable Optional<String> booking_id) {
         int id = Integer.parseInt(booking_id.get());
         ModelAndView mav = new ModelAndView();
 
+        //finding the appropriate user
         Admin_BookingDTO adminDto = admin_bookingRepository.findById(id);
         UserDTO userDTO  = userRepo.findUserByUserID(adminDto.getUser_user_id());
 
+        //setting up email
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -172,6 +175,7 @@ public class Admin_BookingController {
         mailSender.setUsername("testercardiff123@gmail.com");
         mailSender.setPassword("Tester@cardiff123");
 
+        //sending email to that user which had a booking
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -201,6 +205,7 @@ public class Admin_BookingController {
         return mav;
     }
 
+//    Controller to create a new booking
     @RequestMapping(path = "/admin/createBooking")
     public ModelAndView Admin_CreateBooking(){
         ModelAndView mav = new ModelAndView();
@@ -210,6 +215,7 @@ public class Admin_BookingController {
         return mav;
     }
 
+//    Controller to search and create booking
     @RequestMapping(path = "/admin/createBooking/search", method = RequestMethod.GET)
     public ModelAndView adminSearchDesk(@RequestParam(value="date", defaultValue = "null") String searchDate,
                                         @RequestParam(value="location", defaultValue = "null") String deskLocation,

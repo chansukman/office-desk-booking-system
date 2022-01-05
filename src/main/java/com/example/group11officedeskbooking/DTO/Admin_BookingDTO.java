@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequiredArgsConstructor
 public class Admin_BookingDTO {
 
+    //Class to get all the database fields and get and set their values here
+
     private int booking_id;
     private String booking_date;
     private int User_user_id;

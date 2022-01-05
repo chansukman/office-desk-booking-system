@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -154,7 +154,7 @@
                           <button type="submit"><i class="fa fa-search"></i></button>
                         </div> -->
                     <div class="card-body table-responsive p-5">
-                      <p th:if="${addSuccess != null}" th:text="${addSuccess}"></p>
+                      <p th:if="${addSuccess != null}" th:text="${addSuccess}" style="color: darkgreen;"></p>
                       <p th:if="${addFail != null}" th:text="${addFail}"></p>
                         <h3>Please input the required field to add new Location</h3>
                         <form action="/admin/add/location" method="get">

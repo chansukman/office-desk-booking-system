@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+//Class to map all database fields
 public class Admin_BookingMapper implements RowMapper {
 
     @Override

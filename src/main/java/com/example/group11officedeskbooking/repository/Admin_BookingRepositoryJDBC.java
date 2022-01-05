@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
 
-
+    //driver to connect with database
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -23,6 +23,7 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
         jdbcTemplate = aTemplate;
     }
 
+    //Get All bookings
     @Override
     public List<Admin_BookingDTO> findAll() {
         return jdbcTemplate.query(
@@ -38,12 +39,12 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
     }
 
     // Delete Bookings
-
     @Override
     public int deleteById(int id) {
         return jdbcTemplate.update("DELETE FROM Booking WHERE booking_id=?", id);
     }
 
+    //Find bookings by id
     @Override
     public Admin_BookingDTO findById(int id) {
         return (Admin_BookingDTO) jdbcTemplate.queryForObject(
