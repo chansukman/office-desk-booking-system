@@ -26,4 +26,22 @@ public class UserTaskRepository implements UserTaskDAO {
     public int deleteBooking(int id) {
         return jdbcTemplate.update("DELETE FROM Booking where booking_id =?", new Object[]{id});
     }
+
+    @Override
+    public Object getDailyBooking(String deskLocation) {
+        return null;
+    }
+
+    @Override
+    public int setAttendance(int id) {
+        return 0;
+    }
+
+    @Override
+    public Object attendanceStatus(int id) {
+        return null;
+    }
+
+
 }
+

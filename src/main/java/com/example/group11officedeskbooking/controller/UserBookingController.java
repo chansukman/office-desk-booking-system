@@ -33,6 +33,7 @@ public class UserBookingController {
     //Http get request from localhost with the user ID routing
     @RequestMapping(path = "/mybooking")
     public ModelAndView mybooking(@CookieValue(value="userId", required = false) String userId){
+
         ModelAndView mav = new ModelAndView();
         mav.setViewName("allbooking");
         return mav;

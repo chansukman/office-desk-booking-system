@@ -37,6 +37,9 @@ public class GeneralController {
     public ModelAndView dashboard(@CookieValue(value = "userName",defaultValue = "null") String userName,
                                   @CookieValue(value = "userId",defaultValue = "null") String userId,
                                   ModelAndView mav) {
+        if(userId.equals("null")){
+            mav.setViewName("login");
+        }
         try {
             DateFormatter bookingDate = new DateFormatter();
             BookingDTO upcoming = (BookingDTO) userRepo.getNextUserBooking(Integer.parseInt(userId));
@@ -68,6 +71,7 @@ public class GeneralController {
 
     @RequestMapping(path = "/login")
     public ModelAndView login(HttpServletRequest request,HttpServletResponse response){
+       //check the cookie for access to other pages
         if(request.getCookies()!=null) {
             Cookie[] myCookies = request.getCookies();
             for (int i = 0; i < myCookies.length; i++) {

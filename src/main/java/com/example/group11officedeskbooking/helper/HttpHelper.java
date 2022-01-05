@@ -9,6 +9,7 @@ import java.io.IOException;
 @Component
 public class HttpHelper {
     public String Get(String access_token){
+        //request the token from GitHub
         OkHttpClient client=new OkHttpClient();
         Request request=new Request.Builder()
                 .url("https://api.github.com/user?access_token=" +access_token)
