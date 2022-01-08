@@ -48,7 +48,7 @@ window.onload = function() {
   
 };
 
-// taking the iteam from local storage out
+// taking the item from local storage out
 
 function signOut(){
   localStorage.removeItem("token");
