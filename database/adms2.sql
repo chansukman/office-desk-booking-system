@@ -124,7 +124,7 @@ INSERT INTO `Admin` VALUES(1,'admin','admin','admin@cardiff.ac.uk','management',
 
 
 
-INSERT INTO `maps`(location, image) VALUES ('Bristol', '/Images/bristol_numbered.PNG'), ('Cardiff', '/Images/Cardiff_numbered.jpg');
+INSERT INTO `Maps`(location, image) VALUES ('Bristol', '/Images/bristol_numbered.PNG'), ('Cardiff', '/Images/Cardiff_numbered.jpg');
 
 INSERT into Lottery(date, user_id, location) value ('2022-01-06', 1, 'Bristol') ;
 INSERT into Lottery(date, user_id, location) value ('2022-02-03', 1, 'Bristol') ;
