@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `Cancel` (
     `Desk_desk_id` INT NOT NULL,
     `User_UserName` VARCHAR(25) NULL DEFAULT NULL,
     `Location` varchar(25),
-    `time_stamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    `isAttended` INT,
 PRIMARY KEY (`transaction_id`));
 
 
