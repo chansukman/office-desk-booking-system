@@ -137,7 +137,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     @Override
     public List<UserDTO> getAllUsers(){
         return jdbcTemplate.query(
-                "select * from User",
+                "select * from user",
                 new UserInfoMapper());
     }
 
