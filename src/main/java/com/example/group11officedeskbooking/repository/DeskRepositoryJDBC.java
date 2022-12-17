@@ -23,7 +23,7 @@ public class DeskRepositoryJDBC implements DeskRepository{
     @Override
     public List<DeskDTO> searchAvailableDesksByDate(String searchDate, String deskLocation){
         return jdbcTemplate.query(
-                "select * from desk where desk_location=? and desk_id not in (select Desk_desk_id from booking where booking_date=?)",
+                "select * from desk where desk_location=? and desk_id not in (select desk_desk_id from booking where booking_date=?)",
                 new DeskMapper(), new Object[]{deskLocation, searchDate});
     }
 

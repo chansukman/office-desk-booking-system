@@ -49,7 +49,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     @Override
     public boolean addBooking(int user_id, String date, int desk_id){
         int rows = jdbcTemplate.update(
-                "insert into booking(booking_date, User_user_id, Desk_desk_id) values(?,?,?)",
+                "insert into booking(booking_date, User_user_id, desk_desk_id) values(?,?,?)",
                 new Object[]{date, user_id, desk_id});
         return rows>0;
     }
@@ -57,7 +57,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     @Override
     public BookingDTO getUniqueBooking(String date, int desk_id){
         return (BookingDTO) jdbcTemplate.queryForObject(
-                "SELECT Booking.booking_date, Desk.desk_number, Desk.desk_location from Booking Inner Join Desk ON Booking.Desk_desk_id = Desk.desk_id where booking_date=? and Desk_desk_id=?",
+                "SELECT booking.booking_date, desk.desk_number, desk.desk_location from booking Inner Join desk ON booking.desk_desk_id = desk.desk_id where booking_date=? and desk_desk_id=?",
                 new BookingMapper(),
                 new Object[]{date, desk_id});
     }
@@ -122,7 +122,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     @Override
     public List<DeskDTO> getAllDeskIdInLocation(String location){
         return jdbcTemplate.query(
-                "select desk_id from Desk where desk_location=?",
+                "select desk_id from desk where desk_location=?",
                 new DeskIdMapper(),
                 new Object[]{location});
     }
@@ -144,14 +144,14 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     @Override
     public List<String> getAllLocations(){
         return jdbcTemplate.query(
-                "select distinct desk_location from Desk",
+                "select distinct desk_location from desk",
                 new LocationMapper());
     }
 
     @Override
     public BookingDTO getNextUserBooking(int user_id){
         return (BookingDTO) jdbcTemplate.queryForObject(
-                "select booking_date, desk_number, desk_location FROM Booking JOIN Desk ON Booking.Desk_desk_id = Desk.desk_id where User_user_id=? and booking_date >= CURDATE() ORDER BY Booking_date LIMIT 1",
+                "select booking_date, desk_number, desk_location FROM booking JOIN desk ON booking.desk_desk_id = desk.desk_id where User_user_id=? and booking_date >= CURDATE() ORDER BY Booking_date LIMIT 1",
                 new BookingMapper(),
                 new Object[]{user_id});
     }
@@ -178,7 +178,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
         try{
             for(int i = 1 ; i <= numDesks ; i++){
                 jdbcTemplate.update(
-                        "insert into Desk(desk_number, desk_location) values(?,?)",
+                        "insert into desk(desk_number, desk_location) values(?,?)",
                         new Object[]{i, deskLocation});
             }
         }catch(Exception e){

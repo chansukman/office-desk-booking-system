@@ -40,13 +40,13 @@ public class ReceptionistRepository implements UserTaskDAO {
 
     @Override
     public int setAttendance(int id) {
-        return jdbcTemplate.update("UPDATE Booking SET isattend = 1 WHERE booking_id =?",
+        return jdbcTemplate.update("UPDATE booking SET isattend = 1 WHERE booking_id =?",
         new ReceptionistMapper(), new Object[] {id});
     }
 
     @Override
     public Object attendanceStatus(int id) {
-        return jdbcTemplate.query("SELECT isattend, booking_id FROM Booking WHERE user_id=?",
+        return jdbcTemplate.query("SELECT isattend, booking_id FROM booking WHERE user_id=?",
                 new ReceptionistMapper(), new Object[] {id});
     }
 }
