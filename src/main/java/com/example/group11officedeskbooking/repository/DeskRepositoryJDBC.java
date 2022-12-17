@@ -30,7 +30,7 @@ public class DeskRepositoryJDBC implements DeskRepository{
     @Override
     public DeskDTO findById(int desk_id) {
         return (DeskDTO) jdbcTemplate.queryForObject(
-                "select * from Desk where desk_id=?",
+                "select * from desk where desk_id=?",
                 new DeskMapper(),
                 new Object[]{desk_id});
     }

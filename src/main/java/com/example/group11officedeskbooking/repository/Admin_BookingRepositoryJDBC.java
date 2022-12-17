@@ -27,7 +27,7 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
     @Override
     public List<Admin_BookingDTO> findAll() {
         return jdbcTemplate.query(
-                "SELECT booking_id, booking_date, User_user_id, Desk.desk_number, User.first_name, User.last_name, desk.desk_location FROM booking join user ON booking.User_user_id = User.user_id join desk on booking.Desk_desk_id=Desk.desk_id",
+                "SELECT booking_id, booking_date, User_user_id, desk.desk_number, user.first_name, user.last_name, desk.desk_location FROM booking join user ON booking.User_user_id = user.user_id join desk on booking.desk_desk_id=desk.desk_id",
                 new Admin_BookingMapper());
     }
 
@@ -41,14 +41,14 @@ public class Admin_BookingRepositoryJDBC implements Admin_BookingRepository{
     // Delete Bookings
     @Override
     public int deleteById(int id) {
-        return jdbcTemplate.update("DELETE FROM Booking WHERE booking_id=?", id);
+        return jdbcTemplate.update("DELETE FROM booking WHERE booking_id=?", id);
     }
 
     //Find bookings by id
     @Override
     public Admin_BookingDTO findById(int id) {
         return (Admin_BookingDTO) jdbcTemplate.queryForObject(
-                    "SELECT booking_id, booking_date, User_user_id, Desk.desk_number, User.first_name, User.last_name, desk.desk_location FROM booking join user ON booking.User_user_id = User.user_id join desk on booking.Desk_desk_id=Desk.desk_id WHERE booking_id = ?",
+                    "SELECT booking_id, booking_date, User_user_id, desk.desk_number, user.first_name, user.last_name, desk.desk_location FROM booking join user ON booking.User_user_id = user.user_id join desk on booking.desk_desk_id=desk.desk_id WHERE booking_id = ?",
                 new Admin_BookingMapper(),
                 new Object[]{id});
     }

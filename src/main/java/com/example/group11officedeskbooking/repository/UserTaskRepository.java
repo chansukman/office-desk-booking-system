@@ -16,7 +16,7 @@ public class UserTaskRepository implements UserTaskDAO {
 
     @Override
     public int updateCancelTable(int id) {
-        return jdbcTemplate.update("INSERT INTO Cancel (booking_id, booking_date,User_user_id,Desk_desk_id,User_UserName,Location,isAttended)" +
+        return jdbcTemplate.update("INSERT INTO Cancel (booking_id, booking_date,User_user_id,desk_desk_id,User_UserName,Location,isAttended)" +
                 "SELECT * FROM booking WHERE booking_id =?", new Object[]{id});
         /* jdbcTemplate.update("DELETE FROM Booking where booking_id =?", new Object[]{id});*/
     }
@@ -24,7 +24,7 @@ public class UserTaskRepository implements UserTaskDAO {
 
     @Override
     public int deleteBooking(int id) {
-        return jdbcTemplate.update("DELETE FROM Booking where booking_id =?", new Object[]{id});
+        return jdbcTemplate.update("DELETE FROM booking where booking_id =?", new Object[]{id});
     }
  
        
