@@ -12,7 +12,7 @@ public class HttpHelper {
         //request the token from GitHub
         OkHttpClient client=new OkHttpClient();
         Request request=new Request.Builder()
-                .url("https://api.github.com/user?")
+                .url("https://api.github.com/user?access_token=" +access_token)
                 .header("Authorization", "token " + access_token)
                 .build();
         try{
