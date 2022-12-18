@@ -159,7 +159,7 @@ public class UserBookingRepositoryJDBC implements UserBookingRepository{
     @Override
     public List<BookingDTO> getAllBookingFromDateAndLocation(String date, String location){
         return jdbcTemplate.query(
-                "SELECT booking_date, desk_number, desk_location, first_name, last_name FROM booking JOIN desk ON booking.Desk_desk_id = Desk.desk_id JOIN User ON booking.User_user_id=User.user_id where Booking.booking_date=? and Desk.desk_location=?",
+                "SELECT booking_date, desk_number, desk_location, first_name, last_name FROM booking JOIN desk ON booking.desk_desk_id = desk.desk_id JOIN user ON booking.User_user_id=user.user_id where booking.booking_date=? and desk.desk_location=?",
                 new AllBookingsMapper(),
                 new Object[]{date, location});
     }
