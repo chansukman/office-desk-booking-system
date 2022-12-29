@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
+    <script type="text/javascript" th:src="@{/JS/cookies.js}"></script>
+</head>
+<body onload="addUserNameToHeader()">
+<div class="page-container">
+    <header th:replace="mainTemplate :: header"></header>
+    <div class="content-wrapper ">
+        <h1 th:text="'Welcome ' + ${userName}" style="padding: 5px"></h1>
+        <ul class="dash-links">
+            <li><a class="submit-button" href="/mybooking">My Bookings</a></li>
+            <li><a class="submit-button" href="/bookings">Book a Desk</a></li>
+        </ul>
+
+            <div class="dash-cards" th:if="${nextBooking != null}">
+                <div>
+                    <h3 style="padding: 5px; margin-bottom: 8px">Your Next Booking</h3>
+                    <div class="upcoming-booking">
+                        <div th:text="'Desk ' + ${nextBooking.getDesk_number()}"></div>
+                        <div th:text="${nextBooking.getBooking_date()}"></div>
+                        <div th:text="${nextBooking.getDesk_location()}"></div>
+                        <img th:src="${map.getImage()}" alt="">
+                    </div>
+                </div>
+                <div>
+                    <h3 th:text="'Here\'s everyone who will be in the office on ' + ${nextBooking.getBooking_date()}" style="padding: 5px"></h3>
+                    <div class="upcoming-other-users" style="background: black;color: white; font-size: 1.1rem">
+                        <div>Colleague</div>
+                        <div>Desk Number</div>
+                    </div>
+                    <div class="upcoming-other-users" th:each="user:${otherUsers}">
+                        <div th:text="${user.getFirst_name()} + ' ' + ${user.getLast_name()}"></div>
+                        <div th:text="${user.getDesk_number()}"></div>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${nextBooking == null}">
+                <h3>You do not have any upcoming bookings</h3>
+            </div>
+
+    </div>
+
+
+</div>
+</body>
+
+
+
+</html>

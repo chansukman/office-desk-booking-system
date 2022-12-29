@@ -42,7 +42,7 @@ public class AutoController {
         map.put("client_id", client_id);
         map.put("client_secret", client_secret);
         map.put("code", code);
-        map.put("redirect_url", "http://20.126.2.94:80/callback");
+        map.put("redirect_url", "http://20.26.197.144:80/callback");
         map.put("state", "test");
         String url = "https://github.com/login/oauth/access_token";
         String json = JSON.toJSONString(map);

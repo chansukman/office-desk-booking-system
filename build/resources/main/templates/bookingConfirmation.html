@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/templateStyles.css}">
+    <script type="text/javascript" th:src="@{/JS/cookies.js}"></script>
+</head>
+<body onload="addUserNameToHeader()">
+<div class="page-container">
+    <header th:replace="mainTemplate :: header"></header>
+    <div class="content-wrapper confirmation">
+        <h1 th:text="${booking != null} or ${lottery != null} ? 'Booking Confirmation' : 'We couldn\'t process your booking'"></h1>
+        <div>
+            <span th:if="${booking != null}" th:text="'Success! You have made a booking for ' + ${date} + ' on desk ' + ${booking.getDesk_number} +' in ' + ${booking.getDesk_location}"></span>
+            <span th:if="${lottery != null}" th:text="'Success! You have entered the lottery for ' + ${date} + ' in ' + ${lottery} +', there are currently ' + ${numberInLottery} + ' people in the lottery for ' + ${date}"></span>
+            <div th:if="${lotteryFail != null}" th:text="'Uh oh! It looks like you are already in the lottery for ' + ${date} + ' in ' + ${lotteryFail} + '. You can only enter the lottery once for each day.'"></div>
+            <br><br>
+            <a href="/bookings" class="booking-button">Back</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
