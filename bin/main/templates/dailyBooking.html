@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" th:href="@{/styles/templateStyles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/mybookingStyle.css}">
+
+</head>
+
+<header th:fragment="header" class="myHeader">
+    <ul>
+        <li><a><img src="/Images/BJSS_logo.png"></a></li>
+
+    </ul>
+    <section>
+        <span id="user-name"></span>
+        <button><a href="/login">Sign Out</a></button>
+    </section>
+</header>
+
+<body>
+
+    <div>
+        <div>
+            <h1>List of Daily Bookings</h1>
+            <div>
+                <form  th:action="@{/daily}"  method="post">
+                    <label for="location">
+                        Please select office location <br>
+                        <select name="location" id="location">
+                            <option value="Bristol">Bristol</option>
+                            <option value="Cardiff">Cardiff</option>
+                        </select>
+                    </label>
+                    <input type="submit" class="submit-button">
+                </form>
+                <div class="daily-item" style="background: black;color: white; font-size: 1.1rem">
+                    <div>Booking Number</div>
+                    <div>User ID</div>
+                    <div>Name</div>
+                    <div>Desk Number</div>
+                    <div>Checked-in</div>
+                </div>
+                <div class="daily-item" th:each="daily: ${dailyList}">
+                    <div th:text="${daily.getBookingID()}"></div>
+                    <div th:text="${daily.getUserID()}"></div>
+                    <div th:text="${daily.getFirstName()} + ' ' + ${daily.getLastName()}"></div>
+                    <div th:text="${daily.getDeskNumber()}"></div>
+                    <div><input type="checkbox" name="isAttended"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

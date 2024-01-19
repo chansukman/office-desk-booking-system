@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width",user-scalable="no",initial-scale="1", charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" th:href="@{/styles/templateStyles.css}">
+
+</head>
+<body>
+<header th:fragment="header" class="myHeader">
+    <ul>
+        <li><a href="/dashboard"><img src="/Images/BJSS_logo.png"></a></li>
+        <li><a href="/bookings">Book</a></li>
+        <li><a href="/mybooking">My Bookings</a></li>
+    </ul>
+    <section>
+        <span id="user-name"></span>
+        <button><a href="/login">Sign Out</a></button>
+    </section>
+
+
+
+</header>
+
+
+
+
+</body>
+
+</html>
