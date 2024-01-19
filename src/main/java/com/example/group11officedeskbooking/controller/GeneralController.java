@@ -68,14 +68,9 @@ public class GeneralController {
         }
         return mav;
     }
-     @GetMapping("/")
-    public ModelAndView showMapPage(ModelAndView modelAndView, HttpServletResponse response) {
-        modelAndView = new ModelAndView("/login");
-        return modelAndView;
-    }
 
 
-    @RequestMapping(path = "/login")
+    @RequestMapping(path = "/")
     public ModelAndView login(HttpServletRequest request,HttpServletResponse response){
        //check the cookie for access to other pages
         if(request.getCookies()!=null) {

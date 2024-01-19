@@ -16,10 +16,10 @@
     <form name="form1" method="post">
 
       <div class="inputText">
-        <input type="text" placeholder="first_name" name="first_name" />
+        <input type="text" placeholder="first_name" name="first_name" value="shuwen"/>
       </div>
       <div class="inputText">
-        <input type="password" placeholder="password" name="password" id="password"/>
+        <input type="password" placeholder="password" name="password" id="password" value="123456"/>
         <i class="bi-eye-slash" id="togglePassword" ></i>
       </div>
       <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
